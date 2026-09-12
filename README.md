@@ -21,8 +21,7 @@ flagging everything that cannot, rather than filling it with guesses.
 ├── datasets/     Structured knowledge base extracted from doc/  (JSON + YAML + SQLite)
 ├── engine/       Rule engine: review checks, table lookups, form export
 ├── input/        Blank official Excel templates to be filled
-├── output/       Generated deliverables (three successive versions)
-└── dev/          Working notes — git-ignored, present locally only
+└── output/       Generated deliverables (three successive versions)
 ```
 
 Everything in `datasets/` is **derived** from `doc/` and is fully reproducible
