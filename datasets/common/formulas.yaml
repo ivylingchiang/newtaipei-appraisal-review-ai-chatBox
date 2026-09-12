@@ -1,0 +1,161 @@
+schema_version: '1.0'
+source:
+  pdf: doc/rules/土地徵收補償市價查估作業手冊.pdf
+  xlsx: doc/table/*.xlsx
+level_scales:
+  '2':
+  - 優
+  - 劣
+  '3':
+  - 優
+  - 普通
+  - 劣
+  '5':
+  - 優
+  - 稍優
+  - 普通
+  - 稍劣
+  - 劣
+  5_pollution:
+  - 無
+  - 輕微
+  - 中度
+  - 嚴重
+  - 極嚴重
+  5_restriction:
+  - 極輕微
+  - 輕微
+  - 普通
+  - 嚴格
+  - 極嚴格
+  '7':
+  - 極優
+  - 優
+  - 稍優
+  - 普通
+  - 稍劣
+  - 劣
+  - 極劣
+  '9':
+  - 超極優
+  - 極優
+  - 優
+  - 稍優
+  - 普通
+  - 稍劣
+  - 劣
+  - 極劣
+  - 超極劣
+  note: 出自手冊 伍、六(八)2。表3 左側 [N] [M] 表示第 N 級 / 共 M 級。
+matrix:
+  structure: 反對稱方陣，對角線為 0，相鄰級距差固定
+  step: step = max_adjustment / (level_count - 1)
+  lookup: adjustment = (comparable_rank - base_rank) * step
+  equivalence: 與查表 matrix[base_rank-1][comparable_rank-1] 等價
+  sign_convention: 比較標的條件較差 → 修正率為正
+price_chain_table4:
+  description: 表4 比較法：將比較標的價格調整為比準地價格
+  steps:
+  - name: 調整至估價基準日單價
+    formula: 土地正常單價 × (1 + 交易日期調整百分率)
+  - name: 試算價格
+    formula: 調整至估價基準日單價 × (1 + 區域因素調整百分率 + 個別因素合計)
+  - name: 調整百分率絕對值加總
+    formula: '|交易日期調整率| + |區域因素調整率| + Σ|各個別因素差異率|'
+  - name: 比準地比較價格
+    formula: Σ(各比較標的試算價格 × 權重)
+    rounding: 四捨五入至個位數
+  precision_note: 試算採全精度連乘；表上顯示值為進位後結果。核算應允許 ±1 元容差。
+price_chain_table6:
+  description: 表6 宗地市價：由比準地地價調整為各宗地價格
+  steps:
+  - name: 總調整率
+    formula: Σ 各個別因素差異率
+  - name: 宗地市價試算價格
+    formula: ROUND(比準地地價 × (1 + 總調整率), 0)
+  - name: 宗地市價
+    formula: 依尾數規則無條件進位
+  sign_convention: 宗地條件較優 → 差異率為正（與表4 方向相反）
+  warning: 表4 與表6 的修正率符號方向相反，為審查最常見錯誤來源
+rounding:
+  article: 土地徵收補償市價查估辦法第21條
+  applies_to:
+  - 比準地地價
+  - 宗地市價
+  unit: 元/平方公尺
+  method: 無條件進位
+  tiers:
+  - max: 100
+    round_to: 個位數
+    excel: ROUNDUP(x,0)
+  - min: 100
+    max: 1000
+    round_to: 十位數
+    excel: ROUNDUP(x,-1)
+  - min: 1000
+    max: 100000
+    round_to: 百位數
+    excel: ROUNDUP(x,-2)
+  - min: 100000
+    round_to: 千位數
+    excel: ROUNDUP(x,-3)
+  excel_formula: =IF(x>100000,ROUNDUP(x,-3),IF(x>1000,ROUNDUP(x,-2),IF(x>100,ROUNDUP(x,-1),ROUNDUP(x,0))))
+  exceptions:
+  - case: 依第27條市價變動幅度調整後之宗地市價單價
+    rule: 無條件進位至個位數（避免重複進位）
+  - case: 表4 比準地比較價格
+    rule: 四捨五入至個位數
+  - case: 公保地跨2個以上區段之宗地單位地價
+    rule: 無條件進位至個位數
+weighting:
+  source: 手冊 伍、六(十一)；不動產估價技術規則第27條
+  basis: 以「調整百分率絕對值加總」衡量價格形成因素之相近程度；加總愈大→權重愈小
+  examples:
+  - count: 3
+    abs_sums:
+    - 7
+    - 10
+    - 15
+    similarity:
+    - 較高
+    - 普通
+    - 較低
+    weights:
+    - 0.5
+    - 0.3
+    - 0.2
+  - count: 2
+    abs_sums:
+    - 7
+    - 10
+    similarity:
+    - 較高
+    - 普通
+    weights:
+    - 0.7
+    - 0.3
+  - count: 1
+    abs_sums: null
+    similarity:
+    - 普通
+    weights:
+    - 1.0
+  note: 仍須配合蒐集資料可信度綜合決定
+fill_conventions:
+  exempt_vs_zero:
+    source: 手冊 伍、六(七)2、七(四)1
+    rule: 免修正項目之條件欄與差異率一律填『-』；應修正但無差異者填 0。兩者必須區分。
+    extra: 經判斷屬免比較項目，應於全案備註欄加註理由。
+  far_individual:
+    source: 手冊 伍、六(六)4
+    rule: 行政條件容積率指法定容積率；需就現況容積率修正者於「其他」欄處理並於備註欄通案說明。
+  avoid_double_adjustment:
+    source: 手冊 伍、六(九)
+    rule: 區域與個別因素項目雷同者，若已完全於一方反應調整，則不需於另一方重複調整。
+  comparable_facilities:
+    source: 手冊 伍、六(六)2(2)
+    rule: 3接近條件各項設施及20嫌惡設施：比較標的原則填與比準地相同之標的；不同行政區案例須有同等級影響力設施才填載，否則填『無』。
+  flexibility:
+    source: 手冊 伍、六(八)4
+    rule: 各細項等級或價格修正率因情況特殊者，得於備註欄敘明理由後酌予調整，惟仍應在內政部『影響地價個別因素評價基準表』規定之最大影響範圍內。
+    implication: 審查系統對超出查表值者不應直接判錯，應標記為『須確認備註理由』。

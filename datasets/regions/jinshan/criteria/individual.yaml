@@ -1,0 +1,1775 @@
+schema_version: '1.0'
+region_code: jinshan
+region_name: 新北市金山區
+land_use_code: commercial
+land_use_name: 商業用地
+factor_type: individual
+table_name: 新北市金山區商業用地影響地價個別因素評價基準明細表
+source:
+  pdf: doc/rules/評價基準明細表範例.pdf
+  role: reference
+source_anomalies: []
+item_count: 19
+items:
+- item_id: jinshan.individual.area
+  region_code: jinshan
+  factor_type: individual
+  seq: 1
+  group_code: 1
+  group_name: 宗地條件
+  item_code: area
+  item_name: 面積
+  field_no: 7
+  level_count: 5
+  level_labels: &id001
+  - 優
+  - 稍優
+  - 普通
+  - 稍劣
+  - 劣
+  max_adjustment: 8.0
+  step: 2.0
+  step_printed: 2.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 93m2以上
+    threshold:
+      kind: numeric
+      unit: m2
+      ranges:
+      - min: 93.0
+        min_inclusive: true
+      in_segment: false
+      or_none: false
+      raw: 93m2以上
+  - rank: 2
+    label: 稍優
+    criterion: 83m2以上未滿93m2
+    threshold:
+      kind: numeric
+      unit: m2
+      ranges:
+      - min: 83.0
+        max: 93.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 83m2以上未滿93m2
+  - rank: 3
+    label: 普通
+    criterion: 73m2以上未滿83m2
+    threshold:
+      kind: numeric
+      unit: m2
+      ranges:
+      - min: 73.0
+        max: 83.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 73m2以上未滿83m2
+  - rank: 4
+    label: 稍劣
+    criterion: 63m2以上未滿73m2
+    threshold:
+      kind: numeric
+      unit: m2
+      ranges:
+      - min: 63.0
+        max: 73.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 63m2以上未滿73m2
+  - rank: 5
+    label: 劣
+    criterion: 未滿63m2
+    threshold:
+      kind: numeric
+      unit: m2
+      ranges:
+      - max: 63.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿63m2
+  matrix:
+  - - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+    - 8.0
+  - - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+  - - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+  - - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+  - - -8.0
+    - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+  direction: higher_is_better
+  source_block_index: 28
+- item_id: jinshan.individual.width
+  region_code: jinshan
+  factor_type: individual
+  seq: 2
+  group_code: 1
+  group_name: 宗地條件
+  item_code: width
+  item_name: 寬度
+  field_no: 8
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 4.0
+  step: 1.0
+  step_printed: 1.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 40m以上
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 40.0
+        min_inclusive: true
+      in_segment: false
+      or_none: false
+      raw: 40m以上
+  - rank: 2
+    label: 稍優
+    criterion: 20m以上未滿40m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 20.0
+        max: 40.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 20m以上未滿40m
+  - rank: 3
+    label: 普通
+    criterion: 10m以上未滿20m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 10.0
+        max: 20.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 10m以上未滿20m
+  - rank: 4
+    label: 稍劣
+    criterion: 5m以上未滿10m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 5.0
+        max: 10.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 5m以上未滿10m
+  - rank: 5
+    label: 劣
+    criterion: 未滿5m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 5.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿5m
+  matrix:
+  - - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+  - - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+  - - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+  - - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+  - - -4.0
+    - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+  direction: higher_is_better
+  source_block_index: 29
+- item_id: jinshan.individual.depth
+  region_code: jinshan
+  factor_type: individual
+  seq: 3
+  group_code: 1
+  group_name: 宗地條件
+  item_code: depth
+  item_name: 深度
+  field_no: 9
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 4.0
+  step: 1.0
+  step_printed: 1.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 40m以上未滿100m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 40.0
+        max: 100.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 40m以上未滿100m
+  - rank: 2
+    label: 稍優
+    criterion: 30m以上未滿40m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 30.0
+        max: 40.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 30m以上未滿40m
+  - rank: 3
+    label: 普通
+    criterion: 20m以上未滿30m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 20.0
+        max: 30.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 20m以上未滿30m
+  - rank: 4
+    label: 稍劣
+    criterion: 10m以上未滿20m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 10.0
+        max: 20.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 10m以上未滿20m
+  - rank: 5
+    label: 劣
+    criterion: 未滿10m或100m以上
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 10.0
+        max_inclusive: false
+      - min: 100.0
+        min_inclusive: true
+      in_segment: false
+      or_none: false
+      raw: 未滿10m或100m以上
+  matrix:
+  - - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+  - - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+  - - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+  - - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+  - - -4.0
+    - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+  direction: higher_is_better
+  source_block_index: 30
+- item_id: jinshan.individual.shape
+  region_code: jinshan
+  factor_type: individual
+  seq: 4
+  group_code: 1
+  group_name: 宗地條件
+  item_code: shape
+  item_name: 形狀
+  field_no: 10
+  level_count: 2
+  level_labels: &id002
+  - 優
+  - 劣
+  max_adjustment: 5.0
+  step: 5.0
+  step_printed: 5.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 方形
+    threshold:
+      kind: categorical
+      categories:
+      - 方形
+      raw: 方形
+  - rank: 2
+    label: 劣
+    criterion: 不規則形
+    threshold:
+      kind: categorical
+      categories:
+      - 不規則形
+      raw: 不規則形
+  matrix:
+  - - 0.0
+    - 5.0
+  - - -5.0
+    - 0.0
+  direction: n/a
+  source_block_index: 31
+- item_id: jinshan.individual.street_frontage
+  region_code: jinshan
+  factor_type: individual
+  seq: 5
+  group_code: 1
+  group_name: 宗地條件
+  item_code: street_frontage
+  item_name: 臨街情形
+  field_no: 11
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 8.0
+  step: 2.0
+  step_printed: 2.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 3面以上臨街
+    threshold:
+      kind: numeric
+      unit: null
+      ranges:
+      - min: 3.0
+        min_inclusive: true
+      in_segment: false
+      or_none: false
+      raw: 3面以上臨街
+  - rank: 2
+    label: 稍優
+    criterion: 路角地
+    threshold:
+      kind: categorical
+      categories:
+      - 路角地
+      raw: 路角地
+  - rank: 3
+    label: 普通
+    criterion: 雙面臨街
+    threshold:
+      kind: categorical
+      categories:
+      - 雙面臨街
+      raw: 雙面臨街
+  - rank: 4
+    label: 稍劣
+    criterion: 單面臨街
+    threshold:
+      kind: categorical
+      categories:
+      - 單面臨街
+      raw: 單面臨街
+  - rank: 5
+    label: 劣
+    criterion: 非臨街地
+    threshold:
+      kind: categorical
+      categories:
+      - 非臨街地
+      raw: 非臨街地
+  matrix:
+  - - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+    - 8.0
+  - - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+  - - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+  - - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+  - - -8.0
+    - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+  direction: n/a
+  source_block_index: 32
+- item_id: jinshan.individual.terrain
+  region_code: jinshan
+  factor_type: individual
+  seq: 6
+  group_code: 1
+  group_name: 宗地條件
+  item_code: terrain
+  item_name: 地勢
+  field_no: 12
+  level_count: 3
+  level_labels:
+  - 優
+  - 普通
+  - 劣
+  max_adjustment: 3.0
+  step: 1.5
+  step_printed: 1.5
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 平坦
+    threshold:
+      kind: categorical
+      categories:
+      - 平坦
+      raw: 平坦
+  - rank: 2
+    label: 普通
+    criterion: 緩坡
+    threshold:
+      kind: categorical
+      categories:
+      - 緩坡
+      raw: 緩坡
+  - rank: 3
+    label: 劣
+    criterion: 低窪
+    threshold:
+      kind: categorical
+      categories:
+      - 低窪
+      raw: 低窪
+  matrix:
+  - - 0.0
+    - 1.5
+    - 3.0
+  - - -1.5
+    - 0.0
+    - 1.5
+  - - -3.0
+    - -1.5
+    - 0.0
+  direction: n/a
+  source_block_index: 33
+- item_id: jinshan.individual.road_type
+  region_code: jinshan
+  factor_type: individual
+  seq: 7
+  group_code: 2
+  group_name: 道路條件
+  item_code: road_type
+  item_name: 道路種類
+  field_no: 13
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 8.0
+  step: 2.0
+  step_printed: 2.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 主要道路
+    threshold:
+      kind: categorical
+      categories:
+      - 主要道路
+      raw: 主要道路
+  - rank: 2
+    label: 稍優
+    criterion: 次要道路
+    threshold:
+      kind: categorical
+      categories:
+      - 次要道路
+      raw: 次要道路
+  - rank: 3
+    label: 普通
+    criterion: 巷道
+    threshold:
+      kind: categorical
+      categories:
+      - 巷道
+      raw: 巷道
+  - rank: 4
+    label: 稍劣
+    criterion: 既成巷道
+    threshold:
+      kind: categorical
+      categories:
+      - 既成巷道
+      raw: 既成巷道
+  - rank: 5
+    label: 劣
+    criterion: 私設巷道
+    threshold:
+      kind: categorical
+      categories:
+      - 私設巷道
+      raw: 私設巷道
+  matrix:
+  - - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+    - 8.0
+  - - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+  - - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+  - - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+  - - -8.0
+    - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+  direction: n/a
+  source_block_index: 34
+- item_id: jinshan.individual.front_road_width
+  region_code: jinshan
+  factor_type: individual
+  seq: 8
+  group_code: 2
+  group_name: 道路條件
+  item_code: front_road_width
+  item_name: 面前道路寬度
+  field_no: 14
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 10.0
+  step: 2.5
+  step_printed: 2.5
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 20m以上
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 20.0
+        min_inclusive: true
+      in_segment: false
+      or_none: false
+      raw: 20m以上
+  - rank: 2
+    label: 稍優
+    criterion: 15m以上未滿20m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 15.0
+        max: 20.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 15m以上未滿20m
+  - rank: 3
+    label: 普通
+    criterion: 8m以上未滿15m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 8.0
+        max: 15.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 8m以上未滿15m
+  - rank: 4
+    label: 稍劣
+    criterion: 4m以上未滿8m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 4.0
+        max: 8.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 4m以上未滿8m
+  - rank: 5
+    label: 劣
+    criterion: 未滿4m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 4.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿4m
+  matrix:
+  - - 0.0
+    - 2.5
+    - 5.0
+    - 7.5
+    - 10.0
+  - - -2.5
+    - 0.0
+    - 2.5
+    - 5.0
+    - 7.5
+  - - -5.0
+    - -2.5
+    - 0.0
+    - 2.5
+    - 5.0
+  - - -7.5
+    - -5.0
+    - -2.5
+    - 0.0
+    - 2.5
+  - - -10.0
+    - -7.5
+    - -5.0
+    - -2.5
+    - 0.0
+  direction: higher_is_better
+  source_block_index: 35
+- item_id: jinshan.individual.near_school
+  region_code: jinshan
+  factor_type: individual
+  seq: 9
+  group_code: 3
+  group_name: 接近條件
+  item_code: near_school
+  item_name: 接近學校之程度
+  field_no: 15
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 4.0
+  step: 1.0
+  step_printed: 1.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 未滿200m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 200.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿200m
+  - rank: 2
+    label: 稍優
+    criterion: 200m以上未滿600m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 200.0
+        max: 600.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 200m以上未滿600m
+  - rank: 3
+    label: 普通
+    criterion: 600m以上未滿1200m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 600.0
+        max: 1200.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 600m以上未滿1200m
+  - rank: 4
+    label: 稍劣
+    criterion: 1200m以上未滿2000m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 1200.0
+        max: 2000.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 1200m以上未滿2000m
+  - rank: 5
+    label: 劣
+    criterion: 2000m以上或無
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 2000.0
+        min_inclusive: true
+      in_segment: false
+      or_none: true
+      raw: 2000m以上或無
+  matrix:
+  - - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+  - - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+  - - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+  - - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+  - - -4.0
+    - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+  direction: lower_is_better
+  source_block_index: 36
+- item_id: jinshan.individual.near_market
+  region_code: jinshan
+  factor_type: individual
+  seq: 10
+  group_code: 3
+  group_name: 接近條件
+  item_code: near_market
+  item_name: 接近市場之程度
+  field_no: 16
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 10.0
+  step: 2.5
+  step_printed: 2.5
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 未滿500m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 500.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿500m
+  - rank: 2
+    label: 稍優
+    criterion: 500m以上未滿1000m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 500.0
+        max: 1000.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 500m以上未滿1000m
+  - rank: 3
+    label: 普通
+    criterion: 1000m以上未滿1500m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 1000.0
+        max: 1500.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 1000m以上未滿1500m
+  - rank: 4
+    label: 稍劣
+    criterion: 1500m以上未滿2000m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 1500.0
+        max: 2000.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 1500m以上未滿2000m
+  - rank: 5
+    label: 劣
+    criterion: 2000m以上或無
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 2000.0
+        min_inclusive: true
+      in_segment: false
+      or_none: true
+      raw: 2000m以上或無
+  matrix:
+  - - 0.0
+    - 2.5
+    - 5.0
+    - 7.5
+    - 10.0
+  - - -2.5
+    - 0.0
+    - 2.5
+    - 5.0
+    - 7.5
+  - - -5.0
+    - -2.5
+    - 0.0
+    - 2.5
+    - 5.0
+  - - -7.5
+    - -5.0
+    - -2.5
+    - 0.0
+    - 2.5
+  - - -10.0
+    - -7.5
+    - -5.0
+    - -2.5
+    - 0.0
+  direction: lower_is_better
+  source_block_index: 37
+- item_id: jinshan.individual.near_park
+  region_code: jinshan
+  factor_type: individual
+  seq: 11
+  group_code: 3
+  group_name: 接近條件
+  item_code: near_park
+  item_name: 接近公園、廣場之程度
+  field_no: 17
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 4.0
+  step: 1.0
+  step_printed: 1.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 未滿300m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 300.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿300m
+  - rank: 2
+    label: 稍優
+    criterion: 300m以上未滿500m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 300.0
+        max: 500.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 300m以上未滿500m
+  - rank: 3
+    label: 普通
+    criterion: 500m以上未滿1000m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 500.0
+        max: 1000.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 500m以上未滿1000m
+  - rank: 4
+    label: 稍劣
+    criterion: 1000m以上未滿1500m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 1000.0
+        max: 1500.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 1000m以上未滿1500m
+  - rank: 5
+    label: 劣
+    criterion: 1500m以上或無
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 1500.0
+        min_inclusive: true
+      in_segment: false
+      or_none: true
+      raw: 1500m以上或無
+  matrix:
+  - - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+  - - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+  - - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+  - - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+  - - -4.0
+    - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+  direction: lower_is_better
+  source_block_index: 38
+- item_id: jinshan.individual.near_station
+  region_code: jinshan
+  factor_type: individual
+  seq: 12
+  group_code: 3
+  group_name: 接近條件
+  item_code: near_station
+  item_name: 接近車站之程度
+  field_no: 18
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 4.0
+  step: 1.0
+  step_printed: 1.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 未滿300m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 300.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿300m
+  - rank: 2
+    label: 稍優
+    criterion: 300m以上未滿400m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 300.0
+        max: 400.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 300m以上未滿400m
+  - rank: 3
+    label: 普通
+    criterion: 400m以上未滿600m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 400.0
+        max: 600.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 400m以上未滿600m
+  - rank: 4
+    label: 稍劣
+    criterion: 600m以上未滿800m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 600.0
+        max: 800.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 600m以上未滿800m
+  - rank: 5
+    label: 劣
+    criterion: 800m以上或無
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 800.0
+        min_inclusive: true
+      in_segment: false
+      or_none: true
+      raw: 800m以上或無
+  matrix:
+  - - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+  - - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+  - - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+    - 2.0
+  - - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+    - 1.0
+  - - -4.0
+    - -3.0
+    - -2.0
+    - -1.0
+    - 0.0
+  direction: lower_is_better
+  source_block_index: 39
+- item_id: jinshan.individual.near_business
+  region_code: jinshan
+  factor_type: individual
+  seq: 13
+  group_code: 3
+  group_name: 接近條件
+  item_code: near_business
+  item_name: 接近商圈之程度
+  field_no: 19
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 8.0
+  step: 2.0
+  step_printed: 2.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 未滿500m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 500.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿500m
+  - rank: 2
+    label: 稍優
+    criterion: 500m以上未滿1000m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 500.0
+        max: 1000.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 500m以上未滿1000m
+  - rank: 3
+    label: 普通
+    criterion: 1000m以上未滿1800m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 1000.0
+        max: 1800.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 1000m以上未滿1800m
+  - rank: 4
+    label: 稍劣
+    criterion: 1800m以上未滿2800m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 1800.0
+        max: 2800.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 1800m以上未滿2800m
+  - rank: 5
+    label: 劣
+    criterion: 2800m以上或無
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 2800.0
+        min_inclusive: true
+      in_segment: false
+      or_none: true
+      raw: 2800m以上或無
+  matrix:
+  - - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+    - 8.0
+  - - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+    - 6.0
+  - - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+    - 4.0
+  - - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+    - 2.0
+  - - -8.0
+    - -6.0
+    - -4.0
+    - -2.0
+    - 0.0
+  direction: lower_is_better
+  source_block_index: 40
+- item_id: jinshan.individual.nuisance
+  region_code: jinshan
+  factor_type: individual
+  seq: 14
+  group_code: 4
+  group_name: 周邊環境條件
+  item_code: nuisance
+  item_name: 嫌惡設施之有無
+  field_no: 20
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 6.0
+  step: 1.5
+  step_printed: 1.5
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 500m以上或無
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 500.0
+        min_inclusive: true
+      in_segment: false
+      or_none: true
+      raw: 500m以上或無
+  - rank: 2
+    label: 稍優
+    criterion: 300m以上未滿500m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 300.0
+        max: 500.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 300m以上未滿500m
+  - rank: 3
+    label: 普通
+    criterion: 200m以上未滿300m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 200.0
+        max: 300.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 200m以上未滿300m
+  - rank: 4
+    label: 稍劣
+    criterion: 100m以上未滿200m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - min: 100.0
+        max: 200.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 100m以上未滿200m
+  - rank: 5
+    label: 劣
+    criterion: 未滿100m
+    threshold:
+      kind: numeric
+      unit: m
+      ranges:
+      - max: 100.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿100m
+  matrix:
+  - - 0.0
+    - 1.5
+    - 3.0
+    - 4.5
+    - 6.0
+  - - -1.5
+    - 0.0
+    - 1.5
+    - 3.0
+    - 4.5
+  - - -3.0
+    - -1.5
+    - 0.0
+    - 1.5
+    - 3.0
+  - - -4.5
+    - -3.0
+    - -1.5
+    - 0.0
+    - 1.5
+  - - -6.0
+    - -4.5
+    - -3.0
+    - -1.5
+    - 0.0
+  direction: higher_is_better
+  source_block_index: 41
+- item_id: jinshan.individual.parking_ease
+  region_code: jinshan
+  factor_type: individual
+  seq: 15
+  group_code: 4
+  group_name: 周邊環境條件
+  item_code: parking_ease
+  item_name: 停車方便性
+  field_no: 21
+  level_count: 2
+  level_labels: *id002
+  max_adjustment: 2.0
+  step: 2.0
+  step_printed: 2.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 可路邊停車
+    threshold:
+      kind: categorical
+      categories:
+      - 可路邊停車
+      raw: 可路邊停車
+  - rank: 2
+    label: 劣
+    criterion: 不可路邊停車
+    threshold:
+      kind: categorical
+      categories:
+      - 不可路邊停車
+      raw: 不可路邊停車
+  matrix:
+  - - 0.0
+    - 2.0
+  - - -2.0
+    - 0.0
+  direction: n/a
+  source_block_index: 42
+- item_id: jinshan.individual.zoning
+  region_code: jinshan
+  factor_type: individual
+  seq: 16
+  group_code: 5
+  group_name: 行政條件
+  item_code: zoning
+  item_name: 使用分區或編定
+  field_no: 22
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 15.0
+  step: 3.75
+  step_printed: 3.75
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 商業區
+    threshold:
+      kind: categorical
+      categories:
+      - 商業區
+      raw: 商業區
+  - rank: 2
+    label: 稍優
+    criterion: 住宅區
+    threshold:
+      kind: categorical
+      categories:
+      - 住宅區
+      raw: 住宅區
+  - rank: 3
+    label: 普通
+    criterion: 甲建、乙建
+    threshold:
+      kind: categorical
+      categories:
+      - 甲建
+      - 乙建
+      raw: 甲建、乙建
+  - rank: 4
+    label: 稍劣
+    criterion: 農業區、保護區建地目
+    threshold:
+      kind: categorical
+      categories:
+      - 農業區
+      - 保護區建地目
+      raw: 農業區、保護區建地目
+  - rank: 5
+    label: 劣
+    criterion: 農業區、保護區已建築用地
+    threshold:
+      kind: categorical
+      categories:
+      - 農業區
+      - 保護區已建築用地
+      raw: 農業區、保護區已建築用地
+  matrix:
+  - - 0.0
+    - 3.75
+    - 7.5
+    - 11.25
+    - 15.0
+  - - -3.75
+    - 0.0
+    - 3.75
+    - 7.5
+    - 11.25
+  - - -7.5
+    - -3.75
+    - 0.0
+    - 3.75
+    - 7.5
+  - - -11.25
+    - -7.5
+    - -3.75
+    - 0.0
+    - 3.75
+  - - -15.0
+    - -11.25
+    - -7.5
+    - -3.75
+    - 0.0
+  direction: n/a
+  source_block_index: 43
+- item_id: jinshan.individual.bcr
+  region_code: jinshan
+  factor_type: individual
+  seq: 17
+  group_code: 5
+  group_name: 行政條件
+  item_code: bcr
+  item_name: 建蔽率
+  field_no: 23
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 10.0
+  step: 2.5
+  step_printed: 2.5
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 80％以上
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 80.0
+        min_inclusive: true
+      in_segment: false
+      or_none: false
+      raw: 80％以上
+  - rank: 2
+    label: 稍優
+    criterion: 70％以上未滿80％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 70.0
+        max: 80.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 70％以上未滿80％
+  - rank: 3
+    label: 普通
+    criterion: 60％以上未滿70％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 60.0
+        max: 70.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 60％以上未滿70％
+  - rank: 4
+    label: 稍劣
+    criterion: 50％以上未滿60％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 50.0
+        max: 60.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 50％以上未滿60％
+  - rank: 5
+    label: 劣
+    criterion: 未滿50％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - max: 50.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿50％
+  matrix:
+  - - 0.0
+    - 2.5
+    - 5.0
+    - 7.5
+    - 10.0
+  - - -2.5
+    - 0.0
+    - 2.5
+    - 5.0
+    - 7.5
+  - - -5.0
+    - -2.5
+    - 0.0
+    - 2.5
+    - 5.0
+  - - -7.5
+    - -5.0
+    - -2.5
+    - 0.0
+    - 2.5
+  - - -10.0
+    - -7.5
+    - -5.0
+    - -2.5
+    - 0.0
+  direction: higher_is_better
+  source_block_index: 44
+- item_id: jinshan.individual.far
+  region_code: jinshan
+  factor_type: individual
+  seq: 18
+  group_code: 5
+  group_name: 行政條件
+  item_code: far
+  item_name: 容積率
+  field_no: 24
+  level_count: 5
+  level_labels: *id001
+  max_adjustment: 40.0
+  step: 10.0
+  step_printed: 10.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 300％以上
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 300.0
+        min_inclusive: true
+      in_segment: false
+      or_none: false
+      raw: 300％以上
+  - rank: 2
+    label: 稍優
+    criterion: 240％以上未滿300％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 240.0
+        max: 300.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 240％以上未滿300％
+  - rank: 3
+    label: 普通
+    criterion: 200％以上未滿240％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 200.0
+        max: 240.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 200％以上未滿240％
+  - rank: 4
+    label: 稍劣
+    criterion: 120％以上未滿200％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - min: 120.0
+        max: 200.0
+        min_inclusive: true
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 120％以上未滿200％
+  - rank: 5
+    label: 劣
+    criterion: 未滿120％
+    threshold:
+      kind: numeric
+      unit: percent
+      ranges:
+      - max: 120.0
+        max_inclusive: false
+      in_segment: false
+      or_none: false
+      raw: 未滿120％
+  matrix:
+  - - 0.0
+    - 10.0
+    - 20.0
+    - 30.0
+    - 40.0
+  - - -10.0
+    - 0.0
+    - 10.0
+    - 20.0
+    - 30.0
+  - - -20.0
+    - -10.0
+    - 0.0
+    - 10.0
+    - 20.0
+  - - -30.0
+    - -20.0
+    - -10.0
+    - 0.0
+    - 10.0
+  - - -40.0
+    - -30.0
+    - -20.0
+    - -10.0
+    - 0.0
+  direction: higher_is_better
+  source_block_index: 45
+- item_id: jinshan.individual.build_ban_restrict
+  region_code: jinshan
+  factor_type: individual
+  seq: 19
+  group_code: 5
+  group_name: 行政條件
+  item_code: build_ban_restrict
+  item_name: 有無禁限建
+  field_no: 25
+  level_count: 2
+  level_labels: *id002
+  max_adjustment: 40.0
+  step: 40.0
+  step_printed: 40.0
+  rule_type: matrix
+  levels:
+  - rank: 1
+    label: 優
+    criterion: 無禁止或限制建築
+    threshold:
+      kind: categorical
+      categories:
+      - 無禁止或限制建築
+      raw: 無禁止或限制建築
+  - rank: 2
+    label: 劣
+    criterion: 有禁止或限制建築
+    threshold:
+      kind: categorical
+      categories:
+      - 有禁止或限制建築
+      raw: 有禁止或限制建築
+  matrix:
+  - - 0.0
+    - 40.0
+  - - -40.0
+    - 0.0
+  direction: n/a
+  source_block_index: 46

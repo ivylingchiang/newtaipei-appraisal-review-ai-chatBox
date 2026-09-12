@@ -1,0 +1,3965 @@
+{
+  "schema_version": "1.0",
+  "region_code": "jinshan",
+  "region_name": "新北市金山區",
+  "land_use_code": "commercial",
+  "land_use_name": "商業用地",
+  "factor_type": "regional",
+  "table_name": "新北市金山區商業用地影響地價區域因素評價基準明細表",
+  "source": {
+    "pdf": "doc/rules/評價基準明細表範例.pdf",
+    "role": "reference"
+  },
+  "source_anomalies": [
+    {
+      "item_code": "near_busstop",
+      "factor_type": "regional",
+      "level": 3,
+      "text": "200km以上未滿400m",
+      "issue": "單位誤植 km，應為 m",
+      "parsed_as": "200m以上未滿400m"
+    },
+    {
+      "item_code": "near_tourism",
+      "factor_type": "regional",
+      "level": 4,
+      "text": "1,000km以上未滿1,500m",
+      "issue": "單位誤植 km，應為 m",
+      "parsed_as": "1,000m以上未滿1,500m"
+    }
+  ],
+  "item_count": 28,
+  "items": [
+    {
+      "item_id": "jinshan.regional.urban_plan",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 1,
+      "group_code": 1,
+      "group_name": "土地使用管制",
+      "item_code": "urban_plan",
+      "item_name": "都市計畫（內、外）",
+      "field_no": null,
+      "level_count": 2,
+      "level_labels": [
+        "優",
+        "劣"
+      ],
+      "max_adjustment": 20.0,
+      "step": 20.0,
+      "step_printed": 20.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "都市計畫內",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "都市計畫內"
+            ],
+            "raw": "都市計畫內"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "劣",
+          "criterion": "都市計畫外",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "都市計畫外"
+            ],
+            "raw": "都市計畫外"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          20.0
+        ],
+        [
+          -20.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 0
+    },
+    {
+      "item_id": "jinshan.regional.zoning",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 2,
+      "group_code": 1,
+      "group_name": "土地使用管制",
+      "item_code": "zoning",
+      "item_name": "使用分區（編定）",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 20.0,
+      "step": 5.0,
+      "step_printed": 5.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "第二種商業區",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "第二種商業區"
+            ],
+            "raw": "第二種商業區"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "市場用地",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "市場用地"
+            ],
+            "raw": "市場用地"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "第二種住宅區",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "第二種住宅區"
+            ],
+            "raw": "第二種住宅區"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "第一種住宅區",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "第一種住宅區"
+            ],
+            "raw": "第一種住宅區"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "其他分區",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "其他分區"
+            ],
+            "raw": "其他分區"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          5.0,
+          10.0,
+          15.0,
+          20.0
+        ],
+        [
+          -5.0,
+          0.0,
+          5.0,
+          10.0,
+          15.0
+        ],
+        [
+          -10.0,
+          -5.0,
+          0.0,
+          5.0,
+          10.0
+        ],
+        [
+          -15.0,
+          -10.0,
+          -5.0,
+          0.0,
+          5.0
+        ],
+        [
+          -20.0,
+          -15.0,
+          -10.0,
+          -5.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 1
+    },
+    {
+      "item_id": "jinshan.regional.bcr",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 3,
+      "group_code": 1,
+      "group_name": "土地使用管制",
+      "item_code": "bcr",
+      "item_name": "建蔽率",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "60%以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 60.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "60%以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "50%以上未滿60%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 50.0,
+                "max": 60.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "50%以上未滿60%"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "45%以上未滿50%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 45.0,
+                "max": 50.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "45%以上未滿50%"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "40%以上未滿45%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 40.0,
+                "max": 45.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "40%以上未滿45%"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿40%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "max": 40.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿40%"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 2
+    },
+    {
+      "item_id": "jinshan.regional.far",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 4,
+      "group_code": 1,
+      "group_name": "土地使用管制",
+      "item_code": "far",
+      "item_name": "容積率",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 40.0,
+      "step": 10.0,
+      "step_printed": 10.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "240%以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 240.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "240%以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "200%以上未滿240%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 200.0,
+                "max": 240.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "200%以上未滿240%"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "160%以上未滿200%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 160.0,
+                "max": 200.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "160%以上未滿200%"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "120%以上未滿160%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 120.0,
+                "max": 160.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "120%以上未滿160%"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿120%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "max": 120.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿120%"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0
+        ],
+        [
+          -10.0,
+          0.0,
+          10.0,
+          20.0,
+          30.0
+        ],
+        [
+          -20.0,
+          -10.0,
+          0.0,
+          10.0,
+          20.0
+        ],
+        [
+          -30.0,
+          -20.0,
+          -10.0,
+          0.0,
+          10.0
+        ],
+        [
+          -40.0,
+          -30.0,
+          -20.0,
+          -10.0,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 3
+    },
+    {
+      "item_id": "jinshan.regional.build_ban",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 5,
+      "group_code": 1,
+      "group_name": "土地使用管制",
+      "item_code": "build_ban",
+      "item_name": "有無禁止建築",
+      "field_no": null,
+      "level_count": 2,
+      "level_labels": [
+        "優",
+        "劣"
+      ],
+      "max_adjustment": 40.0,
+      "step": 40.0,
+      "step_printed": 40.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "無",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "無"
+            ],
+            "raw": "無"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "劣",
+          "criterion": "有",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "有"
+            ],
+            "raw": "有"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          40.0
+        ],
+        [
+          -40.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 4
+    },
+    {
+      "item_id": "jinshan.regional.build_restrict",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 6,
+      "group_code": 1,
+      "group_name": "土地使用管制",
+      "item_code": "build_restrict",
+      "item_name": "有無限制建築",
+      "field_no": null,
+      "level_count": 2,
+      "level_labels": [
+        "優",
+        "劣"
+      ],
+      "max_adjustment": 40.0,
+      "step": 40.0,
+      "step_printed": 40.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "無",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "無"
+            ],
+            "raw": "無"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "劣",
+          "criterion": "有",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "有"
+            ],
+            "raw": "有"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          40.0
+        ],
+        [
+          -40.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 5
+    },
+    {
+      "item_id": "jinshan.regional.main_road_width",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 7,
+      "group_code": 2,
+      "group_name": "交通運輸",
+      "item_code": "main_road_width",
+      "item_name": "主要道路寬度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 15.0,
+      "step": 3.75,
+      "step_printed": 3.75,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "30m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 30.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "30m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "20m以上未滿30m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 20.0,
+                "max": 30.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "20m以上未滿30m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "15m以上未滿20m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 15.0,
+                "max": 20.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "15m以上未滿20m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "10m以上未滿15m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 10.0,
+                "max": 15.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "10m以上未滿15m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿10m或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 10.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "未滿10m或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          3.75,
+          7.5,
+          11.25,
+          15.0
+        ],
+        [
+          -3.75,
+          0.0,
+          3.75,
+          7.5,
+          11.25
+        ],
+        [
+          -7.5,
+          -3.75,
+          0.0,
+          3.75,
+          7.5
+        ],
+        [
+          -11.25,
+          -7.5,
+          -3.75,
+          0.0,
+          3.75
+        ],
+        [
+          -15.0,
+          -11.25,
+          -7.5,
+          -3.75,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 6
+    },
+    {
+      "item_id": "jinshan.regional.avg_road_width",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 8,
+      "group_code": 2,
+      "group_name": "交通運輸",
+      "item_code": "avg_road_width",
+      "item_name": "區段內道路平均寬度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "20m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 20.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "20m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "15m以上未滿20m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 15.0,
+                "max": 20.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "15m以上未滿20m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "10m以上未滿15m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 10.0,
+                "max": 15.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "10m以上未滿15m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "6m以上未滿10m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 6.0,
+                "max": 10.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "6m以上未滿10m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿6m或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 6.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "未滿6m或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 7
+    },
+    {
+      "item_id": "jinshan.regional.near_station",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 9,
+      "group_code": 2,
+      "group_name": "交通運輸",
+      "item_code": "near_station",
+      "item_name": "接近大型車站之程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "1,000m以上未滿2,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿2,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "2,000m以上未滿3,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "max": 3000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "2,000m以上未滿3,000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "3,000m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 3000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "3,000m以上"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "lower_is_better",
+      "source_block_index": 8
+    },
+    {
+      "item_id": "jinshan.regional.near_busstop",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 10,
+      "group_code": 2,
+      "group_name": "交通運輸",
+      "item_code": "near_busstop",
+      "item_name": "站牌之接近程度或密集程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿200m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 200.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿200m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "200km以上未滿400m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 200.0,
+                "max": 400.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "200km以上未滿400m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "400m以上未滿700m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 400.0,
+                "max": 700.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "400m以上未滿700m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "700m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 700.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "700m以上"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 9
+    },
+    {
+      "item_id": "jinshan.regional.near_interchange",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 11,
+      "group_code": 2,
+      "group_name": "交通運輸",
+      "item_code": "near_interchange",
+      "item_name": "交流道之有無及接近交流道之程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "500m以上未滿1,500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "1,500m以上未滿3,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1500.0,
+                "max": 3000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,500m以上未滿3,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "3,000m以上未滿4,500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 3000.0,
+                "max": 4500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "3,000m以上未滿4,500m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "4,500m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 4500.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "4,500m以上"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "lower_is_better",
+      "source_block_index": 10
+    },
+    {
+      "item_id": "jinshan.regional.road_dev",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 12,
+      "group_code": 2,
+      "group_name": "交通運輸",
+      "item_code": "road_dev",
+      "item_name": "區段內道路規劃及闢建程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "已完全開發",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "已完全開發"
+            ],
+            "raw": "已完全開發"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "大部分已完成",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "大部分已完成"
+            ],
+            "raw": "大部分已完成"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "已規劃及闢建中",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "已規劃及闢建中"
+            ],
+            "raw": "已規劃及闢建中"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "已進行規劃",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "已進行規劃"
+            ],
+            "raw": "已進行規劃"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "尚未規劃",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "尚未規劃"
+            ],
+            "raw": "尚未規劃"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 11
+    },
+    {
+      "item_id": "jinshan.regional.drainage",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 13,
+      "group_code": 3,
+      "group_name": "自然條件",
+      "item_code": "drainage",
+      "item_name": "排水之良否",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "排水系統完善不曾淹水",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "排水系統完善不曾淹水"
+            ],
+            "raw": "排水系統完善不曾淹水"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "有排水系統不易淹水",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "有排水系統不易淹水"
+            ],
+            "raw": "有排水系統不易淹水"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "有排水系統偶有淹水但排水速度快",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "有排水系統偶有淹水但排水速度快"
+            ],
+            "raw": "有排水系統偶有淹水但排水速度快"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "有排水系統偶有淹水",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "有排水系統偶有淹水"
+            ],
+            "raw": "有排水系統偶有淹水"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "無排水系統易淹水",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "無排水系統易淹水"
+            ],
+            "raw": "無排水系統易淹水"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 12
+    },
+    {
+      "item_id": "jinshan.regional.terrain",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 14,
+      "group_code": 3,
+      "group_name": "自然條件",
+      "item_code": "terrain",
+      "item_name": "地勢",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "該區地勢平坦",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "該區地勢平坦"
+            ],
+            "raw": "該區地勢平坦"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "該區大部分地勢平坦",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "該區大部分地勢平坦"
+            ],
+            "raw": "該區大部分地勢平坦"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "該區一半地勢平坦",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "該區一半地勢平坦"
+            ],
+            "raw": "該區一半地勢平坦"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "該區大部分地勢高亢或低窪",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "該區大部分地勢高亢或低窪"
+            ],
+            "raw": "該區大部分地勢高亢或低窪"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "該區全部地勢高亢或低窪",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "該區全部地勢高亢或低窪"
+            ],
+            "raw": "該區全部地勢高亢或低窪"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 13
+    },
+    {
+      "item_id": "jinshan.regional.near_market",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 15,
+      "group_code": 4,
+      "group_name": "公共建設",
+      "item_code": "near_market",
+      "item_name": "接近市場之程度（傳統市場、超級市場、超大型購物中心）",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 6.0,
+      "step": 1.5,
+      "step_printed": 1.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1,000m以上未滿1,800m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 1800.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿1,800m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "1,800m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1800.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "1,800m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.5,
+          3.0,
+          4.5,
+          6.0
+        ],
+        [
+          -1.5,
+          0.0,
+          1.5,
+          3.0,
+          4.5
+        ],
+        [
+          -3.0,
+          -1.5,
+          0.0,
+          1.5,
+          3.0
+        ],
+        [
+          -4.5,
+          -3.0,
+          -1.5,
+          0.0,
+          1.5
+        ],
+        [
+          -6.0,
+          -4.5,
+          -3.0,
+          -1.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 14
+    },
+    {
+      "item_id": "jinshan.regional.near_park",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 16,
+      "group_code": 4,
+      "group_name": "公共建設",
+      "item_code": "near_park",
+      "item_name": "接近公園（里鄰公園、一般公園）、廣場、徒步區之程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 6.0,
+      "step": 1.5,
+      "step_printed": 1.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1,000m以上未滿1,800m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 1800.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿1,800m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "1,800m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1800.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "1,800m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.5,
+          3.0,
+          4.5,
+          6.0
+        ],
+        [
+          -1.5,
+          0.0,
+          1.5,
+          3.0,
+          4.5
+        ],
+        [
+          -3.0,
+          -1.5,
+          0.0,
+          1.5,
+          3.0
+        ],
+        [
+          -4.5,
+          -3.0,
+          -1.5,
+          0.0,
+          1.5
+        ],
+        [
+          -6.0,
+          -4.5,
+          -3.0,
+          -1.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 15
+    },
+    {
+      "item_id": "jinshan.regional.near_tourism",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 17,
+      "group_code": 4,
+      "group_name": "公共建設",
+      "item_code": "near_tourism",
+      "item_name": "接近觀光遊憩設施之程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 3.0,
+      "step": 0.75,
+      "step_printed": 0.75,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1,000km以上未滿1,500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 1500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000km以上未滿1,500m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "1,500m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1500.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "1,500m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          0.75,
+          1.5,
+          2.25,
+          3.0
+        ],
+        [
+          -0.75,
+          0.0,
+          0.75,
+          1.5,
+          2.25
+        ],
+        [
+          -1.5,
+          -0.75,
+          0.0,
+          0.75,
+          1.5
+        ],
+        [
+          -2.25,
+          -1.5,
+          -0.75,
+          0.0,
+          0.75
+        ],
+        [
+          -3.0,
+          -2.25,
+          -1.5,
+          -0.75,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 16
+    },
+    {
+      "item_id": "jinshan.regional.parking",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 18,
+      "group_code": 4,
+      "group_name": "公共建設",
+      "item_code": "parking",
+      "item_name": "停車場地之便利程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 4.0,
+      "step": 1.0,
+      "step_printed": 1.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿200m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 200.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿200m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "200m以上未滿400m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 200.0,
+                "max": 400.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "200m以上未滿400m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "400m以上未滿700m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 400.0,
+                "max": 700.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "400m以上未滿700m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "700m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 700.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "700m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        [
+          -1.0,
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        [
+          -2.0,
+          -1.0,
+          0.0,
+          1.0,
+          2.0
+        ],
+        [
+          -3.0,
+          -2.0,
+          -1.0,
+          0.0,
+          1.0
+        ],
+        [
+          -4.0,
+          -3.0,
+          -2.0,
+          -1.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 17
+    },
+    {
+      "item_id": "jinshan.regional.utility_facility",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 19,
+      "group_code": 5,
+      "group_name": "特殊設施",
+      "item_code": "utility_facility",
+      "item_name": "電業設施及公用氣體燃料設施之有無及接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "3,000m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 3000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "3,000m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "2,000m以上未滿3,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "max": 3000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "2,000m以上未滿3,000m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "1,000m以上未滿2,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿2,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 18
+    },
+    {
+      "item_id": "jinshan.regional.funeral_facility",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 20,
+      "group_code": 5,
+      "group_name": "特殊設施",
+      "item_code": "funeral_facility",
+      "item_name": "殯葬設施之有無及接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "3,000m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 3000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "3,000m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "2,000m以上未滿3,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "max": 3000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "2,000m以上未滿3,000m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "1,000m以上未滿2,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿2,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 19
+    },
+    {
+      "item_id": "jinshan.regional.waste_facility",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 21,
+      "group_code": 5,
+      "group_name": "特殊設施",
+      "item_code": "waste_facility",
+      "item_name": "廢棄物處理設施之有無及接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "3,000m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 3000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "3,000m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "2,000m以上未滿3,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "max": 3000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "2,000m以上未滿3,000m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "1,000m以上未滿2,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿2,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 20
+    },
+    {
+      "item_id": "jinshan.regional.pollution",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 22,
+      "group_code": 6,
+      "group_name": "環境污染",
+      "item_code": "pollution",
+      "item_name": "水污染、噪音污染、廢氣污染、廢棄物污染等之有無及接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 6.0,
+      "step": 1.5,
+      "step_printed": 1.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "3,000m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 3000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "3,000m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "2,000m以上未滿3,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "max": 3000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "2,000m以上未滿3,000m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "1,000m以上未滿2,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿2,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.5,
+          3.0,
+          4.5,
+          6.0
+        ],
+        [
+          -1.5,
+          0.0,
+          1.5,
+          3.0,
+          4.5
+        ],
+        [
+          -3.0,
+          -1.5,
+          0.0,
+          1.5,
+          3.0
+        ],
+        [
+          -4.5,
+          -3.0,
+          -1.5,
+          0.0,
+          1.5
+        ],
+        [
+          -6.0,
+          -4.5,
+          -3.0,
+          -1.5,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 21
+    },
+    {
+      "item_id": "jinshan.regional.dept_store",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 23,
+      "group_code": 7,
+      "group_name": "工商活動",
+      "item_code": "dept_store",
+      "item_name": "百貨公司之有無、數量、接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1,000m以上未滿1,500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 1500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿1,500m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "1,500m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1500.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "1,500m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 22
+    },
+    {
+      "item_id": "jinshan.regional.financial",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 24,
+      "group_code": 7,
+      "group_name": "工商活動",
+      "item_code": "financial",
+      "item_name": "金融機構之有無、數量、接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 4.0,
+      "step": 1.0,
+      "step_printed": 1.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1,000m以上未滿1,500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 1500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿1,500m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "1,500m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1500.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "1,500m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        [
+          -1.0,
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        [
+          -2.0,
+          -1.0,
+          0.0,
+          1.0,
+          2.0
+        ],
+        [
+          -3.0,
+          -2.0,
+          -1.0,
+          0.0,
+          1.0
+        ],
+        [
+          -4.0,
+          -3.0,
+          -2.0,
+          -1.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 23
+    },
+    {
+      "item_id": "jinshan.regional.entertainment",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 25,
+      "group_code": 7,
+      "group_name": "工商活動",
+      "item_code": "entertainment",
+      "item_name": "娛樂設施之有無、數量、接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 4.0,
+      "step": 1.0,
+      "step_printed": 1.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1,000m以上未滿1,500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 1500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿1,500m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "1,500m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1500.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "1,500m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        [
+          -1.0,
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        [
+          -2.0,
+          -1.0,
+          0.0,
+          1.0,
+          2.0
+        ],
+        [
+          -3.0,
+          -2.0,
+          -1.0,
+          0.0,
+          1.0
+        ],
+        [
+          -4.0,
+          -3.0,
+          -2.0,
+          -1.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 24
+    },
+    {
+      "item_id": "jinshan.regional.exhibition_hotel",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 26,
+      "group_code": 7,
+      "group_name": "工商活動",
+      "item_code": "exhibition_hotel",
+      "item_name": "大型展示中心或觀光飯店之有無、數量、接近程度",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "區段內有",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [],
+            "in_segment": true,
+            "or_none": false,
+            "raw": "區段內有"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 500.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1,000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1,000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1,000m以上未滿1,500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 1500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1,000m以上未滿1,500m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "1,500m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1500.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "1,500m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 25
+    },
+    {
+      "item_id": "jinshan.regional.customer_flow",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 27,
+      "group_code": 7,
+      "group_name": "工商活動",
+      "item_code": "customer_flow",
+      "item_name": "顧客通行量之多寡",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 12.0,
+      "step": 3.0,
+      "step_printed": 3.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "顧客通行量多",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "顧客通行量多"
+            ],
+            "raw": "顧客通行量多"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "顧客通行量稍多",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "顧客通行量稍多"
+            ],
+            "raw": "顧客通行量稍多"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "顧客通行量普通",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "顧客通行量普通"
+            ],
+            "raw": "顧客通行量普通"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "顧客通行量較少",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "顧客通行量較少"
+            ],
+            "raw": "顧客通行量較少"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "顧客通行量少",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "顧客通行量少"
+            ],
+            "raw": "顧客通行量少"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          3.0,
+          6.0,
+          9.0,
+          12.0
+        ],
+        [
+          -3.0,
+          0.0,
+          3.0,
+          6.0,
+          9.0
+        ],
+        [
+          -6.0,
+          -3.0,
+          0.0,
+          3.0,
+          6.0
+        ],
+        [
+          -9.0,
+          -6.0,
+          -3.0,
+          0.0,
+          3.0
+        ],
+        [
+          -12.0,
+          -9.0,
+          -6.0,
+          -3.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 26
+    },
+    {
+      "item_id": "jinshan.regional.shop_adjacency",
+      "region_code": "jinshan",
+      "factor_type": "regional",
+      "seq": 28,
+      "group_code": 7,
+      "group_name": "工商活動",
+      "item_code": "shop_adjacency",
+      "item_name": "店舖之毗連狀態",
+      "field_no": null,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 12.0,
+      "step": 3.0,
+      "step_printed": 3.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "80%以上作為店舖",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 80.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "80%以上作為店舖"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "70%以上未滿80%作為店舖",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 70.0,
+                "max": 80.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "70%以上未滿80%作為店舖"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "60%以上未滿70%作為店舖",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 60.0,
+                "max": 70.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "60%以上未滿70%作為店舖"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "50%以上未滿60%作為店舖",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 50.0,
+                "max": 60.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "50%以上未滿60%作為店舖"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿50%作為店舖",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "max": 50.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿50%作為店舖"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          3.0,
+          6.0,
+          9.0,
+          12.0
+        ],
+        [
+          -3.0,
+          0.0,
+          3.0,
+          6.0,
+          9.0
+        ],
+        [
+          -6.0,
+          -3.0,
+          0.0,
+          3.0,
+          6.0
+        ],
+        [
+          -9.0,
+          -6.0,
+          -3.0,
+          0.0,
+          3.0
+        ],
+        [
+          -12.0,
+          -9.0,
+          -6.0,
+          -3.0,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 27
+    }
+  ]
+}

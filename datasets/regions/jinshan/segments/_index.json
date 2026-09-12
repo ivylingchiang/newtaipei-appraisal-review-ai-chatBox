@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "region_code": "jinshan",
+  "land_use_code": "commercial",
+  "source": "doc/rules/查估書表範本.pdf",
+  "count": 1,
+  "segments": [
+    {
+      "segment_id": "jinshan.1140901.P002-00",
+      "segment_no": "P002-00",
+      "year_period": "1140901",
+      "scope_desc": "北側至金包里街以北臨路第一筆宗地，南側至中山路以南第一筆宗地，西側至中正路，東側至福德街之第二種商業區土地劃為P002-00區段。",
+      "observed_fields": 15,
+      "facilities": 26
+    }
+  ]
+}

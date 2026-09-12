@@ -1,0 +1,128 @@
+schema_version: '1.0'
+source:
+  pdf: doc/rules/土地徵收補償市價查估作業手冊.pdf
+  section: 參、七、(一) 提交地價評議委員會評議前之審查作業
+official_checklist:
+- id: i
+  target: null
+  content: 確認是否已檢附應備資料
+- id: ii
+  target: 表7
+  content: 宗地個別因素清冊是否由需用土地人逐級核章、行政條件是否符合規範、已踐行協議價購者是否填寫協議金額
+- id: iii
+  target: 表3
+  automatable: true
+  content: 區段範圍描述是否與現況相符、各用地別應評價細項是否皆已填載、優劣等級是否依區域因素評價基準明細表填列
+- id: iv
+  target: 地價區段圖
+  content: 地價區段劃設是否符合規定；地價區段圖及略圖是否清晰正確、標註路名或地標足以辨識
+- id: v
+  target: 表1-1
+  content: 交易日期是否在蒐集期間、總價格是否與實價登錄相符、成本價格是否符合估價師公會第4號公報、區分所有建物應敘明土地正常買賣單價修正過程、案例選取適合性
+- id: vi
+  target: 表5
+  automatable: true
+  content: 修正細項優劣等級是否與各該地價區段勘查表所載內容一致；修正百分比是否依區域因素評價基準明細表調整
+- id: vii
+  target: 表4
+  automatable: true
+  content: 交易日期與買賣實例調查表一致、區域因素調整百分率與表5總修正數相符、個別因素差異率依個別因素評價基準明細表填列、各比較標的權重是否符合邏輯
+- id: viii
+  target: 表2
+  content: 月租金推估、收益面積與租金是否與實價登錄相符、有效總收入/總費用計算、資本化率是否符合估價技術規則第43條、決定理由是否適當
+- id: ix
+  target: 表14
+  automatable: true
+  content: 區段號、比準地標示及估值應與比較法/收益法調查估價表結果一致；權重與決定理由是否合理；比準地地價尾數是否符合規定
+- id: x
+  target: 表6
+  automatable: true
+  content: 各宗地條件是否與宗地個別因素清冊一致、個別因素差異率是否依基準明細表填列、宗地地價尾數是否符合規定
+- id: xi
+  target: 表8
+  content: 區段號、區段地價及計算結果是否正確；毗鄰含公共設施用地區段時是否從高計算；查估辦法第22條第4項情形是否以3個同使用性質區段平均計算或從高
+cross_reference_matrix:
+- id: R1
+  from: 表3 各細項勘查結果
+  to: 表5 優劣等級欄
+  check: 優劣等級須與表3 所載內容一致
+  checklist: vi
+  priority: 3
+- id: R2
+  from: 區域因素評價基準明細表
+  to: 表5 修正百分比
+  check: 修正率須依基準明細表查得
+  checklist: vi
+  priority: 2
+- id: R3
+  from: 表3 區段編號
+  to: 表5/表4 地價區段號
+  check: 區段號一致
+  checklist: vi
+  priority: 8
+- id: R4
+  from: 表5 影響地價區域因素總修正數
+  to: 表4 區域因素調整百分率
+  check: 數值必須相符
+  checklist: vii
+  priority: 1
+- id: R5
+  from: 表1-1 買賣實例調查估價表
+  to: 表4 交易日期/土地正常單價/實例編號
+  check: 交易日期與單價一致
+  checklist: vii
+  priority: 9
+- id: R6
+  from: 個別因素評價基準明細表
+  to: 表4 個別因素差異率
+  check: 差異率須依基準明細表填列
+  checklist: vii
+  priority: 2
+- id: R7
+  from: 表4 調整百分率絕對值加總
+  to: 表4 相近程度/權重
+  check: 加總愈大權重愈小
+  checklist: vii
+  priority: 5
+- id: R8
+  from: 表7 宗地個別因素清冊
+  to: 表4 比準地條件欄 / 表6 各宗地條件欄
+  check: 條件值一致
+  checklist: x
+  priority: 7
+- id: R9
+  from: 表4 比較價格 + 表2 收益價格
+  to: 表14 估值欄
+  check: 估值與各該表結果一致
+  checklist: ix
+  priority: 10
+- id: R10
+  from: 表14 比準地地價
+  to: 表6 比準地價格
+  check: '一致（Excel: 表6!C5 = 表14!J7）'
+  checklist: x
+  priority: 10
+- id: R11
+  from: 表3 區段範圍描述
+  to: 現況 / 地價區段圖
+  check: 描述與現況相符
+  checklist: iii,iv
+  priority: 11
+- id: R12
+  from: 各用地別應評價細項
+  to: 表3
+  check: 應評價細項是否皆已填載
+  checklist: iii
+  priority: 6
+- id: R13
+  from: 尾數規則（查估辦法第21條）
+  to: 表14 比準地地價 / 表6 宗地地價
+  check: 尾數計算符合規定
+  checklist: ix,x
+  priority: 6
+- id: R14
+  from: 表5 各項百分比小計
+  to: 表5 總修正數
+  check: 總修正數 = (1)+(2)+…+(8)
+  checklist: vi
+  priority: 4

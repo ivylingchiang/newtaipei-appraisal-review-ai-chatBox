@@ -1,0 +1,2806 @@
+{
+ "generated_at": "2026-09-12",
+ "generator": "engine/poi_infer.py",
+ "disclaimer": "外部開放資料推算值，非法定勘查記錄；僅供查估／審查人員核對參考。",
+ "segments": {
+  "P001-00": {
+   "located": true,
+   "center_twd97": [
+    291932.1,
+    2764444.5
+   ],
+   "uncertainty_m": 25.0,
+   "corner_count": 2,
+   "missing_streets": [],
+   "corners": [
+    {
+     "pair": "八德街×啟智街",
+     "gap_m": 0.0,
+     "xy": [
+      291949.6,
+      2764455.5
+     ]
+    },
+    {
+     "pair": "啟智街×啟智街187巷",
+     "gap_m": 0.0,
+     "xy": [
+      291914.6,
+      2764433.5
+     ]
+    }
+   ]
+  },
+  "P002-00": {
+   "located": true,
+   "center_twd97": [
+    292431.6,
+    2765146.3
+   ],
+   "uncertainty_m": 65.5,
+   "corner_count": 2,
+   "missing_streets": [],
+   "corners": [
+    {
+     "pair": "樹人街×長壽街21巷",
+     "gap_m": 20.2,
+     "xy": [
+      292487.7,
+      2765112.4
+     ]
+    },
+    {
+     "pair": "樹人街×樹德街136巷",
+     "gap_m": 0.0,
+     "xy": [
+      292375.5,
+      2765180.1
+     ]
+    }
+   ]
+  },
+  "P003-00": {
+   "located": true,
+   "center_twd97": [
+    292012.4,
+    2763963.2
+   ],
+   "uncertainty_m": 52.9,
+   "corner_count": 4,
+   "missing_streets": [],
+   "corners": [
+    {
+     "pair": "東榮街×東榮街88巷",
+     "gap_m": 0.0,
+     "xy": [
+      292003.2,
+      2763911.1
+     ]
+    },
+    {
+     "pair": "東榮街×鎮前街367巷",
+     "gap_m": 0.0,
+     "xy": [
+      292060.4,
+      2763943.7
+     ]
+    },
+    {
+     "pair": "鎮前街411巷1弄×東榮街88巷",
+     "gap_m": 0.0,
+     "xy": [
+      291964.6,
+      2763983.3
+     ]
+    },
+    {
+     "pair": "鎮前街411巷1弄×鎮前街367巷",
+     "gap_m": 0.0,
+     "xy": [
+      292021.4,
+      2764014.6
+     ]
+    }
+   ]
+  },
+  "P004-00": {
+   "located": true,
+   "center_twd97": [
+    292815.1,
+    2765697.1
+   ],
+   "uncertainty_m": 61.0,
+   "corner_count": 3,
+   "missing_streets": [],
+   "corners": [
+    {
+     "pair": "潭興街×潭興街107巷21弄",
+     "gap_m": 0.0,
+     "xy": [
+      292767.5,
+      2765685.2
+     ]
+    },
+    {
+     "pair": "潭興街×潭興街91巷",
+     "gap_m": 0.0,
+     "xy": [
+      292872.3,
+      2765676.0
+     ]
+    },
+    {
+     "pair": "潭興街107巷21弄×潭興街91巷",
+     "gap_m": 0.0,
+     "xy": [
+      292805.6,
+      2765730.2
+     ]
+    }
+   ]
+  }
+ },
+ "items": {
+  "near_station": {
+   "label": "接近大型車站之程度",
+   "max_adjustment": 10.0,
+   "step": 2.5,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "H13",
+     "name": "高鐵站",
+     "note": "重要地標無『高鐵站』類型；新北市境內無高鐵站",
+     "candidate_count": 0,
+     "unlocatable": []
+    },
+    {
+     "cell": "H14",
+     "name": "火車站",
+     "note": "",
+     "candidate_count": 4,
+     "unlocatable": []
+    },
+    {
+     "cell": "H15",
+     "name": "客運站",
+     "note": "無對應開放資料（公車站位屬站牌，不得代用）",
+     "candidate_count": 0,
+     "unlocatable": []
+    },
+    {
+     "cell": "H16",
+     "name": "捷運站",
+     "note": "樹林區 6 站全標示『施工中』，估價基準日 111.09.01 未通車，全數排除",
+     "candidate_count": 0,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "火車站",
+      "facility": "樹林站後站",
+      "distance_m": 971,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "500m以上未滿1000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 29,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "H13",
+       "name": "高鐵站",
+       "found": false,
+       "note": "重要地標無『高鐵站』類型；新北市境內無高鐵站"
+      },
+      {
+       "cell": "H14",
+       "name": "火車站",
+       "found": true,
+       "nearest": "樹林站後站",
+       "distance_m": 971,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "H15",
+       "name": "客運站",
+       "found": false,
+       "note": "無對應開放資料（公車站位屬站牌，不得代用）"
+      },
+      {
+       "cell": "H16",
+       "name": "捷運站",
+       "found": false,
+       "note": "樹林區 6 站全標示『施工中』，估價基準日 111.09.01 未通車，全數排除"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "火車站",
+      "facility": "樹林站後站",
+      "distance_m": 463,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有大型車站或距離未滿500m",
+     "borderline": true,
+     "nearest_boundary_gap_m": 37,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "H13",
+       "name": "高鐵站",
+       "found": false,
+       "note": "重要地標無『高鐵站』類型；新北市境內無高鐵站"
+      },
+      {
+       "cell": "H14",
+       "name": "火車站",
+       "found": true,
+       "nearest": "樹林站後站",
+       "distance_m": 463,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "H15",
+       "name": "客運站",
+       "found": false,
+       "note": "無對應開放資料（公車站位屬站牌，不得代用）"
+      },
+      {
+       "cell": "H16",
+       "name": "捷運站",
+       "found": false,
+       "note": "樹林區 6 站全標示『施工中』，估價基準日 111.09.01 未通車，全數排除"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "火車站",
+      "facility": "南樹林站",
+      "distance_m": 790,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "500m以上未滿1000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 210,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "H13",
+       "name": "高鐵站",
+       "found": false,
+       "note": "重要地標無『高鐵站』類型；新北市境內無高鐵站"
+      },
+      {
+       "cell": "H14",
+       "name": "火車站",
+       "found": true,
+       "nearest": "南樹林站",
+       "distance_m": 790,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "H15",
+       "name": "客運站",
+       "found": false,
+       "note": "無對應開放資料（公車站位屬站牌，不得代用）"
+      },
+      {
+       "cell": "H16",
+       "name": "捷運站",
+       "found": false,
+       "note": "樹林區 6 站全標示『施工中』，估價基準日 111.09.01 未通車，全數排除"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "火車站",
+      "facility": "樹林站後站",
+      "distance_m": 825,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "500m以上未滿1000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 175,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "H13",
+       "name": "高鐵站",
+       "found": false,
+       "note": "重要地標無『高鐵站』類型；新北市境內無高鐵站"
+      },
+      {
+       "cell": "H14",
+       "name": "火車站",
+       "found": true,
+       "nearest": "樹林站後站",
+       "distance_m": 825,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "H15",
+       "name": "客運站",
+       "found": false,
+       "note": "無對應開放資料（公車站位屬站牌，不得代用）"
+      },
+      {
+       "cell": "H16",
+       "name": "捷運站",
+       "found": false,
+       "note": "樹林區 6 站全標示『施工中』，估價基準日 111.09.01 未通車，全數排除"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 4,
+    "sub_with_data": 1,
+    "unlocatable_count": 0,
+    "complete": false,
+    "bound": "conservative",
+    "usable_for_grading": true,
+    "reason": "正向設施子欄缺漏，真實最近設施可能更近 → 推算等級為保守下限，偏向低估本區段條件"
+   },
+   "adjustments": {
+    "P002-00": -2.5,
+    "P003-00": 0.0,
+    "P004-00": 0.0
+   }
+  },
+  "near_busstop": {
+   "label": "站牌之接近程度或密集程度",
+   "max_adjustment": 4.0,
+   "step": 1.0,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "H17",
+     "name": "站牌",
+     "note": "",
+     "candidate_count": 151,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "站牌",
+      "facility": "樹南里",
+      "distance_m": 188,
+      "source": "公車站位資訊",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有站牌或距離未滿200m",
+     "borderline": true,
+     "nearest_boundary_gap_m": 12,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "H17",
+       "name": "站牌",
+       "found": true,
+       "nearest": "樹南里",
+       "distance_m": 188,
+       "source": "公車站位資訊",
+       "confidence": "A",
+       "note": ""
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "站牌",
+      "facility": "長壽公園",
+      "distance_m": 125,
+      "source": "公車站位資訊",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有站牌或距離未滿200m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 75,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "H17",
+       "name": "站牌",
+       "found": true,
+       "nearest": "長壽公園",
+       "distance_m": 125,
+       "source": "公車站位資訊",
+       "confidence": "A",
+       "note": ""
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "站牌",
+      "facility": "東陽里",
+      "distance_m": 97,
+      "source": "公車站位資訊",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有站牌或距離未滿200m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 103,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "H17",
+       "name": "站牌",
+       "found": true,
+       "nearest": "東陽里",
+       "distance_m": 97,
+       "source": "公車站位資訊",
+       "confidence": "A",
+       "note": ""
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "站牌",
+      "facility": "中正大安路口",
+      "distance_m": 325,
+      "source": "公車站位資訊",
+      "confidence": "A"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "200m以上未滿400m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 75,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "H17",
+       "name": "站牌",
+       "found": true,
+       "nearest": "中正大安路口",
+       "distance_m": 325,
+       "source": "公車站位資訊",
+       "confidence": "A",
+       "note": ""
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 1,
+    "sub_with_data": 1,
+    "unlocatable_count": 0,
+    "complete": true,
+    "bound": null,
+    "usable_for_grading": true,
+    "reason": "子欄資料齊備"
+   },
+   "adjustments": {
+    "P002-00": 0.0,
+    "P003-00": 0.0,
+    "P004-00": 1.0
+   }
+  },
+  "near_interchange": {
+   "label": "交流道之有無及接近交流道之程度",
+   "max_adjustment": 4.0,
+   "step": 1.0,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "I19",
+     "name": "交流道",
+     "note": "基準明細表備註：以各地價區段至交流道直線距離計算",
+     "candidate_count": 180,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "交流道",
+      "facility": "土城交流道（國道3號）",
+      "distance_m": 3537,
+      "source": "高速公路交流道座標",
+      "confidence": "A"
+     },
+     "rank": 4,
+     "level_label": "稍劣",
+     "criterion": "3000m以上未滿4000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 463,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "I19",
+       "name": "交流道",
+       "found": true,
+       "nearest": "土城交流道（國道3號）",
+       "distance_m": 3537,
+       "source": "高速公路交流道座標",
+       "confidence": "A",
+       "note": "基準明細表備註：以各地價區段至交流道直線距離計算"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "交流道",
+      "facility": "土城交流道（國道3號）",
+      "distance_m": 3889,
+      "source": "高速公路交流道座標",
+      "confidence": "A"
+     },
+     "rank": 4,
+     "level_label": "稍劣",
+     "criterion": "3000m以上未滿4000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 111,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "I19",
+       "name": "交流道",
+       "found": true,
+       "nearest": "土城交流道（國道3號）",
+       "distance_m": 3889,
+       "source": "高速公路交流道座標",
+       "confidence": "A",
+       "note": "基準明細表備註：以各地價區段至交流道直線距離計算"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "交流道",
+      "facility": "土城交流道（國道3號）",
+      "distance_m": 3111,
+      "source": "高速公路交流道座標",
+      "confidence": "A"
+     },
+     "rank": 4,
+     "level_label": "稍劣",
+     "criterion": "3000m以上未滿4000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 111,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "I19",
+       "name": "交流道",
+       "found": true,
+       "nearest": "土城交流道（國道3號）",
+       "distance_m": 3111,
+       "source": "高速公路交流道座標",
+       "confidence": "A",
+       "note": "基準明細表備註：以各地價區段至交流道直線距離計算"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "交流道",
+      "facility": "土城交流道（國道3號）",
+      "distance_m": 4271,
+      "source": "高速公路交流道座標",
+      "confidence": "A"
+     },
+     "rank": 5,
+     "level_label": "劣",
+     "criterion": "4000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 271,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "I19",
+       "name": "交流道",
+       "found": true,
+       "nearest": "土城交流道（國道3號）",
+       "distance_m": 4271,
+       "source": "高速公路交流道座標",
+       "confidence": "A",
+       "note": "基準明細表備註：以各地價區段至交流道直線距離計算"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 1,
+    "sub_with_data": 1,
+    "unlocatable_count": 0,
+    "complete": true,
+    "bound": null,
+    "usable_for_grading": true,
+    "reason": "子欄資料齊備"
+   },
+   "adjustments": {
+    "P002-00": 0.0,
+    "P003-00": 0.0,
+    "P004-00": 1.0
+   }
+  },
+  "near_school": {
+   "label": "接近學校之程度（國小、國中、高中、大專院校）",
+   "max_adjustment": 8.0,
+   "step": 2.0,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "I35",
+     "name": "國小",
+     "note": "",
+     "candidate_count": 11,
+     "unlocatable": []
+    },
+    {
+     "cell": "I36",
+     "name": "國中",
+     "note": "",
+     "candidate_count": 8,
+     "unlocatable": []
+    },
+    {
+     "cell": "I37",
+     "name": "高中",
+     "note": "",
+     "candidate_count": 2,
+     "unlocatable": []
+    },
+    {
+     "cell": "I38",
+     "name": "大專院校",
+     "note": "樹林區內 0 所；有效半徑 1,000m 內亦無鄰區大專院校",
+     "candidate_count": 0,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "國小",
+      "facility": "市立育林國小",
+      "distance_m": 182,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有學校者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 118,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "I35",
+       "name": "國小",
+       "found": true,
+       "nearest": "市立育林國小",
+       "distance_m": 182,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I36",
+       "name": "國中",
+       "found": true,
+       "nearest": "市立育林國中",
+       "distance_m": 182,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I37",
+       "name": "高中",
+       "found": true,
+       "nearest": "私立樹人家商",
+       "distance_m": 866,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I38",
+       "name": "大專院校",
+       "found": false,
+       "note": "樹林區內 0 所；有效半徑 1,000m 內亦無鄰區大專院校"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "高中",
+      "facility": "私立樹人家商",
+      "distance_m": 132,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有學校者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 168,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "I35",
+       "name": "國小",
+       "found": true,
+       "nearest": "市立樹林國小",
+       "distance_m": 538,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I36",
+       "name": "國中",
+       "found": true,
+       "nearest": "市立育林國中",
+       "distance_m": 999,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I37",
+       "name": "高中",
+       "found": true,
+       "nearest": "私立樹人家商",
+       "distance_m": 132,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I38",
+       "name": "大專院校",
+       "found": false,
+       "note": "樹林區內 0 所；有效半徑 1,000m 內亦無鄰區大專院校"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "國小",
+      "facility": "市立大同國小",
+      "distance_m": 236,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有學校者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 64,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "I35",
+       "name": "國小",
+       "found": true,
+       "nearest": "市立大同國小",
+       "distance_m": 236,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I36",
+       "name": "國中",
+       "found": true,
+       "nearest": "市立育林國中",
+       "distance_m": 306,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I37",
+       "name": "高中",
+       "found": true,
+       "nearest": "市立樹林高中",
+       "distance_m": 638,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I38",
+       "name": "大專院校",
+       "found": false,
+       "note": "樹林區內 0 所；有效半徑 1,000m 內亦無鄰區大專院校"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "國小",
+      "facility": "市立文林國小",
+      "distance_m": 113,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有學校者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 187,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "I35",
+       "name": "國小",
+       "found": true,
+       "nearest": "市立文林國小",
+       "distance_m": 113,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I36",
+       "name": "國中",
+       "found": true,
+       "nearest": "市立三多國中",
+       "distance_m": 1270,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I37",
+       "name": "高中",
+       "found": true,
+       "nearest": "私立樹人家商",
+       "distance_m": 688,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "I38",
+       "name": "大專院校",
+       "found": false,
+       "note": "樹林區內 0 所；有效半徑 1,000m 內亦無鄰區大專院校"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 4,
+    "sub_with_data": 3,
+    "unlocatable_count": 0,
+    "complete": false,
+    "bound": "conservative",
+    "usable_for_grading": true,
+    "reason": "正向設施子欄缺漏，真實最近設施可能更近 → 推算等級為保守下限，偏向低估本區段條件"
+   },
+   "adjustments": {
+    "P002-00": 0.0,
+    "P003-00": 0.0,
+    "P004-00": 0.0
+   }
+  },
+  "near_market": {
+   "label": "接近市場之程度（傳統市場、超級市場、超大型購物中心）",
+   "max_adjustment": 8.0,
+   "step": 2.0,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "I39",
+     "name": "傳統市場",
+     "note": "公有市場清冊樹林區僅1筆且無座標；改採 OSM marketplace",
+     "candidate_count": 8,
+     "unlocatable": []
+    },
+    {
+     "cell": "I40",
+     "name": "超級市場",
+     "note": "公有清冊全市僅8筆超市；改採 OSM shop=supermarket",
+     "candidate_count": 29,
+     "unlocatable": []
+    },
+    {
+     "cell": "I41",
+     "name": "超大型購物中心",
+     "note": "",
+     "candidate_count": 3,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "超級市場",
+      "facility": "美廉社",
+      "distance_m": 551,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 3,
+     "level_label": "普通",
+     "criterion": "500m以上未滿800m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 51,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "I39",
+       "name": "傳統市場",
+       "found": true,
+       "nearest": "彭厝黃昏市場",
+       "distance_m": 1032,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有市場清冊樹林區僅1筆且無座標；改採 OSM marketplace"
+      },
+      {
+       "cell": "I40",
+       "name": "超級市場",
+       "found": true,
+       "nearest": "美廉社",
+       "distance_m": 551,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有清冊全市僅8筆超市；改採 OSM shop=supermarket"
+      },
+      {
+       "cell": "I41",
+       "name": "超大型購物中心",
+       "found": true,
+       "nearest": "家樂福",
+       "distance_m": 1250,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "超級市場",
+      "facility": "全聯福利中心",
+      "distance_m": 237,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有市場者或距離未滿300m",
+     "borderline": true,
+     "nearest_boundary_gap_m": 63,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "I39",
+       "name": "傳統市場",
+       "found": true,
+       "nearest": "樹林夜市",
+       "distance_m": 712,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有市場清冊樹林區僅1筆且無座標；改採 OSM marketplace"
+      },
+      {
+       "cell": "I40",
+       "name": "超級市場",
+       "found": true,
+       "nearest": "全聯福利中心",
+       "distance_m": 237,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有清冊全市僅8筆超市；改採 OSM shop=supermarket"
+      },
+      {
+       "cell": "I41",
+       "name": "超大型購物中心",
+       "found": true,
+       "nearest": "家樂福",
+       "distance_m": 408,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "超級市場",
+      "facility": "美廉社",
+      "distance_m": 92,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有市場者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 208,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "I39",
+       "name": "傳統市場",
+       "found": true,
+       "nearest": "彭厝黃昏市場",
+       "distance_m": 560,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有市場清冊樹林區僅1筆且無座標；改採 OSM marketplace"
+      },
+      {
+       "cell": "I40",
+       "name": "超級市場",
+       "found": true,
+       "nearest": "美廉社",
+       "distance_m": 92,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有清冊全市僅8筆超市；改採 OSM shop=supermarket"
+      },
+      {
+       "cell": "I41",
+       "name": "超大型購物中心",
+       "found": true,
+       "nearest": "家樂福",
+       "distance_m": 1662,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "超級市場",
+      "facility": "家樂福",
+      "distance_m": 304,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "300m以上未滿500m",
+     "borderline": true,
+     "nearest_boundary_gap_m": 4,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "I39",
+       "name": "傳統市場",
+       "found": true,
+       "nearest": "樹林夜市",
+       "distance_m": 764,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有市場清冊樹林區僅1筆且無座標；改採 OSM marketplace"
+      },
+      {
+       "cell": "I40",
+       "name": "超級市場",
+       "found": true,
+       "nearest": "家樂福",
+       "distance_m": 304,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "公有清冊全市僅8筆超市；改採 OSM shop=supermarket"
+      },
+      {
+       "cell": "I41",
+       "name": "超大型購物中心",
+       "found": true,
+       "nearest": "家樂福",
+       "distance_m": 323,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 3,
+    "sub_with_data": 3,
+    "unlocatable_count": 0,
+    "complete": true,
+    "bound": null,
+    "usable_for_grading": true,
+    "reason": "子欄資料齊備"
+   },
+   "adjustments": {
+    "P002-00": -4.0,
+    "P003-00": -4.0,
+    "P004-00": -2.0
+   }
+  },
+  "near_park": {
+   "label": "接近公園（里鄰公園、一般公園）、廣場、徒步區之程度",
+   "max_adjustment": 8.0,
+   "step": 2.0,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "I42",
+     "name": "里鄰公園",
+     "note": "新北市公園資料集無座標且 52% 無門牌；改採 OSM leisure=park",
+     "candidate_count": 64,
+     "unlocatable": []
+    },
+    {
+     "cell": "I43",
+     "name": "一般公園",
+     "note": "",
+     "candidate_count": 9,
+     "unlocatable": []
+    },
+    {
+     "cell": "I44",
+     "name": "廣場、徒步區",
+     "note": "無對應開放資料",
+     "candidate_count": 0,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "里鄰公園",
+      "facility": "樹人體健廣場",
+      "distance_m": 99,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有公園者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 201,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "I42",
+       "name": "里鄰公園",
+       "found": true,
+       "nearest": "樹人體健廣場",
+       "distance_m": 99,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "新北市公園資料集無座標且 52% 無門牌；改採 OSM leisure=park"
+      },
+      {
+       "cell": "I43",
+       "name": "一般公園",
+       "found": true,
+       "nearest": "樹林環保河濱公園",
+       "distance_m": 1953,
+       "source": "河濱公園位置",
+       "confidence": "B",
+       "note": ""
+      },
+      {
+       "cell": "I44",
+       "name": "廣場、徒步區",
+       "found": false,
+       "note": "無對應開放資料"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "里鄰公園",
+      "facility": "長壽親子公園",
+      "distance_m": 221,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有公園者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 79,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "I42",
+       "name": "里鄰公園",
+       "found": true,
+       "nearest": "長壽親子公園",
+       "distance_m": 221,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "新北市公園資料集無座標且 52% 無門牌；改採 OSM leisure=park"
+      },
+      {
+       "cell": "I43",
+       "name": "一般公園",
+       "found": true,
+       "nearest": "板橋環保公園",
+       "distance_m": 2014,
+       "source": "河濱公園位置",
+       "confidence": "B",
+       "note": ""
+      },
+      {
+       "cell": "I44",
+       "name": "廣場、徒步區",
+       "found": false,
+       "note": "無對應開放資料"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "里鄰公園",
+      "facility": "太元公園",
+      "distance_m": 214,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有公園者或距離未滿300m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 86,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "I42",
+       "name": "里鄰公園",
+       "found": true,
+       "nearest": "太元公園",
+       "distance_m": 214,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "新北市公園資料集無座標且 52% 無門牌；改採 OSM leisure=park"
+      },
+      {
+       "cell": "I43",
+       "name": "一般公園",
+       "found": true,
+       "nearest": "樹林環保河濱公園",
+       "distance_m": 1494,
+       "source": "河濱公園位置",
+       "confidence": "B",
+       "note": ""
+      },
+      {
+       "cell": "I44",
+       "name": "廣場、徒步區",
+       "found": false,
+       "note": "無對應開放資料"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "里鄰公園",
+      "facility": "樹林高鐵橋下綠廊",
+      "distance_m": 568,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 3,
+     "level_label": "普通",
+     "criterion": "500m以上未滿800m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 68,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "I42",
+       "name": "里鄰公園",
+       "found": true,
+       "nearest": "樹林高鐵橋下綠廊",
+       "distance_m": 568,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "新北市公園資料集無座標且 52% 無門牌；改採 OSM leisure=park"
+      },
+      {
+       "cell": "I43",
+       "name": "一般公園",
+       "found": true,
+       "nearest": "浮洲藝術河濱公園",
+       "distance_m": 1753,
+       "source": "河濱公園位置",
+       "confidence": "B",
+       "note": ""
+      },
+      {
+       "cell": "I44",
+       "name": "廣場、徒步區",
+       "found": false,
+       "note": "無對應開放資料"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 3,
+    "sub_with_data": 2,
+    "unlocatable_count": 0,
+    "complete": false,
+    "bound": "conservative",
+    "usable_for_grading": true,
+    "reason": "正向設施子欄缺漏，真實最近設施可能更近 → 推算等級為保守下限，偏向低估本區段條件"
+   },
+   "adjustments": {
+    "P002-00": 0.0,
+    "P003-00": 0.0,
+    "P004-00": 4.0
+   }
+  },
+  "near_tourism": {
+   "label": "接近觀光遊憩設施之程度",
+   "max_adjustment": 6.0,
+   "step": 1.5,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "T4",
+     "name": "觀光遊憩設施",
+     "note": "Class1 代碼表未公開，清單含紀念碑／廟宇等非遊憩設施，須人工確認",
+     "candidate_count": 14,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "觀光遊憩設施",
+      "facility": "大同山登山步道",
+      "distance_m": 293,
+      "source": "新北市觀光旅遊景點",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 207,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "T4",
+       "name": "觀光遊憩設施",
+       "found": true,
+       "nearest": "大同山登山步道",
+       "distance_m": 293,
+       "source": "新北市觀光旅遊景點",
+       "confidence": "B",
+       "note": "Class1 代碼表未公開，清單含紀念碑／廟宇等非遊憩設施，須人工確認"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "觀光遊憩設施",
+      "facility": "樹林車站",
+      "distance_m": 500,
+      "source": "新北市觀光旅遊景點",
+      "confidence": "B"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "500m以上未滿1000m",
+     "borderline": true,
+     "nearest_boundary_gap_m": 0,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "T4",
+       "name": "觀光遊憩設施",
+       "found": true,
+       "nearest": "樹林車站",
+       "distance_m": 500,
+       "source": "新北市觀光旅遊景點",
+       "confidence": "B",
+       "note": "Class1 代碼表未公開，清單含紀念碑／廟宇等非遊憩設施，須人工確認"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "觀光遊憩設施",
+      "facility": "大同山登山步道",
+      "distance_m": 773,
+      "source": "新北市觀光旅遊景點",
+      "confidence": "B"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "500m以上未滿1000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 227,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "T4",
+       "name": "觀光遊憩設施",
+       "found": true,
+       "nearest": "大同山登山步道",
+       "distance_m": 773,
+       "source": "新北市觀光旅遊景點",
+       "confidence": "B",
+       "note": "Class1 代碼表未公開，清單含紀念碑／廟宇等非遊憩設施，須人工確認"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "觀光遊憩設施",
+      "facility": "樹林車站",
+      "distance_m": 806,
+      "source": "新北市觀光旅遊景點",
+      "confidence": "B"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "500m以上未滿1000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 194,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "T4",
+       "name": "觀光遊憩設施",
+       "found": true,
+       "nearest": "樹林車站",
+       "distance_m": 806,
+       "source": "新北市觀光旅遊景點",
+       "confidence": "B",
+       "note": "Class1 代碼表未公開，清單含紀念碑／廟宇等非遊憩設施，須人工確認"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 1,
+    "sub_with_data": 1,
+    "unlocatable_count": 0,
+    "complete": true,
+    "bound": null,
+    "usable_for_grading": true,
+    "reason": "子欄資料齊備"
+   },
+   "adjustments": {
+    "P002-00": 1.5,
+    "P003-00": 1.5,
+    "P004-00": 1.5
+   }
+  },
+  "parking": {
+   "label": "停車場地之便利程度",
+   "max_adjustment": 6.0,
+   "step": 1.5,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "T6",
+     "name": "停車場地",
+     "note": "僅路外停車場；路邊停車格不在資料集內，不得據以判『無』",
+     "candidate_count": 60,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "停車場地",
+      "facility": "樹林區第八平面停車場",
+      "distance_m": 155,
+      "source": "路外公共停車場",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有停車位者或距離未滿200m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 45,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "T6",
+       "name": "停車場地",
+       "found": true,
+       "nearest": "樹林區第八平面停車場",
+       "distance_m": 155,
+       "source": "路外公共停車場",
+       "confidence": "A",
+       "note": "僅路外停車場；路邊停車格不在資料集內，不得據以判『無』"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "停車場地",
+      "facility": "樹林區長壽公園地下停車場",
+      "distance_m": 221,
+      "source": "路外公共停車場",
+      "confidence": "A"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "200m以上未滿400m",
+     "borderline": true,
+     "nearest_boundary_gap_m": 21,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "T6",
+       "name": "停車場地",
+       "found": true,
+       "nearest": "樹林區長壽公園地下停車場",
+       "distance_m": 221,
+       "source": "路外公共停車場",
+       "confidence": "A",
+       "note": "僅路外停車場；路邊停車格不在資料集內，不得據以判『無』"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "停車場地",
+      "facility": "大同國民小學活動中心地下停車場",
+      "distance_m": 222,
+      "source": "路外公共停車場",
+      "confidence": "A"
+     },
+     "rank": 2,
+     "level_label": "稍優",
+     "criterion": "200m以上未滿400m",
+     "borderline": true,
+     "nearest_boundary_gap_m": 22,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "T6",
+       "name": "停車場地",
+       "found": true,
+       "nearest": "大同國民小學活動中心地下停車場",
+       "distance_m": 222,
+       "source": "路外公共停車場",
+       "confidence": "A",
+       "note": "僅路外停車場；路邊停車格不在資料集內，不得據以判『無』"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "停車場地",
+      "facility": "樹林區文林國民小學停車場",
+      "distance_m": 129,
+      "source": "路外公共停車場",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有停車位者或距離未滿200m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 71,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "T6",
+       "name": "停車場地",
+       "found": true,
+       "nearest": "樹林區文林國民小學停車場",
+       "distance_m": 129,
+       "source": "路外公共停車場",
+       "confidence": "A",
+       "note": "僅路外停車場；路邊停車格不在資料集內，不得據以判『無』"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 1,
+    "sub_with_data": 1,
+    "unlocatable_count": 0,
+    "complete": true,
+    "bound": null,
+    "usable_for_grading": true,
+    "reason": "子欄資料齊備"
+   },
+   "adjustments": {
+    "P002-00": 1.5,
+    "P003-00": 1.5,
+    "P004-00": 0.0
+   }
+  },
+  "near_service": {
+   "label": "接近服務性設施的程度（郵局、銀行、醫院、機關等設施）",
+   "max_adjustment": 6.0,
+   "step": 1.5,
+   "level_count": 5,
+   "direction": "lower_is_better",
+   "subs": [
+    {
+     "cell": "T8a",
+     "name": "醫院",
+     "note": "",
+     "candidate_count": 2,
+     "unlocatable": []
+    },
+    {
+     "cell": "T8b",
+     "name": "機關",
+     "note": "",
+     "candidate_count": 18,
+     "unlocatable": []
+    },
+    {
+     "cell": "T8c",
+     "name": "銀行",
+     "note": "金管會名冊有樹林區24家但無座標；改採 OSM amenity=bank",
+     "candidate_count": 24,
+     "unlocatable": []
+    },
+    {
+     "cell": "T8d",
+     "name": "郵局",
+     "note": "18 個開放資料來源皆無郵局；改採 OSM amenity=post_office",
+     "candidate_count": 10,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "銀行",
+      "facility": "臺灣銀行",
+      "distance_m": 358,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 142,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "T8a",
+       "name": "醫院",
+       "found": true,
+       "nearest": "仁愛醫院",
+       "distance_m": 468,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8b",
+       "name": "機關",
+       "found": true,
+       "nearest": "樹林區公所",
+       "distance_m": 964,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8c",
+       "name": "銀行",
+       "found": true,
+       "nearest": "臺灣銀行",
+       "distance_m": 358,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "金管會名冊有樹林區24家但無座標；改採 OSM amenity=bank"
+      },
+      {
+       "cell": "T8d",
+       "name": "郵局",
+       "found": true,
+       "nearest": "樹林育英街郵局",
+       "distance_m": 661,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個開放資料來源皆無郵局；改採 OSM amenity=post_office"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "機關",
+      "facility": "新北市樹林戶政事務所",
+      "distance_m": 346,
+      "source": "新北市重要地標",
+      "confidence": "A"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 154,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "T8a",
+       "name": "醫院",
+       "found": true,
+       "nearest": "仁愛醫院",
+       "distance_m": 733,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8b",
+       "name": "機關",
+       "found": true,
+       "nearest": "新北市樹林戶政事務所",
+       "distance_m": 346,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8c",
+       "name": "銀行",
+       "found": true,
+       "nearest": "臺灣土地銀行",
+       "distance_m": 363,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "金管會名冊有樹林區24家但無座標；改採 OSM amenity=bank"
+      },
+      {
+       "cell": "T8d",
+       "name": "郵局",
+       "found": true,
+       "nearest": "樹林育英街郵局",
+       "distance_m": 513,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個開放資料來源皆無郵局；改採 OSM amenity=post_office"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "郵局",
+      "facility": "樹林大同郵局",
+      "distance_m": 310,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 190,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "T8a",
+       "name": "醫院",
+       "found": true,
+       "nearest": "仁愛醫院",
+       "distance_m": 594,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8b",
+       "name": "機關",
+       "found": true,
+       "nearest": "彭厝派出所",
+       "distance_m": 701,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8c",
+       "name": "銀行",
+       "found": true,
+       "nearest": "臺灣新光商業銀行",
+       "distance_m": 318,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "金管會名冊有樹林區24家但無座標；改採 OSM amenity=bank"
+      },
+      {
+       "cell": "T8d",
+       "name": "郵局",
+       "found": true,
+       "nearest": "樹林大同郵局",
+       "distance_m": 310,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個開放資料來源皆無郵局；改採 OSM amenity=post_office"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "銀行",
+      "facility": "臺灣土地銀行",
+      "distance_m": 356,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 144,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "T8a",
+       "name": "醫院",
+       "found": true,
+       "nearest": "新北市樹林區衛生所",
+       "distance_m": 522,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8b",
+       "name": "機關",
+       "found": true,
+       "nearest": "樹林分局",
+       "distance_m": 546,
+       "source": "新北市重要地標",
+       "confidence": "A",
+       "note": ""
+      },
+      {
+       "cell": "T8c",
+       "name": "銀行",
+       "found": true,
+       "nearest": "臺灣土地銀行",
+       "distance_m": 356,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "金管會名冊有樹林區24家但無座標；改採 OSM amenity=bank"
+      },
+      {
+       "cell": "T8d",
+       "name": "郵局",
+       "found": true,
+       "nearest": "樹林郵局",
+       "distance_m": 676,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個開放資料來源皆無郵局；改採 OSM amenity=post_office"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 4,
+    "sub_with_data": 4,
+    "unlocatable_count": 0,
+    "complete": true,
+    "bound": null,
+    "usable_for_grading": true,
+    "reason": "子欄資料齊備"
+   },
+   "adjustments": {
+    "P002-00": 0.0,
+    "P003-00": 0.0,
+    "P004-00": 0.0
+   }
+  },
+  "utility_facility": {
+   "label": "電業設施及公用氣體燃料設施之有無及接近程度",
+   "max_adjustment": 10.0,
+   "step": 2.5,
+   "level_count": 5,
+   "direction": "higher_is_better",
+   "subs": [
+    {
+     "cell": "T14",
+     "name": "變電所或高壓鐵塔",
+     "note": "台電二次變電所檔所在地僅到『新北市樹林區』無法定位；改採 OSM power=*",
+     "candidate_count": 91,
+     "unlocatable": []
+    },
+    {
+     "cell": "T16",
+     "name": "瓦斯槽或儲油槽",
+     "note": "",
+     "candidate_count": 2,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "變電所或高壓鐵塔",
+      "facility": "(未命名)",
+      "distance_m": 74,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 5,
+     "level_label": "劣",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 426,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "T14",
+       "name": "變電所或高壓鐵塔",
+       "found": true,
+       "nearest": "(未命名)",
+       "distance_m": 74,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "台電二次變電所檔所在地僅到『新北市樹林區』無法定位；改採 OSM power=*"
+      },
+      {
+       "cell": "T16",
+       "name": "瓦斯槽或儲油槽",
+       "found": true,
+       "nearest": "(未命名)",
+       "distance_m": 1271,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "變電所或高壓鐵塔",
+      "facility": "(未命名)",
+      "distance_m": 305,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 5,
+     "level_label": "劣",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 195,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "T14",
+       "name": "變電所或高壓鐵塔",
+       "found": true,
+       "nearest": "(未命名)",
+       "distance_m": 305,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "台電二次變電所檔所在地僅到『新北市樹林區』無法定位；改採 OSM power=*"
+      },
+      {
+       "cell": "T16",
+       "name": "瓦斯槽或儲油槽",
+       "found": true,
+       "nearest": "(未命名)",
+       "distance_m": 2121,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "變電所或高壓鐵塔",
+      "facility": "樹林變電所",
+      "distance_m": 433,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 5,
+     "level_label": "劣",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 67,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "T14",
+       "name": "變電所或高壓鐵塔",
+       "found": true,
+       "nearest": "樹林變電所",
+       "distance_m": 433,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "台電二次變電所檔所在地僅到『新北市樹林區』無法定位；改採 OSM power=*"
+      },
+      {
+       "cell": "T16",
+       "name": "瓦斯槽或儲油槽",
+       "found": true,
+       "nearest": "(未命名)",
+       "distance_m": 1087,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "變電所或高壓鐵塔",
+      "facility": "樹安變電所",
+      "distance_m": 208,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 5,
+     "level_label": "劣",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 292,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "T14",
+       "name": "變電所或高壓鐵塔",
+       "found": true,
+       "nearest": "樹安變電所",
+       "distance_m": 208,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "台電二次變電所檔所在地僅到『新北市樹林區』無法定位；改採 OSM power=*"
+      },
+      {
+       "cell": "T16",
+       "name": "瓦斯槽或儲油槽",
+       "found": true,
+       "nearest": "(未命名)",
+       "distance_m": 2787,
+       "source": "OSM",
+       "confidence": "C",
+       "note": ""
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 2,
+    "sub_with_data": 2,
+    "unlocatable_count": 0,
+    "complete": true,
+    "bound": null,
+    "usable_for_grading": true,
+    "reason": "子欄資料齊備"
+   },
+   "adjustments": {
+    "P002-00": 0.0,
+    "P003-00": 0.0,
+    "P004-00": 0.0
+   }
+  },
+  "funeral_facility": {
+   "label": "殯葬設施之有無及接近程度",
+   "max_adjustment": 10.0,
+   "step": 2.5,
+   "level_count": 5,
+   "direction": "higher_is_better",
+   "subs": [
+    {
+     "cell": "T18",
+     "name": "墓地／殯儀館／火葬場／納骨塔",
+     "note": "官方名冊（內政部＋新北市民政局）與 OSM 座標交叉比對",
+     "candidate_count": 33,
+     "unlocatable": [
+      "私立佛教樂山公墓",
+      "樹林生命紀念館",
+      "樹林示範公墓納骨塔",
+      "樹林示範公墓納骨塔",
+      "樹林生命紀念館"
+     ]
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "墓地／殯儀館／火葬場／納骨塔",
+      "facility": "樹林區第五公墓",
+      "distance_m": 123,
+      "source": "官方名冊(公墓)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 5,
+     "level_label": "劣",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 377,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "T18",
+       "name": "墓地／殯儀館／火葬場／納骨塔",
+       "found": true,
+       "nearest": "樹林區第五公墓",
+       "distance_m": 123,
+       "source": "官方名冊(公墓)×OSM座標",
+       "confidence": "B",
+       "note": "官方名冊（內政部＋新北市民政局）與 OSM 座標交叉比對"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "墓地／殯儀館／火葬場／納骨塔",
+      "facility": "樹林區第三公墓",
+      "distance_m": 744,
+      "source": "官方名冊(公墓)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 4,
+     "level_label": "稍劣",
+     "criterion": "500m以上未滿1000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 244,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "T18",
+       "name": "墓地／殯儀館／火葬場／納骨塔",
+       "found": true,
+       "nearest": "樹林區第三公墓",
+       "distance_m": 744,
+       "source": "官方名冊(公墓)×OSM座標",
+       "confidence": "B",
+       "note": "官方名冊（內政部＋新北市民政局）與 OSM 座標交叉比對"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "墓地／殯儀館／火葬場／納骨塔",
+      "facility": "(未命名)",
+      "distance_m": 310,
+      "source": "OSM",
+      "confidence": "C"
+     },
+     "rank": 5,
+     "level_label": "劣",
+     "criterion": "區段內有或距離未滿500m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 190,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "T18",
+       "name": "墓地／殯儀館／火葬場／納骨塔",
+       "found": true,
+       "nearest": "(未命名)",
+       "distance_m": 310,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "官方名冊（內政部＋新北市民政局）與 OSM 座標交叉比對"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "墓地／殯儀館／火葬場／納骨塔",
+      "facility": "樹林區第三公墓",
+      "distance_m": 889,
+      "source": "官方名冊(公墓)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 4,
+     "level_label": "稍劣",
+     "criterion": "500m以上未滿1000m",
+     "borderline": false,
+     "nearest_boundary_gap_m": 111,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "T18",
+       "name": "墓地／殯儀館／火葬場／納骨塔",
+       "found": true,
+       "nearest": "樹林區第三公墓",
+       "distance_m": 889,
+       "source": "官方名冊(公墓)×OSM座標",
+       "confidence": "B",
+       "note": "官方名冊（內政部＋新北市民政局）與 OSM 座標交叉比對"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 1,
+    "sub_with_data": 1,
+    "unlocatable_count": 5,
+    "complete": false,
+    "bound": "optimistic",
+    "usable_for_grading": false,
+    "reason": "嫌惡設施子欄缺漏，真實最近設施可能更近 → 推算等級僅為樂觀上限，不得據以判級，更不得據以填『無』"
+   },
+   "adjustments": {
+    "P002-00": null,
+    "P003-00": null,
+    "P004-00": null
+   },
+   "adjustments_blocked_reason": "嫌惡設施子欄缺漏，真實最近設施可能更近 → 推算等級僅為樂觀上限，不得據以判級，更不得據以填『無』"
+  },
+  "waste_facility": {
+   "label": "廢棄物處理設施之有無及接近程度",
+   "max_adjustment": 15.0,
+   "step": 3.75,
+   "level_count": 5,
+   "direction": "higher_is_better",
+   "subs": [
+    {
+     "cell": "T22",
+     "name": "污水處理場",
+     "note": "18 個來源皆無；改採 OSM",
+     "candidate_count": 1,
+     "unlocatable": []
+    },
+    {
+     "cell": "T23",
+     "name": "垃圾場或掩埋場",
+     "note": "18 個來源皆無；改採 OSM",
+     "candidate_count": 0,
+     "unlocatable": []
+    },
+    {
+     "cell": "T24",
+     "name": "焚化爐",
+     "note": "官方資料集＋空污固定污染源雙來源地址一致",
+     "candidate_count": 1,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "焚化爐",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 4202,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 2202,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "T22",
+       "name": "污水處理場",
+       "found": true,
+       "nearest": "新北市政府薄膜生物汙水處理廠",
+       "distance_m": 5147,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T23",
+       "name": "垃圾場或掩埋場",
+       "found": false,
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T24",
+       "name": "焚化爐",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 4202,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "官方資料集＋空污固定污染源雙來源地址一致"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "焚化爐",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 5010,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 3010,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "T22",
+       "name": "污水處理場",
+       "found": true,
+       "nearest": "新北市政府薄膜生物汙水處理廠",
+       "distance_m": 6008,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T23",
+       "name": "垃圾場或掩埋場",
+       "found": false,
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T24",
+       "name": "焚化爐",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 5010,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "官方資料集＋空污固定污染源雙來源地址一致"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "焚化爐",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 4039,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 2039,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "T22",
+       "name": "污水處理場",
+       "found": true,
+       "nearest": "新北市政府薄膜生物汙水處理廠",
+       "distance_m": 4828,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T23",
+       "name": "垃圾場或掩埋場",
+       "found": false,
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T24",
+       "name": "焚化爐",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 4039,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "官方資料集＋空污固定污染源雙來源地址一致"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "焚化爐",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 5648,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 3648,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "T22",
+       "name": "污水處理場",
+       "found": true,
+       "nearest": "新北市政府薄膜生物汙水處理廠",
+       "distance_m": 6679,
+       "source": "OSM",
+       "confidence": "C",
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T23",
+       "name": "垃圾場或掩埋場",
+       "found": false,
+       "note": "18 個來源皆無；改採 OSM"
+      },
+      {
+       "cell": "T24",
+       "name": "焚化爐",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 5648,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "官方資料集＋空污固定污染源雙來源地址一致"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 3,
+    "sub_with_data": 2,
+    "unlocatable_count": 0,
+    "complete": false,
+    "bound": "optimistic",
+    "usable_for_grading": false,
+    "reason": "嫌惡設施子欄缺漏，真實最近設施可能更近 → 推算等級僅為樂觀上限，不得據以判級，更不得據以填『無』"
+   },
+   "adjustments": {
+    "P002-00": null,
+    "P003-00": null,
+    "P004-00": null
+   },
+   "adjustments_blocked_reason": "嫌惡設施子欄缺漏，真實最近設施可能更近 → 推算等級僅為樂觀上限，不得據以判級，更不得據以填『無』"
+  },
+  "pollution": {
+   "label": "水污染、噪音污染、廢氣污染、廢棄物污染等之有無及接近程度",
+   "max_adjustment": 20.0,
+   "step": 5.0,
+   "level_count": 5,
+   "direction": "higher_is_better",
+   "subs": [
+    {
+     "cell": "T25",
+     "name": "水污染",
+     "note": "土壤及地下水列管檔僅載地段地號，須地籍定位",
+     "candidate_count": 0,
+     "unlocatable": []
+    },
+    {
+     "cell": "T26",
+     "name": "噪音污染",
+     "note": "無對應開放資料",
+     "candidate_count": 0,
+     "unlocatable": []
+    },
+    {
+     "cell": "T27",
+     "name": "廢氣污染",
+     "note": "空污固定污染源樹林區僅焚化廠1筆",
+     "candidate_count": 1,
+     "unlocatable": []
+    },
+    {
+     "cell": "T28",
+     "name": "廢棄物污染",
+     "note": "土壤列管樹林區6筆僅載地段地號，須地籍定位",
+     "candidate_count": 0,
+     "unlocatable": []
+    },
+    {
+     "cell": "T29",
+     "name": "其他污染",
+     "note": "定義開放，無固定來源",
+     "candidate_count": 0,
+     "unlocatable": []
+    }
+   ],
+   "by_segment": {
+    "P001-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "廢氣污染",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 4202,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 2202,
+     "segment_uncertainty_m": 25.0,
+     "subs": [
+      {
+       "cell": "T25",
+       "name": "水污染",
+       "found": false,
+       "note": "土壤及地下水列管檔僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T26",
+       "name": "噪音污染",
+       "found": false,
+       "note": "無對應開放資料"
+      },
+      {
+       "cell": "T27",
+       "name": "廢氣污染",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 4202,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "空污固定污染源樹林區僅焚化廠1筆"
+      },
+      {
+       "cell": "T28",
+       "name": "廢棄物污染",
+       "found": false,
+       "note": "土壤列管樹林區6筆僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T29",
+       "name": "其他污染",
+       "found": false,
+       "note": "定義開放，無固定來源"
+      }
+     ]
+    },
+    "P002-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "廢氣污染",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 5010,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 3010,
+     "segment_uncertainty_m": 65.5,
+     "subs": [
+      {
+       "cell": "T25",
+       "name": "水污染",
+       "found": false,
+       "note": "土壤及地下水列管檔僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T26",
+       "name": "噪音污染",
+       "found": false,
+       "note": "無對應開放資料"
+      },
+      {
+       "cell": "T27",
+       "name": "廢氣污染",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 5010,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "空污固定污染源樹林區僅焚化廠1筆"
+      },
+      {
+       "cell": "T28",
+       "name": "廢棄物污染",
+       "found": false,
+       "note": "土壤列管樹林區6筆僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T29",
+       "name": "其他污染",
+       "found": false,
+       "note": "定義開放，無固定來源"
+      }
+     ]
+    },
+    "P003-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "廢氣污染",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 4039,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 2039,
+     "segment_uncertainty_m": 52.9,
+     "subs": [
+      {
+       "cell": "T25",
+       "name": "水污染",
+       "found": false,
+       "note": "土壤及地下水列管檔僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T26",
+       "name": "噪音污染",
+       "found": false,
+       "note": "無對應開放資料"
+      },
+      {
+       "cell": "T27",
+       "name": "廢氣污染",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 4039,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "空污固定污染源樹林區僅焚化廠1筆"
+      },
+      {
+       "cell": "T28",
+       "name": "廢棄物污染",
+       "found": false,
+       "note": "土壤列管樹林區6筆僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T29",
+       "name": "其他污染",
+       "found": false,
+       "note": "定義開放，無固定來源"
+      }
+     ]
+    },
+    "P004-00": {
+     "status": "已推算",
+     "aggregated": {
+      "sub": "廢氣污染",
+      "facility": "新北市政府環境保護局樹林垃圾焚化廠",
+      "distance_m": 5648,
+      "source": "垃圾焚化廠位置(官方)×OSM座標",
+      "confidence": "B"
+     },
+     "rank": 1,
+     "level_label": "優",
+     "criterion": "2000m以上或無",
+     "borderline": false,
+     "nearest_boundary_gap_m": 3648,
+     "segment_uncertainty_m": 61.0,
+     "subs": [
+      {
+       "cell": "T25",
+       "name": "水污染",
+       "found": false,
+       "note": "土壤及地下水列管檔僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T26",
+       "name": "噪音污染",
+       "found": false,
+       "note": "無對應開放資料"
+      },
+      {
+       "cell": "T27",
+       "name": "廢氣污染",
+       "found": true,
+       "nearest": "新北市政府環境保護局樹林垃圾焚化廠",
+       "distance_m": 5648,
+       "source": "垃圾焚化廠位置(官方)×OSM座標",
+       "confidence": "B",
+       "note": "空污固定污染源樹林區僅焚化廠1筆"
+      },
+      {
+       "cell": "T28",
+       "name": "廢棄物污染",
+       "found": false,
+       "note": "土壤列管樹林區6筆僅載地段地號，須地籍定位"
+      },
+      {
+       "cell": "T29",
+       "name": "其他污染",
+       "found": false,
+       "note": "定義開放，無固定來源"
+      }
+     ]
+    }
+   },
+   "coverage": {
+    "sub_total": 5,
+    "sub_with_data": 1,
+    "unlocatable_count": 0,
+    "complete": false,
+    "bound": "optimistic",
+    "usable_for_grading": false,
+    "reason": "嫌惡設施子欄缺漏，真實最近設施可能更近 → 推算等級僅為樂觀上限，不得據以判級，更不得據以填『無』"
+   },
+   "adjustments": {
+    "P002-00": null,
+    "P003-00": null,
+    "P004-00": null
+   },
+   "adjustments_blocked_reason": "嫌惡設施子欄缺漏，真實最近設施可能更近 → 推算等級僅為樂觀上限，不得據以判級，更不得據以填『無』"
+  }
+ }
+}

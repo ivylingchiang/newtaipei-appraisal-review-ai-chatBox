@@ -1,0 +1,2577 @@
+{
+  "schema_version": "1.0",
+  "region_code": "shulin",
+  "region_name": "新北市樹林區",
+  "land_use_code": "residential",
+  "land_use_name": "普通住宅用地",
+  "factor_type": "individual",
+  "table_name": "新北市樹林區普通住宅用地影響地價個別因素評價基準明細表",
+  "source": {
+    "pdf": "doc/rules/評價基準明細表.pdf",
+    "role": "target"
+  },
+  "source_anomalies": [],
+  "item_count": 20,
+  "items": [
+    {
+      "item_id": "shulin.individual.area",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 1,
+      "group_code": 1,
+      "group_name": "宗地條件",
+      "item_code": "area",
+      "item_name": "面積",
+      "field_no": 7,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "600m2以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m2",
+            "ranges": [
+              {
+                "min": 600.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "600m2以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "400m2以上未滿600m2",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m2",
+            "ranges": [
+              {
+                "min": 400.0,
+                "max": 600.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "400m2以上未滿600m2"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "200m2以上未滿400m2",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m2",
+            "ranges": [
+              {
+                "min": 200.0,
+                "max": 400.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "200m2以上未滿400m2"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "50m2以上未滿200m2",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m2",
+            "ranges": [
+              {
+                "min": 50.0,
+                "max": 200.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "50m2以上未滿200m2"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "50m2以下",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m2",
+            "ranges": [
+              {
+                "max": 50.0,
+                "max_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "50m2以下"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 29
+    },
+    {
+      "item_id": "shulin.individual.width",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 2,
+      "group_code": 1,
+      "group_name": "宗地條件",
+      "item_code": "width",
+      "item_name": "寬度",
+      "field_no": 8,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 1.25,
+      "step_printed": 1.25,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "20m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 20.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "20m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "15m以上未滿20m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 15.0,
+                "max": 20.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "15m以上未滿20m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "8m以上未滿15m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 8.0,
+                "max": 15.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "8m以上未滿15m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "4m以上未滿8m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 4.0,
+                "max": 8.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "4m以上未滿8m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿4m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 4.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿4m"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        [
+          -1.25,
+          0.0,
+          1.25,
+          2.5,
+          3.75
+        ],
+        [
+          -2.5,
+          -1.25,
+          0.0,
+          1.25,
+          2.5
+        ],
+        [
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0,
+          1.25
+        ],
+        [
+          -5.0,
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 30
+    },
+    {
+      "item_id": "shulin.individual.depth",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 3,
+      "group_code": 1,
+      "group_name": "宗地條件",
+      "item_code": "depth",
+      "item_name": "深度",
+      "field_no": 9,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 1.25,
+      "step_printed": 1.25,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "14m以上未滿30m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 14.0,
+                "max": 30.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "14m以上未滿30m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "30m以上未滿40m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 30.0,
+                "max": 40.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "30m以上未滿40m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "7m以上未滿14m 或 40m以上未滿50m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 7.0,
+                "max": 14.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              },
+              {
+                "min": 40.0,
+                "max": 50.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "7m以上未滿14m 或 40m以上未滿50m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "50m以上未滿60m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 50.0,
+                "max": 60.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "50m以上未滿60m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿7m 或 60m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 7.0,
+                "max_inclusive": false
+              },
+              {
+                "min": 60.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿7m 或 60m以上"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        [
+          -1.25,
+          0.0,
+          1.25,
+          2.5,
+          3.75
+        ],
+        [
+          -2.5,
+          -1.25,
+          0.0,
+          1.25,
+          2.5
+        ],
+        [
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0,
+          1.25
+        ],
+        [
+          -5.0,
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 31
+    },
+    {
+      "item_id": "shulin.individual.shape",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 4,
+      "group_code": 1,
+      "group_name": "宗地條件",
+      "item_code": "shape",
+      "item_name": "形狀",
+      "field_no": 10,
+      "level_count": 2,
+      "level_labels": [
+        "優",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 5.0,
+      "step_printed": 5.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "方形、梯形",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "方形",
+              "梯形"
+            ],
+            "raw": "方形、梯形"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "劣",
+          "criterion": "不規則形、長條形",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "不規則形",
+              "長條形"
+            ],
+            "raw": "不規則形、長條形"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          5.0
+        ],
+        [
+          -5.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 32
+    },
+    {
+      "item_id": "shulin.individual.street_frontage",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 5,
+      "group_code": 1,
+      "group_name": "宗地條件",
+      "item_code": "street_frontage",
+      "item_name": "臨街情形",
+      "field_no": 11,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "3面以上臨街",
+          "threshold": {
+            "kind": "numeric",
+            "unit": null,
+            "ranges": [
+              {
+                "min": 3.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "3面以上臨街"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "路角地",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "路角地"
+            ],
+            "raw": "路角地"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "雙面臨街",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "雙面臨街"
+            ],
+            "raw": "雙面臨街"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "單面臨街",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "單面臨街"
+            ],
+            "raw": "單面臨街"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未臨街地",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "未臨街地"
+            ],
+            "raw": "未臨街地"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 33
+    },
+    {
+      "item_id": "shulin.individual.terrain",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 6,
+      "group_code": 1,
+      "group_name": "宗地條件",
+      "item_code": "terrain",
+      "item_name": "地勢",
+      "field_no": 12,
+      "level_count": 2,
+      "level_labels": [
+        "優",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 10.0,
+      "step_printed": 10.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "平坦",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "平坦"
+            ],
+            "raw": "平坦"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "劣",
+          "criterion": "高亢或低窪",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "高亢或低窪"
+            ],
+            "raw": "高亢或低窪"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          10.0
+        ],
+        [
+          -10.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 34
+    },
+    {
+      "item_id": "shulin.individual.road_type",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 7,
+      "group_code": 2,
+      "group_name": "道路條件",
+      "item_code": "road_type",
+      "item_name": "道路種類",
+      "field_no": 13,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 1.25,
+      "step_printed": 1.25,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "主要道路",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "主要道路"
+            ],
+            "raw": "主要道路"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "次要道路",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "次要道路"
+            ],
+            "raw": "次要道路"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "巷道",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "巷道"
+            ],
+            "raw": "巷道"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "農路",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "農路"
+            ],
+            "raw": "農路"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "無",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "無"
+            ],
+            "raw": "無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        [
+          -1.25,
+          0.0,
+          1.25,
+          2.5,
+          3.75
+        ],
+        [
+          -2.5,
+          -1.25,
+          0.0,
+          1.25,
+          2.5
+        ],
+        [
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0,
+          1.25
+        ],
+        [
+          -5.0,
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 35
+    },
+    {
+      "item_id": "shulin.individual.front_road_width",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 8,
+      "group_code": 2,
+      "group_name": "道路條件",
+      "item_code": "front_road_width",
+      "item_name": "面前道路寬度",
+      "field_no": 14,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 12.0,
+      "step": 3.0,
+      "step_printed": 3.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "20m以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 20.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "20m以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "12m以上未滿20m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 12.0,
+                "max": 20.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "12m以上未滿20m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "8m以上未滿12m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 8.0,
+                "max": 12.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "8m以上未滿12m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "5m以上未滿8m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 5.0,
+                "max": 8.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "5m以上未滿8m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿5m或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 5.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "未滿5m或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          3.0,
+          6.0,
+          9.0,
+          12.0
+        ],
+        [
+          -3.0,
+          0.0,
+          3.0,
+          6.0,
+          9.0
+        ],
+        [
+          -6.0,
+          -3.0,
+          0.0,
+          3.0,
+          6.0
+        ],
+        [
+          -9.0,
+          -6.0,
+          -3.0,
+          0.0,
+          3.0
+        ],
+        [
+          -12.0,
+          -9.0,
+          -6.0,
+          -3.0,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 36
+    },
+    {
+      "item_id": "shulin.individual.near_school",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 9,
+      "group_code": 3,
+      "group_name": "接近條件",
+      "item_code": "near_school",
+      "item_name": "接近學校之程度",
+      "field_no": 15,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 1.25,
+      "step_printed": 1.25,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "未滿250m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 250.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿250m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "250m以上未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 250.0,
+                "max": 500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "250m以上未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1000m以上未滿2000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1000m以上未滿2000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "2000m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "2000m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        [
+          -1.25,
+          0.0,
+          1.25,
+          2.5,
+          3.75
+        ],
+        [
+          -2.5,
+          -1.25,
+          0.0,
+          1.25,
+          2.5
+        ],
+        [
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0,
+          1.25
+        ],
+        [
+          -5.0,
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0
+        ]
+      ],
+      "direction": "lower_is_better",
+      "source_block_index": 37
+    },
+    {
+      "item_id": "shulin.individual.near_market",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 10,
+      "group_code": 3,
+      "group_name": "接近條件",
+      "item_code": "near_market",
+      "item_name": "接近市場之程度",
+      "field_no": 16,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 1.25,
+      "step_printed": 1.25,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "未滿250m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 250.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿250m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "250m以上未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 250.0,
+                "max": 500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "250m以上未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1000m以上未滿2000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1000m以上未滿2000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "2000m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "2000m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        [
+          -1.25,
+          0.0,
+          1.25,
+          2.5,
+          3.75
+        ],
+        [
+          -2.5,
+          -1.25,
+          0.0,
+          1.25,
+          2.5
+        ],
+        [
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0,
+          1.25
+        ],
+        [
+          -5.0,
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0
+        ]
+      ],
+      "direction": "lower_is_better",
+      "source_block_index": 38
+    },
+    {
+      "item_id": "shulin.individual.near_park",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 11,
+      "group_code": 3,
+      "group_name": "接近條件",
+      "item_code": "near_park",
+      "item_name": "接近公園、廣場之程度",
+      "field_no": 17,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 1.25,
+      "step_printed": 1.25,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "未滿250m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 250.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿250m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "250m以上未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 250.0,
+                "max": 500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "250m以上未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1000m以上未滿2000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1000m以上未滿2000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "2000m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "2000m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        [
+          -1.25,
+          0.0,
+          1.25,
+          2.5,
+          3.75
+        ],
+        [
+          -2.5,
+          -1.25,
+          0.0,
+          1.25,
+          2.5
+        ],
+        [
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0,
+          1.25
+        ],
+        [
+          -5.0,
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0
+        ]
+      ],
+      "direction": "lower_is_better",
+      "source_block_index": 39
+    },
+    {
+      "item_id": "shulin.individual.near_station",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 12,
+      "group_code": 3,
+      "group_name": "接近條件",
+      "item_code": "near_station",
+      "item_name": "接近車站之程度",
+      "field_no": 18,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 1.25,
+      "step_printed": 1.25,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "未滿250m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 250.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿250m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "250m以上未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 250.0,
+                "max": 500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "250m以上未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1000m以上未滿2000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1000m以上未滿2000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "2000m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "2000m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        [
+          -1.25,
+          0.0,
+          1.25,
+          2.5,
+          3.75
+        ],
+        [
+          -2.5,
+          -1.25,
+          0.0,
+          1.25,
+          2.5
+        ],
+        [
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0,
+          1.25
+        ],
+        [
+          -5.0,
+          -3.75,
+          -2.5,
+          -1.25,
+          0.0
+        ]
+      ],
+      "direction": "lower_is_better",
+      "source_block_index": 40
+    },
+    {
+      "item_id": "shulin.individual.near_business",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 13,
+      "group_code": 3,
+      "group_name": "接近條件",
+      "item_code": "near_business",
+      "item_name": "接近商圈之程度",
+      "field_no": 19,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "未滿250m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 250.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿250m"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "250m以上未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 250.0,
+                "max": 500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "250m以上未滿500m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "1000m以上未滿2000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1000m以上未滿2000m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "2000m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "2000m以上或無"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "lower_is_better",
+      "source_block_index": 41
+    },
+    {
+      "item_id": "shulin.individual.nuisance",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 14,
+      "group_code": 4,
+      "group_name": "周邊環境條件",
+      "item_code": "nuisance",
+      "item_name": "嫌惡設施之有無",
+      "field_no": 20,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 8.0,
+      "step": 2.0,
+      "step_printed": 2.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "2000m以上或無",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 2000.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": true,
+            "raw": "2000m以上或無"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "1000m以上未滿2000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 1000.0,
+                "max": 2000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "1000m以上未滿2000m"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "500m以上未滿1000m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 500.0,
+                "max": 1000.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "500m以上未滿1000m"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "200m以上未滿500m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "min": 200.0,
+                "max": 500.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "200m以上未滿500m"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿200m",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "m",
+            "ranges": [
+              {
+                "max": 200.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿200m"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ],
+        [
+          -2.0,
+          0.0,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          -4.0,
+          -2.0,
+          0.0,
+          2.0,
+          4.0
+        ],
+        [
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0,
+          2.0
+        ],
+        [
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 42
+    },
+    {
+      "item_id": "shulin.individual.parking_ease",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 15,
+      "group_code": 4,
+      "group_name": "周邊環境條件",
+      "item_code": "parking_ease",
+      "item_name": "停車方便性",
+      "field_no": 21,
+      "level_count": 3,
+      "level_labels": [
+        "優",
+        "普通",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "停車方便性優",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "停車方便性優"
+            ],
+            "raw": "停車方便性優"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "普通",
+          "criterion": "停車方便性普通",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "停車方便性普通"
+            ],
+            "raw": "停車方便性普通"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "劣",
+          "criterion": "停車方便性劣",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "停車方便性劣"
+            ],
+            "raw": "停車方便性劣"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 43
+    },
+    {
+      "item_id": "shulin.individual.zoning",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 16,
+      "group_code": 5,
+      "group_name": "行政條件",
+      "item_code": "zoning",
+      "item_name": "使用分區或編定",
+      "field_no": 22,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 15.0,
+      "step": 3.75,
+      "step_printed": 3.75,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "商業區、捷運用地(聯開)",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "商業區",
+              "捷運用地(聯開)"
+            ],
+            "raw": "商業區、捷運用地(聯開)"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "住宅區、市場用地",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "住宅區",
+              "市場用地"
+            ],
+            "raw": "住宅區、市場用地"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "甲建、乙建、特定專用區、多目標使用之其他公共設施用地",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "甲建",
+              "乙建",
+              "特定專用區",
+              "多目標使用之其他公共設施用地"
+            ],
+            "raw": "甲建、乙建、特定專用區、多目標使用之其他公共設施用地"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "工業區、丙建、丁建",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "工業區",
+              "丙建",
+              "丁建"
+            ],
+            "raw": "工業區、丙建、丁建"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "其他可建築用地",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "其他可建築用地"
+            ],
+            "raw": "其他可建築用地"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          3.75,
+          7.5,
+          11.25,
+          15.0
+        ],
+        [
+          -3.75,
+          0.0,
+          3.75,
+          7.5,
+          11.25
+        ],
+        [
+          -7.5,
+          -3.75,
+          0.0,
+          3.75,
+          7.5
+        ],
+        [
+          -11.25,
+          -7.5,
+          -3.75,
+          0.0,
+          3.75
+        ],
+        [
+          -15.0,
+          -11.25,
+          -7.5,
+          -3.75,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 44
+    },
+    {
+      "item_id": "shulin.individual.bcr",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 17,
+      "group_code": 5,
+      "group_name": "行政條件",
+      "item_code": "bcr",
+      "item_name": "建蔽率",
+      "field_no": 23,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 10.0,
+      "step": 2.5,
+      "step_printed": 2.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "80%以上",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 80.0,
+                "min_inclusive": true
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "80%以上"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "70%以上未滿80%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 70.0,
+                "max": 80.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "70%以上未滿80%"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "60%以上未滿70%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 60.0,
+                "max": 70.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "60%以上未滿70%"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "50%以上未滿60%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "min": 50.0,
+                "max": 60.0,
+                "min_inclusive": true,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "50%以上未滿60%"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "未滿50%",
+          "threshold": {
+            "kind": "numeric",
+            "unit": "percent",
+            "ranges": [
+              {
+                "max": 50.0,
+                "max_inclusive": false
+              }
+            ],
+            "in_segment": false,
+            "or_none": false,
+            "raw": "未滿50%"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          2.5,
+          5.0,
+          7.5,
+          10.0
+        ],
+        [
+          -2.5,
+          0.0,
+          2.5,
+          5.0,
+          7.5
+        ],
+        [
+          -5.0,
+          -2.5,
+          0.0,
+          2.5,
+          5.0
+        ],
+        [
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0,
+          2.5
+        ],
+        [
+          -10.0,
+          -7.5,
+          -5.0,
+          -2.5,
+          0.0
+        ]
+      ],
+      "direction": "higher_is_better",
+      "source_block_index": 45
+    },
+    {
+      "item_code": "far",
+      "item_name": "容積率",
+      "field_no": 24,
+      "group_code": 5,
+      "group_name": "行政條件",
+      "level_count": null,
+      "max_adjustment": null,
+      "step": null,
+      "matrix": null,
+      "levels": [],
+      "rule_type": "narrative",
+      "basis": "詳備註",
+      "notes": [
+        "容積率差異以土地開發分析法進行試算調整",
+        "本項需與區域因素容積率併同考量，調整不足者另於區域因素補充調整"
+      ],
+      "item_id": "shulin.individual.far",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 18,
+      "direction": "n/a",
+      "level_labels": [],
+      "source_block_index": null
+    },
+    {
+      "item_id": "shulin.individual.build_ban_restrict",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 18,
+      "group_code": 5,
+      "group_name": "行政條件",
+      "item_code": "build_ban_restrict",
+      "item_name": "有無禁限建",
+      "field_no": 25,
+      "level_count": 5,
+      "level_labels": [
+        "優",
+        "稍優",
+        "普通",
+        "稍劣",
+        "劣"
+      ],
+      "max_adjustment": 50.0,
+      "step": 12.5,
+      "step_printed": 12.5,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "無禁止或限制建築",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "無禁止或限制建築"
+            ],
+            "raw": "無禁止或限制建築"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "稍優",
+          "criterion": "限制建築高度",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "限制建築高度"
+            ],
+            "raw": "限制建築高度"
+          }
+        },
+        {
+          "rank": 3,
+          "label": "普通",
+          "criterion": "限制建築高度及面積",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "限制建築高度及面積"
+            ],
+            "raw": "限制建築高度及面積"
+          }
+        },
+        {
+          "rank": 4,
+          "label": "稍劣",
+          "criterion": "限制整體開發",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "限制整體開發"
+            ],
+            "raw": "限制整體開發"
+          }
+        },
+        {
+          "rank": 5,
+          "label": "劣",
+          "criterion": "禁止建築",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "禁止建築"
+            ],
+            "raw": "禁止建築"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          12.5,
+          25.0,
+          37.5,
+          50.0
+        ],
+        [
+          -12.5,
+          0.0,
+          12.5,
+          25.0,
+          37.5
+        ],
+        [
+          -25.0,
+          -12.5,
+          0.0,
+          12.5,
+          25.0
+        ],
+        [
+          -37.5,
+          -25.0,
+          -12.5,
+          0.0,
+          12.5
+        ],
+        [
+          -50.0,
+          -37.5,
+          -25.0,
+          -12.5,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 46
+    },
+    {
+      "item_id": "shulin.individual.dead_end_alley",
+      "region_code": "shulin",
+      "factor_type": "individual",
+      "seq": 19,
+      "group_code": 6,
+      "group_name": "其他",
+      "item_code": "dead_end_alley",
+      "item_name": "無尾巷",
+      "field_no": null,
+      "level_count": 2,
+      "level_labels": [
+        "優",
+        "劣"
+      ],
+      "max_adjustment": 5.0,
+      "step": 5.0,
+      "step_printed": 5.0,
+      "rule_type": "matrix",
+      "levels": [
+        {
+          "rank": 1,
+          "label": "優",
+          "criterion": "無",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "無"
+            ],
+            "raw": "無"
+          }
+        },
+        {
+          "rank": 2,
+          "label": "劣",
+          "criterion": "無尾巷",
+          "threshold": {
+            "kind": "categorical",
+            "categories": [
+              "無尾巷"
+            ],
+            "raw": "無尾巷"
+          }
+        }
+      ],
+      "matrix": [
+        [
+          0.0,
+          5.0
+        ],
+        [
+          -5.0,
+          0.0
+        ]
+      ],
+      "direction": "n/a",
+      "source_block_index": 47
+    }
+  ]
+}

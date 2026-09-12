@@ -1,0 +1,135 @@
+{
+  "observations": {
+    "urban_plan": {
+      "field_name": "都市計畫(內外)",
+      "raw": "都市計畫內",
+      "level_rank": 1,
+      "level_count": 2
+    },
+    "zoning": {
+      "field_name": "使用分區(使用地類別)",
+      "raw": "第一種住宅區"
+    },
+    "bcr": {
+      "field_name": "建蔽率",
+      "raw": "50%",
+      "value": 50.0,
+      "unit": "percent"
+    },
+    "far": {
+      "field_name": "容積率",
+      "raw": "260%",
+      "value": 260.0,
+      "unit": "percent"
+    },
+    "build_ban": {
+      "field_name": "有無禁止建築",
+      "raw": "無"
+    },
+    "build_restrict": {
+      "field_name": "有無限制建築",
+      "raw": "無"
+    },
+    "main_road": {
+      "field_name": "主要道路",
+      "raw": "東榮街 寬度：10M",
+      "road_name": "東榮街",
+      "value": 10.0,
+      "unit": "m"
+    },
+    "avg_road_width": {
+      "field_name": "區段內道路平均寬度",
+      "raw": "7M",
+      "value": 7.0,
+      "unit": "m"
+    },
+    "road_dev": {
+      "field_name": "區段內道路規劃及闢建程度",
+      "raw": "全部規劃及闢建"
+    },
+    "sunlight": {
+      "field_name": "日照",
+      "raw": "充分"
+    },
+    "view": {
+      "field_name": "景觀",
+      "raw": "視野、景觀尚可"
+    },
+    "slope": {
+      "field_name": "傾斜度",
+      "raw": "平均坡度未滿5度"
+    },
+    "drainage": {
+      "field_name": "保（排）水之良否",
+      "raw": "普通完善"
+    },
+    "terrain": {
+      "field_name": "地勢",
+      "raw": "極平坦堅硬"
+    },
+    "wind": {
+      "field_name": "風勢",
+      "raw": null
+    },
+    "soil": {
+      "field_name": "土質",
+      "raw": null
+    },
+    "build_density": {
+      "field_name": "建築密度",
+      "raw": "70%",
+      "value": 70.0,
+      "unit": "percent"
+    },
+    "build_type": {
+      "field_name": "建築型態",
+      "raw": "公寓、透天"
+    },
+    "customer_flow": {
+      "field_name": "顧客之通行量",
+      "raw": null
+    },
+    "shop_adjacency": {
+      "field_name": "店舖之毗連狀態",
+      "raw": null
+    }
+  },
+  "facilities": [],
+  "improvements": [
+    "整平或填挖基地",
+    "開挖水溝",
+    "鋪築道路",
+    "埋設管道"
+  ],
+  "land_use_current": "住宅用",
+  "year_period": "1110901",
+  "segment_no": "P003-00",
+  "scope_desc": "沿東榮街以北、鎮前街411巷1弄以南、東榮街88巷以東、鎮前街367巷以西之第一種住宅區",
+  "region_code": "shulin",
+  "land_use_code": "residential",
+  "source": "doc/題目.pdf",
+  "segment_id": "shulin.1110901.P003-00",
+  "rule_checks": [
+    {
+      "rule": "CR2",
+      "main_road_width_m": 10.0,
+      "far_percent": 260.0,
+      "applicable": false,
+      "expected_far_percent": null,
+      "consistent": null,
+      "severity": "info",
+      "message": "主要道路寬 10.0m > 8m，CR2 不適用（實際容積率 260%）"
+    }
+  ],
+  "completeness": {
+    "observed_fields": 16,
+    "total_fields": 20,
+    "facilities_recorded": 0,
+    "missing_fields": [
+      "wind",
+      "soil",
+      "customer_flow",
+      "shop_adjacency"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "source": [
+    "doc/rules/extra.md",
+    "承辦單位口頭確認（2026-09）"
+  ],
+  "rules": [
+    {
+      "id": "CR1",
+      "name": "捷運開發區以「變更前」之使用分區認定",
+      "source": "doc/rules/extra.md 第1條：捷運開發地要用變身分之前的土地規格為準則（一般住宅規格）",
+      "confirmed_by": "承辦單位確認：本案 P001-00 以第一種住宅區判斷",
+      "trigger": {
+        "field": "scope_desc",
+        "contains": "捷運開發區"
+      },
+      "action": {
+        "zoning_for_valuation": "取 scope_desc 中「變更前為X」之 X；若無明載則依一般住宅規格",
+        "override_land_use_current": true,
+        "reason": "捷運開發區係都市計畫變更後之暫時地位，估價應回歸變更前之土地規格"
+      },
+      "notes": [
+        "表3『土地利用現況』欄可能勾選與變更前分區不一致之項目（本案 P001-00 勾選商業用），該欄為現況描述，不作為使用分區優劣判定依據。",
+        "使用分區之優劣等級應依『變更前』分區查表；本案為第一種住宅區 → 樹林住宅基準表『稍優』(rank 2)。"
+      ]
+    },
+    {
+      "id": "CR2",
+      "name": "8公尺以下道路旁住宅區之基準容積率為200%",
+      "source": "doc/rules/extra.md 第2條：都市計畫中，未特別獎勵或一般巷道（8公尺寬以下道路）旁之住宅區，基準容積率常規劃為 200%",
+      "condition": {
+        "urban_plan": "都市計畫內",
+        "zoning_contains": "住宅區",
+        "main_road_width_m": {
+          "max": 8.0,
+          "max_inclusive": true
+        },
+        "no_special_bonus": true
+      },
+      "expected_far_percent": 200,
+      "usage": "交叉檢核：表3 所載容積率與主要道路寬度是否相容；不符者標記待確認，不逕行判錯",
+      "severity": "warning"
+    }
+  ]
+}

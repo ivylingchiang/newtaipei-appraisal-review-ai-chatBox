@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "name": "新北市土地徵收補償市價查估 — 審查知識資料集",
+  "built_at": "2026-09-12",
+  "source_dir": "doc/",
+  "description": "由 doc/ 內之命題文件、評價基準明細表、查估書表範本、作業手冊與 Excel 範本抽取結構化而成，依行政區 + 用地別分類歸檔。",
+  "formats": [
+    "json",
+    "yaml",
+    "sqlite"
+  ],
+  "database": {
+    "path": "db/appraisal.sqlite",
+    "tables": 15
+  },
+  "regions": [
+    {
+      "region_code": "jinshan",
+      "region_name": "新北市金山區",
+      "land_use_code": "commercial",
+      "land_use_name": "商業用地",
+      "role": "reference",
+      "role_desc": "已填完整範例（可作為驗證基準）",
+      "criteria": {
+        "regional": {
+          "path": "regions/jinshan/criteria/regional.json",
+          "items": 28
+        },
+        "individual": {
+          "path": "regions/jinshan/criteria/individual.json",
+          "items": 19
+        }
+      },
+      "segments": {
+        "path": "regions/jinshan/segments/",
+        "count": 1,
+        "ids": [
+          "P002-00"
+        ]
+      },
+      "cases": {
+        "path": "regions/jinshan/cases/",
+        "count": 1,
+        "ids": [
+          "1140901-99-001"
+        ]
+      },
+      "images": {
+        "path": "regions/jinshan/img/",
+        "count": 45
+      }
+    },
+    {
+      "region_code": "shulin",
+      "region_name": "新北市樹林區",
+      "land_use_code": "residential",
+      "land_use_name": "普通住宅用地",
+      "role": "target",
+      "role_desc": "待作答案件（優劣等級與修正率留白）",
+      "criteria": {
+        "regional": {
+          "path": "regions/shulin/criteria/regional.json",
+          "items": 29
+        },
+        "individual": {
+          "path": "regions/shulin/criteria/individual.json",
+          "items": 20
+        }
+      },
+      "segments": {
+        "path": "regions/shulin/segments/",
+        "count": 4,
+        "ids": [
+          "P001-00",
+          "P002-00",
+          "P003-00",
+          "P004-00"
+        ]
+      },
+      "cases": {
+        "path": "regions/shulin/cases/",
+        "count": 1,
+        "ids": [
+          "1110901-99-XXX"
+        ]
+      },
+      "images": {
+        "path": "regions/shulin/img/",
+        "count": 15
+      }
+    }
+  ],
+  "common": {
+    "forms": "common/forms.json",
+    "formulas": "common/formulas.json",
+    "review_rules": "common/review_rules.json",
+    "legal_references": "common/legal_references.json",
+    "images": "common/images.json",
+    "img_dir": "common/img/"
+  },
+  "verification": {
+    "script": "_build/run_tests.py",
+    "golden_source": "doc/rules/查估書表範本.pdf（金山區商業用地，已填完整）",
+    "tests": [
+      "基準表矩陣反對稱/步長/級距完整性（96 細項）",
+      "表4 個別因素差異率 19/19 逐項吻合，合計 13.00%",
+      "價格鏈 184,763 → 212,958 完全一致",
+      "表3 設施距離 → 表5 優劣等級 10/10 吻合",
+      "資料庫外鍵與圖檔存在性"
+    ]
+  }
+}

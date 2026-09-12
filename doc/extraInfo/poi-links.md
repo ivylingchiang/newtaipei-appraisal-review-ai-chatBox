@@ -1,0 +1,54 @@
+- 土壤及地下水列管資訊
+
+  - [https://data.gov.tw/dataset/122974?fbclid=IwY2xjawUR-7xwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5_BwwStKCVZKZ8jmaoeHozd7OkjSULODPF31F8EU-rN1f9VmoxpBvf2Xdl6g_aem_FIoEen-U6pDrdZPWOrrxxg](https://data.gov.tw/dataset/122974?fbclid=IwY2xjawUR-7xwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5_BwwStKCVZKZ8jmaoeHozd7OkjSULODPF31F8EU-rN1f9VmoxpBvf2Xdl6g_aem_FIoEen-U6pDrdZPWOrrxxg)
+- 空氣污染物監測設施之固定污染源
+
+  - [https://data.gov.tw/dataset/123721?fbclid=IwY2xjawUR--JwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5mmp5sWKAGUlXE55A3MIFO-Ko86bmzeA2I8bFAJqxTCY0R_lZ6cSex1hV2hg_aem_DrArFX58pNcatkatvmc60A](https://data.gov.tw/dataset/123721?fbclid=IwY2xjawUR--JwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5mmp5sWKAGUlXE55A3MIFO-Ko86bmzeA2I8bFAJqxTCY0R_lZ6cSex1hV2hg_aem_DrArFX58pNcatkatvmc60A)
+- 殯葬設施
+
+  - [https://data.gov.tw/dataset/7052?fbclid=IwY2xjawUR_ARwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR7lhFST1-8gtdI5coFwOpil2qTw7MFsS_LchxcLU5k9ldbXzMMgGsX4G6MNnw_aem_df9xLpmpBOnJKHx3GaXeww](https://data.gov.tw/dataset/7052?fbclid=IwY2xjawUR_ARwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR7lhFST1-8gtdI5coFwOpil2qTw7MFsS_LchxcLU5k9ldbXzMMgGsX4G6MNnw_aem_df9xLpmpBOnJKHx3GaXeww)
+- 二次變電所主變壓器裝置容量及負載
+
+  - [https://data.gov.tw/dataset/16960?fbclid=IwY2xjawUR_BlwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR7Lp2tsJFWgqI9a0_eF_5gnjPf2C5jM2-Q6wXGahiyBaMIe4joBTPmiMGW5sA_aem_DpS7H5voD0QIwVFoZULPIA](https://data.gov.tw/dataset/16960?fbclid=IwY2xjawUR_BlwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR7Lp2tsJFWgqI9a0_eF_5gnjPf2C5jM2-Q6wXGahiyBaMIe4joBTPmiMGW5sA_aem_DpS7H5voD0QIwVFoZULPIA)
+- 新北市合法一般旅館名冊
+
+  - [https://data.ntpc.gov.tw/datasets/8565597e-a174-4907-99c7-adb5ddee1326?fbclid=IwY2xjawUR_EVwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR6eTMFMQWMK3aiqQipCSf2mnDzv33thttVmqdVEMVrAnmeqFy2YEQXkZtuxWQ_aem_Mms9Kwetd1qg1gpdSVpSyQ](https://data.ntpc.gov.tw/datasets/8565597e-a174-4907-99c7-adb5ddee1326?fbclid=IwY2xjawUR_EVwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR6eTMFMQWMK3aiqQipCSf2mnDzv33thttVmqdVEMVrAnmeqFy2YEQXkZtuxWQ_aem_Mms9Kwetd1qg1gpdSVpSyQ)
+- 金融機構基本資料查詢
+
+  - [https://data.gov.tw/dataset/6041?fbclid=IwY2xjawUR_GhwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR7qkbPI7WZ1mZ0auNaiscRn6CKPG1xjICm1gm_BOHpuhx7YqfdS49F34Xf9Mg_aem_Pqwwga2T29itdoWKBYa0uA](https://data.gov.tw/dataset/6041?fbclid=IwY2xjawUR_GhwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR7qkbPI7WZ1mZ0auNaiscRn6CKPG1xjICm1gm_BOHpuhx7YqfdS49F34Xf9Mg_aem_Pqwwga2T29itdoWKBYa0uA)
+- 高速公路交流道座標
+
+  - [https://data.gov.tw/dataset/166496?fbclid=IwY2xjawUR_HtwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4W6ebkXUb1RXV14_IJ6f8nM7XIJrnWUqmPKYVPuxnMLdvuQq4sEzEKBD0dhw_aem_cmfu8Hwb14oDn4QvRHFeRg](https://data.gov.tw/dataset/166496?fbclid=IwY2xjawUR_HtwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4W6ebkXUb1RXV14_IJ6f8nM7XIJrnWUqmPKYVPuxnMLdvuQq4sEzEKBD0dhw_aem_cmfu8Hwb14oDn4QvRHFeRg)
+- 公司登記(依營業項目別)－百貨公司業
+
+  - [https://data.gov.tw/dataset/45654?fbclid=IwY2xjawUR_JtwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4vWTv_q7n2QFOxS99gB8UQpmelG3tRdq68MpcMF-lX1vUK14myfwQjphvwnA_aem_iB15vS685ft9btBCFC4CAw](https://data.gov.tw/dataset/45654?fbclid=IwY2xjawUR_JtwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4vWTv_q7n2QFOxS99gB8UQpmelG3tRdq68MpcMF-lX1vUK14myfwQjphvwnA_aem_iB15vS685ft9btBCFC4CAw)
+- 垃圾焚化廠位置
+
+  - [https://data.ntpc.gov.tw/datasets/39e17852-9ac9-45b7-bc60-d8d0ed7e3161?fbclid=IwY2xjawUR_LJwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4Nsp4KTn4c3X1Ndj_p8TgFcCs1QZ4g56YN-BKH2OQg8c1kzgwO1cKmWgp0bA_aem_tbl6W0F1SyaTuO4_DXYB2w](https://data.ntpc.gov.tw/datasets/39e17852-9ac9-45b7-bc60-d8d0ed7e3161?fbclid=IwY2xjawUR_LJwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4Nsp4KTn4c3X1Ndj_p8TgFcCs1QZ4g56YN-BKH2OQg8c1kzgwO1cKmWgp0bA_aem_tbl6W0F1SyaTuO4_DXYB2w)
+- 公立公墓納骨塔查詢
+
+  - [https://data.ntpc.gov.tw/datasets/1d228eab-23d4-41a6-bd33-f4014dd44660?fbclid=IwY2xjawUR_MxwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4oitb4HdqdrRt6q_46zvBphpsQe9IuNcmA5gF73Glx8e3I1ix4sS3kF_s_hw_aem_tFUiAIbCqHLvF6abic01qQ](https://data.ntpc.gov.tw/datasets/1d228eab-23d4-41a6-bd33-f4014dd44660?fbclid=IwY2xjawUR_MxwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4oitb4HdqdrRt6q_46zvBphpsQe9IuNcmA5gF73Glx8e3I1ix4sS3kF_s_hw_aem_tFUiAIbCqHLvF6abic01qQ)
+- 禮儀服務業者查詢
+
+  - [https://data.ntpc.gov.tw/datasets/77676118-d894-4527-b88a-6d236a462923?fbclid=IwY2xjawUR_N9wZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR592zeIQW3Ej9UGQhHEKbXtenm5E6xR-cv0EgQvBigF8-xp0f6NG_lYL5Vt4Q_aem_7z5UlRv_RhreY-jZeidZEw](https://data.ntpc.gov.tw/datasets/77676118-d894-4527-b88a-6d236a462923?fbclid=IwY2xjawUR_N9wZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR592zeIQW3Ej9UGQhHEKbXtenm5E6xR-cv0EgQvBigF8-xp0f6NG_lYL5Vt4Q_aem_7z5UlRv_RhreY-jZeidZEw)
+- 新北市觀光旅遊景點(中文)
+
+  - [https://data.ntpc.gov.tw/datasets/b3a30a19-4b89-4da2-8d99-18200dc5dfde?fbclid=IwY2xjawUR_O1wZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5bx4aCLxfHGfgn7yF1m4NXod4OTmjCLp8ggiMeGSYnKor7N6GhBvsdVeY53g_aem_2l5srz7lVxriHbCyEx7vrA](https://data.ntpc.gov.tw/datasets/b3a30a19-4b89-4da2-8d99-18200dc5dfde?fbclid=IwY2xjawUR_O1wZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5bx4aCLxfHGfgn7yF1m4NXod4OTmjCLp8ggiMeGSYnKor7N6GhBvsdVeY53g_aem_2l5srz7lVxriHbCyEx7vrA)
+- 河濱公園位置
+
+  - [https://data.ntpc.gov.tw/datasets/c3867812-6188-4b0a-a487-03bb4d93238d?fbclid=IwY2xjawUR_QNwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4eWmfsqidJ7YHDIVZZ9tkkTz-iaABvye06aItpiLnYpaeD92MIrq4ZlSSMSg_aem_LQdPso1L2fYY4bIjP7LGhw](https://data.ntpc.gov.tw/datasets/c3867812-6188-4b0a-a487-03bb4d93238d?fbclid=IwY2xjawUR_QNwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4eWmfsqidJ7YHDIVZZ9tkkTz-iaABvye06aItpiLnYpaeD92MIrq4ZlSSMSg_aem_LQdPso1L2fYY4bIjP7LGhw)
+- 新北市公有市場及超市清冊
+
+  - [https://data.ntpc.gov.tw/datasets/785be91a-caaf-4e1c-91d6-f7d616d31a45?fbclid=IwY2xjawUR_RNwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5vWkWBE_IH9DF04-Cmla-_U7PpTdVRIALY-ugPeqvgR-_igjQHGVXkOyqh3Q_aem_mVTyKgubWYWts5S_6VsrSg](https://data.ntpc.gov.tw/datasets/785be91a-caaf-4e1c-91d6-f7d616d31a45?fbclid=IwY2xjawUR_RNwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR5vWkWBE_IH9DF04-Cmla-_U7PpTdVRIALY-ugPeqvgR-_igjQHGVXkOyqh3Q_aem_mVTyKgubWYWts5S_6VsrSg)
+- 新北市公園
+
+  - [https://data.ntpc.gov.tw/datasets/5fe3a136-29cc-4695-a17e-6636a32c3342?fbclid=IwY2xjawUR_SlwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR6SNhIVlOUlKAnkX7NDfL3IX8EkJhcJqijTp3nwBY2F3lwcLs31pMvsl2STww_aem_MkgpEOl2sF-v26ZEtVx_mw](https://data.ntpc.gov.tw/datasets/5fe3a136-29cc-4695-a17e-6636a32c3342?fbclid=IwY2xjawUR_SlwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR6SNhIVlOUlKAnkX7NDfL3IX8EkJhcJqijTp3nwBY2F3lwcLs31pMvsl2STww_aem_MkgpEOl2sF-v26ZEtVx_mw)
+- 新北市路外公共停車場資訊
+
+  - [https://data.ntpc.gov.tw/datasets/b1464ef0-9c7c-4a6f-abf7-6bdf32847e68?fbclid=IwY2xjawUR_VFwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4ibrF0XCRX626D0EVTTpFcRnO-dhyN0LnpX8mB-chpSjNn2_x7yK--4fVdTw_aem_-MahUogpchB68rVuhpTzog](https://data.ntpc.gov.tw/datasets/b1464ef0-9c7c-4a6f-abf7-6bdf32847e68?fbclid=IwY2xjawUR_VFwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4ibrF0XCRX626D0EVTTpFcRnO-dhyN0LnpX8mB-chpSjNn2_x7yK--4fVdTw_aem_-MahUogpchB68rVuhpTzog)
+- 公車站位資訊
+
+  - [https://data.ntpc.gov.tw/datasets/34b402a8-53d9-483d-9406-24a682c2d6dc?fbclid=IwY2xjawUR_WVwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4lQwIulZ613gIMW0q5wpf3XVlVy5A6orW_bujYFHWnupkZqxSZNFZ-qzWRwQ_aem_knms04C8VGejerIa0Xod3Q](https://data.ntpc.gov.tw/datasets/34b402a8-53d9-483d-9406-24a682c2d6dc?fbclid=IwY2xjawUR_WVwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4lQwIulZ613gIMW0q5wpf3XVlVy5A6orW_bujYFHWnupkZqxSZNFZ-qzWRwQ_aem_knms04C8VGejerIa0Xod3Q)
+- 新北市重要地標資訊
+
+  - [https://data.ntpc.gov.tw/datasets/6dcff24a-838c-40fb-a9df-f1160afafe84?fbclid=IwY2xjawUR_XpwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4f2GvZ_wvhLxiH34--XU6sshA4nzaww05nyz5ORudaIPA8nxZgsODsaWG9uw_aem_KLxzOZwdjIvCwKR_8amIaA](https://data.ntpc.gov.tw/datasets/6dcff24a-838c-40fb-a9df-f1160afafe84?fbclid=IwY2xjawUR_XpwZG9mBGV4dG4DYWVtAjExAHNydGMGYXBwX2lkATAAAR4f2GvZ_wvhLxiH34--XU6sshA4nzaww05nyz5ORudaIPA8nxZgsODsaWG9uw_aem_KLxzOZwdjIvCwKR_8amIaA)

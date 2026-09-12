@@ -1,0 +1,739 @@
+{
+  "schema_version": "1.0",
+  "case_no": "1110901-99-XXX",
+  "region_code": "shulin",
+  "source": {
+    "pdf": "doc/題目.pdf",
+    "role": "target"
+  },
+  "table5": {
+    "form": "表5-1",
+    "land_use_label": "普通住宅用地",
+    "rows": [
+      {
+        "item_code": "urban_plan",
+        "item_label": "都市計畫（內、外）",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "zoning",
+        "item_label": "使用分區",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "bcr",
+        "item_label": "建蔽率",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "far",
+        "item_label": "容積率",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "build_ban",
+        "item_label": "有無禁止建築",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "build_restrict",
+        "item_label": "有無限制建築",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "main_road_width",
+        "item_label": "主要道路寬度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "avg_road_width",
+        "item_label": "區段內道路平均寬度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_station",
+        "item_label": "接近大型車站之程度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_busstop",
+        "item_label": "站牌",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_interchange",
+        "item_label": "交流道",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "road_dev",
+        "item_label": "區段內道路規劃及闢建程度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "sunlight",
+        "item_label": "日照",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "view",
+        "item_label": "景觀",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "slope",
+        "item_label": "傾斜度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "drainage",
+        "item_label": "排水之良否",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "terrain",
+        "item_label": "地勢",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "land_improve",
+        "item_label": "建築基地改良",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_school",
+        "item_label": "接近學校之程度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_market",
+        "item_label": "接近市場之程度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_park",
+        "item_label": "接近公園",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_tourism",
+        "item_label": "接近觀光遊憩設施之程度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "parking",
+        "item_label": "停車場地之便利程度",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "near_service",
+        "item_label": "接近服務性設施",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "utility_facility",
+        "item_label": "電業設施",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "funeral_facility",
+        "item_label": "殯葬設施",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "waste_facility",
+        "item_label": "廢棄物處理設施",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "pollution",
+        "item_label": "環境污染",
+        "levels": [],
+        "adjustments": []
+      },
+      {
+        "item_code": "other",
+        "item_label": "其他影響",
+        "levels": [],
+        "adjustments": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "subtotals": {
+      "order": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    "total": null,
+    "case_no": "1110901-99-XXX",
+    "segment_nos": [
+      "P001-00",
+      "P002-00",
+      "P003-00",
+      "P004-00"
+    ]
+  },
+  "table4": {
+    "form": "表4",
+    "rows": {
+      "final": [
+        {
+          "raw_cells": [
+            "比準地",
+            "宗地流水號 ：",
+            "0003",
+            "比較標的1",
+            "實例編號：",
+            "1",
+            "比較標的2",
+            "實例編號：",
+            "2",
+            "比較標的3",
+            "實例編號：",
+            "3"
+          ],
+          "numbers": [
+            3.0,
+            1.0,
+            2.0,
+            3.0
+          ]
+        },
+        {
+          "raw_cells": [
+            "價",
+            "比準地地價"
+          ],
+          "numbers": []
+        },
+        {
+          "raw_cells": [
+            "比準地或各比較標的"
+          ],
+          "numbers": []
+        },
+        {
+          "raw_cells": [
+            "2.比準地所在區段於案例蒐集期間(111年3月2日至111年9月1日間)無適當成交案例，故依土地徵收補償市價查估辦法第17條第3項規定，擴大選取範圍及案例蒐集期間至估價基準日前一年內"
+          ],
+          "numbers": []
+        }
+      ],
+      "unit_price": [
+        {
+          "raw_cells": [
+            "土地正常單價",
+            "130,167",
+            "135,275",
+            "170,909"
+          ],
+          "numbers": [
+            130167.0,
+            135275.0,
+            170909.0
+          ]
+        }
+      ],
+      "date_adj": [
+        {
+          "raw_cells": [
+            "交易日期",
+            "調整百分率",
+            "111年9月1日",
+            "110年9月14日",
+            "5.96%",
+            "111年1月11日",
+            "4.09%",
+            "110年10月29日",
+            "5.49%"
+          ],
+          "numbers": [
+            5.96,
+            4.09,
+            5.49
+          ]
+        },
+        {
+          "raw_cells": [
+            "地價區段",
+            "區域因素調整百分率",
+            "P001-00",
+            "P002-00",
+            "P003-00",
+            "P004-00"
+          ],
+          "numbers": []
+        }
+      ],
+      "adjusted_price": [
+        {
+          "raw_cells": [
+            "調整至估價基準日單價(元/M2)",
+            "137,925",
+            "140,808",
+            "180,292"
+          ],
+          "numbers": [
+            137925.0,
+            140808.0,
+            180292.0
+          ]
+        }
+      ],
+      "area": [
+        {
+          "raw_cells": [
+            "7面積(M2)"
+          ],
+          "numbers": []
+        }
+      ],
+      "width": [
+        {
+          "raw_cells": [
+            "8寬度(M)"
+          ],
+          "numbers": []
+        }
+      ],
+      "depth": [
+        {
+          "raw_cells": [
+            "9深度(M)"
+          ],
+          "numbers": []
+        }
+      ],
+      "shape": [
+        {
+          "raw_cells": [
+            "條件 10形狀"
+          ],
+          "numbers": []
+        }
+      ],
+      "street_frontage": [
+        {
+          "raw_cells": [
+            "11臨街情形"
+          ],
+          "numbers": []
+        }
+      ],
+      "terrain": [
+        {
+          "raw_cells": [
+            "12地勢"
+          ],
+          "numbers": []
+        }
+      ],
+      "road_type": [
+        {
+          "raw_cells": [
+            "2",
+            "13道路種類"
+          ],
+          "numbers": [
+            2.0
+          ]
+        }
+      ],
+      "front_road_width": [
+        {
+          "raw_cells": [
+            "件",
+            "14面前道路寬度",
+            "M",
+            "M",
+            "M",
+            "M"
+          ],
+          "numbers": []
+        }
+      ],
+      "near_school": [
+        {
+          "raw_cells": [
+            "個",
+            "15接近學校之程度",
+            "M",
+            "M",
+            "M",
+            "M"
+          ],
+          "numbers": []
+        }
+      ],
+      "near_market": [
+        {
+          "raw_cells": [
+            "別",
+            "3",
+            "16接近市場之程度",
+            "M",
+            "M",
+            "M",
+            "M"
+          ],
+          "numbers": [
+            3.0
+          ]
+        }
+      ],
+      "near_park": [
+        {
+          "raw_cells": [
+            "因",
+            "接近 17接近公園、廣場之程度",
+            "M",
+            "M",
+            "M",
+            "M"
+          ],
+          "numbers": []
+        }
+      ],
+      "near_station": [
+        {
+          "raw_cells": [
+            "素",
+            "條件 18接近車站之程度",
+            "M",
+            "M",
+            "M",
+            "M"
+          ],
+          "numbers": []
+        }
+      ],
+      "near_business": [
+        {
+          "raw_cells": [
+            "整",
+            "19接近商圈之程度",
+            "M",
+            "M",
+            "M",
+            "M"
+          ],
+          "numbers": []
+        }
+      ],
+      "nuisance": [
+        {
+          "raw_cells": [
+            "4",
+            "20嫌惡設施(類型)",
+            "M",
+            "M",
+            "M",
+            "M"
+          ],
+          "numbers": [
+            4.0
+          ]
+        }
+      ],
+      "parking_ease": [
+        {
+          "raw_cells": [
+            "境條件 21停車方便性"
+          ],
+          "numbers": []
+        }
+      ],
+      "zoning": [
+        {
+          "raw_cells": [
+            "22使用分區或編定用地"
+          ],
+          "numbers": []
+        }
+      ],
+      "bcr": [
+        {
+          "raw_cells": [
+            "23建蔽率(%)"
+          ],
+          "numbers": []
+        }
+      ],
+      "far": [
+        {
+          "raw_cells": [
+            "條件 24容積率(%)"
+          ],
+          "numbers": []
+        }
+      ],
+      "build_ban_restrict": [
+        {
+          "raw_cells": [
+            "25有無禁限建"
+          ],
+          "numbers": []
+        }
+      ],
+      "total": [
+        {
+          "raw_cells": [
+            "合計"
+          ],
+          "numbers": []
+        }
+      ],
+      "trial_price": [
+        {
+          "raw_cells": [
+            "比準地試算價格",
+            "比較標的權重"
+          ],
+          "numbers": []
+        }
+      ]
+    },
+    "appraisal_date": "1110901",
+    "case_no": "1110901-99-XXX",
+    "segment_nos": [
+      "P001-00",
+      "P002-00",
+      "P003-00",
+      "P004-00"
+    ],
+    "factors": {
+      "area": {
+        "field_no": 7,
+        "label": "7面積",
+        "conditions": [],
+        "diffs": []
+      },
+      "width": {
+        "field_no": 8,
+        "label": "8寬度",
+        "conditions": [],
+        "diffs": []
+      },
+      "depth": {
+        "field_no": 9,
+        "label": "9深度",
+        "conditions": [],
+        "diffs": []
+      },
+      "shape": {
+        "field_no": 10,
+        "label": "10形狀",
+        "conditions": [],
+        "diffs": []
+      },
+      "street_frontage": {
+        "field_no": 11,
+        "label": "11臨街情形",
+        "conditions": [],
+        "diffs": []
+      },
+      "terrain": {
+        "field_no": 12,
+        "label": "12地勢",
+        "conditions": [],
+        "diffs": []
+      },
+      "road_type": {
+        "field_no": 13,
+        "label": "13道路種類",
+        "conditions": [],
+        "diffs": []
+      },
+      "front_road_width": {
+        "field_no": 14,
+        "label": "14面前道路寬度",
+        "conditions": [],
+        "diffs": []
+      },
+      "near_school": {
+        "field_no": 15,
+        "label": "15接近學校之程度",
+        "conditions": [],
+        "diffs": []
+      },
+      "near_market": {
+        "field_no": 16,
+        "label": "16接近市場之程度",
+        "conditions": [],
+        "diffs": []
+      },
+      "near_park": {
+        "field_no": 17,
+        "label": "17接近公園",
+        "conditions": [],
+        "diffs": []
+      },
+      "near_station": {
+        "field_no": 18,
+        "label": "18接近車站之程度",
+        "conditions": [],
+        "diffs": []
+      },
+      "near_business": {
+        "field_no": 19,
+        "label": "19接近商圈之程度",
+        "conditions": [],
+        "diffs": []
+      },
+      "nuisance": {
+        "field_no": 20,
+        "label": "20嫌惡設施",
+        "conditions": [],
+        "diffs": []
+      },
+      "parking_ease": {
+        "field_no": 21,
+        "label": "21停車方便性",
+        "conditions": [],
+        "diffs": []
+      },
+      "zoning": {
+        "field_no": 22,
+        "label": "22使用分區或編定用地",
+        "conditions": [],
+        "diffs": []
+      },
+      "bcr": {
+        "field_no": 23,
+        "label": "23建蔽率",
+        "conditions": [],
+        "diffs": []
+      },
+      "far": {
+        "field_no": 24,
+        "label": "24容積率",
+        "conditions": [],
+        "diffs": []
+      },
+      "build_ban_restrict": {
+        "field_no": 25,
+        "label": "25有無禁限建",
+        "conditions": [],
+        "diffs": []
+      }
+    },
+    "summary": {
+      "unit_price": {
+        "percents": [],
+        "values": [
+          130167.0,
+          135275.0,
+          170909.0
+        ],
+        "raw": [
+          "130,167",
+          "135,275",
+          "170,909"
+        ]
+      },
+      "adjusted_price": {
+        "percents": [],
+        "values": [
+          137925.0,
+          140808.0,
+          180292.0
+        ],
+        "raw": [
+          "137,925",
+          "140,808",
+          "180,292"
+        ]
+      },
+      "date_adj": {
+        "percents": [
+          5.96,
+          4.09,
+          5.49
+        ],
+        "values": [],
+        "raw": [
+          "111年9月1日",
+          "110年9月14日",
+          "5.96%",
+          "111年1月11日",
+          "4.09%",
+          "110年10月29日",
+          "5.49%"
+        ]
+      },
+      "regional": {
+        "percents": [],
+        "values": [],
+        "raw": [
+          "P001-00",
+          "P002-00",
+          "P003-00",
+          "P004-00"
+        ]
+      },
+      "total": {
+        "percents": [],
+        "values": [],
+        "raw": []
+      },
+      "trial": {
+        "percents": [],
+        "values": [],
+        "raw": [
+          "比較標的權重"
+        ]
+      },
+      "weight": {
+        "percents": [],
+        "values": [],
+        "raw": []
+      }
+    },
+    "lots": [
+      "新北市樹林區樹德段1415地號",
+      "新北市樹林區樹德段284地號",
+      "新北市樹林區太平段367、917地號",
+      "新北市樹林區文林段317地號"
+    ],
+    "notes": [
+      "依土地徵收補償市價查估辦法第17條第3項規定，擴大選取範圍及案例蒐集期間至估價基準日前一年內"
+    ]
+  }
+}

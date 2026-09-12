@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "region_code": "shulin",
+  "land_use_code": "residential",
+  "source": "doc/題目.pdf",
+  "count": 4,
+  "segments": [
+    {
+      "segment_id": "shulin.1110901.P002-00",
+      "segment_no": "P002-00",
+      "year_period": "1110901",
+      "scope_desc": "沿樹人街以北、長壽街21巷以西、啟智街14巷以南及樹德街136巷以東之第一種住宅區",
+      "observed_fields": 16,
+      "facilities": 0
+    },
+    {
+      "segment_id": "shulin.1110901.P003-00",
+      "segment_no": "P003-00",
+      "year_period": "1110901",
+      "scope_desc": "沿東榮街以北、鎮前街411巷1弄以南、東榮街88巷以東、鎮前街367巷以西之第一種住宅區",
+      "observed_fields": 16,
+      "facilities": 0
+    },
+    {
+      "segment_id": "shulin.1110901.P004-00",
+      "segment_no": "P004-00",
+      "year_period": "1110901",
+      "scope_desc": "沿潭興街以西、潭興街107巷21弄以東及以北、潭興街91巷以南之第一種住宅區",
+      "observed_fields": 16,
+      "facilities": 0
+    },
+    {
+      "segment_id": "shulin.1110901.P001-00",
+      "segment_no": "P001-00",
+      "year_period": "1110901",
+      "scope_desc": "沿八德街以西、啟智街及未開闢計畫道路以南、啟智街187巷以東、啟智街187巷24弄以北之捷運開發區(變更前為第一種住宅區)",
+      "observed_fields": 16,
+      "facilities": 0
+    }
+  ]
+}

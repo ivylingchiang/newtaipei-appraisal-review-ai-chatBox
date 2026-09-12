@@ -1,0 +1,1303 @@
+{
+  "schema_version": "1.0",
+  "case_no": "1140901-99-001",
+  "region_code": "jinshan",
+  "source": {
+    "pdf": "doc/rules/查估書表範本.pdf",
+    "role": "reference"
+  },
+  "table5": {
+    "form": "表5-2",
+    "land_use_label": "商業用地",
+    "rows": [
+      {
+        "item_code": "urban_plan",
+        "item_label": "都市計畫（內、外）",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "zoning",
+        "item_label": "使用分區",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "bcr",
+        "item_label": "建蔽率",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "far",
+        "item_label": "容積率",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "build_ban",
+        "item_label": "有無禁止建築",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "無"
+          },
+          {
+            "rank": 1,
+            "label": "無"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "build_restrict",
+        "item_label": "有無限制建築",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "無"
+          },
+          {
+            "rank": 1,
+            "label": "無"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "main_road_width",
+        "item_label": "主要道路寬度",
+        "levels": [
+          {
+            "rank": 3,
+            "label": "普通"
+          },
+          {
+            "rank": 3,
+            "label": "普通"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "avg_road_width",
+        "item_label": "區段內道路平均寬度",
+        "levels": [
+          {
+            "rank": 3,
+            "label": "普通"
+          },
+          {
+            "rank": 3,
+            "label": "普通"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "near_station",
+        "item_label": "接近大型車站之程度",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "near_busstop",
+        "item_label": "站牌",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "near_interchange",
+        "item_label": "交流道",
+        "levels": [
+          {
+            "rank": 5,
+            "label": "劣"
+          },
+          {
+            "rank": 5,
+            "label": "劣"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "road_dev",
+        "item_label": "區段內道路規劃及闢建程度",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "drainage",
+        "item_label": "排水之良否",
+        "levels": [
+          {
+            "rank": 2,
+            "label": "稍優"
+          },
+          {
+            "rank": 2,
+            "label": "稍優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "terrain",
+        "item_label": "地勢",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "near_market",
+        "item_label": "接近市場之程度",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "near_park",
+        "item_label": "接近公園",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "near_tourism",
+        "item_label": "接近觀光遊憩設施之程度",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "parking",
+        "item_label": "停車場地之便利程度",
+        "levels": [
+          {
+            "rank": 2,
+            "label": "稍優"
+          },
+          {
+            "rank": 2,
+            "label": "稍優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "utility_facility",
+        "item_label": "電業設施",
+        "levels": [
+          {
+            "rank": 5,
+            "label": "劣"
+          },
+          {
+            "rank": 5,
+            "label": "劣"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "funeral_facility",
+        "item_label": "殯葬設施",
+        "levels": [
+          {
+            "rank": 5,
+            "label": "劣"
+          },
+          {
+            "rank": 5,
+            "label": "劣"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "waste_facility",
+        "item_label": "廢棄物處理設施",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "pollution",
+        "item_label": "環境污染",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "dept_store",
+        "item_label": "百貨公司",
+        "levels": [
+          {
+            "rank": 5,
+            "label": "劣"
+          },
+          {
+            "rank": 5,
+            "label": "劣"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "financial",
+        "item_label": "金融機構",
+        "levels": [
+          {
+            "rank": 2,
+            "label": "稍優"
+          },
+          {
+            "rank": 2,
+            "label": "稍優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "entertainment",
+        "item_label": "娛樂設施",
+        "levels": [
+          {
+            "rank": 5,
+            "label": "劣"
+          },
+          {
+            "rank": 5,
+            "label": "劣"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "exhibition_hotel",
+        "item_label": "大型展示中心或觀光飯店",
+        "levels": [
+          {
+            "rank": 3,
+            "label": "普通"
+          },
+          {
+            "rank": 3,
+            "label": "普通"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "customer_flow",
+        "item_label": "顧客通行量",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "shop_adjacency",
+        "item_label": "店舖之毗連狀態",
+        "levels": [
+          {
+            "rank": 1,
+            "label": "優"
+          },
+          {
+            "rank": 1,
+            "label": "優"
+          }
+        ],
+        "adjustments": [
+          0.0
+        ]
+      },
+      {
+        "item_code": "other",
+        "item_label": "其他影響",
+        "levels": [],
+        "adjustments": []
+      }
+    ],
+    "subtotals": {
+      "order": [
+        [
+          0.0
+        ],
+        [
+          0.0
+        ],
+        [
+          0.0
+        ],
+        [
+          0.0
+        ],
+        [
+          0.0
+        ],
+        [
+          0.0
+        ],
+        [
+          0.0
+        ],
+        [
+          0.0
+        ]
+      ]
+    },
+    "total": [
+      0.0
+    ],
+    "case_no": "1140901-99-001",
+    "segment_nos": [
+      "P002-00"
+    ]
+  },
+  "table4": {
+    "form": "表4",
+    "rows": {
+      "final": [
+        {
+          "raw_cells": [
+            "比準地：宗地流水號",
+            "-",
+            "比較標的1",
+            "實例編號：",
+            "1",
+            "比較標的2",
+            "實例編號：",
+            "比較標的3",
+            "實例編號："
+          ],
+          "numbers": [
+            1.0
+          ]
+        },
+        {
+          "raw_cells": [
+            "格",
+            "比準地比較價格",
+            "212,958"
+          ],
+          "numbers": [
+            212958.0
+          ]
+        },
+        {
+          "raw_cells": [
+            "比準地或各比較標的",
+            "48,481元/㎡，比較標的1交易日期當時地價指數"
+          ],
+          "numbers": []
+        },
+        {
+          "raw_cells": [
+            "區段P002-00比準地："
+          ],
+          "numbers": []
+        },
+        {
+          "raw_cells": [
+            "區段P002-00比準地：",
+            "中"
+          ],
+          "numbers": []
+        },
+        {
+          "raw_cells": [
+            "區段P002-00比準地：",
+            "路",
+            "福"
+          ],
+          "numbers": []
+        }
+      ],
+      "unit_price": [
+        {
+          "raw_cells": [
+            "土地正常單價",
+            "184,763"
+          ],
+          "numbers": [
+            184763.0
+          ]
+        }
+      ],
+      "date_adj": [
+        {
+          "raw_cells": [
+            "交易日期",
+            "調整百分率",
+            "114.05.28",
+            "2.00%"
+          ],
+          "numbers": [
+            2.0
+          ]
+        },
+        {
+          "raw_cells": [
+            "地價區段",
+            "區域因素調整百分率",
+            "P002-00",
+            "P002-00",
+            "0.00%"
+          ],
+          "numbers": [
+            0.0
+          ]
+        },
+        {
+          "raw_cells": [
+            "比 調整百分率絕對值加總",
+            "價格形成因素之相近程度",
+            "15.00%",
+            "普通"
+          ],
+          "numbers": [
+            15.0
+          ]
+        }
+      ],
+      "adjusted_price": [
+        {
+          "raw_cells": [
+            "調整至估價基準日單價(元/M )",
+            "188,459"
+          ],
+          "numbers": [
+            188459.0
+          ]
+        }
+      ],
+      "area": [
+        {
+          "raw_cells": [
+            "7面積(M2)",
+            "113.21",
+            "111.85",
+            "0.00%"
+          ],
+          "numbers": [
+            113.21,
+            111.85,
+            0.0
+          ]
+        }
+      ],
+      "width": [
+        {
+          "raw_cells": [
+            "8寬度(M)",
+            "5",
+            "7",
+            "0.00%"
+          ],
+          "numbers": [
+            5.0,
+            7.0,
+            0.0
+          ]
+        }
+      ],
+      "depth": [
+        {
+          "raw_cells": [
+            "1 9深度(M)",
+            "23",
+            "16",
+            "1.00%"
+          ],
+          "numbers": [
+            23.0,
+            16.0,
+            1.0
+          ]
+        }
+      ],
+      "shape": [
+        {
+          "raw_cells": [
+            "10形狀",
+            "方形",
+            "方形",
+            "0.00%"
+          ],
+          "numbers": [
+            0.0
+          ]
+        }
+      ],
+      "street_frontage": [
+        {
+          "raw_cells": [
+            "11臨街情形",
+            "單面臨街",
+            "單面臨街",
+            "0.00%"
+          ],
+          "numbers": [
+            0.0
+          ]
+        }
+      ],
+      "terrain": [
+        {
+          "raw_cells": [
+            "12地勢",
+            "平坦",
+            "平坦",
+            "0.00%"
+          ],
+          "numbers": [
+            0.0
+          ]
+        }
+      ],
+      "road_type": [
+        {
+          "raw_cells": [
+            "2",
+            "13道路種類",
+            "主要道路",
+            "次要道路",
+            "2.00%"
+          ],
+          "numbers": [
+            2.0,
+            2.0
+          ]
+        }
+      ],
+      "front_road_width": [
+        {
+          "raw_cells": [
+            "條件",
+            "14面前道路寬度",
+            "中山路",
+            "18",
+            "M",
+            "金包里街",
+            "6",
+            "M",
+            "5.00%"
+          ],
+          "numbers": [
+            18.0,
+            6.0,
+            5.0
+          ]
+        }
+      ],
+      "near_school": [
+        {
+          "raw_cells": [
+            "個",
+            "15接近學校之程度",
+            "金山國小",
+            "150",
+            "M",
+            "金山國小",
+            "100",
+            "M",
+            "0.00%"
+          ],
+          "numbers": [
+            150.0,
+            100.0,
+            0.0
+          ]
+        }
+      ],
+      "near_market": [
+        {
+          "raw_cells": [
+            "別",
+            "16接近市場之程度",
+            "金山市場",
+            "30",
+            "M",
+            "金山市場",
+            "92",
+            "M",
+            "0.00%"
+          ],
+          "numbers": [
+            30.0,
+            92.0,
+            0.0
+          ]
+        }
+      ],
+      "near_park": [
+        {
+          "raw_cells": [
+            "接近 17接近公園、廣場之程度",
+            "中山溫泉公園",
+            "190",
+            "M",
+            "中山溫泉公園",
+            "200",
+            "M",
+            "0.00%"
+          ],
+          "numbers": [
+            190.0,
+            200.0,
+            0.0
+          ]
+        }
+      ],
+      "near_station": [
+        {
+          "raw_cells": [
+            "調",
+            "條件 18接近車站之程度",
+            "金山區公所站",
+            "80",
+            "M",
+            "金山區公所站",
+            "190",
+            "M",
+            "0.00%"
+          ],
+          "numbers": [
+            80.0,
+            190.0,
+            0.0
+          ]
+        }
+      ],
+      "near_business": [
+        {
+          "raw_cells": [
+            "整",
+            "19接近商圈之程度",
+            "老街商圈",
+            "0",
+            "M",
+            "老街商圈",
+            "0",
+            "M",
+            "0.00%"
+          ],
+          "numbers": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "nuisance": [
+        {
+          "raw_cells": [
+            "4",
+            "20嫌惡設施(類型)",
+            "金山第一公墓",
+            "260",
+            "M",
+            "金山第一公墓",
+            "80",
+            "M",
+            "3.00%"
+          ],
+          "numbers": [
+            4.0,
+            260.0,
+            80.0,
+            3.0
+          ]
+        }
+      ],
+      "parking_ease": [
+        {
+          "raw_cells": [
+            "境條件 21停車方便性",
+            "可路邊停車",
+            "不可路邊停車",
+            "2.00%"
+          ],
+          "numbers": [
+            2.0
+          ]
+        }
+      ],
+      "zoning": [
+        {
+          "raw_cells": [
+            "22使用分區或編定用地",
+            "第二種商業區",
+            "第二種商業區",
+            "0.00%"
+          ],
+          "numbers": [
+            0.0
+          ]
+        }
+      ],
+      "bcr": [
+        {
+          "raw_cells": [
+            "23建蔽率(%)"
+          ],
+          "numbers": []
+        }
+      ],
+      "far": [
+        {
+          "raw_cells": [
+            "24容積率(%)",
+            "240%",
+            "240%",
+            "0.00%"
+          ],
+          "numbers": [
+            240.0,
+            240.0,
+            0.0
+          ]
+        }
+      ],
+      "build_ban_restrict": [
+        {
+          "raw_cells": [
+            "25有無禁限建",
+            "無",
+            "無",
+            "0.00%"
+          ],
+          "numbers": [
+            0.0
+          ]
+        }
+      ],
+      "total": [
+        {
+          "raw_cells": [
+            "合計",
+            "13.00%"
+          ],
+          "numbers": [
+            13.0
+          ]
+        }
+      ],
+      "trial_price": [
+        {
+          "raw_cells": [
+            "試算價格",
+            "比較標的權重",
+            "212,958",
+            "100%"
+          ],
+          "numbers": [
+            212958.0,
+            100.0
+          ]
+        }
+      ]
+    },
+    "appraisal_date": "1140901",
+    "case_no": "1140901-99-001",
+    "segment_nos": [
+      "P002-00",
+      "P001-00"
+    ],
+    "factors": {
+      "area": {
+        "field_no": 7,
+        "label": "7面積",
+        "conditions": [
+          "113.21",
+          "111.85"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "width": {
+        "field_no": 8,
+        "label": "8寬度",
+        "conditions": [
+          "5",
+          "7"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "depth": {
+        "field_no": 9,
+        "label": "9深度",
+        "conditions": [
+          "23",
+          "16"
+        ],
+        "diffs": [
+          1.0
+        ]
+      },
+      "shape": {
+        "field_no": 10,
+        "label": "10形狀",
+        "conditions": [
+          "方形",
+          "方形"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "street_frontage": {
+        "field_no": 11,
+        "label": "11臨街情形",
+        "conditions": [
+          "單面臨街",
+          "單面臨街"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "terrain": {
+        "field_no": 12,
+        "label": "12地勢",
+        "conditions": [
+          "平坦",
+          "平坦"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "road_type": {
+        "field_no": 13,
+        "label": "13道路種類",
+        "conditions": [
+          "主要道路",
+          "次要道路"
+        ],
+        "diffs": [
+          2.0
+        ]
+      },
+      "front_road_width": {
+        "field_no": 14,
+        "label": "14面前道路寬度",
+        "conditions": [
+          "中山路",
+          "18",
+          "金包里街",
+          "6"
+        ],
+        "diffs": [
+          5.0
+        ]
+      },
+      "near_school": {
+        "field_no": 15,
+        "label": "15接近學校之程度",
+        "conditions": [
+          "金山國小",
+          "150",
+          "金山國小",
+          "100"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "near_market": {
+        "field_no": 16,
+        "label": "16接近市場之程度",
+        "conditions": [
+          "金山市場",
+          "30",
+          "金山市場",
+          "92"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "near_park": {
+        "field_no": 17,
+        "label": "17接近公園",
+        "conditions": [
+          "中山溫泉公園",
+          "190",
+          "中山溫泉公園",
+          "200"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "near_station": {
+        "field_no": 18,
+        "label": "18接近車站之程度",
+        "conditions": [
+          "金山區公所站",
+          "80",
+          "金山區公所站",
+          "190"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "near_business": {
+        "field_no": 19,
+        "label": "19接近商圈之程度",
+        "conditions": [
+          "老街商圈",
+          "0",
+          "老街商圈",
+          "0"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "nuisance": {
+        "field_no": 20,
+        "label": "20嫌惡設施",
+        "conditions": [
+          "金山第一公墓",
+          "260",
+          "金山第一公墓",
+          "80"
+        ],
+        "diffs": [
+          3.0
+        ]
+      },
+      "parking_ease": {
+        "field_no": 21,
+        "label": "21停車方便性",
+        "conditions": [
+          "可路邊停車",
+          "不可路邊停車"
+        ],
+        "diffs": [
+          2.0
+        ]
+      },
+      "zoning": {
+        "field_no": 22,
+        "label": "22使用分區或編定用地",
+        "conditions": [
+          "第二種商業區",
+          "第二種商業區"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "bcr": {
+        "field_no": 23,
+        "label": "23建蔽率",
+        "conditions": [
+          "5",
+          "70%",
+          "70%"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "far": {
+        "field_no": 24,
+        "label": "24容積率",
+        "conditions": [
+          "240%",
+          "240%"
+        ],
+        "diffs": [
+          0.0
+        ]
+      },
+      "build_ban_restrict": {
+        "field_no": 25,
+        "label": "25有無禁限建",
+        "conditions": [
+          "無",
+          "無"
+        ],
+        "diffs": [
+          0.0
+        ]
+      }
+    },
+    "summary": {
+      "unit_price": {
+        "percents": [],
+        "values": [
+          184763.0
+        ],
+        "raw": [
+          "184,763"
+        ]
+      },
+      "adjusted_price": {
+        "percents": [],
+        "values": [
+          188459.0
+        ],
+        "raw": [
+          "188,459"
+        ]
+      },
+      "date_adj": {
+        "percents": [
+          2.0
+        ],
+        "values": [],
+        "raw": [
+          "114.05.28",
+          "2.00%"
+        ]
+      },
+      "regional": {
+        "percents": [
+          0.0
+        ],
+        "values": [],
+        "raw": [
+          "P002-00",
+          "P002-00",
+          "0.00%"
+        ]
+      },
+      "total": {
+        "percents": [
+          13.0
+        ],
+        "values": [],
+        "raw": [
+          "13.00%"
+        ]
+      },
+      "abs_sum": {
+        "percents": [
+          15.0
+        ],
+        "values": [],
+        "raw": [
+          "價格形成因素之相近程度",
+          "15.00%",
+          "普通"
+        ]
+      },
+      "trial": {
+        "percents": [
+          100.0
+        ],
+        "values": [
+          212958.0
+        ],
+        "raw": [
+          "比較標的權重",
+          "212,958",
+          "100%"
+        ]
+      },
+      "weight": {
+        "percents": [
+          100.0
+        ],
+        "values": [
+          212958.0
+        ],
+        "raw": [
+          "212,958",
+          "100%"
+        ]
+      }
+    },
+    "lots": [
+      "新北市金山區金美段489地號",
+      "新北市金山區溫泉段218地號"
+    ],
+    "notes": [
+      "依土地徵收補償市價查估辦法第17條第3項規定，放寬案例蒐集期間至估價基準",
+      "依土地徵收補償市價查估辦法第19條第2項規定，擴大蒐集範圍至金山全區及第二種住宅區，惟仍無土地交易案例，且本案勘估標的位處新北市金山區商業效益"
+    ]
+  }
+}

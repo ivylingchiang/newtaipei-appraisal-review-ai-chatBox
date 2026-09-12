@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "name": "樹林區案件相關地號之公告土地現值",
+  "purpose": "外部參考資料，供合理性檢核用。非估價依據，不得作為表3/4/5 之填載來源。",
+  "source": {
+    "provider": "新北市政府地政局",
+    "platform": "新北市資料開放平臺 OpenAPI",
+    "endpoint": "https://data.ntpc.gov.tw/api/datasets/{id}/json",
+    "datasets": {
+      "110": "fd764452-17c6-4257-b88d-2aace84b50fa",
+      "112": "5d8a8b18-501b-4916-815f-b79b2c2cc562",
+      "113": "1dcffc08-b24e-4761-b207-61109d9657a2"
+    },
+    "license": "政府資料開放授權條款-第1版",
+    "retrieved_at": "2026-09-12",
+    "note": "111年（本案基準日年期）之資料集已下架，故以 110/112/113 年作為區間參考"
+  },
+  "unit": "元/平方公尺",
+  "parcels": [
+    {
+      "role": "比準地",
+      "segment": "樹德段",
+      "lid": "1415",
+      "segment_no": "P001-00",
+      "official_value": {
+        "110": 75600,
+        "112": 111000,
+        "113": 115000
+      },
+      "note": "捷運開發區（變更前為第一種住宅區）；110→112年 +46.8%，與捷運萬大樹林線二期計畫發布時序相符"
+    },
+    {
+      "role": "比較標的1",
+      "segment": "樹德段",
+      "lid": "284",
+      "segment_no": "P002-00",
+      "official_value": {
+        "110": 98100,
+        "112": 110000,
+        "113": 114000
+      }
+    },
+    {
+      "role": "比較標的2",
+      "segment": "太平段",
+      "lid": "367",
+      "segment_no": "P003-00",
+      "official_value": {
+        "110": 75200,
+        "112": 87200,
+        "113": 89700
+      }
+    },
+    {
+      "role": "比較標的3",
+      "segment": "文林段",
+      "lid": "317",
+      "segment_no": "P004-00",
+      "official_value": {
+        "110": 80400,
+        "112": 91000,
+        "113": 93700
+      }
+    }
+  ],
+  "case_table4_actual": {
+    "source": "doc/題目.pdf 表4（原始文件所載，屬真實資料）",
+    "appraisal_date": "1110901",
+    "comparables": [
+      {
+        "no": 1,
+        "segment_no": "P002-00",
+        "lot": "樹德段284",
+        "unit_price": 130167,
+        "date_adj_pct": 5.96,
+        "adjusted_price": 137925
+      },
+      {
+        "no": 2,
+        "segment_no": "P003-00",
+        "lot": "太平段367、917",
+        "unit_price": 135275,
+        "date_adj_pct": 4.09,
+        "adjusted_price": 140808
+      },
+      {
+        "no": 3,
+        "segment_no": "P004-00",
+        "lot": "文林段317",
+        "unit_price": 170909,
+        "date_adj_pct": 5.49,
+        "adjusted_price": 180292
+      }
+    ]
+  }
+}

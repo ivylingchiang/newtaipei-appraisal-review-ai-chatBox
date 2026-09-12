@@ -1,0 +1,1236 @@
+{
+  "schema_version": "1.0",
+  "count": 74,
+  "images": [
+    {
+      "image_id": "shulin.case_forms.p001",
+      "region": "shulin",
+      "doc_id": "case_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/題目.pdf",
+      "page": 1,
+      "path": "regions/shulin/img/case_forms_p001.jpg",
+      "caption": "地價區段勘查表",
+      "text_len": 1961,
+      "tags": [
+        "表3"
+      ],
+      "sha256_16": "4dfb93efa2c33630",
+      "bytes": 235321
+    },
+    {
+      "image_id": "shulin.case_forms.p002",
+      "region": "shulin",
+      "doc_id": "case_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/題目.pdf",
+      "page": 2,
+      "path": "regions/shulin/img/case_forms_p002.jpg",
+      "caption": "地價區段勘查表",
+      "text_len": 1978,
+      "tags": [
+        "表3"
+      ],
+      "sha256_16": "4b6b573dae0ccf2e",
+      "bytes": 232884
+    },
+    {
+      "image_id": "shulin.case_forms.p003",
+      "region": "shulin",
+      "doc_id": "case_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/題目.pdf",
+      "page": 3,
+      "path": "regions/shulin/img/case_forms_p003.jpg",
+      "caption": "地價區段勘查表",
+      "text_len": 1971,
+      "tags": [
+        "表3"
+      ],
+      "sha256_16": "baae8f55521cb747",
+      "bytes": 232103
+    },
+    {
+      "image_id": "shulin.case_forms.p004",
+      "region": "shulin",
+      "doc_id": "case_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/題目.pdf",
+      "page": 4,
+      "path": "regions/shulin/img/case_forms_p004.jpg",
+      "caption": "地價區段勘查表",
+      "text_len": 2005,
+      "tags": [
+        "表3"
+      ],
+      "sha256_16": "ab4f60106d5ddcac",
+      "bytes": 239483
+    },
+    {
+      "image_id": "shulin.case_forms.p005",
+      "region": "shulin",
+      "doc_id": "case_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/題目.pdf",
+      "page": 5,
+      "path": "regions/shulin/img/case_forms_p005.jpg",
+      "caption": "表5-1 影響地價區域因素分析明細表（普通住宅用地）",
+      "text_len": 893,
+      "tags": [
+        "表4",
+        "表5"
+      ],
+      "sha256_16": "c48be1ee72d84f68",
+      "bytes": 281766
+    },
+    {
+      "image_id": "shulin.case_forms.p006",
+      "region": "shulin",
+      "doc_id": "case_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/題目.pdf",
+      "page": 6,
+      "path": "regions/shulin/img/case_forms_p006.jpg",
+      "caption": "表4 比較法調查估價表",
+      "text_len": 1097,
+      "tags": [
+        "表4"
+      ],
+      "sha256_16": "7fe4d9c1899ee9ff",
+      "bytes": 213069
+    },
+    {
+      "image_id": "shulin.criteria_tables.p001",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 1,
+      "path": "regions/shulin/img/criteria_tables_p001.jpg",
+      "caption": "新北市樹林區普通住宅用地影響地價區域因素評價基準明細表",
+      "text_len": 1276,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "653efb0734c405e8",
+      "bytes": 187752
+    },
+    {
+      "image_id": "shulin.criteria_tables.p002",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 2,
+      "path": "regions/shulin/img/criteria_tables_p002.jpg",
+      "caption": "新北市樹林區普通住宅用地影響地價區域因素評價基準明細表",
+      "text_len": 1750,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "000446bf630c9970",
+      "bytes": 214528
+    },
+    {
+      "image_id": "shulin.criteria_tables.p003",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 3,
+      "path": "regions/shulin/img/criteria_tables_p003.jpg",
+      "caption": "新北市樹林區普通住宅用地影響地價區域因素評價基準明細表",
+      "text_len": 1654,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "5489cee10edb127f",
+      "bytes": 201583
+    },
+    {
+      "image_id": "shulin.criteria_tables.p004",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 4,
+      "path": "regions/shulin/img/criteria_tables_p004.jpg",
+      "caption": "新北市樹林區普通住宅用地影響地價區域因素評價基準明細表",
+      "text_len": 1822,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "a2f89c6a9e41b532",
+      "bytes": 221911
+    },
+    {
+      "image_id": "shulin.criteria_tables.p005",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 5,
+      "path": "regions/shulin/img/criteria_tables_p005.jpg",
+      "caption": "新北市樹林區普通住宅用地影響地價區域因素評價基準明細表",
+      "text_len": 1902,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "ead373ace8edb454",
+      "bytes": 225167
+    },
+    {
+      "image_id": "shulin.criteria_tables.p006",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 6,
+      "path": "regions/shulin/img/criteria_tables_p006.jpg",
+      "caption": "新北市樹林區住宅用地影響地價個別因素評價基準明細表",
+      "text_len": 1438,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "1b66f447dac1e3ab",
+      "bytes": 195158
+    },
+    {
+      "image_id": "shulin.criteria_tables.p007",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 7,
+      "path": "regions/shulin/img/criteria_tables_p007.jpg",
+      "caption": "新北市樹林區住宅用地影響地價個別因素評價基準明細表",
+      "text_len": 1874,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "e9ca30823b3fccd9",
+      "bytes": 217577
+    },
+    {
+      "image_id": "shulin.criteria_tables.p008",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 8,
+      "path": "regions/shulin/img/criteria_tables_p008.jpg",
+      "caption": "新北市樹林區住宅用地影響地價個別因素評價基準明細表",
+      "text_len": 1526,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "2acc87faf8c8ab1b",
+      "bytes": 201231
+    },
+    {
+      "image_id": "shulin.criteria_tables.p009",
+      "region": "shulin",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表.pdf",
+      "page": 9,
+      "path": "regions/shulin/img/criteria_tables_p009.jpg",
+      "caption": "新北市樹林區住宅用地影響地價個別因素評價基準明細表",
+      "text_len": 480,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "490cf7bcf2ec5d92",
+      "bytes": 98111
+    },
+    {
+      "image_id": "jinshan.reference_forms.p001",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 1,
+      "path": "regions/jinshan/img/reference_forms_p001.jpg",
+      "caption": "地價區段勘查表",
+      "text_len": 2358,
+      "tags": [
+        "表3"
+      ],
+      "sha256_16": "876dfc3ea6af3e89",
+      "bytes": 261235
+    },
+    {
+      "image_id": "jinshan.reference_forms.p002",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 2,
+      "path": "regions/jinshan/img/reference_forms_p002.jpg",
+      "caption": "影響地價區域因素分析明細表（商業用地）",
+      "text_len": 1340,
+      "tags": [
+        "表5"
+      ],
+      "sha256_16": "6fe00825e6cdcf60",
+      "bytes": 278223
+    },
+    {
+      "image_id": "jinshan.reference_forms.p003",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 3,
+      "path": "regions/jinshan/img/reference_forms_p003.jpg",
+      "caption": "比較法調查估價表",
+      "text_len": 1578,
+      "tags": [
+        "表4"
+      ],
+      "sha256_16": "d22c397234c29ac7",
+      "bytes": 288932
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004.jpg",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "text_len": 218,
+      "tags": [
+        "地價區段略圖"
+      ],
+      "sha256_16": "8d64d650755b1747",
+      "bytes": 606784
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005.jpg",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "text_len": 287,
+      "tags": [
+        "使用分區圖"
+      ],
+      "sha256_16": "e3dff6c1e511016d",
+      "bytes": 598006
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006.jpg",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "text_len": 225,
+      "tags": [
+        "地價區段圖"
+      ],
+      "sha256_16": "26882345ce223ab7",
+      "bytes": 609316
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.map00",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "map",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_map_00.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 1838,
+      "height": 914,
+      "tags": [
+        "地價區段略圖",
+        "地價區段略圖"
+      ],
+      "sha256_16": "d509834f50473202",
+      "bytes": 591565
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.map01",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "map",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_map_01.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 1838,
+      "height": 835,
+      "tags": [
+        "地價區段略圖",
+        "地價區段略圖"
+      ],
+      "sha256_16": "8301cf33d8038c58",
+      "bytes": 531517
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo02",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_02.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 232,
+      "height": 217,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "623eb15c1fbc3745",
+      "bytes": 7301
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo03",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_03.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 204,
+      "height": 229,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "f18ce6c209134dc8",
+      "bytes": 9190
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo04",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_04.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 236,
+      "height": 221,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "7d8b1e163e853d5b",
+      "bytes": 9604
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo05",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_05.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 256,
+      "height": 194,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "34d9d7408946113e",
+      "bytes": 8029
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo06",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_06.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 247,
+      "height": 209,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "18480acce7a71cfa",
+      "bytes": 7600
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo07",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_07.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 255,
+      "height": 193,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "a536c4330289b69b",
+      "bytes": 7430
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo08",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_08.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 233,
+      "height": 225,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "a8080fa41e32b4cc",
+      "bytes": 9832
+    },
+    {
+      "image_id": "jinshan.reference_forms.p004.photo09",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/reference_forms_p004_photo_09.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段略圖",
+      "width": 236,
+      "height": 221,
+      "tags": [
+        "地價區段略圖",
+        "現況照片"
+      ],
+      "sha256_16": "547090d2c335dc4d",
+      "bytes": 9595
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.map00",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "map",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_map_00.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 1842,
+      "height": 914,
+      "tags": [
+        "使用分區圖",
+        "地價區段略圖"
+      ],
+      "sha256_16": "594a5cc831917a07",
+      "bytes": 223720
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.map01",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "map",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_map_01.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 1840,
+      "height": 830,
+      "tags": [
+        "使用分區圖",
+        "地價區段略圖"
+      ],
+      "sha256_16": "d558cf83921ab9d7",
+      "bytes": 165843
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo02",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_02.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 231,
+      "height": 217,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "5588912dc8067f47",
+      "bytes": 7525
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo03",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_03.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 205,
+      "height": 231,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "e643804cf46ab3d9",
+      "bytes": 9424
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo04",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_04.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 234,
+      "height": 219,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "a313ca75aeb524b3",
+      "bytes": 9596
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo05",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_05.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 253,
+      "height": 192,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "f27be17eb342a8e8",
+      "bytes": 7924
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo06",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_06.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 243,
+      "height": 206,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "61ba339167068693",
+      "bytes": 7456
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo07",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_07.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 249,
+      "height": 189,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "62804d127a108d74",
+      "bytes": 7314
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo08",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_08.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 227,
+      "height": 219,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "0b0534e2df9edbbc",
+      "bytes": 9469
+    },
+    {
+      "image_id": "jinshan.reference_forms.p005.photo09",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/reference_forms_p005_photo_09.png",
+      "caption": "新北市金山區土地徵收市價查估地價使用分區圖",
+      "width": 234,
+      "height": 219,
+      "tags": [
+        "使用分區圖",
+        "現況照片"
+      ],
+      "sha256_16": "8308cb9788bc506d",
+      "bytes": 9480
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.map00",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "map",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_map_00.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 1838,
+      "height": 914,
+      "tags": [
+        "地價區段圖",
+        "地價區段略圖"
+      ],
+      "sha256_16": "d509834f50473202",
+      "bytes": 591565
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.map01",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "map",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_map_01.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 1838,
+      "height": 603,
+      "tags": [
+        "地價區段圖",
+        "地價區段略圖"
+      ],
+      "sha256_16": "efc9de8bccf29a7d",
+      "bytes": 401222
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo02",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_02.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 253,
+      "height": 237,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "633dc21b10a654f2",
+      "bytes": 8262
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo03",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_03.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 224,
+      "height": 251,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "11eb348b5a833d00",
+      "bytes": 10277
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo04",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_04.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 254,
+      "height": 237,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "1931c9caa8c522a4",
+      "bytes": 10475
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo05",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_05.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 274,
+      "height": 208,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "db462ed564caedaa",
+      "bytes": 8648
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo06",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_06.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 264,
+      "height": 224,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "7018c8fdcb7f1150",
+      "bytes": 8249
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo07",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_07.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 250,
+      "height": 241,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "dc77d27d7dc8616c",
+      "bytes": 10651
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo08",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_08.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 254,
+      "height": 238,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "77c0d277d327bb75",
+      "bytes": 10638
+    },
+    {
+      "image_id": "jinshan.reference_forms.p006.photo09",
+      "region": "jinshan",
+      "doc_id": "reference_forms",
+      "kind": "photo",
+      "source_pdf": "doc/rules/查估書表範本.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/reference_forms_p006_photo_09.png",
+      "caption": "新北市金山區土地徵收市價查估地價區段圖",
+      "width": 258,
+      "height": 196,
+      "tags": [
+        "地價區段圖",
+        "現況照片"
+      ],
+      "sha256_16": "075f315ae9d869f7",
+      "bytes": 7613
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p001",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 1,
+      "path": "regions/jinshan/img/criteria_tables_p001.jpg",
+      "caption": "新北市金山區商業用地影響地價區域因素評價基準明細表",
+      "text_len": 1085,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "802846cce517e291",
+      "bytes": 230781
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p002",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 2,
+      "path": "regions/jinshan/img/criteria_tables_p002.jpg",
+      "caption": "新北市金山區商業用地影響地價區域因素評價基準明細表",
+      "text_len": 1546,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "609c7dcd20d9d778",
+      "bytes": 273522
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p003",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 3,
+      "path": "regions/jinshan/img/criteria_tables_p003.jpg",
+      "caption": "新北市金山區商業用地影響地價區域因素評價基準明細表",
+      "text_len": 1588,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "c64a81b3709e41ea",
+      "bytes": 279823
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p004",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 4,
+      "path": "regions/jinshan/img/criteria_tables_p004.jpg",
+      "caption": "新北市金山區商業用地影響地價區域因素評價基準明細表",
+      "text_len": 1120,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "169629a062b619a0",
+      "bytes": 216213
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p005",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 5,
+      "path": "regions/jinshan/img/criteria_tables_p005.jpg",
+      "caption": "新北市金山區商業用地影響地價區域因素評價基準明細表",
+      "text_len": 1492,
+      "tags": [
+        "基準表-區域因素"
+      ],
+      "sha256_16": "0e3c39324e63f37d",
+      "bytes": 277629
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p006",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 6,
+      "path": "regions/jinshan/img/criteria_tables_p006.jpg",
+      "caption": "新北市金山區商業用地影響地價個別因素評價基準明細表",
+      "text_len": 1486,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "37ccf115f927e6a7",
+      "bytes": 255462
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p007",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 7,
+      "path": "regions/jinshan/img/criteria_tables_p007.jpg",
+      "caption": "新北市金山區商業用地影響地價個別因素評價基準明細表",
+      "text_len": 1932,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "9ff723d57ed0fe53",
+      "bytes": 298237
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p008",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 8,
+      "path": "regions/jinshan/img/criteria_tables_p008.jpg",
+      "caption": "新北市金山區商業用地影響地價個別因素評價基準明細表",
+      "text_len": 1441,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "d2666be1564cd397",
+      "bytes": 250564
+    },
+    {
+      "image_id": "jinshan.criteria_tables.p009",
+      "region": "jinshan",
+      "doc_id": "criteria_tables",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/評價基準明細表範例.pdf",
+      "page": 9,
+      "path": "regions/jinshan/img/criteria_tables_p009.jpg",
+      "caption": "新北市金山區商業用地影響地價個別因素評價基準明細表",
+      "text_len": 498,
+      "tags": [
+        "基準表-個別因素"
+      ],
+      "sha256_16": "5a2bf789cee9f1bb",
+      "bytes": 119193
+    },
+    {
+      "image_id": "_common.manual.p016",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 16,
+      "path": "common/img/manual_p016.jpg",
+      "caption": "之適合性進行檢視。",
+      "text_len": 745,
+      "tags": [
+        "表3",
+        "表4",
+        "表5",
+        "基準表-區域因素",
+        "基準表-個別因素"
+      ],
+      "sha256_16": "3c8e2fdba0a3d9ad",
+      "bytes": 266483
+    },
+    {
+      "image_id": "_common.manual.p064",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 64,
+      "path": "common/img/manual_p064.jpg",
+      "caption": "現期：1030902-1040301",
+      "text_len": 653,
+      "tags": [],
+      "sha256_16": "9320a3d59f8de7bb",
+      "bytes": 221482
+    },
+    {
+      "image_id": "_common.manual.p065",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 65,
+      "path": "common/img/manual_p065.jpg",
+      "caption": "各欄位填寫方式如下：",
+      "text_len": 737,
+      "tags": [
+        "表3"
+      ],
+      "sha256_16": "6853e51a6a25078c",
+      "bytes": 257716
+    },
+    {
+      "image_id": "_common.manual.p066",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 66,
+      "path": "common/img/manual_p066.jpg",
+      "caption": "（十）本表應註明填寫日期，並依各直轄市、縣（市）政府分層負責",
+      "text_len": 531,
+      "tags": [
+        "表3"
+      ],
+      "sha256_16": "85452df258cf8fe3",
+      "bytes": 199932
+    },
+    {
+      "image_id": "_common.manual.p067",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 67,
+      "path": "common/img/manual_p067.jpg",
+      "caption": "陸、 公共設施保留地圖例及計算例",
+      "text_len": 685,
+      "tags": [],
+      "sha256_16": "a201fae184e2cbac",
+      "bytes": 250800
+    },
+    {
+      "image_id": "_common.manual.p068",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 68,
+      "path": "common/img/manual_p068.jpg",
+      "caption": "因素調整估計之區段地價平均計算結果定之，計算結果較高",
+      "text_len": 392,
+      "tags": [],
+      "sha256_16": "5a02db01d95fd5fd",
+      "bytes": 190715
+    },
+    {
+      "image_id": "_common.manual.p069",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 69,
+      "path": "common/img/manual_p069.jpg",
+      "caption": "2.選取比準地地價查估之比較標的：",
+      "text_len": 345,
+      "tags": [],
+      "sha256_16": "1d29cbe57f90b5d3",
+      "bytes": 169601
+    },
+    {
+      "image_id": "_common.manual.p070",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 70,
+      "path": "common/img/manual_p070.jpg",
+      "caption": "2.推估比準地E地價：可採實例*1、實例*2 (免進行區域因素調",
+      "text_len": 358,
+      "tags": [],
+      "sha256_16": "567ebbbd3105a43b",
+      "bytes": 173777
+    },
+    {
+      "image_id": "_common.manual.p071",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 71,
+      "path": "common/img/manual_p071.jpg",
+      "caption": "1.地價區段P1之區段地價為20,000元/M2，毗鄰區段P3長度為",
+      "text_len": 590,
+      "tags": [],
+      "sha256_16": "c0dbe22441d3cc7f",
+      "bytes": 166317
+    },
+    {
+      "image_id": "_common.manual.p072",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 72,
+      "path": "common/img/manual_p072.jpg",
+      "caption": "表8-2 公共設施保留地地價加權平均計算表(適用於土地徵收補",
+      "text_len": 403,
+      "tags": [],
+      "sha256_16": "a079c6f389709496",
+      "bytes": 163973
+    },
+    {
+      "image_id": "_common.manual.p073",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 73,
+      "path": "common/img/manual_p073.jpg",
+      "caption": "區段分別選取比準地後估計出之區段地價及毗鄰區段長",
+      "text_len": 664,
+      "tags": [],
+      "sha256_16": "526e429af14d1071",
+      "bytes": 189916
+    },
+    {
+      "image_id": "_common.manual.p074",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 74,
+      "path": "common/img/manual_p074.jpg",
+      "caption": "表8-2 公共設施保留地地價加權平均計算表(適用於土地徵收補",
+      "text_len": 399,
+      "tags": [],
+      "sha256_16": "7bfcc5e541739ce7",
+      "bytes": 169168
+    },
+    {
+      "image_id": "_common.manual.p075",
+      "region": "_common",
+      "doc_id": "manual",
+      "kind": "page_render",
+      "source_pdf": "doc/rules/土地徵收補償市價查估作業手冊.pdf",
+      "page": 75,
+      "path": "common/img/manual_p075.jpg",
+      "caption": "表8-1 公共設施保留地地價加權平均計算表",
+      "text_len": 358,
+      "tags": [],
+      "sha256_16": "7efbbdda3c678d06",
+      "bytes": 156747
+    },
+    {
+      "image_id": "_common.problem_statement.p001",
+      "region": "_common",
+      "doc_id": "problem_statement",
+      "kind": "page_render",
+      "source_pdf": "doc/【命題文件】地政局-新北市政府AI黑客松競賽.pdf",
+      "page": 1,
+      "path": "common/img/problem_statement_p001.jpg",
+      "caption": "*題目：AI 輔助不動產估價案件審查",
+      "text_len": 571,
+      "tags": [
+        "表3",
+        "表4"
+      ],
+      "sha256_16": "e2e156a6c881f3bb",
+      "bytes": 210682
+    }
+  ]
+}
