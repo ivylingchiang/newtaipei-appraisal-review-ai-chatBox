@@ -249,10 +249,6 @@ money, so unknown fields stay blank and are listed for field survey.
 
 ## 8. Notes
 
-- `dev/` holds working notes on the document system, form-filling rules and external data sources.
-  It is git-ignored and exists only in local checkouts, so links pointing into `dev/` from
-  `datasets/README.md`, `engine/README.md` and the `output/*/README.md` files will not resolve
-  in a fresh clone.
 - `datasets/external/cache/` holds ~17 MB of raw open-data API responses. They are kept in the
   repository so the third version can be reproduced offline; `engine/poi_fetch.py` refetches them
   from scratch if deleted.

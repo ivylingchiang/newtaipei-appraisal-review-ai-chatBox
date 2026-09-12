@@ -28,7 +28,7 @@ python3 engine/test_engine.py         # 正向 + 反向測試
 
 ## 2. 檢查項目
 
-對應作業手冊「審查重點」與 [`dev/01-文件體系與審查填表指南.md`](../dev/01-文件體系與審查填表指南.md) 的 R1~R14 矩陣。
+對應作業手冊「審查重點」，完整矩陣見 [`datasets/common/review_rules.json`](../datasets/common/review_rules.json) 之 R1~R14 跨表參照矩陣。
 
 | 規則 | 內容 | 手冊審查重點 |
 |---|---|---|

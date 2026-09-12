@@ -113,7 +113,7 @@ def fill_facilities(ws, sn, inf):
                         [sn, nc, f"{e['label']}－{s['name']}", "（留空）",
                          "開放資料無此類設施之可定位記錄",
                          f"{s['note'] or '無對應開放資料'}｜查無資料 ≠ 無設施，"
-                         f"不得填「無」（dev/03 §3.4(c)）",
+                         f"不得填「無」（正向設施之「無」＝最劣級，嫌惡設施之「無」＝最優級）",
                          f"{REGION}.regional.{code}", "資料不足"])
                     continue
                 name, dist, conf, src, sub_label = (r["nearest"], r["distance_m"],

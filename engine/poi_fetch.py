@@ -2,7 +2,7 @@
 """抓取並快取 doc/extraInfo/poi-links.md 所列開放資料 + OSM 補充圖資。
 
 輸出：datasets/external/cache/*.json
-所有來源與可信度說明見 dev/04、dev/05。
+各來源之信心等級說明見 output/thirdVersion/README.md §3。
 """
 import json, os, sys, urllib.request, urllib.parse, csv, io, math, time
 
