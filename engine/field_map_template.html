@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>表3／表4／表5-1 欄位對照全覽</title>
+<title>表3／表4／表5 欄位對照全覽</title>
 <style>
 :root{
   --bg:#f6f7f9; --panel:#fff; --ink:#1b1f24; --muted:#5b6570; --line:#e2e6ea;
@@ -177,7 +177,7 @@ ul.ml li{margin:3px 0}
 <body>
 <header>
   <div class="hd">
-    <h1>表3／表4／表5-1 欄位對照全覽</h1>
+    <h1>表3／表4／表5 欄位對照全覽</h1>
     <div class="sub">每一欄位與儲存格所<b>應</b>對照的表格、基準明細表細項、計算公式、審查交叉規則，
       以及目前留白處所使用的替代資料來源與計算方式</div>
     <div class="meta" id="meta"></div>
@@ -212,8 +212,8 @@ $('#meta').innerHTML = [
   ['比較標的', DATA.case.comparables.join('、')]
 ].map(([k,v]) => `${E(k)}：<b>${E(v)}</b>`).join('');
 
-const TABS = [['t3','表3 地價區段勘查表'],['t5','表5-1 區域因素分析明細表'],
-              ['t4','表4 比較法調查估價表'],['gap','缺少的資料與替代方式'],
+const TABS = [['t3','表3 地價區段勘查表'],['t4','表4 比較法調查估價表'],
+              ['t5','表5 影響地價區域因素分析明細表'],['gap','缺少的資料與替代方式'],
               ['src','開放資料來源'],['rule','公式與審查規則']];
 $('#nav').innerHTML = TABS.map(([k,l]) =>
   `<button data-t="${k}" aria-selected="${k===tab}">${E(l)}</button>`).join('') +
@@ -242,7 +242,8 @@ window.pick = pick;
 function viewT3(){
   const gs = {};
   DATA.regional.filter(hit).forEach(f => (gs[f.group] = gs[f.group]||[]).push(f));
-  let h = `<div class="card"><h2>區域因素評價細項 29 項 <small>表3 勘查欄位 → 評價基準明細表 → 表5-1 列位</small></h2>`;
+  let h = `<div class="card"><h2>表3 地價區段勘查表
+    <small>區域因素評價細項 29 項　表3 勘查欄位 → 評價基準明細表 → 表5 列位</small></h2>`;
   if (!Object.keys(gs).length) h += `<div class="empty">無符合的欄位</div>`;
   for (const g of Object.keys(gs).sort((a,b)=>a-b)){
     const fs = gs[g];
@@ -285,7 +286,7 @@ function legend(){
 /* ══════════════════════════════════════════════ 表5 view */
 function viewT5(){
   const L = DATA.t5_layout, comps = DATA.case.comparables;
-  let h = `<div class="card"><h2>表5-1 影響地價區域因素分析明細表（普通住宅用地）
+  let h = `<div class="card"><h2>表5 影響地價區域因素分析明細表（普通住宅用地）
     <small>點任一儲存格查看其對照與公式</small></h2><div class="tw"><table class="f">
     <thead><tr><th rowspan="2" class="rn">列</th><th rowspan="2">修正細項</th>
     <th colspan="2">比準地 ${E(DATA.case.base_segment)}</th>` +
@@ -371,7 +372,7 @@ const CHAIN = [
   {row:7, name:'調整至估價基準日單價', base:'—', cols:0, key:'adjusted',
    f:'土地正常單價 ×（1＋交易日期調整百分率）', st:'ok'},
   {row:8, name:'地價區段號／區域因素調整百分率', base:'D8', cols:2, key:'regional',
-   f:'＝表5-1 影響地價區域因素總修正數（第42列）', st:'missing'},
+   f:'＝表5 影響地價區域因素總修正數（第42列）', st:'missing'},
 ];
 const TOTALS = [
   {row:29, name:'個別因素差異率合計', key:'ind_total',
@@ -569,7 +570,7 @@ function detailRegional(f){
         <span class="cell">${E(f.t3.count_cell)}</span>（共M級）`:''}
       ${(f.t3.subs||[]).length?`<br>設施子欄　${f.t3.subs.map(s=>
         `<span class="cell">${E(s.cell)} ${E(s.name)}</span>`).join(' ')}`:''}</span></div>
-    ${f.t5.row?`<div class="step"><span class="tg">表5-1</span><span>第 ${f.t5.row} 列
+    ${f.t5.row?`<div class="step"><span class="tg">表5</span><span>第 ${f.t5.row} 列
       <br>比準地 <span class="cell">${E(f.t5.base_rank_cell)}</span> 序號
       <span class="cell">${E(f.t5.base_label_cell)}</span> 等級
       ${f.t5.comp_cells.map(c=>`<br>${E(c.seg)} <span class="cell">${E(c.rank)}</span>序號
@@ -672,7 +673,7 @@ function detailSubtotal(g){
   const fs = DATA.regional.filter(f=>f.group===+g);
   const bad = fs.filter(f=>f.status==='missing'||f.status==='insufficient');
   return `<div class="dt"><h3>（${g}）${E(GRP[g])} 小計</h3>
-    <div class="path">表5-1 第 ${DATA.t5_layout.subtotal_rows[g]} 列　${fs.length} 細項</div></div>
+    <div class="path">表5 第 ${DATA.t5_layout.subtotal_rows[g]} 列　${fs.length} 細項</div></div>
   <div class="sec"><h4>計算公式</h4><div class="formula">小計 ＝ Σ 該組各細項修正百分比
 最大影響範圍 ＝ ±${fs.reduce((a,f)=>a+f.max_adjustment,0).toFixed(2)}%</div>
     <div class="note">該組任一細項不可判級，小計即不成立 —— 不以部分加總充數。</div></div>
@@ -690,7 +691,7 @@ function detailTotal(){
   const bad = [...new Set(DATA.regional.filter(f=>f.status==='missing'||f.status==='insufficient')
     .map(f=>f.group))].sort();
   return `<div class="dt"><h3>影響地價區域因素總修正數</h3>
-    <div class="path">表5-1 第 ${DATA.t5_layout.total_row} 列 → 表4 第 8 列 區域因素調整百分率</div></div>
+    <div class="path">表5 第 ${DATA.t5_layout.total_row} 列 → 表4 第 8 列 區域因素調整百分率</div></div>
   <div class="sec"><h4>計算公式</h4><div class="formula">總修正數 ＝ (1)+(2)+(3)+(4)+(5)+(6)+(7)+(8) 八組小計
 　　　　　　→ 表4 區域因素調整百分率（J8／N8／R8）
 　　　　　　→ 表4 試算價格 ＝ 調整至基準日單價 ×(1＋區域因素調整%＋個別因素合計%)</div>
@@ -732,8 +733,8 @@ const CHAIN_D = {
     up:'本表第5、6列', st:'題目原載並已驗算相符（engine/checks.py check_price_chain）',
     rule:'全精度連乘，表上顯示值為進位後結果，核算允許 ±1 元容差'},
   regional:{t:'地價區段號／區域因素調整百分率',p:'表4 第8列（區段號 D8／G8…；調整率 J8／N8／R8）',
-    f:'區域因素調整百分率 ＝ 表5-1 影響地價區域因素總修正數（第42列）',
-    up:'表5-1 影響地價區域因素分析明細表',
+    f:'區域因素調整百分率 ＝ 表5 影響地價區域因素總修正數（第42列）',
+    up:'表5 影響地價區域因素分析明細表',
     st:'資料不足：表5 總修正數不成立（(6)(7) 小計因設施覆蓋不足而不成立）',
     rule:'交叉規則 R4（數值必須相符）、R3（區段號須與表3 一致）；手冊 肆步驟6：表5 須先於表4'},
 };

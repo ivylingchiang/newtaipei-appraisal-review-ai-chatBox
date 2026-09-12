@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""表3／表4／表5-1 欄位對照全覽 — 產生互動式 HTML
+"""表3／表4／表5 欄位對照全覽 — 產生互動式 HTML
 
 每一個儲存格／欄位可點選，顯示：
   應對照的表格與欄位、評價基準明細表級距、計算公式、審查交叉規則、
@@ -330,7 +330,7 @@ def build():
                                 else "外部推算（OpenStreetMap，信心 C）")
         elif code == "other":
             status = "ok"
-            status_label = ("題目原載：doc/題目.pdf 表5-1 原已填載「等級－／無／修正 0.00」，"
+            status_label = ("題目原載：doc/題目.pdf 表5 原已填載「等級－／無／修正 0.00」，"
                             "屬源文件既有資料，非推導值")
         elif base_lv:
             status, status_label = "ok", "題目原載事實 → 可直接查表判級"
@@ -372,7 +372,7 @@ def build():
             elif code == "other":
                 per_seg.append({"seg": sn, "rank": None, "label": "無",
                                 "detail": "題目原載：等級欄「－」、優劣等級「無」、修正百分比 0.00",
-                                "src": "doc/題目.pdf 表5-1", "conf": None, "borderline": False})
+                                "src": "doc/題目.pdf 表5", "conf": None, "borderline": False})
             else:
                 per_seg.append({"seg": sn, "rank": None, "label": None,
                                 "detail": levels[sn][1].get(code) or "資料不足",
