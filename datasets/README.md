@@ -118,12 +118,28 @@ lookup need no interpretation at runtime.
 
 ### Looking up an adjustment rate
 
+⚠️ **Form 5 and Form 4 read the same matrix in opposite directions.** This is the single easiest
+thing to get wrong in the whole system, so the two are separate functions in
+`engine/grading.py` and must never be swapped.
+
+| | Form 5 — regional factors | Form 4 / Form 6 — individual factors |
+|---|---|---|
+| Function | `adjust_regional(item, base, comp)` | `adjust(item, base, comp)` |
+| Formula | `(base_rank - comparable_rank) * step` | `(comparable_rank - base_rank) * step` |
+| Matrix | `matrix[comparable_rank - 1][base_rank - 1]` | `matrix[base_rank - 1][comparable_rank - 1]` |
+| Sign | comparable graded **worse** → **negative** | comparable **worse** → **positive** |
+| Calibrated against | The authority's ruling: on a Form 5-1 row the grade ordinal and the adjustment percentage sit side by side, so their signs must agree — a worse grade cannot show a positive number | The completed Jinshan Form 4: all five non-zero items match this direction, and all five break under the other |
+
 ```python
-adj = item["matrix"][base_rank - 1][comparable_rank - 1]   # direct
-adj = (comparable_rank - base_rank) * item["step"]         # equivalent
+# Form 5 — Shulin P001-00 (FAR 260 %, 普通, 3) vs P002-00 (200 %, 稍劣, 4)
+adj = (3 - 4) * 6.25   # → -6.25
+
+# Form 4 — Jinshan benchmark road 18 m (稍優, 2) vs comparable 6 m (稍劣, 4)
+adj = (4 - 2) * 2.50   # → +5.00, matching the printed form
 ```
 
-**Sign convention:** a positive rate means the comparable is *worse* than the benchmark.
+Both conventions are recorded in `common/formulas.json` under `matrix.table5_regional`
+and `matrix.table4_individual`, each with its evidence.
 
 ### Matching a fact to a level
 

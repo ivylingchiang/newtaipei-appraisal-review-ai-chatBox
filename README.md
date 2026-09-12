@@ -134,7 +134,10 @@ reciprocal adjustment matrix, so grading and rate lookup need no interpretation 
 }
 ```
 
-Adjustment rate is then simply `matrix[benchmark_rank - 1][comparable_rank - 1]`.
+Adjustment rate comes from that matrix — but **Form 5 and Form 4 read it in opposite
+directions**: `(base − comparable) × step` for regional factors, `(comparable − base) × step`
+for individual ones. They are separate functions in `engine/grading.py`; see
+`datasets/README.md §4` for the calibration evidence behind each.
 
 ### 3.3 Rebuilding
 

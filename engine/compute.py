@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """輔助填表：由表3 觀測值推導表5 之優劣等級與修正百分比"""
 import re
-from grading import grade, adjust, Ungradable
+from grading import grade, adjust, adjust_regional, Ungradable
 
 # 表3 觀測欄位 → 區域因素細項代碼
 OBS_TO_ITEM = {
@@ -128,7 +128,7 @@ def derive_table5(ds, region, case, segments):
             lv, gp = levels.get(sn, ({}, {}))
             c = lv.get(code)
             if base and c:
-                cells.append(c); adjs.append(adjust(it, base["rank"], c["rank"]))
+                cells.append(c); adjs.append(adjust_regional(it, base["rank"], c["rank"]))
             else:
                 cells.append(None); adjs.append(None)
                 gaps.append(gp.get(code) or

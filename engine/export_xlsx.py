@@ -15,7 +15,7 @@ from openpyxl.styles import PatternFill, Font, Alignment
 
 from loader import Dataset
 from compute import derive_segment_levels, derive_table4_individual, OBS_TO_ITEM
-from grading import adjust
+from grading import adjust_regional
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IN = os.path.join(ROOT, "input")
@@ -346,7 +346,7 @@ def build_table5(ds, case, segs, seg_order, levels, crit):
                                    levels[sn][1].get(code, "資料不足"),
                                    f"{REGION}.regional.{code}", "資料不足"])
                 continue
-            a = adjust(it, b["rank"], c["rank"])
+            a = adjust_regional(it, b["rank"], c["rank"])
             vals.append(a)
             put(ws, f"{cr}{r}", c["rank"], "AI判定", f"{it['item_name']}（{sn} 等級序號）",
                 f"表3 {sn} 判定結果", f"級距「{c['criterion']}」→ 第{c['rank']}級",
@@ -357,7 +357,7 @@ def build_table5(ds, case, segs, seg_order, levels, crit):
             cell = put(ws, f"{cp}{r}", a, "AI判定", f"{it['item_name']}（{sn} 修正百分比）",
                        f"比準地 {base_no} {b['label']}({b['rank']}) ／ {sn} {c['label']}({c['rank']})",
                        f"查表：共{it['level_count']}級、最大±{it['max_adjustment']}%、"
-                       f"級距{it['step']}%；({c['rank']}−{b['rank']})×{it['step']} = {a:+.2f}",
+                       f"級距{it['step']}%；({b['rank']}−{c['rank']})×{it['step']} = {a:+.2f}",
                        f"{REGION}.regional.{code}", seg=sn)
             cell.number_format = "0.00"
 

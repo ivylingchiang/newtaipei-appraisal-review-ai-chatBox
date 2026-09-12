@@ -17,7 +17,7 @@ FILES = [
 LEGEND = [("題目原載", "D9EAD3"), ("AI判定", "FFF2CC"), ("推定", "FCE5CD"),
           ("資料不足", "F4CCCC"), ("不適用", "EFEFEF"),
           ("外部推算(官方A/B)", "CFE2F3"), ("外部推算(OSM C)", "E1D5E7"),
-          ("覆蓋不足", "F9CB9C")]
+          ("覆蓋不足", "F9CB9C"), ("代理判準", "FFE599")]
 
 
 def span_map(ws):

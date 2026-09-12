@@ -52,8 +52,22 @@ def grade(item, value=None, category=None, in_segment=False, is_none=False):
 
 
 def adjust(item, base_rank, comp_rank):
-    """修正率：正值代表比較標的條件較差，需上調其價格"""
+    """表4／表6 個別因素差異率＝(比較標的級距 − 比準地級距) × 級距差
+
+    即查表 matrix[比準地][比較標的]。方向以金山官方已填範本（查估書表範本 表4）
+    校準：比準地 18m(稍優) ／ 比較標的 6m(稍劣) → 範本填 +5.00%，五筆非零細項皆同向。
+    """
     return item["matrix"][base_rank - 1][comp_rank - 1]
+
+
+def adjust_regional(item, base_rank, comp_rank):
+    """表5 區域因素修正百分比＝(比準地級距 − 比較標的級距) × 級距差
+
+    即查表 matrix[比較標的][比準地]，與 adjust() 互為轉置（矩陣反對稱，等同變號）。
+    採此方向係依承辦單位認定：表5 之等級序號愈小代表條件愈優，修正百分比之正負
+    須與「比準地級距 − 比較標的級距」的大小關係一致，比較標的較劣時為負值。
+    """
+    return item["matrix"][comp_rank - 1][base_rank - 1]
 
 
 NUM = re.compile(r'^-?[\d,]+(?:\.\d+)?$')
