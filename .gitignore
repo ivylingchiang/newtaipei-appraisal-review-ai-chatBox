@@ -1,0 +1,11 @@
+# Working notes — local only
+dev/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
