@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>表3／表4／表5-1 欄位對照全覽</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#fff; --ink:#1b1f24; --muted:#5b6570; --line:#e2e6ea;
+  --accent:#1f5fa8; --accent-soft:#e8f0fa;
+  --ok:#2f7d4f; --ok-bg:#e6f2ea;
+  --ext:#1f5fa8; --ext-bg:#e4eefa;
+  --osm:#6b4d9e; --osm-bg:#efe9f8;
+  --proxy:#9a7100; --proxy-bg:#fdf3d7;
+  --warn:#a8560f; --warn-bg:#fbeadb;
+  --miss:#a52a2a; --miss-bg:#fae6e6;
+  --na:#6b7280; --na-bg:#eceff1;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:14px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",
+       "Microsoft JhengHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent)}
+.wrap{max-width:1500px;margin:0 auto;padding:0 16px 64px}
+
+/* ── header ─────────────────────────────────────────────── */
+header{background:var(--panel);border-bottom:1px solid var(--line)}
+.hd{max-width:1500px;margin:0 auto;padding:18px 16px 0}
+h1{margin:0 0 4px;font-size:19px;letter-spacing:.02em}
+.sub{color:var(--muted);font-size:12.5px;margin-bottom:12px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);
+      padding-bottom:12px}
+.meta b{color:var(--ink);font-weight:600}
+nav{display:flex;gap:2px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:8px}
+nav button{
+  appearance:none;border:0;background:none;font:inherit;font-size:13px;cursor:pointer;
+  padding:8px 13px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;
+}
+nav button:hover{color:var(--ink)}
+nav button[aria-selected=true]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+
+/* ── layout ─────────────────────────────────────────────── */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:18px;align-items:start;
+      padding-top:18px}
+@media(max-width:1100px){.cols{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.card + .card{margin-top:14px}
+.card > h2{margin:0;padding:11px 14px;font-size:13.5px;background:#fbfcfd;
+           border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:baseline}
+.card > h2 small{font-weight:400;color:var(--muted);font-size:11.5px}
+
+/* ── badges ─────────────────────────────────────────────── */
+.b{display:inline-block;padding:1px 7px;border-radius:99px;font-size:11px;line-height:1.7;
+   white-space:nowrap;font-weight:600}
+.b.ok{background:var(--ok-bg);color:var(--ok)}
+.b.derived{background:var(--ok-bg);color:var(--ok)}
+.b.ext{background:var(--ext-bg);color:var(--ext)}
+.b.ext_osm{background:var(--osm-bg);color:var(--osm)}
+.b.proxy{background:var(--proxy-bg);color:var(--proxy)}
+.b.assumed{background:var(--warn-bg);color:var(--warn)}
+.b.insufficient{background:var(--warn-bg);color:var(--warn)}
+.b.missing{background:var(--miss-bg);color:var(--miss)}
+.b.narrative{background:var(--na-bg);color:var(--na)}
+.b.na{background:var(--na-bg);color:var(--na)}
+.cell{font-family:var(--mono);font-size:11px;background:#eef1f4;color:#39414a;
+      padding:1px 5px;border-radius:4px;white-space:nowrap}
+
+/* ── list view (表3) ────────────────────────────────────── */
+.grp{border-top:1px solid var(--line)}
+.grp:first-of-type{border-top:0}
+.grp-h{padding:8px 14px;background:#f9fafb;font-size:12px;font-weight:700;color:#3b4450;
+       display:flex;justify-content:space-between;gap:10px}
+.grp-h span{font-weight:400;color:var(--muted)}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;
+     padding:8px 14px;border-top:1px solid #f0f2f4;cursor:pointer}
+.row:hover{background:var(--accent-soft)}
+.row.sel{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.row .no{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right}
+.row .nm{min-width:0}
+.row .nm b{font-weight:600;font-size:13px}
+.row .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.row .rt{text-align:right;font-size:11px;color:var(--muted);white-space:nowrap}
+.row .rt .pm{font-family:var(--mono);color:#3b4450}
+
+/* ── grid view (表5 / 表4) ──────────────────────────────── */
+.tw{overflow-x:auto}
+table.f{border-collapse:collapse;width:100%;font-size:12px;min-width:820px}
+table.f th,table.f td{border:1px solid var(--line);padding:4px 7px;vertical-align:middle}
+table.f thead th{background:#f4f6f8;font-size:11px;font-weight:600;color:#3b4450;
+                 position:sticky;top:0;z-index:2}
+table.f th.gh{background:#eef1f4;text-align:left;font-size:11.5px}
+table.f td.rn{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-align:right;
+              width:34px;background:#fafbfc}
+table.f td.nm{min-width:210px}
+table.f td.k{cursor:pointer;text-align:center;font-family:var(--mono);font-size:11px}
+table.f td.k:hover{background:var(--accent-soft);outline:1px solid var(--accent)}
+table.f td.k.sel{background:var(--accent-soft);outline:2px solid var(--accent)}
+table.f tr.sum td{background:#f7f9fa;font-weight:600}
+table.f tr.tot td{background:#eef1f4;font-weight:700}
+.kv{font-size:10px;color:var(--muted);display:block}
+td.k .st{display:inline-block;width:7px;height:7px;border-radius:99px;margin-right:4px;
+         vertical-align:middle}
+.st.ok,.st.derived{background:var(--ok)} .st.ext{background:var(--ext)}
+.st.ext_osm{background:var(--osm)} .st.proxy{background:var(--proxy)}
+.st.assumed,.st.insufficient{background:var(--warn)} .st.missing{background:var(--miss)}
+.st.narrative,.st.na{background:var(--na)}
+
+/* ── detail panel ───────────────────────────────────────── */
+#detail{position:sticky;top:12px;max-height:calc(100vh - 28px);overflow:auto}
+#detail .card{margin:0}
+.dt{padding:12px 14px;border-bottom:1px solid var(--line);background:#fbfcfd}
+.dt h3{margin:0 0 6px;font-size:15px}
+.dt .path{font-size:11.5px;color:var(--muted)}
+.sec{padding:11px 14px;border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:0}
+.sec h4{margin:0 0 7px;font-size:11px;letter-spacing:.08em;color:var(--muted);
+        text-transform:uppercase;font-weight:700}
+.chain{display:flex;flex-direction:column;gap:6px}
+.step{display:grid;grid-template-columns:66px minmax(0,1fr);gap:8px;font-size:12px;
+      align-items:start}
+.step .tg{font-size:10.5px;font-weight:700;color:#fff;background:var(--accent);
+          border-radius:4px;padding:1px 0;text-align:center;letter-spacing:.02em}
+.step .tg.g{background:#7a8694}
+.formula{font-family:var(--mono);font-size:11.5px;background:#f5f7f9;border:1px solid var(--line);
+         border-radius:6px;padding:8px 10px;white-space:pre-wrap;word-break:break-word;
+         line-height:1.75}
+.formula + .formula{margin-top:6px}
+.note{font-size:11.5px;color:var(--muted);margin-top:6px}
+table.mini{border-collapse:collapse;width:100%;font-size:11.5px}
+table.mini th,table.mini td{border:1px solid var(--line);padding:3px 6px;text-align:left}
+table.mini th{background:#f6f8f9;font-weight:600;font-size:10.5px;color:#3b4450}
+table.mini td.r{text-align:right;font-family:var(--mono)}
+.mx{border-collapse:collapse;font-size:10.5px;font-family:var(--mono)}
+.mx td,.mx th{border:1px solid var(--line);padding:2px 5px;text-align:right}
+.mx th{background:#f6f8f9}
+.mx td.z{color:#aab2ba}
+.mx td.p{color:var(--ok)} .mx td.n{color:var(--miss)}
+details{font-size:12px}
+details summary{cursor:pointer;color:var(--accent);font-size:11.5px;padding:2px 0}
+ul.ml{margin:0;padding-left:17px;font-size:11.5px;color:#3c444d}
+ul.ml li{margin:3px 0}
+.warnbox{background:#fdf4ec;border:1px solid #f0d8bf;border-left:3px solid var(--warn);
+         border-radius:6px;padding:8px 10px;font-size:11.5px;color:#6d4212}
+.missbox{background:#fdeeee;border:1px solid #f1cccc;border-left:3px solid var(--miss);
+         border-radius:6px;padding:8px 10px;font-size:11.5px;color:#7b2222}
+.okbox{background:#ecf5ef;border:1px solid #cfe3d6;border-left:3px solid var(--ok);
+       border-radius:6px;padding:8px 10px;font-size:11.5px;color:#255c3c}
+.empty{padding:40px 16px;text-align:center;color:var(--muted);font-size:13px}
+
+/* ── gaps / sources ─────────────────────────────────────── */
+.gapgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;
+         padding:14px}
+.gap{border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+.gap h3{margin:0;padding:9px 12px;font-size:13px;background:#fafbfc;
+        border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:baseline}
+.gap h3 .id{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.gap dl{margin:0;padding:10px 12px;display:grid;grid-template-columns:74px minmax(0,1fr);
+        gap:5px 10px;font-size:11.5px}
+.gap dt{color:var(--muted);font-weight:600}
+.gap dd{margin:0}
+.pill{display:inline-block;font-size:10.5px;background:#eef1f4;border-radius:4px;
+      padding:1px 6px;margin:1px 3px 1px 0;font-family:var(--mono)}
+.srch{margin-left:auto;display:flex;gap:8px;align-items:center;padding-bottom:8px}
+.srch input{font:inherit;font-size:12.5px;padding:5px 10px;border:1px solid var(--line);
+            border-radius:7px;width:230px;background:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:5px 12px;padding:10px 14px;font-size:11px;
+        color:var(--muted);border-top:1px solid var(--line);background:#fbfcfd}
+.legend span{display:flex;gap:5px;align-items:center}
+.legend i{width:9px;height:9px;border-radius:99px;display:inline-block}
+</style>
+</head>
+<body>
+<header>
+  <div class="hd">
+    <h1>表3／表4／表5-1 欄位對照全覽</h1>
+    <div class="sub">每一欄位與儲存格所<b>應</b>對照的表格、基準明細表細項、計算公式、審查交叉規則，
+      以及目前留白處所使用的替代資料來源與計算方式</div>
+    <div class="meta" id="meta"></div>
+    <nav id="nav"></nav>
+  </div>
+</header>
+<div class="wrap">
+  <div class="cols">
+    <main id="main"></main>
+    <aside id="detail"></aside>
+  </div>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const E = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = s => document.querySelector(s);
+const byId = {};
+[...DATA.regional, ...DATA.individual].forEach(f => byId[f.id] = f);
+const SRC = Object.fromEntries(DATA.sources.map(s => [s.id, s]));
+const GRP = {1:'土地使用管制',2:'交通運輸',3:'自然條件',4:'土地改良',5:'公共建設',
+             6:'特殊設施',7:'環境污染',8:'其他影響因素'};
+const STL = {ok:'可查表',derived:'可查表',ext:'外部推算 A/B',ext_osm:'外部推算 OSM',
+             proxy:'代理判準',assumed:'區段推定',insufficient:'覆蓋不足',
+             missing:'留白退補',narrative:'敘述型',na:'不適用'};
+let tab = 't3', sel = null, q = '';
+
+/* ══════════════════════════════════════════════ header */
+$('#meta').innerHTML = [
+  ['案號', DATA.case.case_no], ['轄區', DATA.case.region], ['用地別', DATA.case.land_use],
+  ['估價基準日', DATA.case.date], ['比準地', DATA.case.base_segment],
+  ['比較標的', DATA.case.comparables.join('、')]
+].map(([k,v]) => `${E(k)}：<b>${E(v)}</b>`).join('');
+
+const TABS = [['t3','表3 地價區段勘查表'],['t5','表5-1 區域因素分析明細表'],
+              ['t4','表4 比較法調查估價表'],['gap','缺少的資料與替代方式'],
+              ['src','開放資料來源'],['rule','公式與審查規則']];
+$('#nav').innerHTML = TABS.map(([k,l]) =>
+  `<button data-t="${k}" aria-selected="${k===tab}">${E(l)}</button>`).join('') +
+  `<span class="srch"><input id="q" type="search" placeholder="搜尋細項、儲存格、來源…"></span>`;
+$('#nav').addEventListener('click', e => {
+  const b = e.target.closest('button[data-t]'); if (!b) return;
+  tab = b.dataset.t; sel = null; render();
+});
+$('#q').addEventListener('input', e => { q = e.target.value.trim(); render(); });
+
+/* ══════════════════════════════════════════════ helpers */
+const hit = f => !q || (f.name+' '+f.code+' '+(f.group_name||'')+' '+
+  JSON.stringify(f.t3||'')+JSON.stringify(f.t5||'')+JSON.stringify(f.t4||'')).includes(q);
+const badge = f => `<span class="b ${f.status}">${E(STL[f.status]||f.status)}</span>`;
+const pm = f => f.max_adjustment==null ? '—' : `±${f.max_adjustment}%`;
+const stepTxt = f => f.step==null ? '—' : `${(+f.step).toFixed(2)}%`;
+
+function pick(id, cellRole){
+  sel = {id, role: cellRole||null}; render();
+  if (window.matchMedia('(max-width:1100px)').matches)
+    $('#detail').scrollIntoView({behavior:'smooth', block:'start'});
+}
+window.pick = pick;
+
+/* ══════════════════════════════════════════════ 表3 view */
+function viewT3(){
+  const gs = {};
+  DATA.regional.filter(hit).forEach(f => (gs[f.group] = gs[f.group]||[]).push(f));
+  let h = `<div class="card"><h2>區域因素評價細項 29 項 <small>表3 勘查欄位 → 評價基準明細表 → 表5-1 列位</small></h2>`;
+  if (!Object.keys(gs).length) h += `<div class="empty">無符合的欄位</div>`;
+  for (const g of Object.keys(gs).sort((a,b)=>a-b)){
+    const fs = gs[g];
+    h += `<div class="grp"><div class="grp-h">（${g}）${E(GRP[g])}
+      <span>${fs.length} 細項　小計列 表5 第${DATA.t5_layout.subtotal_rows[g]}列</span></div>`;
+    h += fs.map(f => {
+      const chips = [];
+      if (f.t3.level_cell) chips.push(`<span class="cell">表3 ${f.t3.level_cell}/${f.t3.count_cell} 等級</span>`);
+      if (f.t3.fact_cell) chips.push(`<span class="cell">表3 ${f.t3.fact_cell} 事實</span>`);
+      (f.t3.subs||[]).forEach(s => chips.push(`<span class="cell">${E(s.cell)} ${E(s.name)}</span>`));
+      if (f.t5.row) chips.push(`<span class="cell">表5 第${f.t5.row}列</span>`);
+      (f.t4_fields||[]).forEach(n => chips.push(`<span class="cell">表4 #${n}</span>`));
+      return `<div class="row ${sel&&sel.id===f.id?'sel':''}" onclick="pick('${f.id}')">
+        <div class="no">${f.seq}</div>
+        <div class="nm"><b>${E(f.name)}</b><div class="chips">${chips.join('')}</div></div>
+        <div class="rt">${badge(f)}<br><span class="pm">${pm(f)}／${f.level_count}級</span></div>
+      </div>`;
+    }).join('');
+    h += `</div>`;
+  }
+  h += legend() + `</div>`;
+
+  const ex = DATA.t3_extra.filter(x => !q || (x.name+x.cell).includes(q));
+  h += `<div class="card"><h2>表3 其他欄位 <small>無對應之評價細項（普通住宅用地）</small></h2>`;
+  h += ex.length ? `<div class="tw"><table class="f"><thead><tr>
+      <th style="width:74px">儲存格</th><th style="width:180px">欄位</th>
+      <th style="width:150px">表3 現載</th><th>為何無對照</th></tr></thead><tbody>` +
+      ex.map(x => `<tr><td class="rn" style="text-align:left">${E(x.cell)}</td>
+        <td>${E(x.name)}</td><td>${x.raw==null?'<span class="b na">未填／不適用</span>':E(x.raw)}</td>
+        <td style="font-size:11.5px;color:#4a535d">${E(x.why)}</td></tr>`).join('') +
+      `</tbody></table></div>` : `<div class="empty">無符合的欄位</div>`;
+  return h + `</div>`;
+}
+
+function legend(){
+  return `<div class="legend">` + Object.entries(STL).filter(([k])=>k!=='derived'&&k!=='na')
+    .map(([k,v]) => `<span><i class="st ${k}"></i>${E(v)}</span>`).join('') + `</div>`;
+}
+
+/* ══════════════════════════════════════════════ 表5 view */
+function viewT5(){
+  const L = DATA.t5_layout, comps = DATA.case.comparables;
+  let h = `<div class="card"><h2>表5-1 影響地價區域因素分析明細表（普通住宅用地）
+    <small>點任一儲存格查看其對照與公式</small></h2><div class="tw"><table class="f">
+    <thead><tr><th rowspan="2" class="rn">列</th><th rowspan="2">修正細項</th>
+    <th colspan="2">比準地 ${E(DATA.case.base_segment)}</th>` +
+    comps.map((c,i)=>`<th colspan="3">比較標的${i+1} ${E(c)}</th>`).join('') + `</tr><tr>
+    <th>等級序號<br><span class="kv">${L.base_cols[0]}欄</span></th>
+    <th>優劣等級<br><span class="kv">${L.base_cols[1]}欄</span></th>` +
+    comps.map((c,i)=>`<th>序號<span class="kv">${L.comp_cols[i][0]}</span></th>
+      <th>等級<span class="kv">${L.comp_cols[i][1]}</span></th>
+      <th>修正%<span class="kv">${L.comp_cols[i][2]}</span></th>`).join('') +
+    `</tr></thead><tbody>`;
+
+  let g = 0;
+  DATA.regional.forEach(f => {
+    if (f.group !== g){
+      g = f.group;
+      h += `<tr><th class="gh" colspan="${2+2+comps.length*3}">（${g}）${E(GRP[g])}</th></tr>`;
+    }
+    const on = sel && sel.id === f.id;
+    const s = f.per_seg || [];
+    const cell = (r,i,kind) => {
+      const p = s[i]||{};
+      let v = kind==='rank' ? (p.rank|| (f.code==='other'?'－':'')) :
+              kind==='label' ? (p.label||'') : '';
+      if (kind==='pct') v = f.code==='other' ? '0.00%' :
+        (f.status==='insufficient'||f.status==='missing') ? '—' :
+        (p.rank && s[0].rank ? (((s[0].rank - p.rank) * f.step).toFixed(2)+'%') : '');
+      return `<td class="k ${on?'sel':''}" onclick="pick('${f.id}','${kind}')">
+        <span class="st ${f.status}"></span>${E(v||'·')}</td>`;
+    };
+    h += `<tr><td class="rn">${f.t5.row}</td><td class="nm">${E(f.name)}
+        <span class="kv">${f.level_count}級／±${f.max_adjustment}%／級距 ${stepTxt(f)}</span></td>
+      ${cell(null,0,'rank')}${cell(null,0,'label')}` +
+      comps.map((c,i)=> cell(null,i+1,'rank')+cell(null,i+1,'label')+cell(null,i+1,'pct')).join('') +
+      `</tr>`;
+    const sr = L.subtotal_rows[f.group];
+    const last = DATA.regional.filter(x=>x.group===f.group).slice(-1)[0];
+    if (last.id === f.id){
+      const ss = subStatus(f.group), sv = subValues(f.group);
+      h += `<tr class="sum"><td class="rn">${sr}</td>
+        <td class="nm">（${f.group}）${E(GRP[f.group])} 小計</td><td colspan="2"></td>` +
+        comps.map((c,i)=>`<td colspan="2"></td>
+          <td class="k" onclick="pick('sub.${f.group}','sub')">
+          <span class="st ${ss}"></span>${sv[i]==null?'不成立':(sv[i]>0?'+':'')+sv[i].toFixed(2)+'%'}</td>`).join('') + `</tr>`;
+    }
+  });
+  h += `<tr class="tot"><td class="rn">${L.total_row}</td>
+    <td class="nm">影響地價區域因素總修正數<span class="kv">＝(1)+(2)+…+(8) 八組小計 → 表4 第8列</span></td>
+    <td colspan="2"></td>` +
+    comps.map(()=>`<td colspan="2"></td><td class="k" onclick="pick('total','total')">
+      <span class="st missing"></span>不予產出</td>`).join('') + `</tr>`;
+  return h + `</tbody></table></div>${legend()}</div>`;
+}
+const subValues = g => {
+  const fs = DATA.regional.filter(f=>f.group===g);
+  return DATA.case.comparables.map((c,i)=>{
+    let s = 0;
+    for (const f of fs){
+      if (f.code==='other'){ continue; }
+      if (f.status==='missing'||f.status==='insufficient') return null;
+      const p = f.per_seg[i+1], b = f.per_seg[0];
+      if (!p || !b || !p.rank || !b.rank) return null;
+      s += (b.rank - p.rank) * f.step;
+    }
+    return s;
+  });
+};
+const subStatus = g => {
+  const fs = DATA.regional.filter(f=>f.group===g);
+  if (fs.some(f=>f.status==='missing'||f.status==='insufficient')) return 'missing';
+  if (fs.some(f=>f.status==='ext_osm'||f.status==='proxy')) return 'ext_osm';
+  if (fs.some(f=>f.status==='ext')) return 'ext';
+  return 'ok';
+};
+
+/* ══════════════════════════════════════════════ 表4 view */
+const CHAIN = [
+  {row:4, name:'坐落', base:'D4', cols:0, key:'lot',
+   f:'比準地與各比較標的之宗地坐落（地段、地號）', st:'ok'},
+  {row:5, name:'土地正常單價（元/㎡）', base:'—（比準地為待求值）', cols:0, key:'unit_price',
+   f:'表1-1 買賣實例調查估價表之土地正常單價', st:'ok'},
+  {row:6, name:'交易日期／交易日期調整百分率', base:'D6（＝估價基準日）', cols:2, key:'date_adj',
+   f:'參酌新北市樹林區土地平均區段地價表（住宅區）調整', st:'ok'},
+  {row:7, name:'調整至估價基準日單價', base:'—', cols:0, key:'adjusted',
+   f:'土地正常單價 ×（1＋交易日期調整百分率）', st:'ok'},
+  {row:8, name:'地價區段號／區域因素調整百分率', base:'D8', cols:2, key:'regional',
+   f:'＝表5-1 影響地價區域因素總修正數（第42列）', st:'missing'},
+];
+const TOTALS = [
+  {row:29, name:'個別因素差異率合計', key:'ind_total',
+   f:'Σ（7~25 各細項差異率）', st:'missing'},
+  {row:30, name:'調整百分率絕對值加總／價格形成因素之相近程度', key:'abs_sum',
+   f:'|交易日期調整%| ＋ |區域因素調整%| ＋ Σ|各個別因素差異率|', st:'missing'},
+  {row:31, name:'試算價格／比較標的權重', key:'trial',
+   f:'調整至估價基準日單價 ×（1＋區域因素調整% ＋ 個別因素合計%）', st:'missing'},
+  {row:32, name:'比準地比較價格', key:'final',
+   f:'Σ（各比較標的試算價格 × 權重），四捨五入至個位數', st:'missing'},
+];
+function viewT4(){
+  const comps = DATA.case.comparables, C = DATA.t4_layout.comp_cols;
+  let h = `<div class="card"><h2>表4 比較法調查估價表
+    <small>價格調整鏈（4~8 列）＋ 個別因素調整（9~27 列）＋ 合計（29~32 列）</small></h2>
+    <div class="tw"><table class="f"><thead><tr>
+      <th class="rn">列</th><th>欄位</th><th>比準地 ${E(DATA.case.base_segment)}</th>` +
+      comps.map((c,i)=>`<th>比較標的${i+1} ${E(c)}<span class="kv">${C[i].join(' / ')}欄</span></th>`).join('') +
+      `</tr></thead><tbody>`;
+  h += `<tr><th class="gh" colspan="${3+comps.length}">價格調整鏈</th></tr>`;
+  CHAIN.forEach(r => {
+    h += `<tr><td class="rn">${r.row}</td><td class="nm">${E(r.name)}
+      <span class="kv">${E(r.f)}</span></td>
+      <td class="k" onclick="pick('chain.${r.key}','chain')"><span class="st ${r.st}"></span>${E(r.base)}</td>` +
+      comps.map((c,i)=>`<td class="k" onclick="pick('chain.${r.key}','chain')">
+        <span class="st ${r.st}"></span>${C[i][0]}${r.row}${r.cols?` / ${C[i][2]}${r.row}`:''}</td>`).join('') + `</tr>`;
+  });
+  let g = 0;
+  DATA.individual.forEach(f => {
+    if (f.group !== g){
+      g = f.group;
+      h += `<tr><th class="gh" colspan="${3+comps.length}">（${g}）${E(f.group_name)}</th></tr>`;
+    }
+    const on = sel && sel.id === f.id;
+    h += `<tr><td class="rn">${f.t4.row}</td><td class="nm">
+        ${f.field_no?f.field_no:'6其他'} ${E(f.name)}
+        <span class="kv">${f.level_count?`${f.level_count}級／±${f.max_adjustment}%／級距 ${stepTxt(f)}`:'敘述型，無矩陣'}</span></td>
+      <td class="k ${on?'sel':''}" onclick="pick('${f.id}','base')">
+        <span class="st ${f.status}"></span>${f.t4.base_cell}</td>` +
+      f.t4.comp_cells.map(c=>`<td class="k ${on?'sel':''}" onclick="pick('${f.id}','diff')">
+        <span class="st ${f.status}"></span>${c.cond} / ${c.diff}</td>`).join('') + `</tr>`;
+  });
+  h += `<tr><th class="gh" colspan="${3+comps.length}">合計與比較價格</th></tr>`;
+  TOTALS.forEach(r => {
+    h += `<tr class="${r.row===32?'tot':'sum'}"><td class="rn">${r.row}</td>
+      <td class="nm">${E(r.name)}<span class="kv">${E(r.f)}</span></td>
+      <td class="k" onclick="pick('tot.${r.key}','tot')"><span class="st ${r.st}"></span>—</td>` +
+      comps.map((c,i)=>`<td class="k" onclick="pick('tot.${r.key}','tot')">
+        <span class="st ${r.st}"></span>${C[i][0]}${r.row}</td>`).join('') + `</tr>`;
+  });
+  return h + `</tbody></table></div>${legend()}</div>`;
+}
+
+/* ══════════════════════════════════════════════ 缺口 view */
+function viewGap(){
+  const gs = DATA.gaps.filter(g => !q || JSON.stringify(g).includes(q));
+  return `<div class="card"><h2>目前缺少的資料、影響範圍與替代方式
+      <small>${gs.length} 項</small></h2><div class="gapgrid">` +
+    gs.map(g => `<div class="gap"><h3><span class="id">${E(g.id)}</span>${E(g.title)}</h3>
+      <dl>
+        <dt>影響</dt><dd>${E(g.impact)}</dd>
+        <dt>波及欄位</dt><dd>${g.affects.map(a=>`<span class="pill">${E(a)}</span>`).join('')}</dd>
+        <dt>最大修正率</dt><dd>${E(g.max_pct)}</dd>
+        <dt>目前做法</dt><dd>${E(g.current)}</dd>
+        <dt>狀態</dt><dd><b>${E(g.status)}</b></dd>
+        <dt>需要什麼</dt><dd>${E(g.need)}</dd>
+        ${g.note?`<dt>備註</dt><dd style="color:#7b4a12">${E(g.note)}</dd>`:''}
+      </dl></div>`).join('') + `</div></div>`;
+}
+
+/* ══════════════════════════════════════════════ 來源 view */
+function viewSrc(){
+  const ss = DATA.sources.filter(s => !q || JSON.stringify(s).includes(q));
+  return `<div class="card"><h2>開放資料來源與信心等級
+      <small>A＝官方名冊自帶座標｜B＝官方名冊×第三方座標交叉比對｜C＝僅 OpenStreetMap｜D＝無法定位，未採用</small></h2>
+    <div class="tw"><table class="f" style="min-width:900px"><thead><tr>
+      <th style="width:36px">信心</th><th style="width:230px">資料集</th><th style="width:120px">提供機關</th>
+      <th style="width:150px">空間資訊</th><th>填補之欄位</th><th>備註</th></tr></thead><tbody>` +
+    ss.map(s => `<tr>
+      <td style="text-align:center"><span class="b ${s.conf==='A'?'ok':s.conf==='B'?'ext':s.conf==='C'?'ext_osm':'missing'}">${E(s.conf)}</span></td>
+      <td><a href="${E(s.url)}" target="_blank" rel="noopener">${E(s.name)}</a></td>
+      <td>${E(s.org)}</td><td>${E(s.geo)}</td>
+      <td>${s.fills.map(c=>{const f=byId['reg.'+c]||byId['ind.'+c];
+        return `<span class="pill">${E(f?f.name:c)}</span>`;}).join('')}</td>
+      <td style="font-size:11px;color:#4a535d">${E(s.note)}</td></tr>`).join('') +
+    `</tbody></table></div></div>`;
+}
+
+/* ══════════════════════════════════════════════ 規則 view */
+function viewRule(){
+  const F = DATA.formulas, R = DATA.review_rules;
+  const impl = new Set(DATA.checks_implemented);
+  let h = `<div class="card"><h2>核心公式 <small>datasets/common/formulas.json</small></h2><div class="sec">
+    <h4>查表方向（最易誤用）</h4>
+    <div class="formula">表5 區域因素　adjustment = (比準地等級 − 比較標的等級) × 級距
+　　　　　　　　　 ≡ matrix[比較標的等級−1][比準地等級−1]
+　　　　　　　　　 ${E(F.matrix.table5_regional.sign_convention)}
+
+表4 個別因素　adjustment = (比較標的等級 − 比準地等級) × 級距
+　　　　　　　　　 ≡ matrix[比準地等級−1][比較標的等級−1]
+　　　　　　　　　 ${E(F.matrix.table4_individual.sign_convention)}
+
+級距 step = 最大修正率 ÷ (級數 − 1)　　矩陣為反對稱方陣，對角線為 0</div>
+    <div class="note">${E(F.matrix.note)}</div></div>`;
+  h += `<div class="sec"><h4>表4 價格調整鏈</h4>` +
+    F.price_chain_table4.steps.map(s=>`<div class="formula">${E(s.name)}　＝　${E(s.formula)}${
+      s.rounding?`\n（${E(s.rounding)}）`:''}</div>`).join('') +
+    `<div class="note">${E(F.price_chain_table4.precision_note)}</div></div>`;
+  h += `<div class="sec"><h4>權重決定（手冊 伍、六(十一)）</h4>
+    <div class="note">${E(F.weighting.basis)}</div>
+    <table class="mini"><thead><tr><th>比較標的數</th><th>絕對值加總</th><th>相近程度</th><th>權重</th></tr></thead><tbody>` +
+    F.weighting.examples.map(x=>`<tr><td>${x.count}</td><td>${x.abs_sums?x.abs_sums.join(' / '):'—'}</td>
+      <td>${x.similarity.join(' / ')}</td><td>${x.weights.map(w=>(w*100)+'%').join(' / ')}</td></tr>`).join('') +
+    `</tbody></table><div class="note">${E(F.weighting.note)}</div></div>`;
+  h += `<div class="sec"><h4>尾數規則（查估辦法第21條）</h4>
+    <table class="mini"><thead><tr><th>單價區間（元/㎡）</th><th>進位至</th><th>Excel</th></tr></thead><tbody>` +
+    F.rounding.tiers.map(t=>`<tr><td>${t.min?t.min.toLocaleString():'0'} ~ ${t.max?t.max.toLocaleString():'以上'}</td>
+      <td>${E(t.round_to)}</td><td style="font-family:var(--mono);font-size:10.5px">${E(t.excel)}</td></tr>`).join('') +
+    `</tbody></table><div class="note">方法：${E(F.rounding.method)}。例外：` +
+    F.rounding.exceptions.map(x=>`${E(x.case)} → ${E(x.rule)}`).join('；') + `</div></div>`;
+  h += `<div class="sec"><h4>填表慣例</h4><ul class="ml">` +
+    Object.values(F.fill_conventions).map(c=>`<li><b>${E(c.rule)}</b>　<span style="color:#7a8694">（${E(c.source)}）</span>${
+      c.extra?`<br>${E(c.extra)}`:''}${c.implication?`<br>${E(c.implication)}`:''}</li>`).join('') +
+    `</ul></div></div>`;
+
+  h += `<div class="card"><h2>跨表交叉參照規則 R1–R14
+      <small>${impl.size} 項已於 engine/checks.py 實作</small></h2>
+    <div class="tw"><table class="f" style="min-width:860px"><thead><tr>
+      <th style="width:44px">ID</th><th style="width:230px">來源</th><th style="width:210px">目標</th>
+      <th>檢查內容</th><th style="width:62px">審查點</th><th style="width:74px">實作</th>
+    </tr></thead><tbody>` +
+    R.cross_reference_matrix.map(r=>`<tr><td class="rn" style="text-align:center">${E(r.id)}</td>
+      <td>${E(r.from)}</td><td>${E(r.to)}</td><td>${E(r.check)}</td>
+      <td style="text-align:center">${E(r.checklist)}</td>
+      <td style="text-align:center">${impl.has(r.id)?'<span class="b ok">已實作</span>':'<span class="b na">未實作</span>'}</td>
+    </tr>`).join('') + `</tbody></table></div></div>`;
+
+  h += `<div class="card"><h2>官方審查檢核表 <small>手冊 參、七、(一)</small></h2>
+    <div class="tw"><table class="f" style="min-width:760px"><thead><tr>
+      <th style="width:44px">項次</th><th style="width:88px">對象</th><th>內容</th>
+      <th style="width:80px">可自動化</th></tr></thead><tbody>` +
+    R.official_checklist.map(c=>`<tr><td class="rn" style="text-align:center">${E(c.id)}</td>
+      <td>${E(c.target||'—')}</td><td>${E(c.content)}</td>
+      <td style="text-align:center">${c.automatable?'<span class="b ok">是</span>':'<span class="b na">否</span>'}</td>
+    </tr>`).join('') + `</tbody></table></div></div>`;
+
+  h += `<div class="card"><h2>本案專屬規則 <small>doc/rules/extra.md ＋ 承辦單位確認</small></h2>` +
+    DATA.case_rules.rules.map(r=>`<div class="sec"><h4>${E(r.id)}　${E(r.name)}</h4>
+      <div class="note"><b>依據：</b>${E(r.source)}</div>
+      ${r.confirmed_by?`<div class="note"><b>確認：</b>${E(r.confirmed_by)}</div>`:''}
+      ${r.usage?`<div class="note"><b>用途：</b>${E(r.usage)}</div>`:''}
+      ${(r.notes||[]).map(n=>`<div class="note">・${E(n)}</div>`).join('')}</div>`).join('') + `</div>`;
+  return h;
+}
+
+/* ══════════════════════════════════════════════ detail panel */
+function matrixHTML(f){
+  if (!f.matrix) return '';
+  const n = f.matrix.length, lb = f.level_labels || [];
+  let h = `<details><summary>展開 ${n}×${n} 修正矩陣</summary><div class="tw" style="margin-top:6px">
+    <table class="mx"><tr><th></th>` +
+    f.matrix.map((_,j)=>`<th>${j+1}${lb[j]?'<br>'+E(lb[j]):''}</th>`).join('') + `</tr>`;
+  f.matrix.forEach((row,i)=>{
+    h += `<tr><th>${i+1}${lb[i]?'<br>'+E(lb[i]):''}</th>` +
+      row.map(v=>`<td class="${v>0?'p':v<0?'n':'z'}">${v>0?'+':''}${(+v).toFixed(2)}</td>`).join('') + `</tr>`;
+  });
+  return h + `</table></div><div class="note">表5 讀 matrix[比較標的−1][比準地−1]；表4／表6 讀 matrix[比準地−1][比較標的−1]。</div></details>`;
+}
+function thresholdsHTML(f){
+  if (!f.thresholds || !f.thresholds.length) return '';
+  return `<table class="mini"><thead><tr><th style="width:34px">級</th><th style="width:46px">等級</th>
+    <th>級距門檻（評價基準明細表原文）</th></tr></thead><tbody>` +
+    f.thresholds.map(t=>`<tr><td class="r">${t.rank}</td><td>${E(t.label)}</td>
+      <td>${E(t.criterion)}</td></tr>`).join('') + `</tbody></table>`;
+}
+function srcHTML(f){
+  if (!f.sources || !f.sources.length) return '';
+  return `<ul class="ml">` + f.sources.map(id=>{const s=SRC[id];
+    return `<li><span class="b ${s.conf==='A'?'ok':s.conf==='B'?'ext':s.conf==='C'?'ext_osm':'missing'}">${E(s.conf)}</span>
+      <a href="${E(s.url)}" target="_blank" rel="noopener">${E(s.name)}</a>（${E(s.org)}）<br>
+      <span style="color:#6b7480">${E(s.geo)}｜${E(s.note)}</span></li>`;}).join('') + `</ul>`;
+}
+
+function detailRegional(f){
+  const L = DATA.t5_layout;
+  let h = `<div class="dt"><h3>${E(f.name)}</h3>
+    <div class="path">區域因素 第${f.seq}項　（${f.group}）${E(f.group_name)}　${badge(f)}</div></div>`;
+  h += `<div class="sec"><h4>應對照的表格與欄位</h4><div class="chain">
+    <div class="step"><span class="tg">基準表</span><span>評價基準明細表（樹林區·普通住宅用地）<br>
+      <b>${E(f.name)}</b>　${f.level_count} 級／最大 ±${f.max_adjustment}%／級距 ${stepTxt(f)}
+      ${f.direction&&f.direction!=='n/a'?`／方向 ${E(f.direction==='lower_is_better'?'越近(小)越優':'越大越優')}`:''}</span></div>
+    <div class="step"><span class="tg">表3</span><span>地價區段勘查表
+      ${f.t3.fact_cell?`<br>勘查事實欄 <span class="cell">${E(f.t3.fact_cell)}</span> ${E(f.t3.fact_field||'')}`:''}
+      ${f.t3.level_cell?`<br>優劣等級欄 <span class="cell">${E(f.t3.level_cell)}</span>（第N級）
+        <span class="cell">${E(f.t3.count_cell)}</span>（共M級）`:''}
+      ${(f.t3.subs||[]).length?`<br>設施子欄　${f.t3.subs.map(s=>
+        `<span class="cell">${E(s.cell)} ${E(s.name)}</span>`).join(' ')}`:''}</span></div>
+    ${f.t5.row?`<div class="step"><span class="tg">表5-1</span><span>第 ${f.t5.row} 列
+      <br>比準地 <span class="cell">${E(f.t5.base_rank_cell)}</span> 序號
+      <span class="cell">${E(f.t5.base_label_cell)}</span> 等級
+      ${f.t5.comp_cells.map(c=>`<br>${E(c.seg)} <span class="cell">${E(c.rank)}</span>序號
+        <span class="cell">${E(c.label)}</span>等級 <span class="cell">${E(c.pct)}</span>修正%`).join('')}
+      <br>小計列 第 ${f.t5.subtotal_row} 列 → 總修正數 第 ${L.total_row} 列</span></div>`:''}
+    ${(f.t4_fields||[]).length?`<div class="step"><span class="tg g">表4</span><span>個別因素
+      ${f.t4_fields.map(n=>{const x=DATA.individual.find(y=>y.field_no===n);
+        return `<span class="cell">#${n} ${E(x?x.name:'')}</span>`;}).join(' ')}
+      <br><span style="color:#8a5a12">同名項目不得重複修正（手冊 六(九)）</span></span></div>`:''}
+  </div></div>`;
+
+  h += `<div class="sec"><h4>計算公式</h4>
+    <div class="formula">① 判級　表3 勘查事實 → 比對級距門檻 → 等級序號 N（共 ${f.level_count} 級）
+② 修正　表5 修正百分比 ＝（比準地序號 − 比較標的序號）× ${stepTxt(f)}
+　　　　　≡ matrix[比較標的序號−1][比準地序號−1]
+③ 小計　（${f.group}）${E(f.group_name)} 小計 ＝ Σ 該組各細項修正百分比　→ 表5 第${f.t5.subtotal_row}列
+④ 總計　總修正數 ＝ (1)+(2)+…+(8) 八組小計　→ 表5 第${L.total_row}列
+⑤ 傳遞　表5 總修正數 ＝ 表4 區域因素調整百分率（第8列）</div>
+    <div class="note">符號：比較標的序號較大（條件較劣）→ 修正百分比為負。級距 ＝ ±${f.max_adjustment}% ÷ (${f.level_count}−1)。</div></div>`;
+
+  h += `<div class="sec"><h4>級距門檻</h4>${thresholdsHTML(f)}${matrixHTML(f)}</div>`;
+
+  h += `<div class="sec"><h4>目前資料狀態</h4><div class="${
+    f.status==='missing'||f.status==='insufficient'?'missbox':
+    f.status==='ok'?'okbox':'warnbox'}">${E(f.status_label)}${
+    f.gap?`<br>${E(f.gap)}`:''}${
+    f.coverage?`<br>子欄 ${f.coverage.sub_with_data}/${f.coverage.sub_total} 有資料${
+      f.coverage.unlocatable_count?`，另 ${f.coverage.unlocatable_count} 筆名冊設施無法定位`:''}。<br>${E(f.coverage.reason)}`:''}</div>`;
+  if (f.per_seg && f.per_seg.length){
+    h += `<table class="mini" style="margin-top:8px"><thead><tr><th>區段</th><th style="width:34px">級</th>
+      <th style="width:46px">等級</th><th>依據</th></tr></thead><tbody>` +
+      f.per_seg.map((p,i)=>`<tr><td>${E(p.seg)}${i?'':' <span style="color:#7a8694">(比準地)</span>'}</td>
+        <td class="r">${p.rank||'—'}</td><td>${E(p.label||'—')}</td>
+        <td style="font-size:11px">${E(p.detail||'')}${p.conf?` <span class="b ${p.conf==='A'?'ok':p.conf==='B'?'ext':'ext_osm'}">${E(p.conf)}</span>`:''}${
+          p.borderline?' <span class="b insufficient">⚠️臨界</span>':''}</td></tr>`).join('') +
+      `</tbody></table>`;
+  }
+  h += `</div>`;
+  if (f.sources && f.sources.length)
+    h += `<div class="sec"><h4>替代使用之資料來源</h4>${srcHTML(f)}</div>`;
+  if (f.case_rule)
+    h += `<div class="sec"><h4>本案專屬規則</h4><div class="warnbox">
+      <b>${E(f.case_rule[0])}　${E(f.case_rule[1])}</b><br>${E(f.case_rule[2])}</div></div>`;
+  h += `<div class="sec"><h4>手冊依據</h4><ul class="ml">` +
+    [...new Set(f.manual)].map(m=>`<li>${E(m)}</li>`).join('') + `</ul></div>`;
+  return h;
+}
+
+function detailIndividual(f){
+  let h = `<div class="dt"><h3>${f.field_no?f.field_no+' ':'6其他 '}${E(f.name)}</h3>
+    <div class="path">個別因素　（${f.group}）${E(f.group_name)}　${badge(f)}</div></div>`;
+  h += `<div class="sec"><h4>應對照的表格與欄位</h4><div class="chain">
+    <div class="step"><span class="tg">基準表</span><span>評價基準明細表（個別因素·樹林區住宅）<br>
+      <b>${E(f.name)}</b>　${f.level_count?`${f.level_count} 級／最大 ±${f.max_adjustment}%／級距 ${stepTxt(f)}`:'敘述型，無查表矩陣'}</span></div>
+    <div class="step"><span class="tg">表4</span><span>比較法調查估價表 第 ${f.t4.row} 列
+      <br>比準地條件 <span class="cell">${E(f.t4.base_cell)}</span>
+      ${f.t4.comp_cells.map(c=>`<br>${E(c.seg)} 條件 <span class="cell">${E(c.cond)}</span>
+        差異率 <span class="cell">${E(c.diff)}</span>`).join('')}</span></div>
+    <div class="step"><span class="tg g">上游</span><span>${E(f.upstream||'—')}</span></div>
+    ${(f.reg_items||[]).length?`<div class="step"><span class="tg g">表5</span><span>同名之區域因素細項
+      ${f.reg_items.map(c=>{const x=byId['reg.'+c];return `<span class="cell">${E(x?x.name:c)}</span>`;}).join(' ')}
+      <br><span style="color:#8a5a12">已於一方完全反應者，不得於另一方重複修正（手冊 六(九)）</span></span></div>`:''}
+    <div class="step"><span class="tg g">表7</span><span>宗地個別因素清冊之欄位編號與本表 7~25 完全相同；
+      比準地（宗地流水號 0003）在徵收範圍內，表7 同編號欄位即可直接抄錄</span></div>
+  </div></div>`;
+
+  h += `<div class="sec"><h4>計算公式</h4><div class="formula">${
+    f.rule_type==='matrix'
+    ? `① 判級　宗地勘查條件 → 比對級距門檻 → 等級序號 N（共 ${f.level_count} 級）
+② 差異　差異率 ＝（比較標的序號 − 比準地序號）× ${stepTxt(f)}
+　　　　　≡ matrix[比準地序號−1][比較標的序號−1]
+③ 合計　個別因素合計 ＝ Σ（7~25 各細項差異率）　→ 表4 第29列
+④ 試算　試算價格 ＝ 調整至基準日單價 ×（1 ＋ 區域因素調整% ＋ 個別因素合計%）`
+    : `基準明細表列為敘述型：${E((f.notes||[]).join('；')||f.basis||'')}
+差異率無查表矩陣可得，須以土地開發分析法試算，並於備註欄敘明。`}</div>
+    <div class="note">符號：比較標的條件較差 → 差異率為正（與表5 方向相反，亦與表6 相反）。
+      免修正項目條件欄與差異率一律填「-」；應修正但無差異者填 0，兩者必須區分。</div></div>`;
+
+  if (f.thresholds && f.thresholds.length)
+    h += `<div class="sec"><h4>級距門檻</h4>${thresholdsHTML(f)}${matrixHTML(f)}</div>`;
+
+  h += `<div class="sec"><h4>目前資料狀態</h4><div class="${
+    f.status==='missing'||f.status==='insufficient'||f.status==='narrative'?'missbox':
+    f.status==='derived'?'okbox':'warnbox'}">${E(f.status_label)}
+    ${f.from_segment?`<br>${E(f.from_segment)}`:''}
+    ${f.gap?`<br>${E(f.gap)}`:''}</div>`;
+  if (f.substitute)
+    h += `<div style="margin-top:8px"><b style="font-size:11.5px">目前替代做法</b>
+      <div class="formula" style="margin-top:4px">${E(f.substitute.how)}</div>
+      ${f.substitute.warn?`<div class="warnbox" style="margin-top:6px">${E(f.substitute.warn)}</div>`:''}</div>`;
+  h += `</div>`;
+  if (f.sources && f.sources.length)
+    h += `<div class="sec"><h4>替代使用之資料來源</h4>${srcHTML(f)}</div>`;
+  h += `<div class="sec"><h4>手冊依據</h4><ul class="ml">` +
+    [...new Set(f.manual)].map(m=>`<li>${E(m)}</li>`).join('') + `</ul></div>`;
+  return h;
+}
+
+function detailSubtotal(g){
+  const fs = DATA.regional.filter(f=>f.group===+g);
+  const bad = fs.filter(f=>f.status==='missing'||f.status==='insufficient');
+  return `<div class="dt"><h3>（${g}）${E(GRP[g])} 小計</h3>
+    <div class="path">表5-1 第 ${DATA.t5_layout.subtotal_rows[g]} 列　${fs.length} 細項</div></div>
+  <div class="sec"><h4>計算公式</h4><div class="formula">小計 ＝ Σ 該組各細項修正百分比
+最大影響範圍 ＝ ±${fs.reduce((a,f)=>a+f.max_adjustment,0).toFixed(2)}%</div>
+    <div class="note">該組任一細項不可判級，小計即不成立 —— 不以部分加總充數。</div></div>
+  <div class="sec"><h4>組內細項</h4><table class="mini"><thead><tr><th>列</th><th>細項</th>
+    <th style="width:54px">±最大</th><th style="width:74px">狀態</th></tr></thead><tbody>` +
+    fs.map(f=>`<tr><td class="r">${f.t5.row}</td><td>${E(f.name)}</td>
+      <td class="r">${f.max_adjustment}%</td><td>${badge(f)}</td></tr>`).join('') +
+    `</tbody></table></div>
+  <div class="sec"><h4>目前狀態</h4><div class="${bad.length?'missbox':'okbox'}">${
+    bad.length ? `不成立：${bad.map(f=>E(f.name)).join('、')} 無法判級`
+               : '成立：組內全部細項可判級'}</div></div>`;
+}
+
+function detailTotal(){
+  const bad = [...new Set(DATA.regional.filter(f=>f.status==='missing'||f.status==='insufficient')
+    .map(f=>f.group))].sort();
+  return `<div class="dt"><h3>影響地價區域因素總修正數</h3>
+    <div class="path">表5-1 第 ${DATA.t5_layout.total_row} 列 → 表4 第 8 列 區域因素調整百分率</div></div>
+  <div class="sec"><h4>計算公式</h4><div class="formula">總修正數 ＝ (1)+(2)+(3)+(4)+(5)+(6)+(7)+(8) 八組小計
+　　　　　　→ 表4 區域因素調整百分率（J8／N8／R8）
+　　　　　　→ 表4 試算價格 ＝ 調整至基準日單價 ×(1＋區域因素調整%＋個別因素合計%)</div>
+    <div class="note">交叉規則 R14（表5 小計 → 總修正數）、R4（表5 總修正數 → 表4 區域因素調整率）。</div></div>
+  <div class="sec"><h4>目前狀態</h4><div class="missbox">
+    不予產出。第 ${bad.map(g=>`(${g})${GRP[g]}`).join('、')} 組小計不成立。<br><br>
+    (6) 特殊設施 ±10+±10+±15、(7) 環境污染 ±20 —— 合計缺口 <b>±55%</b>，
+    大於已算出之六組合計（絕對值 26.25% / 13.75% / 20.25%）。<b>缺口比已知量還大，任何加總都不具意義。</b>
+  </div></div>
+  <div class="sec"><h4>連鎖阻斷</h4><ul class="ml">
+    <li>表4 J8／N8／R8 區域因素調整百分率</li>
+    <li>表4 第30列 調整百分率絕對值加總、價格形成因素之相近程度</li>
+    <li>表4 第31列 試算價格、比較標的權重</li>
+    <li>表4 G32 比準地比較價格 → 表14 比準地地價 → 表6 宗地市價</li>
+  </ul></div>`;
+}
+
+const CHAIN_D = {
+  lot:{t:'坐落',p:'表4 第4列（D4／G4／K4／O4）',
+    f:'比準地與各比較標的之宗地坐落（地段、地號）',
+    up:'比準地：表7 宗地個別因素清冊（宗地流水號 0003，在徵收範圍內）；'+
+       '比較標的：表1-1 買賣實例調查估價表之實例坐落',
+    st:'題目原載：4 筆坐落均已載於題目表4',
+    rule:'交叉規則 R5：實例編號、交易日期、土地正常單價須與表1-1 一致（審查點 vii）；'+
+         'R8：比準地條件欄應與表7 宗地個別因素清冊一致（審查點 x）'},
+  unit_price:{t:'土地正常單價',p:'表4 第5列（D5／G5／K5／O5）',
+    f:'由表1-1 買賣實例調查估價表之土地正常單價抄錄',
+    up:'表1-1 買賣實例調查估價表（查估單位製作）',
+    st:'題目原載：3 筆比較標的之單價與交易日期均已載於題目表4',
+    rule:'交叉規則 R5：表4 交易日期／土地正常單價／實例編號須與表1-1 一致（審查點 vii）'},
+  date_adj:{t:'交易日期／交易日期調整百分率',p:'表4 第6列（交易日期 D6／G6…；調整率 J6／N6／R6）',
+    f:'調整至估價基準日單價 ＝ 土地正常單價 ×（1 ＋ 交易日期調整百分率）',
+    up:'新北市樹林區土地平均區段地價表（住宅區）',
+    st:'題目原載：本案調整率已載於題目表4，備註敘明係參酌區段地價表調整',
+    rule:'審查點 v：交易日期是否在蒐集期間。本案因比準地區段於 111.03.02–111.09.01 無適當成交案例，'+
+         '依查估辦法第17條第3項擴大至估價基準日前一年內（110.09.02–111.09.01）'},
+  adjusted:{t:'調整至估價基準日單價',p:'表4 第7列（G7／K7／O7）',
+    f:'土地正常單價 ×（1 ＋ 交易日期調整百分率）',
+    up:'本表第5、6列', st:'題目原載並已驗算相符（engine/checks.py check_price_chain）',
+    rule:'全精度連乘，表上顯示值為進位後結果，核算允許 ±1 元容差'},
+  regional:{t:'地價區段號／區域因素調整百分率',p:'表4 第8列（區段號 D8／G8…；調整率 J8／N8／R8）',
+    f:'區域因素調整百分率 ＝ 表5-1 影響地價區域因素總修正數（第42列）',
+    up:'表5-1 影響地價區域因素分析明細表',
+    st:'資料不足：表5 總修正數不成立（(6)(7) 小計因設施覆蓋不足而不成立）',
+    rule:'交叉規則 R4（數值必須相符）、R3（區段號須與表3 一致）；手冊 肆步驟6：表5 須先於表4'},
+};
+const TOT_D = {
+  ind_total:{t:'個別因素差異率合計',p:'表4 第29列（G29／K29／O29）',
+    f:'Σ（7~25 各細項差異率）',
+    up:'本表 7~25 各細項', st:'不得加總：7~11 五細項（合計 ±35%）無宗地地籍幾何而留白；24 容積率為敘述型',
+    rule:'手冊 伍、六：個別因素為宗地對宗地之比較。已可判定之 13 細項部分合計僅記於儲存格註解，未填入表格本體'},
+  abs_sum:{t:'調整百分率絕對值加總／價格形成因素之相近程度',
+    p:'表4 第30列（加總 G30／K30／O30；相近程度 I30／M30／Q30）',
+    f:'|交易日期調整%| ＋ |區域因素調整%| ＋ Σ|各個別因素差異率|',
+    up:'本表第6、8列與第29列',
+    st:'資料不足：區域因素調整率與個別因素合計均不成立',
+    rule:'交叉規則 R7：加總愈大 → 相近程度愈低 → 權重愈小（手冊 伍、六(十一)；'+
+         '不動產估價技術規則第27條）'},
+  trial:{t:'試算價格／比較標的權重',p:'表4 第31列（試算 G31／K31／O31；權重 I31／M31／Q31）',
+    f:'試算價格 ＝ 調整至估價基準日單價 ×（1 ＋ 區域因素調整% ＋ 個別因素合計%）',
+    up:'本表第7、8、29、30列',
+    st:'資料不足：上游不成立',
+    rule:'權重依相近程度決定（例：3 件 → 0.5／0.3／0.2），並須配合蒐集資料可信度綜合決定；'+
+         '權重合計須為 100%（R7）'},
+  final:{t:'比準地比較價格',p:'表4 G32',
+    f:'Σ（各比較標的試算價格 × 權重），四捨五入至個位數',
+    up:'本表第31列',
+    st:'資料不足：各比較標的試算價格與權重均不成立',
+    rule:'交叉規則 R9：表4 比較價格＋表2 收益價格 → 表14 估值欄；'+
+         'R13：表14 比準地地價尾數依查估辦法第21條無條件進位（表4 比較價格為四捨五入之例外）'},
+};
+function detailStatic(d, badge_){
+  return `<div class="dt"><h3>${E(d.t)}</h3><div class="path">${E(d.p)}　${badge_}</div></div>
+  <div class="sec"><h4>計算公式</h4><div class="formula">${E(d.f)}</div></div>
+  <div class="sec"><h4>上游欄位／應對照的表格</h4><div class="note">${E(d.up)}</div></div>
+  <div class="sec"><h4>目前狀態</h4><div class="${d.st.startsWith('題目原載')?'okbox':'missbox'}">${E(d.st)}</div></div>
+  <div class="sec"><h4>審查規則與依據</h4><div class="note">${E(d.rule)}</div></div>`;
+}
+
+function viewDetail(){
+  if (!sel) return `<div class="card"><div class="empty">
+    點選左側任一欄位或儲存格<br><span style="font-size:12px">即顯示其應對照的表格、欄位、級距門檻、
+    計算公式、審查交叉規則，以及目前的資料狀態與替代來源</span></div></div>`;
+  let inner;
+  if (sel.id === 'total') inner = detailTotal();
+  else if (sel.id.startsWith('sub.')) inner = detailSubtotal(sel.id.slice(4));
+  else if (sel.id.startsWith('chain.')) inner = detailStatic(CHAIN_D[sel.id.slice(6)],
+      `<span class="b ${CHAIN[CHAIN.findIndex(c=>c.key===sel.id.slice(6))].st}">${
+        STL[CHAIN[CHAIN.findIndex(c=>c.key===sel.id.slice(6))].st]}</span>`);
+  else if (sel.id.startsWith('tot.')) inner = detailStatic(TOT_D[sel.id.slice(4)],
+      `<span class="b missing">留白退補</span>`);
+  else {
+    const f = byId[sel.id];
+    if (!f) return '';
+    inner = f.kind === 'regional' ? detailRegional(f) : detailIndividual(f);
+  }
+  return `<div class="card">${inner}</div>`;
+}
+
+/* ══════════════════════════════════════════════ render */
+function render(){
+  document.querySelectorAll('#nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.t === tab));
+  $('#main').innerHTML = tab==='t3' ? viewT3() : tab==='t5' ? viewT5() :
+    tab==='t4' ? viewT4() : tab==='gap' ? viewGap() :
+    tab==='src' ? viewSrc() : viewRule();
+  $('#detail').innerHTML = ['t3','t5','t4'].includes(tab) ? viewDetail() : '';
+  $('#detail').style.display = ['t3','t5','t4'].includes(tab) ? '' : 'none';
+  document.querySelector('.cols').style.gridTemplateColumns =
+    ['t3','t5','t4'].includes(tab) ? '' : 'minmax(0,1fr)';
+}
+render();
+</script>
+</body>
+</html>
