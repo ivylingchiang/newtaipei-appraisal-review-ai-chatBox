@@ -173,4 +173,8 @@ warning 4　blocked 3　info 1
 | `compute.py` | 由表3 推導表5（含缺口原因） |
 | `review.py` | 主流程與報表格式 |
 | `cli.py` | 命令列介面 |
+| `export.py` / `export_xlsx.py` | 第一、二版輸出（分析報表／回填 Excel 範本） |
+| `export_v3.py` / `export_v4.py` | 第三、四版（表3 設施欄、表4 個別因素 13~21） |
+| `export_final.py` | 交付版：比照金山區範本之填寫方式產生表3／表4／表5 及其 PDF |
+| `export_pdf.py` | 依工作表版面把已填 xlsx 排成黑白 PDF（不需 Excel／LibreOffice） |
 | `test_engine.py` | 正向＋反向測試 |

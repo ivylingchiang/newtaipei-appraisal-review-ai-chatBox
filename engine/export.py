@@ -6,7 +6,7 @@ from loader import Dataset
 from compute import derive_segment_levels, derive_table4_individual, OBS_TO_ITEM
 from grading import adjust_regional
 
-OUT = "output"
+OUT = "output/log/firstVersion"   # 過程版本歸檔於 output/log/
 REGION = "shulin"
 LEVEL_CODE = {1: "優", 2: "稍優", 3: "普通", 4: "稍劣", 5: "劣"}
 

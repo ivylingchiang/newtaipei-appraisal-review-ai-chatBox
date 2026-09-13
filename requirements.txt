@@ -1,0 +1,10 @@
+# 本專案的 Python 相依（標準庫以外）。Python 3.10+。
+#     python3 -m pip install -r requirements.txt
+#
+# engine/cli.py（審查引擎本身）只需要 PyYAML；其餘套件各自只在特定步驟用到，
+# 未安裝時該步驟才會失敗，不影響審查與資料集載入。
+
+PyYAML>=6.0            # datasets/ 的 YAML 輸出與載入
+openpyxl>=3.1          # 回填官方 xlsx 範本、HTML 預覽、service 的 POST /export/xlsx
+matplotlib>=3.7        # engine/export_pdf.py 依版面繪製黑白 PDF
+Pillow>=10.0           # 同上，量測中文字寬以避免溢出儲存格

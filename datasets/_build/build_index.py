@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
 """產生全域索引 index.json"""
-import os, json, glob, datetime
+import os, json, glob, datetime, sqlite3
 OUT = "datasets"
 
 def load(p): return json.load(open(p, encoding="utf-8"))
+
+
+def table_count():
+    """實際數資料庫的表數，不要寫死（build_db.py 增表時這裡不會跟著改）。"""
+    db = f"{OUT}/db/appraisal.sqlite"
+    if not os.path.exists(db):
+        return 0
+    with sqlite3.connect(db) as con:
+        return con.execute("SELECT count(*) FROM sqlite_master "
+                           "WHERE type='table' AND name NOT LIKE 'sqlite_%'").fetchone()[0]
 
 regions = []
 for rdir in sorted(glob.glob(f"{OUT}/regions/*")):
@@ -40,7 +50,7 @@ idx = {
     "description": "由 doc/ 內之命題文件、評價基準明細表、查估書表範本、作業手冊與 Excel 範本"
                    "抽取結構化而成，依行政區 + 用地別分類歸檔。",
     "formats": ["json", "yaml", "sqlite"],
-    "database": {"path": "db/appraisal.sqlite", "tables": 15},
+    "database": {"path": "db/appraisal.sqlite", "tables": table_count()},
     "regions": regions,
     "common": {
         "forms": "common/forms.json",

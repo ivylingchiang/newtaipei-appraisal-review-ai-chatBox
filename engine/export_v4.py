@@ -33,7 +33,7 @@ from compute import derive_segment_levels, derive_table4_individual
 from grading import grade, adjust, Ungradable
 
 ROOT = X.ROOT
-OUT = os.path.join(ROOT, "output", "fourthVersion")
+OUT = os.path.join(ROOT, "output", "log", "fourthVersion")
 INF = os.path.join(ROOT, "datasets", "external", "poi_inference.json")
 REGION = X.REGION
 os.makedirs(OUT, exist_ok=True)

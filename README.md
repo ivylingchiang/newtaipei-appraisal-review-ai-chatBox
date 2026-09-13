@@ -1,283 +1,520 @@
 # New Taipei City — Land Expropriation Appraisal Review Assistant
 
 An AI-assisted review system for **land expropriation compensation appraisal** under Taiwan's
-*土地徵收補償市價查估辦法* (Regulations for Market Price Appraisal of Land Expropriation
-Compensation), built for the New Taipei City Land Administration Bureau AI hackathon.
+*土地徵收補償市價查估辦法*, built for the New Taipei City Land Administration Bureau AI hackathon
+(命題：AI 輔助不動產估價案件審查).
 
 The system reads an appraisal case (Forms 3 / 4 / 5), checks it against the governing manual and
-the district-specific valuation criteria tables, and derives the values that can be computed —
-flagging everything that cannot, rather than filling it with guesses.
+the district-specific valuation criteria tables, derives every value that can be computed — and
+flags everything that cannot, rather than filling it with a guess.
 
 **Working case:** 新北市樹林區 (Shulin District), ordinary residential land, valuation date
 1 September 2022 (民國 111 年 9 月 1 日), case no. `1110901-99-XXX`.
+Benchmark parcel `P001-00`; comparables `P002-00`, `P003-00`, `P004-00`.
+
+| | |
+|---|---|
+| **Deliverables** | 3 filled official workbooks + 3 black-and-white PDFs + an interactive field-provenance map |
+| **Validation** | Back-calculates the authority's own completed case: 13/13 facility items, 19/19 individual factors |
+| **Engine tests** | Reference case → 0 errors; 7 injected errors → 7 caught (`engine/test_engine.py`) |
+| **Coverage** | Form 5: 25 of 29 items graded, 6 of 8 group subtotals, grand total delivered in `finalVersion` |
+| **Deployed** | Read-only HTTP service on AWS ECS Fargate (`service/deploy-aws.sh`) |
 
 ---
 
-## 1. Repository layout
+## Table of contents
+
+1. [The brief and what was built for it](#1-the-brief-and-what-was-built-for-it)
+2. [Architecture](#2-architecture)
+3. [Repository layout](#3-repository-layout)
+4. [Results](#4-results)
+5. [Reproducing everything](#5-reproducing-everything)
+6. [Serving the output — local, Docker, AWS](#6-serving-the-output--local-docker-aws)
+7. [AWS credentials and deployment](#7-aws-credentials-and-deployment)
+8. [Known limits](#8-known-limits)
+9. [Follow-up work](#9-follow-up-work)
+10. [Conventions](#10-conventions)
+
+---
+
+## 1. The brief and what was built for it
+
+The problem statement (`doc/【命題文件】…pdf`) names three pain points. Each one is answered by a
+specific part of this repository — and the mapping is the fastest way to read the project:
+
+| Pain point (from the brief) | What answers it | Where |
+|---|---|---|
+| **1. Too many forms to cross-check by hand; omissions are easy.** Reviewers manually compare Form 3 (地價區段勘查表), Form 5 (影響地價區域因素分析明細表) and Form 4 (比較法調查估價表) item by item. | A rule engine that runs the manual's own review checklist as code — 14 cross-table rules (R1–R14) plus the price chain, each finding carrying its severity and the manual clause behind it. | [`engine/checks.py`](engine/checks.py), [`engine/README.md`](engine/README.md) |
+| **2. Grades depend on a per-district, per-land-use criteria table; human consistency is hard to hold.** | The criteria tables are extracted into structured data keyed by `(region_code, land_use_code)`, each item carrying its level thresholds *and* the full reciprocal adjustment matrix. Grading is a lookup, not a judgement call. | [`datasets/regions/*/criteria/`](datasets/), [`engine/grading.py`](engine/grading.py) |
+| **3. Adjustment-rate sums and cross-form transcription (e.g. the regional total) go wrong.** | Every subtotal, grand total and cross-form copy is recomputed and compared; the total that Form 4 must carry is derived from Form 5 rather than transcribed. | [`engine/compute.py`](engine/compute.py), rules R4 / R14 / R7 |
+
+The brief's expected outcomes map just as directly:
+
+- *「透過 AI 輔助完成估價書填寫流程」* → `output/finalVersion/` — the three official forms filled
+  and rendered as PDFs, every cell traceable to its source.
+- *「降低人工審查時間與錯誤率」* → `engine/cli.py` returns exit code 1 on any `error`-level finding,
+  so it drops straight into CI or a pre-submission gate.
+- *「作為估價審查數位化的基礎應用案例」* → `datasets/` is a reusable knowledge base (JSON + YAML +
+  SQLite), and `service/` publishes the result over HTTP for other systems to consume.
+
+### The design decision that shapes everything
+
+**"Cannot find" never means "none."** For a positive facility (school, market, park) a blank means
+the worst grade; for a nuisance facility (crematorium, incinerator) it means the best. Either way it
+moves compensation money. So unknown sub-fields stay blank — never filled with 「無」 — and are
+listed for field survey. Where a value *is* inferred, the inference and its confidence travel with
+it all the way to the cell comment.
+
+---
+
+## 2. Architecture
+
+```
+doc/                    datasets/                engine/                  output/            service/
+─────────────           ─────────────            ─────────────            ─────────────      ─────────────
+題目.pdf         ┐                      ┌ loader.py                ┌ firstVersion    CSV/MD/JSON
+查估書表範本.pdf  │  _build/*.py         │ grading.py   judge        │ secondVersion   xlsx
+評價基準明細表    ├─────────────────────>│ compute.py   derive       ├ thirdVersion    xlsx + POI
+作業手冊 (169pp) │  PDF → text →        │ checks.py    R1–R14  ────>│ fourthVersion   xlsx           HTTP
+extra.md        │  parse → JSON/YAML   │ review.py    report        ├ finalVersion    xlsx + PDF ──> server.py
+表3/4/5 .xlsx    ┘  → SQLite → index    └ export_*.py  write         └ fieldMapping    single HTML     ECS
+                                                                                                    Fargate
+poi-links.md ──> poi_fetch.py ──> external/cache/ ──> poi_infer.py ──> external/poi_inference.json
+(18 open datasets + OpenStreetMap)                    segment centroids · nearest facility · grade
+```
+
+Four properties hold across the whole pipeline:
+
+- **`doc/` is read-only.** It is the only hand-authored source of truth. Everything downstream is
+  regenerated, never hand-patched.
+- **`datasets/` is fully derived** and rebuilt by one script (`datasets/_build/run_all.sh`).
+- **Nothing is hard-coded per district.** Shulin and Jinshan disagree on almost every threshold
+  ("excellent" building coverage is ≥ 60 % in Jinshan, ≥ 80 % in Shulin), so criteria are always
+  loaded by `(region_code, land_use_code)`.
+- **Every derived number is traceable** to a source line in Form 3 and a threshold string in the
+  criteria table — through the workbook's 填表依據 sheet, the cell comment, and the field map.
+
+### The two parallel sample sets
+
+The problem statement deliberately ships one worked example and one blank case. Understanding the
+pairing is the key to the whole repository:
+
+```
+  REFERENCE SET (learn and validate from)   TARGET SET (answer)
+  查估書表範本.pdf          ←pairs with→    題目.pdf
+  評價基準明細表範例.pdf     ←pairs with→    評價基準明細表.pdf
+  Jinshan · commercial                      Shulin · residential
+```
+
+The reference set is the only answer key available, so it is used as a **regression fixture**: the
+engine must reproduce the authority's own figures on Jinshan before any Shulin output is trusted.
+
+---
+
+## 3. Repository layout
 
 ```
 .
-├── doc/          Source documents (PDF / Excel) — the ground truth, never edited
-├── datasets/     Structured knowledge base extracted from doc/  (JSON + YAML + SQLite)
-├── engine/       Rule engine: review checks, table lookups, form export
+├── doc/          Source documents (PDF / Excel) — ground truth, never edited
+├── dev/          Domain research notes written before implementation (see dev/README.md)
+├── datasets/     Structured knowledge base derived from doc/ (JSON + YAML + SQLite)
+├── engine/       Rule engine: review checks, table lookups, form export, PDF rendering
 ├── input/        Blank official Excel templates to be filled
-├── output/       Generated deliverables (three successive versions)
-└── service/      Read-only HTTP service that serves output/ to external programs
+├── output/       Deliverables: finalVersion/ + fieldMapping/ + log/ (versions 1–4) + the submission deck
+├── service/      Read-only HTTP service + Docker + AWS deployment
+└── requirements.txt
 ```
 
-Everything in `datasets/` is **derived** from `doc/` and is fully reproducible
-(`datasets/_build/run_all.sh`). `doc/` is the only hand-authored source of truth.
-
----
-
-## 2. `doc/` — source documents and what each one is for
-
-The problem statement deliberately supplies **two parallel sample sets**: one fully worked example
-and one blank case to solve. Understanding this pairing is the key to the whole repository.
-
-| File | Role | Used for |
+| Directory | Read its own README | What is in it |
 |---|---|---|
-| `doc/題目.pdf` | **Target case** — Shulin, residential | 4 × Form 3 + Form 5-1 + Form 4, with grades and adjustment rates **left blank** — this is what the system must produce |
-| `doc/rules/評價基準明細表.pdf` | **Criteria — Shulin** | Regional (29 items) + individual (20 items) lookup matrices for the target case |
-| `doc/rules/查估書表範本.pdf` | **Reference case** — Jinshan, commercial | The same forms **fully completed** by the authority — the only "answer key" available |
-| `doc/rules/評價基準明細表範例.pdf` | **Criteria — Jinshan** | Lookup matrices matching the reference case |
-| `doc/rules/土地徵收補償市價查估作業手冊.pdf` | Governing manual (MOI, 169 pp.) | Form system, filling rules, official review checklist, rounding rules |
-| `doc/rules/extra.md` | Supplementary rules | Two case-specific rulings supplied by the authority |
-| `doc/table/表3,4,5*.xlsx` | Official Excel templates | Source of the blank templates copied into `input/` |
-| `doc/extraInfo/poi-links.md` | 18 open-data URLs | Facility datasets used to infer Form 3 facility fields (see §6, version 3) |
-| `doc/【命題文件】…pdf` | Problem statement | Scope, pain points, expected deliverables |
+| `doc/` | — | 題目.pdf (target case), 查估書表範本.pdf (completed reference), two criteria tables, the 169-page MOI manual, `extra.md` case rulings, blank Excel templates, 18 open-data URLs |
+| [`dev/`](dev/README.md) | [`dev/README.md`](dev/README.md) | Five research notes (~2,900 lines): form system and filling order, facility-field rules, open-data audit with every API actually called, per-cell API mapping |
+| [`datasets/`](datasets/README.md) | [`datasets/README.md`](datasets/README.md) | `index.json`, `regions/{shulin,jinshan}/{criteria,segments,cases,img}`, `common/` (forms, formulas, review rules, case rules, legal refs, 74 images), `external/` (19 cached sources, POI inference), `db/appraisal.sqlite` (18 tables), `_build/` |
+| [`engine/`](engine/README.md) | [`engine/README.md`](engine/README.md) | 18 modules — see the table below |
+| `input/` | — | The three official templates copied unmodified from `doc/table/`; exporters write into these so the deliverable is visually identical to the authority's own form |
+| [`output/`](output/finalVersion/README.md) | one README per version | `finalVersion/` (the hand-over set), `fieldMapping/` (the field map), `log/` (versions 1–4, the development record), `Team UCLab.pdf` (submission deck) — see §4 |
+| [`service/`](service/README.md) | [`service/README.md`](service/README.md) | `server.py` (stdlib-only HTTP), `patch_xlsx.py` (apply reviewer corrections), `Dockerfile`, `docker-compose.yml`, `deploy-aws.sh` |
 
-```
-  REFERENCE SET (learn from)              TARGET SET (answer)
-  查估書表範本.pdf        ←pairs with→    題目.pdf
-  評價基準明細表範例.pdf   ←pairs with→    評價基準明細表.pdf
-  Jinshan · commercial                    Shulin · residential
-```
-
-> **The thresholds differ between the two districts.** "Excellent" building coverage ratio is
-> ≥ 60 % in Jinshan but ≥ 80 % in Shulin; floor area ratio ≥ 240 % vs ≥ 460 %. Criteria must
-> always be loaded dynamically by `(region_code, land_use_code)` — never hard-coded.
-
----
-
-## 3. `datasets/` — the structured knowledge base
-
-Extracted from `doc/`, filed **by district × land-use type**, and published in three formats:
-JSON (for programs), YAML (for human review), SQLite (for SQL queries).
-
-```
-datasets/
-├── index.json                  Global index — read this first
-├── db/appraisal.sqlite         18 tables, directly queryable
-├── regions/
-│   ├── shulin/                 Shulin · residential      role: target
-│   │   ├── criteria/
-│   │   │   ├── regional.json|yaml     29 regional-factor items
-│   │   │   └── individual.json|yaml   20 individual-factor items
-│   │   ├── segments/           Form 3 — P001-00 … P004-00 + _index.json
-│   │   ├── cases/              Form 5 + Form 4 — 1110901-99-XXX
-│   │   └── img/                15 page renders
-│   └── jinshan/                Jinshan · commercial      role: reference
-│       ├── criteria/           28 + 19 items
-│       ├── segments/           P002-00
-│       ├── cases/              1140901-99-001
-│       └── img/                45 images (renders, maps, site photos)
-├── common/                     Cross-district knowledge
-│   ├── forms.json|yaml         Form 1–14 system and production workflow
-│   ├── formulas.json|yaml      Calculation rules, rounding, weighting
-│   ├── review_rules.json|yaml  Official review checklist + cross-table reference matrix
-│   ├── case_rules.json|yaml    Case-specific rulings (from extra.md)
-│   ├── legal_references.json|yaml
-│   ├── images.json             Manifest for all 74 extracted images
-│   └── img/                    14 images (workflow diagrams, legends)
-├── external/                   Open data for facility inference (version 3 only)
-│   ├── cache/                  Raw API responses, 19 sources
-│   └── poi_inference.json      Derived segment centroids, nearest facilities, grades
-└── _build/                     Reproducible build scripts
-```
-
-### 3.1 Document → dataset mapping
-
-| Source document | Build script | Output |
-|---|---|---|
-| `評價基準明細表.pdf`, `評價基準明細表範例.pdf` | `build_criteria.py` | `regions/*/criteria/{regional,individual}.json\|yaml` |
-| `題目.pdf` (Form 3 pages), `查估書表範本.pdf` | `build_segments.py` | `regions/*/segments/*.json`, `segments.yaml` |
-| `題目.pdf` (Forms 4 & 5), `查估書表範本.pdf` | `build_cases.py` | `regions/*/cases/*.json\|yaml` |
-| `土地徵收補償市價查估作業手冊.pdf`, `extra.md` | `build_common.py` | `common/{forms,formulas,review_rules,case_rules,legal_references}` |
-| All PDFs (embedded bitmaps + page renders) | `build_images.py` | `*/img/`, `common/images.json` |
-| All of the above JSON | `build_db.py` | `db/appraisal.sqlite` (18 tables) |
-| All of the above | `build_index.py` | `index.json` |
-| `doc/extraInfo/poi-links.md` + OpenStreetMap | `engine/poi_fetch.py`, `engine/poi_infer.py` | `external/cache/`, `external/poi_inference.json` |
-
-### 3.2 Shape of a criteria item
-
-Every item in `criteria/regional.json` carries its level thresholds **and** the full
-reciprocal adjustment matrix, so grading and rate lookup need no interpretation at runtime:
-
-```jsonc
-{
-  "item_id": "shulin.regional.near_school",
-  "group_code": 5,                    // (5) 公共建設 Public facilities
-  "item_name": "接近學校之程度（國小、國中、高中、大專院校）",
-  "level_count": 5,
-  "max_adjustment": 8.0,              // ±8 %
-  "step": 2.0,                        // one grade apart = 2 %
-  "direction": "lower_is_better",     // vs "higher_is_better" for nuisance facilities
-  "levels": [
-    { "rank": 1, "label": "優",
-      "criterion": "區段內有學校者或距離未滿300m",
-      "threshold": { "kind": "numeric", "unit": "m",
-                     "ranges": [{ "max": 300.0, "max_inclusive": false }],
-                     "in_segment": true, "or_none": false } }
-    // … ranks 2–5
-  ],
-  "matrix": [[0, 2, 4, 6, 8], [-2, 0, 2, 4, 6], …]   // anti-symmetric, zero diagonal
-}
-```
-
-Adjustment rate comes from that matrix — but **Form 5 and Form 4 read it in opposite
-directions**: `(base − comparable) × step` for regional factors, `(comparable − base) × step`
-for individual ones. They are separate functions in `engine/grading.py`; see
-`datasets/README.md §4` for the calibration evidence behind each.
-
-### 3.3 Rebuilding
-
-```bash
-datasets/_build/run_all.sh          # PDF → text → parse → JSON/YAML → SQLite → index → tests
-```
-
-Requires `pdftotext -layout` (poppler). The script ends by running both the dataset regression
-tests and the engine tests.
-
----
-
-## 4. `engine/` — rule engine
-
-Reads `datasets/` and runs two modes simultaneously: **review** existing content and **derive**
-what is computable.
+### Engine modules
 
 | Module | Purpose |
 |---|---|
-| `loader.py` | Dataset loading layer |
-| `grading.py` | Fact → grade → adjustment-rate lookup |
-| `compute.py` | Derive Form 5 grades and adjustment percentages from Form 3 observations |
-| `checks.py` | Cross-table consistency rules R1–R14, mapped to the manual's review checklist |
-| `review.py`, `cli.py` | Review pipeline and CLI |
+| `loader.py` | Dataset loading layer (criteria, segments, cases, common rules) |
+| `grading.py` | Fact → grade → adjustment-rate lookup (`grade` / `adjust` / `adjust_regional`) |
+| `compute.py` | Derive Form 5 grades and percentages from Form 3 observations; Form 4 individual factors |
+| `checks.py` | Cross-table rules R1–R14, case rules CR1/CR2, price-chain recomputation |
+| `review.py`, `cli.py` | Review pipeline, report formatting, CLI |
 | `export.py` | Version 1 — analysis output (CSV / Markdown / JSON) |
 | `export_xlsx.py` | Version 2 — write results back into the `input/` templates |
-| `poi_fetch.py`, `poi_infer.py` | Version 3 — fetch open data, locate segments, infer facility fields |
-| `export_v3.py` | Version 3 — Form 3 with facility fields filled from inferred data |
+| `poi_fetch.py`, `poi_infer.py` | Fetch 18 open datasets + OSM; locate segment centroids; infer facility fields |
+| `export_v3.py` | Version 3 — Form 3 facility fields filled from inferred data |
+| `export_v4.py` | Version 4 — Form 4 individual factors 13–21 |
+| `export_final.py` | Deliverable — Forms 3/4/5 filled and worded the way the Jinshan reference is |
+| `export_pdf.py` | Renders a filled workbook to black-and-white PDF (no Excel or LibreOffice needed) |
 | `preview_html.py`, `export_artifact_html.py` | HTML previews of the filled workbooks |
-| `test_engine.py` | Positive (official example must produce zero errors) + negative (injected errors must be caught) |
-
-```bash
-python3 engine/cli.py shulin          # review one district
-python3 engine/cli.py shulin --json   # machine-readable
-python3 engine/test_engine.py
-```
-
-Exit code is 1 when any `error`-level finding exists, so it can be wired into CI directly.
+| `export_field_map.py`, `field_map_template.html` | The field-provenance map (`output/fieldMapping/index.html`) |
+| `test_engine.py` | Positive + negative regression tests |
 
 ---
 
-## 5. `input/` — blank templates
+## 4. Results
 
-The three official Excel templates, copied unmodified from `doc/table/`:
+### 4.1 Validation against the authority's own case
 
-| File | Sheet filled by |
+All extraction and grading logic is verified by back-calculating the fully completed Jinshan
+reference case — the only answer key that exists.
+
+| Check | Result |
 |---|---|
-| `表3地價區段勘查表.xlsx` | Form 3 — Land Value Segment Survey |
-| `表4比較法調查估價表.xlsx` | Form 4 — Comparison Approach Appraisal |
-| `表5影響地價區域因素分析明細表(住宅用地).xlsx` | Form 5-1 — Regional Factor Analysis |
+| Facility-type regional items regraded from the reference Form 3 | **13 / 13** match the authority's grades |
+| Individual-factor rates recomputed on the reference Form 4 | **19 / 19** match, total 13.00 % |
+| Review engine run on the completed reference case | **0 errors** (1 warning: 2 labels in Form 3 that do not map, not a data gap) |
+| 7 deliberately injected errors (wrong rate, wrong total, wrong weight, wrong price …) | **7 / 7 caught**, each by its intended rule |
 
-Layout, merged cells and print settings are preserved; the exporters write into these files so the
-deliverable is visually identical to the authority's own form.
+A watchdog that never barks is worthless, so the negative tests matter as much as the positive one.
+Both directions of the lookup are asserted independently — Form 5 reads the matrix as
+`(base − comparable) × step` and Form 4 as `(comparable − base) × step`, and the tests assert the
+two are always opposite in sign, so the direction cannot be silently flipped later.
 
----
+### 4.2 What the system produced for the target case
 
-## 6. `output/` — three successive versions
+| | `log/firstVersion` | `log/secondVersion` | `log/thirdVersion` | `log/fourthVersion` | `finalVersion` |
+|---|---|---|---|---|---|
+| Format | CSV + MD + JSON | Excel | Excel | Excel | **Excel + PDF** |
+| Form 3 facility fields | blank | blank | **filled** (13 items × 4 segments) | filled | filled |
+| Form 5 items graded | 15 / 29 | 15 / 29 | **25 / 29** | 25 / 29 | **29 / 29** |
+| Form 5 group subtotals | 4 / 8 | 4 / 8 | **6 / 8** | 6 / 8 | **8 / 8** |
+| Form 5 grand total | — | — | — | — | **−23.75 / −13.75 / −17.75 %** |
+| Form 4 individual factors 13–21 | — | — | — | **filled** | filled |
+| Form 4 regional adjustment row | — | — | — | — | **filled** |
+| Produced by | `export.py` | `export_xlsx.py` | `export_v3.py` | `export_v4.py` | `export_final.py` |
 
-All three describe the *same* case and share the same grading logic. They differ in output format
-and in how much of Form 3 is populated.
+Versions 1–4 are the development record and live under [`output/log/`](output/log/); the hand-over
+set is [`output/finalVersion/`](output/finalVersion/README.md) and the field map is
+[`output/fieldMapping/`](output/fieldMapping/). Each version keeps its own README explaining what it
+added and what it still could not determine.
 
-| | `firstVersion/` | `secondVersion/` | `thirdVersion/` |
-|---|---|---|---|
-| Format | CSV + Markdown + JSON | **Excel** (filled templates) | **Excel** (filled templates) |
-| Content | Analysis results | Same results written back into the forms | Same, **plus** Form 3 facility fields inferred from open data |
-| Form 3 facility fields | Left blank | Left blank | **Filled** — 13 items × 4 segments |
-| Form 5 subtotals available | 4 of 8 | 4 of 8 | **6 of 8** |
-| Form 5 grand total | Not produced | Not produced | Not produced |
-| Produced by | `engine/export.py` | `engine/export_xlsx.py` | `engine/export_v3.py` |
+The step from 15 to 25 graded items is the open-data work: the four price segments were located by
+intersecting their boundary-street names (recorded only as prose in the source forms) against
+OpenStreetMap street geometry, giving centroids with an uncertainty radius of **±25 to ±65.5 m** —
+comfortably inside the innermost grading thresholds of 200–300 m. Of the 52 resulting grades
+(13 items × 4 segments), **8 fall within one uncertainty radius of a threshold** and are marked
+borderline for human review.
 
-Each version has its own `README.md` with the full reasoning; the third one also documents the
-limits of the inferred values. Every filled cell in the Excel outputs carries three layers of
-provenance: a **fill colour** for data quality, a **cell comment** with the rule applied, and a row
-in the workbook's `填表依據` (basis) sheet.
+### 4.3 The grand total, and who decides to produce it
+
+Form 5's grand total is the sum of eight group subtotals. Groups (6) 特殊設施 and (7) 環境污染 have
+sub-fields with no locatable open data at all — funeral parlour, crematorium, landfill, and four of
+the five pollution columns. The nearest facility that *can* be found is therefore only an optimistic
+bound: the real nearest one can only be closer, i.e. worse. Versions 1–4 leave those two groups, and
+the grand total, blank and report the gap.
+
+`finalVersion` grades them from the nearest facility on record — exactly the way the Jinshan
+reference case is filled — **at the reviewing authority's instruction**. That makes all eight
+subtotals, the grand total (−23.75 % / −13.75 % / −17.75 %) and with it Form 4's regional adjustment
+row available. The bound stays what it is: the limitation is recorded in
+[`output/finalVersion/README.md §2`](output/finalVersion/README.md) and in every affected cell's
+basis row, and those two groups head the field-survey list.
+
+### 4.4 Provenance built into the deliverable
+
+Every filled cell in the Excel outputs carries three layers of provenance: a **fill colour** for
+data quality, a **cell comment** with the rule applied, and a row in the workbook's 填表依據 sheet
+(584 rows for Form 3, 220 for Form 4, 356 for Form 5).
 
 | Fill | Meaning |
 |---|---|
 | Green | Transcribed from `doc/題目.pdf` |
 | Yellow | Derived by table lookup against the criteria — no estimation |
-| Orange | Inferred from segment level to parcel level |
-| Blue / Purple (v3) | Inferred from open data — official register / OpenStreetMap only |
-| Amber (v3) | Coverage insufficient — value shown but not used for grading |
+| Orange (segment) | Inferred from segment level to parcel level |
+| Blue / Purple | Inferred from open data — official register (A/B) / OpenStreetMap only (C) |
+| Amber | Coverage insufficient — value shown but not used for grading |
 | Red | Required but no data available — left blank and listed for supplementation |
 | Grey | Not applicable to this land-use type |
 
-### Why the grand total is never produced
+`finalVersion` drops the colours (the official form is black and white); the reasoning survives
+intact in the comments and the basis sheets.
 
-Form 5's grand total is the sum of eight group subtotals. Groups (6) special facilities and
-(7) environmental pollution cannot be completed from the available data, and together they carry
-up to ±55 % of adjustment — more than the ±26 % that *is* computable. Summing an incomplete set
-would be misleading, so the system reports the gap instead of estimating it.
+### 4.5 The field map
 
-The governing principle throughout: **"cannot find" never means "none".** For positive facilities
-a blank means the worst grade; for nuisance facilities it means the best. Either way it moves
-money, so unknown fields stay blank and are listed for field survey.
+[`output/fieldMapping/index.html`](output/fieldMapping/index.html) is a single self-contained HTML
+file (~790 KB, no external CSS/JS/images) answering a different question from the four versions:
+not *what is the number* but *where must this cell come from*. Seven tabs: Form 3, Form 4, Form 5,
+the complete rendered forms, the missing-data register, the open-data sources, and the formulas and
+review rules. Every field is clickable, showing the cross-form references, the formula, the criteria
+thresholds and full N×N matrix, the current data status and confidence, and the manual clause.
+
+The 完整書表 tab is **editable**: 1,212 cells (of 11,062) can be corrected by a human reviewer, and
+the toolbar exports the corrections three ways — a CSV correction list, a JSON payload, and a
+corrected workbook produced server-side by `POST /export/xlsx`. The page stores nothing; reloading
+returns the AI output. Downstream cells affected by an edit are struck orange rather than silently
+recomputed, because the workbooks hold static derived values, not Excel formulas — see
+[`service/README.md §6`](service/README.md).
 
 ---
 
-## 7. `service/` — serving the output to other programs
+## 5. Reproducing everything
 
-The field map (`output/fieldMapping/index.html`) is a fully self-contained single HTML file, so
-any program that can make an HTTP request can render it. `service/server.py` is a stdlib-only
-read-only HTTP server that exposes it — no dependencies to install:
+### 5.1 Prerequisites
 
 ```bash
-python3 service/server.py                                   # http://localhost:8000/
-docker compose -f service/docker-compose.yml up -d          # same, containerised
+python3 --version                 # 3.10 or newer
+python3 -m pip install -r requirements.txt
+brew install poppler              # pdftotext / pdfimages / pdftoppm  (Linux: apt install poppler-utils)
 ```
 
-| Route | Serves |
-|---|---|
-| `/`, `/fieldMapping/index.html` | the field map (`地價查估書表審查對照總覽`) |
-| `/output/`, `/output/<path>` | directory index and every other generated file |
+`engine/cli.py` itself needs only PyYAML. `openpyxl` is needed to write workbooks, `matplotlib` +
+`Pillow` to render PDFs, and poppler only to rebuild `datasets/` from the PDFs.
 
-Responses carry `Access-Control-Allow-Origin: *` and no `X-Frame-Options`, so external code can
-`fetch()` the page cross-origin or embed it in an `<iframe>`. gzip, `Last-Modified`/`304` and
-UTF-8 charset are handled; paths outside `output/` are refused. See `service/README.md` for the
-client snippets and deployment notes.
+### 5.2 Rebuild the knowledge base from `doc/`
+
+```bash
+datasets/_build/run_all.sh        # PDF → text → parse → JSON/YAML → SQLite → index → tests
+```
+
+Six stages, ending with the dataset regression tests and the engine tests. Text extraction goes to
+`/tmp/_appraisal_txt` by default; pass a directory to override.
+
+### 5.3 Run the review engine
+
+```bash
+python3 engine/cli.py                  # both districts
+python3 engine/cli.py shulin           # the target case
+python3 engine/cli.py jinshan          # the reference case — must report 0 errors
+python3 engine/cli.py shulin --json    # machine-readable
+python3 engine/test_engine.py          # positive + negative tests
+```
+
+Exit code is 1 when any `error`-level finding exists, 0 otherwise.
+
+### 5.4 Regenerate the deliverables
+
+```bash
+# versions 1 and 2 — analysis, then the same results written back into input/
+python3 engine/export.py
+python3 engine/export_xlsx.py
+
+# version 3 — open data (poi_fetch takes ~15 min and hits 19 endpoints; the cache is committed,
+# so skip it unless you want fresh data)
+python3 engine/poi_fetch.py
+python3 engine/poi_infer.py
+python3 engine/export_v3.py
+PREVIEW_VERSION=thirdVersion python3 engine/preview_html.py    # reads output/log/thirdVersion
+
+# version 4 — Form 4 individual factors 13–21
+python3 engine/export_v4.py
+PREVIEW_VERSION=fourthVersion python3 engine/preview_html.py
+
+# deliverable — three workbooks and three PDFs, worded like the Jinshan reference
+python3 engine/export_final.py
+
+# the field map
+python3 engine/export_field_map.py
+```
+
+Versions 1–4 write into `output/log/<version>/`; `export_final.py` and `export_field_map.py` write
+to `output/finalVersion/` and `output/fieldMapping/`. All of them are deterministic — rerunning
+overwrites in place.
+
+Any filled workbook can be rendered on its own:
+
+```bash
+python3 engine/export_pdf.py <xlsx> [<pdf>]
+```
+
+### 5.5 Verify what you rebuilt
+
+```bash
+python3 datasets/_build/run_tests.py   # dataset regression
+python3 engine/test_engine.py          # engine, both directions of the lookup
+python3 engine/cli.py jinshan          # the reference case must still come out clean
+```
 
 ---
 
-## 8. Conventions
+## 6. Serving the output — local, Docker, AWS
+
+`service/server.py` is a stdlib-only, read-only HTTP server that publishes `output/` so other
+programs can consume it. No dependencies to install (only `POST /export/xlsx` needs `openpyxl`; if
+it is missing that one endpoint returns 503 and everything else keeps working).
+
+```bash
+python3 service/server.py                             # http://localhost:8000/
+python3 service/server.py --port 9000 --host 127.0.0.1
+docker compose -f service/docker-compose.yml up -d    # mounts ./output read-only
+```
+
+| Method | Route | Serves |
+|---|---|---|
+| GET / HEAD | `/`, `/index.html`, `/fieldMapping/index.html` | the field map |
+| GET / HEAD | `/output/`, `/output/<path>` | directory index and every generated file |
+| POST | `/export/xlsx` | apply a reviewer's corrections, return a zip (in memory; nothing is written to disk) |
+| OPTIONS | any | CORS preflight |
+
+Responses carry `Access-Control-Allow-Origin: *` and no `X-Frame-Options`, so external code can
+`fetch()` the page cross-origin or embed it in an `<iframe>`. gzip (793 KB → ~98 KB),
+`Last-Modified`/`304` and UTF-8 charset are handled; paths outside `output/` are refused. Full
+client snippets in [`service/README.md`](service/README.md).
+
+---
+
+## 7. AWS credentials and deployment
+
+The service runs on **ECS Fargate** in AWS account `242971039848`, region `us-west-2`, from an image
+in ECR. The image bakes `output/` in (unlike the local compose file, which mounts it), so
+regenerating the reports means rebuilding and pushing the image.
+
+| Resource | Value |
+|---|---|
+| ECR image | `242971039848.dkr.ecr.us-west-2.amazonaws.com/ntpc-appraisal-output:latest` |
+| ECS cluster / service | `ntpc-appraisal` / `ntpc-appraisal-output` |
+| Task | Fargate **ARM64**, 0.25 vCPU / 0.5 GB, container port 8000 |
+| Security group | `sg-09f19d9b31bdf84f7` — inbound TCP 8000 |
+| CloudWatch logs | `/ecs/ntpc-appraisal-output`, 7-day retention |
+
+### 7.1 Credentials
+
+**No credential ever belongs in this repository.** `.gitignore` excludes `.env*`, `.aws/`, `*.pem`
+and anything matching `*credentials*`; the deploy script reads whatever the AWS CLI resolves and
+hard-codes only the account id, region and resource names, which are not secrets.
+
+Pick whichever applies to your account, then confirm before deploying:
+
+```bash
+# a) IAM Identity Center / SSO — preferred, issues short-lived credentials
+aws configure sso            # or: aws login   (AWS CLI v2.36+)
+aws sso login --profile ntpc
+
+# b) IAM user access key — long-lived, rotate it and never commit it
+aws configure --profile ntpc # AWS Access Key ID / Secret / region us-west-2 / json
+
+# c) environment variables — for CI, expires with the session
+export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_SESSION_TOKEN=...
+export AWS_REGION=us-west-2
+
+# confirm — must print account 242971039848
+aws sts get-caller-identity
+```
+
+If you use a named profile, export it before running the deploy script:
+`export AWS_PROFILE=ntpc`. The AWS CLI is expected on `PATH`; the script also looks in
+`~/.local/bin`, where the macOS installer puts it.
+
+**Minimum IAM permissions** for the update path:
+
+| Service | Actions |
+|---|---|
+| ECR | `ecr:GetAuthorizationToken`, `BatchCheckLayerAvailability`, `InitiateLayerUpload`, `UploadLayerPart`, `CompleteLayerUpload`, `PutImage`, `BatchGetImage` |
+| ECS | `ecs:UpdateService`, `DescribeServices`, `ListTasks`, `DescribeTasks` |
+| EC2 | `ec2:DescribeNetworkInterfaces` (only to print the new public IP) |
+
+Creating the stack from scratch additionally needs `ecr:CreateRepository`,
+`ecs:CreateCluster`/`RegisterTaskDefinition`/`CreateService`, `logs:CreateLogGroup`,
+`ec2:CreateSecurityGroup`/`AuthorizeSecurityGroupIngress`, and `iam:PassRole` for the task execution
+role (`ecsTaskExecutionRole`, AWS-managed policy `AmazonECSTaskExecutionRolePolicy`).
+
+### 7.2 Deploying an update
+
+```bash
+./service/deploy-aws.sh
+```
+
+Build (`linux/arm64`, matching Fargate and Apple Silicon) → push to ECR → `ecs update-service
+--force-new-deployment` → wait for `services-stable` → print the new URL. Takes a few minutes,
+most of it the wait for the old task to drain.
+
+### 7.3 First-time bootstrap
+
+Already done for this account; these are the steps if you are standing it up elsewhere.
+
+```bash
+REGION=us-west-2; ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+
+aws ecr create-repository --repository-name ntpc-appraisal-output --region $REGION
+aws ecs create-cluster --cluster-name ntpc-appraisal --region $REGION
+aws logs create-log-group --log-group-name /ecs/ntpc-appraisal-output --region $REGION
+aws logs put-retention-policy --log-group-name /ecs/ntpc-appraisal-output --retention-in-days 7 --region $REGION
+```
+
+Then create a security group allowing inbound TCP 8000, register a Fargate task definition
+(ARM64, 256 CPU / 512 MB, `awslogs` driver pointed at that log group, execution role
+`ecsTaskExecutionRole`), and create the service with `--launch-type FARGATE`,
+`--desired-count 1` and `assignPublicIp=ENABLED` on a public subnet. After that,
+`deploy-aws.sh` handles every subsequent update.
+
+### 7.4 Operating notes
+
+- **The public IP changes whenever the task is replaced.** Fargate tasks have no stable IP;
+  `deploy-aws.sh` prints the current one at the end. A fixed hostname needs an ALB or CloudFront,
+  which this read-only report service does not currently have.
+- **Plain HTTP, no TLS, no access control.** Anyone who knows the IP can read everything under
+  `output/`. Restrict the security group's ingress CIDR, or put it behind a reverse proxy that
+  terminates TLS, before treating it as public.
+- **The image carries `output/`.** Regenerate the reports → rerun `deploy-aws.sh`, or the deployed
+  copy stays stale.
+- Logs: `aws logs tail /ecs/ntpc-appraisal-output --follow --region us-west-2`.
+
+---
+
+## 8. Known limits
+
+These are properties of the data available, not of the implementation, and each is recorded in the
+deliverable itself as well as here.
+
+| Limit | Effect | What would resolve it |
+|---|---|---|
+| **No price-segment boundary geometry.** The official segment polygons are not published; centroids are approximated by intersecting boundary-street names against OSM. | ±25–65.5 m uncertainty; 8 of 52 grades borderline; the 「本區段內／外」 checkbox cannot be decided from a centroid. | The Bureau's 地價區段界線 SHP — the single highest-leverage missing item. |
+| **Nuisance-facility registers are incomplete.** Funeral parlour, crematorium, landfill and 4 of 5 pollution columns have no locatable open data. | Groups (6) and (7) can only be an optimistic bound; `finalVersion` grades them anyway on instruction, so the grand total inherits that bound. | Field survey, or the competent authority's own registers. |
+| **Distances are straight-line from the segment centroid.** The manual prefers route distance for facilities that must be reached on foot. | Systematically over-optimistic for positive facilities (schools, markets, parks); correct for nuisance facilities and for the interchange, where the criteria table specifies straight-line. | A routing service, or field measurement. |
+| **No parcel-level cadastral geometry.** Form 4's individual factors 7–11 (area, width, depth, shape, frontage) cannot be computed. | Those five rows stay blank, and with them Form 4's total, weights and trial price. | Form 7 (宗地個別因素清冊) or a cadastral WFS feed. |
+| **Form 4 items 13–21 are segment-level values applied to parcels.** | Parcels in the same segment get identical values; they are not parcel-specific. | Field survey or Form 7. |
+| **Inferred values are not survey records.** Form 3 is a statutory survey record whose authority comes from the surveying officer's on-site determination. | Open-data inference is valid as a pre-survey candidate list, a plausibility cross-check and a basis for requesting supplementation — never as a submitted survey result. | Unchanged by any amount of better data. |
+
+---
+
+## 9. Follow-up work
+
+Ordered by leverage, with the reason each one is worth doing next.
+
+1. **Obtain the 地價區段界線 SHP from the Bureau.** Replaces approximate centroids with real
+   polygons, settles the in-segment/out-of-segment checkbox, and clears the borderline flags in one
+   step. Every other geometry-dependent limitation collapses into this one.
+2. **Ingest Form 7 (宗地個別因素清冊) or a cadastral geometry feed.** Unblocks Form 4's individual
+   factors 7–11, and with them the total, the weights (R7), the trial price and the benchmark
+   comparison price — i.e. the rest of the price chain the engine already knows how to check.
+3. **Field-survey the nuisance facilities first.** Groups (6) and (7) carry the largest adjustment
+   ranges (±15 %, ±20 %) and the worst data coverage; confirming them converts today's optimistic
+   bound into a defensible grade.
+4. **Close the human-correction loop.** The field map already exports corrections as JSON; feeding
+   them back into `datasets/` and re-running the engine would make review a round trip instead of a
+   one-way export, and would give the project a labelled disagreement set over time.
+5. **Extend to the downstream forms.** [`dev/02`](dev/02-下游表單模擬.md) simulates Form 14 and
+   Form 6 from a completed Form 4, deliberately outside `engine/` because Form 7 was not supplied.
+   With item 2 done, it becomes implementable rather than illustrative.
+6. **Route distance instead of straight-line** for facilities the manual says must be reachable,
+   removing the known systematic bias toward over-optimistic grades.
+7. **Generalise beyond these two districts.** Nothing is hard-coded per district, but only two
+   criteria tables have been parsed. Adding districts is a parser exercise plus a new regression
+   fixture — the reference-case validation pattern is already in place.
+8. **Harden the service if it is to stay public**: a stable hostname (ALB/CloudFront), TLS, and
+   access control. It is currently plain HTTP on a changing IP, which is fine for a demo and not
+   fine for anything else.
+
+---
+
+## 10. Conventions
 
 - **Never hard-code thresholds.** Load by `(region_code, land_use_code)`; the two districts differ
   on almost every item.
 - **`doc/` is read-only.** Everything downstream is regenerated, never hand-patched.
-- **Every derived number is traceable** to a source line in Form 3 and a threshold string in the
-  criteria table, via the basis sheets and `填表依據明細.csv`.
-- **Validation baseline:** all extraction and grading logic is verified by back-calculating the
-  fully completed Jinshan reference case — 13/13 regional facility items and 19/19 individual
-  factors reproduce the authority's own figures.
-
----
-
-## 9. Notes
-
-- `datasets/external/cache/` holds ~17 MB of raw open-data API responses. They are kept in the
-  repository so the third version can be reproduced offline; `engine/poi_fetch.py` refetches them
-  from scratch if deleted.
+- **Report missing data as `blocked`, not `error`.** Treating "not filled in" as "filled in wrong"
+  is the fastest way to lose a reviewer's trust in the tool.
+- **Keep the two lookup directions separate.** Form 5 and Form 4 read the same anti-symmetric matrix
+  in opposite directions; they are distinct functions with distinct tests.
+- **Every derived number is traceable** to a Form 3 line and a criteria threshold, via the basis
+  sheets and the field map.
 - Third-party open data (including OpenStreetMap) is used for cross-checking and for generating
   field-survey candidate lists. It is **not** a substitute for the surveying authority's on-site
   determination, which is what gives Form 3 its legal standing.
+- `datasets/external/cache/` holds ~17 MB of raw API responses, committed so version 3 reproduces
+  offline; `engine/poi_fetch.py` refetches them from scratch if deleted.

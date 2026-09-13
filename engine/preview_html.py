@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""把 output/secondVersion 的三個已填 xlsx 轉成單一 HTML 預覽頁。
+"""把 output/log/secondVersion 的三個已填 xlsx 轉成單一 HTML 預覽頁。
 
 用途：本機沒有 Excel／LibreOffice 時，仍可檢視填表結果、底色與儲存格註解。
 註解以滑鼠停留（title）顯示，與 Excel 中的儲存格註解內容相同。
@@ -8,7 +8,8 @@ import os, html
 import openpyxl
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "output", os.environ.get("PREVIEW_VERSION", "secondVersion"))
+SRC = os.path.join(ROOT, "output", "log",
+                   os.environ.get("PREVIEW_VERSION", "secondVersion"))
 FILES = [
     ("表3 地價區段勘查表", "表3_地價區段勘查表_已填.xlsx"),
     ("表5-1 影響地價區域因素分析明細表", "表5-1_影響地價區域因素分析明細表_已填.xlsx"),
@@ -32,10 +33,24 @@ def span_map(ws):
     return m
 
 
-def render_sheet(ws, max_col=None):
+# 「不適用」的灰格改了沒有意義，人工審查時不開放編輯；其餘有底色的格
+# 都是填出來的值（AI判定／推定／外部推算／題目原載…），都可能需要更正。
+NOEDIT_FILL = {"EFEFEF"}
+
+
+def render_sheet(ws, max_col=None, editable=False):
+    """把工作表渲染成 HTML table。
+
+    editable=True 時額外輸出人工審查編輯所需的標記：
+      table[data-sheet]  工作表名稱
+      td[data-ref]       儲存格座標（如 C5），合併儲存格取左上角那一格
+      td[contenteditable] 有底色且非「不適用」的格才開放改
+    這些標記只加屬性，不動版面，靜態檢視時與原本完全一樣。
+    """
     sm = span_map(ws)
     max_col = max_col or ws.max_column
-    out = ['<table>']
+    tag = (f'<table data-sheet="{html.escape(ws.title)}">' if editable else '<table>')
+    out = [tag]
     for r in range(1, ws.max_row + 1):
         out.append("<tr>")
         for c in range(1, max_col + 1):
@@ -43,17 +58,27 @@ def render_sheet(ws, max_col=None):
             if info == "skip":
                 continue
             cell = ws.cell(r, c)
-            attrs = []
+            attrs, classes = [], []
             if info:
                 _, rs, cs = info
                 if rs > 1: attrs.append(f'rowspan="{rs}"')
                 if cs > 1: attrs.append(f'colspan="{cs}"')
             rgb = cell.fill.fgColor.rgb if cell.fill and cell.fill.fgColor else None
-            if isinstance(rgb, str) and len(rgb) == 8 and rgb[2:] != "000000":
-                attrs.append(f'style="background:#{rgb[2:]}"')
+            fill = rgb[2:] if (isinstance(rgb, str) and len(rgb) == 8
+                               and rgb[2:] != "000000") else None
+            if fill:
+                attrs.append(f'style="background:#{fill}"')
             if cell.comment:
                 attrs.append(f'title="{html.escape(cell.comment.text)}"')
-                attrs.append('class="has-note"')
+                classes.append("has-note")
+            if editable:
+                attrs.append(f'data-ref="{cell.coordinate}"')
+                if fill and fill not in NOEDIT_FILL:
+                    attrs.append('contenteditable="true"')
+                    classes.append("ed")
+                    classes.append(f"f-{fill}")     # 供前端依填表狀態分類
+            if classes:
+                attrs.append(f'class="{" ".join(classes)}"')
             v = cell.value
             if v is None:
                 v = ""

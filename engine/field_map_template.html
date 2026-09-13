@@ -185,6 +185,49 @@ ul.ml li{margin:3px 0}
 #forms td.has-note{cursor:help}
 #forms .lg{display:inline-flex;align-items:center;margin-right:14px;font-size:12px}
 #forms .lg i{width:14px;height:14px;border:1px solid #999;margin-right:5px;display:inline-block}
+
+/* ── 人工審查編輯 ─────────────────────────────────────────── */
+#forms td.ed{cursor:text}
+#forms td.ed:hover{outline:1px solid var(--accent);outline-offset:-1px}
+#forms td.ed:focus{outline:2px solid var(--accent);outline-offset:-2px;
+                   white-space:normal;overflow:visible;max-width:none;
+                   position:relative;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,.14)}
+/* 改過的格：左側藍條，滑鼠移上去的 title 會顯示原值 */
+#forms td.dirty{box-shadow:inset 3px 0 0 var(--accent)}
+/* 受改動牽連、但沒有自動重算的下游格（小計／總計／同列等級） */
+#forms td.affected{outline:2px dashed #c8862a;outline-offset:-2px;background-image:
+  repeating-linear-gradient(45deg,rgba(200,134,42,.13) 0 5px,transparent 5px 10px)}
+
+.edbar{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;
+       flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);
+       border-radius:9px;padding:9px 12px;margin-bottom:14px;font-size:12.5px}
+.edbar .n{font-weight:600}
+.edbar .n b{color:var(--accent);font-family:var(--mono);font-size:14px}
+.edbar .warn{color:#a8681c}
+.edbar button{font:inherit;font-size:12.5px;padding:5px 11px;border:1px solid var(--line);
+              background:#fff;border-radius:7px;cursor:pointer;color:var(--ink)}
+.edbar button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.edbar button:disabled{opacity:.45;cursor:default}
+.edbar button.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.edbar button.pri:hover:not(:disabled){background:#1a6fd4;color:#fff}
+.edbar .sp{margin-left:auto}
+.edbar .hint{color:var(--muted);font-size:11.5px;flex-basis:100%}
+
+#edlist{border:1px solid var(--line);border-radius:9px;background:var(--panel);
+        margin-bottom:14px;overflow:hidden}
+#edlist table{width:100%;border-collapse:collapse;font-size:11.5px;white-space:normal}
+#edlist th,#edlist td{border-bottom:1px solid var(--line);padding:6px 9px;
+                      text-align:left;vertical-align:top;max-width:none}
+#edlist th{background:#f4f6f8;font-size:10.5px;color:#3b4450;font-weight:600}
+#edlist td.ref{font-family:var(--mono);font-size:10.5px;white-space:nowrap}
+#edlist td.was{color:var(--muted);text-decoration:line-through}
+#edlist td.now{font-weight:600}
+#edlist input.why{font:inherit;font-size:11.5px;width:100%;padding:3px 6px;
+                  border:1px solid var(--line);border-radius:5px;background:#fff}
+#edlist button.rv{font:inherit;font-size:11px;padding:2px 8px;border:1px solid var(--line);
+                  background:#fff;border-radius:5px;cursor:pointer;white-space:nowrap}
+#edlist button.rv:hover{border-color:#c0392b;color:#c0392b}
+#edlist .none{padding:14px;color:var(--muted);font-size:12px}
 </style>
 </head>
 <body>
@@ -807,6 +850,335 @@ function viewDetail(){
   return `<div class="card">${inner}</div>`;
 }
 
+/* ══════════════════════════════════════════════ 人工審查編輯（完整書表）
+   審查員直接在儲存格上改字，頁面記下「原值 → 新值 → 為什麼改」，可匯出成
+   修正清單回饋工程端，或送回服務端套用到原始 xlsx 產出修正後的正式書表。
+   頁面本身不保存任何東西：重新整理就回到 AI 產出的原狀。
+
+   小計／總計不會自動重算（三份 xlsx 共 11,062 格幾乎全是 engine 算好寫入的
+   靜態值，不是 Excel 公式）。改了上游只把受牽連的下游格標出來，由審查員自行
+   判斷要不要一併更正——寧可標出來讓人決定，也不要送出半套重算的錯數字。 */
+
+const EDITS = new Map();          // key → {file,sheet,ref,was,now,why}
+const ORIG  = new Map();          // key → 原值（AI 產出）
+const CELLS = new Map();          // key → [td]，含 file|*|ref 的跨工作表索引
+let DEPS = {};
+
+const keyOf = (file, sheet, ref) => `${file}|${sheet}|${ref}`;
+
+/* td 的純文字：<br> 還原成換行，實體字元由 textContent 自動還原。
+   不能用 innerText——#forms 預設 hidden，隱藏元素的 innerText 會退化成
+   textContent 而把換行吃掉。 */
+function cellText(el){
+  const c = el.cloneNode(true);
+  c.querySelectorAll('br').forEach(b => b.replaceWith('\n'));
+  return c.textContent.replace(/ /g, ' ');
+}
+function setCellText(el, s){
+  el.textContent = '';
+  String(s).split('\n').forEach((line, i) => {
+    if (i) el.appendChild(document.createElement('br'));
+    el.appendChild(document.createTextNode(line));
+  });
+}
+
+/* 哪一格改了會牽動哪些格。座標全部取自 payload 既有的欄位對照，
+   不另外猜：對不到座標的關係寧可不標。 */
+function buildDeps(){
+  const d = {};
+  const add = (a, b) => { if (a && b && a !== b) (d[a] ||= new Set()).add(b); };
+  const L = DATA.t5_layout || {}, base = DATA.case.base_segment;
+  const comps = DATA.case.comparables || [];
+
+  (DATA.regional || []).forEach(f => {
+    const t3 = f.t3 || {}, t5 = f.t5 || {};
+    if (!t5.row) return;
+    const subCols = L.subtotal_cols || [];
+
+    (t5.comp_cells || []).forEach((c, i) => {
+      /* 等級序號／等級文字 → 同列修正百分比 → 該主要項目小計 → 總修正數 */
+      add(`t5|*|${c.rank}`,  `t5|*|${c.pct}`);
+      add(`t5|*|${c.label}`, `t5|*|${c.pct}`);
+      if (t5.subtotal_row && subCols[i]) {
+        const sub = `t5|*|${subCols[i]}${t5.subtotal_row}`;
+        add(`t5|*|${c.pct}`, sub);
+        if (L.total_row) add(sub, `t5|*|${subCols[i]}${L.total_row}`);
+      }
+    });
+
+    /* 表3 的勘查事實與判定等級 → 表5 同一細項的等級欄（跨書表）。
+       表3 一個地價區段一個工作表，所以比準地的格只牽動表5 比準地欄。 */
+    [t3.fact_cell, t3.level_cell].filter(Boolean).forEach(ref => {
+      add(`t3|${base}|${ref}`, `t5|*|${t5.base_rank_cell}`);
+      add(`t3|${base}|${ref}`, `t5|*|${t5.base_label_cell}`);
+      (t5.comp_cells || []).forEach((c, i) => {
+        const sn = c.seg || comps[i];
+        if (!sn) return;
+        add(`t3|${sn}|${ref}`, `t5|*|${c.rank}`);
+        add(`t3|${sn}|${ref}`, `t5|*|${c.label}`);
+      });
+    });
+  });
+
+  /* 表4：個別因素條件欄 → 同列差異率 */
+  (DATA.individual || []).forEach(f => {
+    ((f.t4 || {}).comp_cells || []).forEach(c => {
+      add(`t4|*|${c.cond}`,  `t4|*|${c.diff}`);
+      add(`t4|*|${c.cond2}`, `t4|*|${c.diff}`);
+    });
+  });
+
+  Object.keys(d).forEach(k => d[k] = [...d[k]]);
+  return d;
+}
+
+/* 從改動過的格出發，沿依賴往下走，標出所有受牽連但沒重算的格 */
+function markAffected(){
+  document.querySelectorAll('#forms td.affected').forEach(td => {
+    td.classList.remove('affected');
+    if (td.dataset.affTitle) { td.title = td.dataset.origTitle || ''; delete td.dataset.affTitle; }
+  });
+  if (!EDITS.size) return;
+
+  const seen = new Set(), queue = [];
+  EDITS.forEach((e, k) => {
+    queue.push(keyOf(e.file, '*', e.ref), k);
+  });
+  while (queue.length) {
+    const cur = queue.shift();
+    (DEPS[cur] || []).forEach(nx => {
+      if (seen.has(nx)) return;
+      seen.add(nx); queue.push(nx);
+    });
+  }
+  seen.forEach(k => (CELLS.get(k) || []).forEach(td => {
+    const own = keyOf(td.dataset.file, td.dataset.sheet, td.dataset.ref);
+    if (EDITS.has(own)) return;               // 自己也被人工改過了，不用再提醒
+    td.classList.add('affected');
+    if (!td.dataset.affTitle) {
+      td.dataset.origTitle = td.title || '';
+      td.dataset.affTitle = '1';
+      td.title = '⚠ 上游欄位已被人工更正，這格是 AI 原本算出的值，未自動重算。'
+               + (td.dataset.origTitle ? '\n\n' + td.dataset.origTitle : '');
+    }
+  }));
+}
+
+function onCellInput(td){
+  const key = keyOf(td.dataset.file, td.dataset.sheet, td.dataset.ref);
+  const was = ORIG.get(key) ?? '', now = cellText(td);
+  if (now === was) {
+    EDITS.delete(key);
+    td.classList.remove('dirty');
+    td.title = td.dataset.origTitle || td.title || '';
+  } else {
+    const prev = EDITS.get(key);
+    EDITS.set(key, {file: td.dataset.file, sheet: td.dataset.sheet, ref: td.dataset.ref,
+                    was, now, why: prev ? prev.why : ''});
+    td.classList.add('dirty');
+    if (td.dataset.origTitle === undefined) td.dataset.origTitle = td.title || '';
+    td.title = `AI 原值：${was || '（空白）'}` +
+               (td.dataset.origTitle ? '\n\n' + td.dataset.origTitle : '');
+  }
+  refresh();
+}
+
+function revert(key){
+  const e = EDITS.get(key); if (!e) return;
+  (CELLS.get(key) || []).forEach(td => {
+    setCellText(td, e.was);
+    td.classList.remove('dirty');
+    td.title = td.dataset.origTitle || '';
+  });
+  EDITS.delete(key);
+  refresh();
+}
+
+function refresh(){
+  const n = EDITS.size;
+  $('#edN').textContent = n;
+  document.querySelectorAll('.needEdit').forEach(b => b.disabled = !n);
+  $('#edWarn').textContent = n
+    ? '　小計與總計不會自動重算，斜線標示的格請自行確認'  : '';
+  markAffected();
+  if (!$('#edlist').hidden) renderEdList();
+}
+
+function renderEdList(){
+  const box = $('#edlist');
+  if (!EDITS.size) { box.innerHTML = '<div class="none">尚未修改任何欄位。</div>'; return; }
+  const titles = Object.fromEntries((DATA.form_files || []).map(f => [f.key, f.title]));
+  const rows = [...EDITS.entries()].map(([k, e]) => `
+    <tr data-k="${E(k)}">
+      <td class="ref">${E(titles[e.file] || e.file)}<br>${E(e.sheet)} · ${E(e.ref)}</td>
+      <td class="was">${E(e.was) || '（空白）'}</td>
+      <td class="now">${E(e.now) || '（清空）'}</td>
+      <td><input class="why" placeholder="為什麼改（選填，會寫進修正清單）"
+                 value="${E(e.why)}"></td>
+      <td><button class="rv">還原</button></td>
+    </tr>`).join('');
+  box.innerHTML = `<table><thead><tr><th>位置</th><th>AI 原值</th><th>更正為</th>
+    <th>修正理由</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function patchPayload(){
+  return {
+    case_no: DATA.case.case_no, region: DATA.case.region,
+    forms_src: DATA.forms_src, exported_at: new Date().toISOString(),
+    edits: [...EDITS.values()],
+  };
+}
+
+function download(blob, name){
+  const u = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = u; a.download = name; document.body.appendChild(a); a.click();
+  a.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000);
+}
+
+function exportJson(){
+  download(new Blob([JSON.stringify(patchPayload(), null, 2)],
+           {type: 'application/json'}), '審查修正清單.json');
+}
+
+function exportCsv(){
+  const titles = Object.fromEntries((DATA.form_files || []).map(f => [f.key, f.title]));
+  const q = s => `"${String(s ?? '').replace(/"/g, '""')}"`;
+  const lines = [['書表', '工作表', '儲存格', 'AI原值', '更正為', '修正理由'].join(',')];
+  EDITS.forEach(e => lines.push([titles[e.file] || e.file, e.sheet, e.ref,
+                                 e.was, e.now, e.why].map(q).join(',')));
+  download(new Blob(['﻿' + lines.join('\r\n')], {type: 'text/csv;charset=utf-8'}),
+           '審查修正清單.csv');
+}
+
+/* 修正後的正式書表：patch 送回服務端，由服務端開原始 xlsx 套用後回傳。
+   在瀏覽器端自行產生 xlsx 會丟掉底色、合併儲存格與填表依據註解。 */
+async function exportXlsx(btn){
+  const old = btn.textContent;
+  btn.disabled = true; btn.textContent = '產生中…';
+  try {
+    const r = await fetch('export/xlsx', {method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(patchPayload())});
+    if (!r.ok) throw new Error((await r.text()).slice(0, 300) || `HTTP ${r.status}`);
+    download(await r.blob(), '修正後書表.zip');
+  } catch (err) {
+    alert('產生修正後書表失敗：\n' + err.message +
+          '\n\n這個功能需要透過服務開啟本頁（直接用瀏覽器開啟本機 HTML 檔無法使用）。' +
+          '\n修正內容仍可用「下載修正清單」保存。');
+  } finally {
+    btn.disabled = false; btn.textContent = old;
+  }
+}
+
+function initEditor(){
+  const cells = document.querySelectorAll('#forms td[data-ref]');
+  if (!cells.length) return;
+
+  cells.forEach(td => {
+    const wrap = td.closest('.scroll'), tbl = td.closest('table');
+    const file = wrap ? wrap.dataset.file : '', sheet = tbl ? tbl.dataset.sheet : '';
+    td.dataset.file = file; td.dataset.sheet = sheet;
+    const key = keyOf(file, sheet, td.dataset.ref);
+    if (td.isContentEditable) ORIG.set(key, cellText(td));
+    /* 兩條索引：精確到工作表的，以及 file|*|ref 這種跨工作表的（表4／表5
+       各只有一個工作表，依賴圖一律用 * 表示，不必寫死工作表名） */
+    [key, keyOf(file, '*', td.dataset.ref)].forEach(k => {
+      if (!CELLS.has(k)) CELLS.set(k, []);
+      CELLS.get(k).push(td);
+    });
+  });
+
+  DEPS = buildDeps();
+  /* 表4 有些條件次欄在版面上被合併進前一格，座標對照表裡卻仍列著；
+     這些起點永遠不會被點到，清掉讓依賴圖只留實際存在的格。 */
+  Object.keys(DEPS).forEach(k => { if (!CELLS.has(k)) delete DEPS[k]; });
+
+  const forms = $('#forms');
+  forms.insertAdjacentHTML('afterbegin', `
+    <div class="edbar">
+      <span class="n">已更正 <b id="edN">0</b> 格</span>
+      <span class="warn" id="edWarn"></span>
+      <span class="sp"></span>
+      <button id="edToggle" class="needEdit">修正清單</button>
+      <button id="edCsv"  class="needEdit">下載修正清單 CSV</button>
+      <button id="edJson" class="needEdit">JSON</button>
+      <button id="edXlsx" class="needEdit pri">下載修正後書表</button>
+      <button id="edReset" class="needEdit">全部還原</button>
+      <span class="hint">有底色的格可直接點進去改（灰色「不適用」除外）；點一下會整格選起來，
+        打字即取代。Enter 結束編輯、Shift+Enter 換行、Esc 取消該格。
+        本頁不保存修改，重新整理即回到 AI 產出的原狀——改完請務必下載。</span>
+    </div>
+    <div id="edlist" hidden></div>`);
+
+  forms.addEventListener('input', e => {
+    const td = e.target.closest('td[contenteditable]');
+    if (td) onCellInput(td);
+  });
+  /* 點進一格時整格選起來，直接打字就是取代整格值——審查多半是換掉一個判定，
+     而不是補字。焦點已經在格子裡時再點一次即可把游標放在字中間。
+     setTimeout 是為了讓瀏覽器先處理完點擊定位，否則選取會被蓋掉。 */
+  forms.addEventListener('focusin', e => {
+    const td = e.target.closest('td[contenteditable]');
+    if (!td) return;
+    setTimeout(() => {
+      const s = getSelection();
+      if (!s.isCollapsed || !td.contains(s.anchorNode)) return;   // 使用者自己選了一段就別動
+      const r = document.createRange();
+      r.selectNodeContents(td);
+      s.removeAllRanges(); s.addRange(r);
+    }, 0);
+  });
+  forms.addEventListener('keydown', e => {
+    const td = e.target.closest('td[contenteditable]');
+    if (!td) return;
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); td.blur(); }
+    else if (e.key === 'Escape') {
+      e.preventDefault();
+      const key = keyOf(td.dataset.file, td.dataset.sheet, td.dataset.ref);
+      if (EDITS.has(key)) revert(key); else td.blur();
+      td.blur();
+    }
+  });
+  /* 貼上一律轉純文字，否則 Word／Excel 的 HTML 會整包塞進儲存格 */
+  forms.addEventListener('paste', e => {
+    const td = e.target.closest('td[contenteditable]');
+    if (!td) return;
+    e.preventDefault();
+    const t = (e.clipboardData || window.clipboardData).getData('text/plain');
+    document.execCommand('insertText', false, t.replace(/\r\n?/g, '\n'));
+  });
+
+  $('#edToggle').addEventListener('click', () => {
+    const box = $('#edlist');
+    box.hidden = !box.hidden;
+    if (!box.hidden) renderEdList();
+  });
+  $('#edlist').addEventListener('click', e => {
+    if (!e.target.classList.contains('rv')) return;
+    revert(e.target.closest('tr').dataset.k);
+    renderEdList();
+  });
+  $('#edlist').addEventListener('input', e => {
+    if (!e.target.classList.contains('why')) return;
+    const k = e.target.closest('tr').dataset.k;
+    if (EDITS.has(k)) EDITS.get(k).why = e.target.value;
+  });
+  $('#edCsv').addEventListener('click', exportCsv);
+  $('#edJson').addEventListener('click', exportJson);
+  $('#edXlsx').addEventListener('click', e => exportXlsx(e.currentTarget));
+  $('#edReset').addEventListener('click', () => {
+    if (!EDITS.size || !confirm(`確定要放棄全部 ${EDITS.size} 筆修正嗎？`)) return;
+    [...EDITS.keys()].forEach(revert);
+    renderEdList();
+  });
+
+  window.addEventListener('beforeunload', e => {
+    if (EDITS.size) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  refresh();
+}
+
 /* ══════════════════════════════════════════════ render */
 function render(){
   document.querySelectorAll('#nav button').forEach(b =>
@@ -824,6 +1196,7 @@ function render(){
   document.querySelector('.cols').style.gridTemplateColumns =
     ['t3','t5','t4'].includes(tab) ? '' : 'minmax(0,1fr)';
 }
+initEditor();
 render();
 </script>
 </body>

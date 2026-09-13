@@ -27,13 +27,14 @@ from preview_html import render_sheet, LEGEND                    # noqa: E402
 
 REGION = "shulin"
 OUT = os.path.join(ROOT, "output", "fieldMapping")
-FORMS_SRC = os.path.join(ROOT, "output", "fourthVersion")
+FORMS_SRC = os.path.join(ROOT, "output", "log", "fourthVersion")
 # 「完整書表」的排列順序：表3 勘查 → 表4 比較法 → 表5 區域因素明細
 # （標題以書表編號為準，不帶 preview_html.FILES 的 5-1 分號與檔名）
+# key 供人工審查的修正清單標示改在哪一份書表，並對應回 FORMS_SRC 的檔名
 FORM_FILES = [
-    ("表3 地價區段勘查表", "表3_地價區段勘查表_已填.xlsx"),
-    ("表4 比較法調查估價表", "表4_比較法調查估價表_已填.xlsx"),
-    ("表5 影響地價區域因素分析明細表", "表5-1_影響地價區域因素分析明細表_已填.xlsx"),
+    ("t3", "表3 地價區段勘查表", "表3_地價區段勘查表_已填.xlsx"),
+    ("t4", "表4 比較法調查估價表", "表4_比較法調查估價表_已填.xlsx"),
+    ("t5", "表5 影響地價區域因素分析明細表", "表5-1_影響地價區域因素分析明細表_已填.xlsx"),
 ]
 ITEM2OBS = {v: k for k, v in OBS_TO_ITEM.items()}
 
@@ -514,6 +515,9 @@ def build():
         "formulas": ds.common["formulas"], "review_rules": ds.common["review_rules"],
         "case_rules": ds.common["case_rules"], "forms": ds.common["forms"],
         "checks_implemented": ["R1", "R2", "R4", "R6", "R7", "R12", "R14"],
+        # 人工審查改完要回寫哪一份原始 xlsx（服務端據此開檔套用修正）
+        "form_files": [{"key": k, "title": t, "file": f} for k, t, f in FORM_FILES],
+        "forms_src": os.path.basename(FORMS_SRC),
     }
     return payload
 
@@ -523,6 +527,9 @@ def forms_html():
 
     與 output/fourthVersion/預覽.html 共用 preview_html.render_sheet，
     底色、合併儲存格與填表依據（title 提示）皆與該頁一致。
+
+    這裡以 editable=True 渲染：每個 table 帶 data-file／data-sheet，每個儲存格
+    帶 data-ref，有底色（非「不適用」）者可直接改，供人工審查更正 AI 判定。
     """
     import openpyxl
 
@@ -530,7 +537,7 @@ def forms_html():
                      for n, c in LEGEND)
     parts = [f"<p>{legend}</p>"]
     sheets = 0
-    for title, fn in FORM_FILES:
+    for key, title, fn in FORM_FILES:
         path = os.path.join(FORMS_SRC, fn)
         if not os.path.exists(path):
             parts.append(f"<h2>{html.escape(title)}</h2>"
@@ -543,7 +550,8 @@ def forms_html():
             if ws.title == "填表依據":
                 continue
             parts.append(f"<h3>工作表：{html.escape(ws.title)}</h3>")
-            parts.append('<div class="scroll">' + render_sheet(ws) + "</div>")
+            parts.append(f'<div class="scroll" data-file="{key}">'
+                         + render_sheet(ws, editable=True) + "</div>")
             sheets += 1
     return "\n".join(parts), sheets
 

@@ -13,11 +13,15 @@
 純標準庫，不需安裝任何套件：
     python3 service/server.py --port 8000
 """
-import argparse, gzip, html, mimetypes, os, posixpath, sys
+import argparse, gzip, html, json, mimetypes, os, posixpath, sys
+from datetime import datetime
 from email.utils import formatdate, parsedate_to_datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import unquote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:                 # 讓 patch_xlsx 不論從哪裡啟動都 import 得到
+    sys.path.insert(0, HERE)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT = os.path.realpath(os.path.join(ROOT, "output"))
 FIELD_MAP = os.path.join(OUTPUT, "fieldMapping", "index.html")
@@ -25,6 +29,8 @@ FIELD_MAP = os.path.join(OUTPUT, "fieldMapping", "index.html")
 # 欄位對照總覽單檔就有 670 KB 純文字，壓縮後送出差很多
 GZIP_TYPES = ("text/", "application/json", "application/javascript", "image/svg+xml")
 GZIP_MIN = 1024
+# 修正清單就算三千格全改也遠小於此；擋的是明顯不合理的請求
+MAX_BODY = 4 * 1024 * 1024
 
 mimetypes.add_type("text/markdown", ".md")
 mimetypes.add_type("text/csv", ".csv")
@@ -89,7 +95,7 @@ class Handler(BaseHTTPRequestHandler):
     # ── 回應組裝 ─────────────────────────────────────────────
     def cors(self):
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST")
         self.send_header("Access-Control-Allow-Headers", "*")
 
     def send_body(self, body, ctype, mtime=None, head_only=False):
@@ -175,6 +181,55 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_HEAD(self):
         self.route(head_only=True)
+
+    # ── 人工審查修正 → 修正後書表 ────────────────────────────
+    # 唯一的非唯讀入口，但它是無狀態的：讀原始 xlsx、在記憶體套用修正、
+    # 回傳 zip，不寫磁碟也不改 output/，所以一個人的修正不會影響其他人看到的內容。
+    def do_POST(self):
+        path = unquote(urlsplit(self.path).path)
+        if path.rstrip("/") not in ("/export/xlsx", "/output/export/xlsx"):
+            return self.send_error_page(404, "Not Found")
+        try:
+            length = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return self.send_error_page(400, "Content-Length 不正確")
+        if length <= 0:
+            return self.send_error_page(400, "沒有收到修正內容")
+        if length > MAX_BODY:
+            return self.send_error_page(413, f"修正內容過大（上限 {MAX_BODY // 1024} KB）")
+        try:
+            payload = json.loads(self.rfile.read(length).decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            return self.send_error_page(400, "修正內容不是合法的 JSON")
+
+        try:
+            import patch_xlsx
+        except ImportError:
+            return self.send_error_page(
+                503, "服務端缺少 openpyxl，無法產生修正後書表；"
+                     "修正內容請改用「下載修正清單」保存")
+        try:
+            blob, summary = patch_xlsx.build_zip(payload)
+        except patch_xlsx.PatchError as exc:
+            return self.send_error_page(400, str(exc))
+        except Exception as exc:                       # noqa: BLE001
+            sys.stderr.write(f"export/xlsx failed: {exc!r}\n")
+            return self.send_error_page(500, "產生修正後書表時發生錯誤")
+
+        sys.stderr.write(f"export/xlsx ok: {summary}\n")
+        stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+        name = f"修正後書表_{stamp}.zip"
+        self.send_response(200)
+        self.send_header("Content-Type", "application/zip")
+        self.send_header("Content-Length", str(len(blob)))
+        # 檔名有中文，用 RFC 5987 的 filename* 讓瀏覽器正確解碼
+        self.send_header("Content-Disposition",
+                         "attachment; filename=\"revised-forms.zip\"; "
+                         "filename*=UTF-8''" + quote(name))
+        self.send_header("Cache-Control", "no-store")
+        self.cors()
+        self.end_headers()
+        self.wfile.write(blob)
 
     def do_OPTIONS(self):
         self.send_response(204)

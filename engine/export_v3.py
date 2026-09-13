@@ -18,7 +18,7 @@ from loader import Dataset
 from compute import derive_segment_levels, derive_table4_individual
 
 ROOT = X.ROOT
-OUT = os.path.join(ROOT, "output", "thirdVersion")
+OUT = os.path.join(ROOT, "output", "log", "thirdVersion")
 INF = os.path.join(ROOT, "datasets", "external", "poi_inference.json")
 REGION = X.REGION
 os.makedirs(OUT, exist_ok=True)

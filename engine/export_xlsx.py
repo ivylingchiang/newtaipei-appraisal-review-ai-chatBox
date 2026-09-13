@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""把可確認之填表內容寫回 input/ 的三張空白表格，輸出至 output/secondVersion。
+"""把可確認之填表內容寫回 input/ 的三張空白表格，輸出至 output/log/secondVersion。
 
 每個被填入的儲存格都：
   ① 以底色標示資料性質（題目原載／AI 判定／推定／資料不足）
@@ -19,7 +19,7 @@ from grading import adjust_regional
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IN = os.path.join(ROOT, "input")
-OUT = os.path.join(ROOT, "output", "secondVersion")
+OUT = os.path.join(ROOT, "output", "log", "secondVersion")
 REGION = "shulin"
 AUTHOR = "AI 查估審查助理"
 

@@ -1,4 +1,7 @@
-# 地價查估產出 HTTP 服務 —— 純標準庫，不需要安裝任何套件
+# 地價查估產出 HTTP 服務
+#
+# 送檔案的部分只用標準庫；openpyxl 只有 POST /export/xlsx（把人工審查修正
+# 套回原始 xlsx）需要，沒裝的話該端點回 503，其餘功能照常。
 #
 # 從專案根目錄建置（build context 必須是根目錄，映像要帶 output/ 進去）：
 #     docker build -f service/Dockerfile -t ntpc-appraisal-output .
@@ -10,6 +13,8 @@ ENV PYTHONUNBUFFERED=1 \
     PORT=8000
 
 WORKDIR /app
+RUN pip install --no-cache-dir "openpyxl==3.1.5"
+
 COPY service/ /app/service/
 COPY output/ /app/output/
 

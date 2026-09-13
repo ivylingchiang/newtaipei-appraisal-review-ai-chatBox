@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "name": "新北市土地徵收補償市價查估 — 審查知識資料集",
-  "built_at": "2026-09-12",
+  "built_at": "2026-09-13",
   "source_dir": "doc/",
   "description": "由 doc/ 內之命題文件、評價基準明細表、查估書表範本、作業手冊與 Excel 範本抽取結構化而成，依行政區 + 用地別分類歸檔。",
   "formats": [
@@ -11,7 +11,7 @@
   ],
   "database": {
     "path": "db/appraisal.sqlite",
-    "tables": 15
+    "tables": 18
   },
   "regions": [
     {
