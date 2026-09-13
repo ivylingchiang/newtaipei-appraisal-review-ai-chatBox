@@ -222,7 +222,7 @@ LEGAL = {
     },
 }
 
-from case_rules import CASE_RULES
+from datasets._build.case_rules import CASE_RULES
 
 for name, doc in [("forms", FORMS), ("formulas", FORMULAS), ("case_rules", CASE_RULES),
                   ("review_rules", REVIEW), ("legal_references", LEGAL)]:

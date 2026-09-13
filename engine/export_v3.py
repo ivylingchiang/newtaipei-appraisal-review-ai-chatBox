@@ -13,9 +13,9 @@ from openpyxl.styles import PatternFill, Alignment
 from openpyxl.comments import Comment
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import export_xlsx as X
-from loader import Dataset
-from compute import derive_segment_levels, derive_table4_individual
+import engine.export_xlsx as X
+from engine.loader import Dataset
+from engine.compute import derive_segment_levels, derive_table4_individual
 
 ROOT = X.ROOT
 OUT = os.path.join(ROOT, "output", "thirdVersion")

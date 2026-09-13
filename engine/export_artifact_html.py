@@ -3,7 +3,7 @@
 import json, html, os, collections
 import openpyxl
 
-ROOT = "/Users/ivychiang/Code/NewTaipei/newtaipei-appraisal-review-ai-chatbox"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "output/thirdVersion")
 INF = json.load(open(os.path.join(ROOT, "datasets/external/poi_inference.json"), encoding="utf-8"))
 E = lambda s: html.escape(str(s) if s is not None else "")

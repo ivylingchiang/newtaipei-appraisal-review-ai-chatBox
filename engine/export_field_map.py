@@ -15,14 +15,14 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
-from loader import Dataset                                        # noqa: E402
-from compute import (derive_segment_levels, derive_table4_individual,  # noqa: E402
+from engine.loader import Dataset                                        # noqa: E402
+from engine.compute import (derive_segment_levels, derive_table4_individual,  # noqa: E402
                      OBS_TO_ITEM, IND_FROM_SEGMENT, IND_UPSTREAM)
-from export_xlsx import (T3_LEVEL_CELL, T3_OBS_CELL, T3_NA_CELLS,      # noqa: E402
+from engine.export_xlsx import (T3_LEVEL_CELL, T3_OBS_CELL, T3_NA_CELLS,      # noqa: E402
                          T5_ROW, T5_SUBTOTAL_ROW, T5_TOTAL_ROW,
                          T5_BASE_COLS, T5_COMP_COLS, T5_SUBTOTAL_COL,
                          T4_COMP)
-from export_v3 import FAC_CELLS                                   # noqa: E402
+from engine.export_v3 import FAC_CELLS                                   # noqa: E402
 
 REGION = "shulin"
 OUT = os.path.join(ROOT, "output", "fieldMapping")

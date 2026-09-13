@@ -2,9 +2,9 @@
 """產出表3/表4/表5 中「可確認」之填表內容，每個數值附填寫依據"""
 import os, sys, json, csv, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from loader import Dataset
-from compute import derive_segment_levels, derive_table4_individual, OBS_TO_ITEM
-from grading import adjust_regional
+from engine.loader import Dataset
+from engine.compute import derive_segment_levels, derive_table4_individual, OBS_TO_ITEM
+from engine.grading import adjust_regional
 
 OUT = "output"
 REGION = "shulin"

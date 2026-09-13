@@ -206,7 +206,7 @@ P002-00 獨立驗證了這條規則。
 
 #### 金山範例：表4 填好長什麼樣
 
-[`reference_forms_p003.jpg`](../datasets/regions/jinshan/img/reference_forms_p003.jpg)
+[`reference_forms_p003.jpg`](../../datasets/regions/jinshan/img/reference_forms_p003.jpg)
 是官方已填完整的表4，可直接對照填寫格式：
 
 | 細項 | 比準地（金美段489） | 比較標的1（溫泉段218） | 差異率 |
@@ -338,5 +338,5 @@ python3 engine/cli.py shulin    # 完整審查報告（含缺口清單）
 | 狀態 | 確認／推定／源文件已載／資料不足 |
 
 所有級距與修正率矩陣出自 `doc/rules/評價基準明細表.pdf`，
-已結構化於 [`datasets/regions/shulin/criteria/`](../datasets/regions/shulin/criteria/)，
+已結構化於 [`datasets/regions/shulin/criteria/`](../../datasets/regions/shulin/criteria/)，
 並以金山區官方已填範例反算驗證通過（19/19 個別因素、13/13 區域因素判級、價格鏈完全一致）。

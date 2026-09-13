@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import sys, os, json, argparse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from loader import Dataset
-from review import review_case, format_report
+from engine.loader import Dataset
+from engine.review import review_case, format_report
 
 
 def main():
