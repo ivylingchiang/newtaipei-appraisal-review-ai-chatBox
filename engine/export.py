@@ -4,7 +4,7 @@ import os, sys, json, csv, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from loader import Dataset
 from compute import derive_segment_levels, derive_table4_individual, OBS_TO_ITEM
-from grading import adjust_regional
+from grading import adjust
 
 OUT = "output/log/firstVersion"   # 過程版本歸檔於 output/log/
 REGION = "shulin"
@@ -84,7 +84,7 @@ def main():
         for sn in comps:
             c = levels[sn][0].get(code)
             if b and c:
-                a = adjust_regional(it, b["rank"], c["rank"])
+                a = adjust(it, b["rank"], c["rank"])
                 row["comparables"].append({"segment": sn, "rank": c["rank"],
                                            "label": c["label"], "adjustment": a})
             else:

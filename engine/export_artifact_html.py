@@ -298,7 +298,6 @@ DOC = f"""<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=
 </div>
 <script>{JS}</script>
 """
-out = os.environ.get("OUT_HTML") or os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "v3.html")
+out = os.environ.get("OUT_HTML") or os.path.join(SRC, "artifact_單檔預覽.html")
 open(out, "w", encoding="utf-8").write(DOC)
 print("→", out, f"{len(DOC)/1024:.0f} KB", "| notes:", len(notes), "| panes:", len(panels))

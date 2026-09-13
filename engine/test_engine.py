@@ -44,8 +44,8 @@ CASES = []
 c = copy.deepcopy(JS)
 row = next(r_ for r_ in c["table5"]["rows"] if r_["item_code"] == "main_road_width")
 row["levels"] = [{"rank": 3, "label": "普通"}, {"rank": 5, "label": "劣"}]
-row["adjustments"] = [0.00]          # 表5 方向：(3-5)×3.75 = -7.5
-CASES.append(("R2 修正率與基準表不符", lambda cc: C.check_R2(ds, "jinshan", cc), c, "R2", -7.5))
+row["adjustments"] = [0.00]          # 表5 方向：(5-3)×3.75 = +7.5（與表4 同向）
+CASES.append(("R2 修正率與基準表不符", lambda cc: C.check_R2(ds, "jinshan", cc), c, "R2", 7.5))
 
 # ---- R4：表4 區域因素調整率與表5 總修正數不一致
 c = copy.deepcopy(JS)
@@ -99,7 +99,7 @@ d = r2["derived_table5"]
 expect("樹林可算項目數 > 0", d["computable_items"] > 0)
 expect("樹林未宣稱完整", not d["complete"], "資料不足時不得標記為完整")
 expect("樹林比準地為 P001-00", d["base_segment"] == "P001-00")
-# 表5 方向：(比準地級距 − 比較標的級距) × 級距差，比較標的較劣為負
+# 表5 方向：(比較標的級距 − 比準地級距) × 級距差，與表4 同向，比較標的較劣為正
 # 期望值由基準表 step 獨立推算，不抄引擎輸出，方向錯誤時必然失敗
 crit_reg = ds.criteria("shulin", "regional")
 # 接近大型車站等設施類細項不在此列：表3 未載勘查資料，僅 output/thirdVersion
@@ -109,7 +109,7 @@ for code, name in (("far", "容積率"), ("main_road_width", "主要道路寬度
                    ("road_dev", "區段內道路規劃及闢建程度")):
     r_ = next(x for x in d["rows"] if x["item_code"] == code)
     b_, c_ = r_["base"]["rank"], r_["comparables"][0]["rank"]
-    exp_ = (b_ - c_) * crit_reg[code]["step"]
+    exp_ = (c_ - b_) * crit_reg[code]["step"]
     expect(f"{name} P002 修正率 {exp_:+.2f}", abs(r_["adjustments"][0] - exp_) < 1e-9,
            f"比準地{b_} 比較標的{c_}，期望 {exp_:+.2f} 得 {r_['adjustments'][0]:+.2f}")
 far = next(x for x in d["rows"] if x["item_code"] == "far")
@@ -121,10 +121,10 @@ print(f"  主要道路 P001(優,28m) vs P002(劣,7m) = {road['adjustments'][0]:+
 
 print()
 print("=" * 70)
-print("查表方向：表5 與表4 相反，兩者皆須與各自基準對齊")
+print("查表方向：表5 與表4 同向，皆以金山官方範本校準")
 print("=" * 70)
 # 表4 個別因素方向以金山官方已填範本校準（查估書表範本 表4，五筆非零細項）
-from grading import adjust as _adj, adjust_regional as _adjr
+from grading import adjust as _adj
 ji = ds.criteria("jinshan", "individual")
 for code, b_, c_, exp_, why in (
         ("front_road_width", 2, 4, 5.0, "比準地18m(稍優)／比較標的6m(稍劣)"),
@@ -136,12 +136,13 @@ for code, b_, c_, exp_, why in (
     expect(f"表4 {ji[code]['item_name']} 與官方範本一致",
            abs(got - exp_) < 1e-9, f"{why}，範本填 {exp_:+.2f}，引擎得 {got:+.2f}")
     print(f"  ✅ 表4 {ji[code]['item_name']:8s} {why} → {got:+.2f}（範本 {exp_:+.2f}）")
-# 表5 與表4 必為反號（矩陣反對稱），此斷言防止兩者被誤改為同向
+# 表5 與表4 共用同一查表方向，此斷言防止日後又被拆成一正一反
 sr = ds.criteria("shulin", "regional")["far"]
-expect("表5 與表4 查表方向相反",
-       abs(_adjr(sr, 3, 4) + _adj(sr, 3, 4)) < 1e-9,
-       f"adjust_regional={_adjr(sr,3,4)} adjust={_adj(sr,3,4)}")
-print(f"  ✅ 容積率 普通(3) vs 稍劣(4)：表5 {_adjr(sr,3,4):+.2f}／表4 {_adj(sr,3,4):+.2f}（互為反號）")
+_far = next(x for x in d["rows"] if x["item_code"] == "far")
+expect("表5 與表4 查表方向相同",
+       abs(_adj(sr, 3, 4) - (4 - 3) * sr["step"]) < 1e-9,
+       f"adjust={_adj(sr,3,4)}，期望 {(4-3)*sr['step']:+.2f}")
+print(f"  ✅ 容積率 普通(3) vs 稍劣(4)：表5／表4 同為 {_adj(sr,3,4):+.2f}（比較標的較劣為正）")
 
 print()
 # CR1 應在樹林觸發

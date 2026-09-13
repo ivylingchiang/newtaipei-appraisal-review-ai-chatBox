@@ -140,7 +140,7 @@ engine must reproduce the authority's own figures on Jinshan before any Shulin o
 | Module | Purpose |
 |---|---|
 | `loader.py` | Dataset loading layer (criteria, segments, cases, common rules) |
-| `grading.py` | Fact → grade → adjustment-rate lookup (`grade` / `adjust` / `adjust_regional`) |
+| `grading.py` | Fact → grade → adjustment-rate lookup (`grade` / `adjust`) |
 | `compute.py` | Derive Form 5 grades and percentages from Form 3 observations; Form 4 individual factors |
 | `checks.py` | Cross-table rules R1–R14, case rules CR1/CR2, price-chain recomputation |
 | `review.py`, `cli.py` | Review pipeline, report formatting, CLI |
@@ -172,9 +172,12 @@ reference case — the only answer key that exists.
 | 7 deliberately injected errors (wrong rate, wrong total, wrong weight, wrong price …) | **7 / 7 caught**, each by its intended rule |
 
 A watchdog that never barks is worthless, so the negative tests matter as much as the positive one.
-Both directions of the lookup are asserted independently — Form 5 reads the matrix as
-`(base − comparable) × step` and Form 4 as `(comparable − base) × step`, and the tests assert the
-two are always opposite in sign, so the direction cannot be silently flipped later.
+Every form reads the matrix the same way — `(comparable_rank − base_rank) × step`, comparable graded
+worse gives a positive adjustment — and the tests pin that direction against the five non-zero items
+of the completed Jinshan Form 4, so it cannot be silently flipped later. (Form 5 was briefly split
+onto the opposite direction; the reviewing authority confirmed that reading was mistaken and the
+single direction is restored. The reference Form 5 cannot arbitrate it: all of its adjustments are
+0.00, so both directions fit.)
 
 ### 4.2 What the system produced for the target case
 
@@ -184,7 +187,7 @@ two are always opposite in sign, so the direction cannot be silently flipped lat
 | Form 3 facility fields | blank | blank | **filled** (13 items × 4 segments) | filled | filled |
 | Form 5 items graded | 15 / 29 | 15 / 29 | **25 / 29** | 25 / 29 | **29 / 29** |
 | Form 5 group subtotals | 4 / 8 | 4 / 8 | **6 / 8** | 6 / 8 | **8 / 8** |
-| Form 5 grand total | — | — | — | — | **−23.75 / −13.75 / −17.75 %** |
+| Form 5 grand total | — | — | — | — | **+23.75 / +13.75 / +17.75 %** |
 | Form 4 individual factors 13–21 | — | — | — | **filled** | filled |
 | Form 4 regional adjustment row | — | — | — | — | **filled** |
 | Produced by | `export.py` | `export_xlsx.py` | `export_v3.py` | `export_v4.py` | `export_final.py` |
@@ -211,7 +214,7 @@ the grand total, blank and report the gap.
 
 `finalVersion` grades them from the nearest facility on record — exactly the way the Jinshan
 reference case is filled — **at the reviewing authority's instruction**. That makes all eight
-subtotals, the grand total (−23.75 % / −13.75 % / −17.75 %) and with it Form 4's regional adjustment
+subtotals, the grand total (+23.75 % / +13.75 % / +17.75 %) and with it Form 4's regional adjustment
 row available. The bound stays what it is: the limitation is recorded in
 [`output/finalVersion/README.md §2`](output/finalVersion/README.md) and in every affected cell's
 basis row, and those two groups head the field-survey list.
@@ -378,19 +381,33 @@ regenerating the reports means rebuilding and pushing the image.
 and anything matching `*credentials*`; the deploy script reads whatever the AWS CLI resolves and
 hard-codes only the account id, region and resource names, which are not secrets.
 
-Pick whichever applies to your account, then confirm before deploying:
+**How this project is set up today:** the credentials are exported from the developer's `~/.zshrc`
+as environment variables — `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` and
+`AWS_DEFAULT_REGION=us-west-2`. Two consequences worth knowing before you debug a failed deploy:
+
+- **They are temporary.** The session token belongs to the event role
+  `arn:aws:sts::242971039848:assumed-role/WSParticipantRole/Participant`; when it expires every
+  `aws` call fails with an auth error until the new values are pasted into `~/.zshrc`.
+- **`~/.zshrc` is read by interactive shells only.** A deploy launched from CI, cron, or a
+  non-interactive tool runner inherits nothing and fails at the first `aws` call. Export the
+  variables in that environment, or run the script from an interactive terminal.
+
+`~/.zshrc` holds a live secret and lives outside this repository — never copy it in, and rotate the
+key if it ever leaks.
+
+Any of the standard credential sources works equally well:
 
 ```bash
-# a) IAM Identity Center / SSO — preferred, issues short-lived credentials
+# a) IAM Identity Center / SSO — preferred for a long-lived account
 aws configure sso            # or: aws login   (AWS CLI v2.36+)
 aws sso login --profile ntpc
 
 # b) IAM user access key — long-lived, rotate it and never commit it
 aws configure --profile ntpc # AWS Access Key ID / Secret / region us-west-2 / json
 
-# c) environment variables — for CI, expires with the session
+# c) environment variables — what this project uses (see above); expire with the session
 export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_SESSION_TOKEN=...
-export AWS_REGION=us-west-2
+export AWS_DEFAULT_REGION=us-west-2
 
 # confirm — must print account 242971039848
 aws sts get-caller-identity
@@ -398,7 +415,8 @@ aws sts get-caller-identity
 
 If you use a named profile, export it before running the deploy script:
 `export AWS_PROFILE=ntpc`. The AWS CLI is expected on `PATH`; the script also looks in
-`~/.local/bin`, where the macOS installer puts it.
+`~/.local/bin`, where the macOS installer puts it, and checks the credentials before it starts
+building so an expired session fails in a second rather than after a multi-minute image build.
 
 **Minimum IAM permissions** for the update path:
 
@@ -509,8 +527,9 @@ Ordered by leverage, with the reason each one is worth doing next.
 - **`doc/` is read-only.** Everything downstream is regenerated, never hand-patched.
 - **Report missing data as `blocked`, not `error`.** Treating "not filled in" as "filled in wrong"
   is the fastest way to lose a reviewer's trust in the tool.
-- **Keep the two lookup directions separate.** Form 5 and Form 4 read the same anti-symmetric matrix
-  in opposite directions; they are distinct functions with distinct tests.
+- **One lookup direction for every form.** Form 5, Form 4 and Form 6 all read the anti-symmetric
+  matrix as `(comparable − base) × step` through a single `adjust()`. Calibrate any doubt about the
+  sign against the completed Jinshan Form 4, which is the only filled evidence that constrains it.
 - **Every derived number is traceable** to a Form 3 line and a criteria threshold, via the basis
   sheets and the field map.
 - Third-party open data (including OpenStreetMap) is used for cross-checking and for generating

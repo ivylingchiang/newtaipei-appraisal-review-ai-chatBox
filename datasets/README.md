@@ -43,7 +43,7 @@ datasets/
 │   ├── legal_references.json|yaml  Cited articles
 │   ├── images.json                 Manifest for all 74 images
 │   └── img/                        14 images (workflow diagrams, legends)
-├── external/                   Open data — used only by output/thirdVersion
+├── external/                   Open data — used only by output/log/thirdVersion
 │   ├── cache/                      Raw API responses, 19 sources (~17 MB)
 │   └── poi_inference.json          Segment centroids, nearest facilities, grades
 └── _build/                     Build scripts + regression tests
@@ -118,28 +118,33 @@ lookup need no interpretation at runtime.
 
 ### Looking up an adjustment rate
 
-⚠️ **Form 5 and Form 4 read the same matrix in opposite directions.** This is the single easiest
-thing to get wrong in the whole system, so the two are separate functions in
-`engine/grading.py` and must never be swapped.
+**One direction, shared by every form.** Form 5 (regional factors) and Form 4 / Form 6 (individual
+factors) read the matrix the same way, through a single function `adjust()` in `engine/grading.py`:
 
-| | Form 5 — regional factors | Form 4 / Form 6 — individual factors |
-|---|---|---|
-| Function | `adjust_regional(item, base, comp)` | `adjust(item, base, comp)` |
-| Formula | `(base_rank - comparable_rank) * step` | `(comparable_rank - base_rank) * step` |
-| Matrix | `matrix[comparable_rank - 1][base_rank - 1]` | `matrix[base_rank - 1][comparable_rank - 1]` |
-| Sign | comparable graded **worse** → **negative** | comparable **worse** → **positive** |
-| Calibrated against | The authority's ruling: on a Form 5-1 row the grade ordinal and the adjustment percentage sit side by side, so their signs must agree — a worse grade cannot show a positive number | The completed Jinshan Form 4: all five non-zero items match this direction, and all five break under the other |
+| | Form 5 · Form 4 · Form 6 |
+|---|---|
+| Function | `adjust(item, base, comp)` |
+| Formula | `(comparable_rank - base_rank) * step` |
+| Matrix | `matrix[base_rank - 1][comparable_rank - 1]` |
+| Sign | comparable graded **worse** (higher ordinal) → **positive** |
+| Calibrated against | The completed Jinshan Form 4: all five non-zero items match this direction, and all five break under the other |
 
 ```python
 # Form 5 — Shulin P001-00 (FAR 260 %, 普通, 3) vs P002-00 (200 %, 稍劣, 4)
-adj = (3 - 4) * 6.25   # → -6.25
+adj = (4 - 3) * 6.25   # → +6.25
 
 # Form 4 — Jinshan benchmark road 18 m (稍優, 2) vs comparable 6 m (稍劣, 4)
 adj = (4 - 2) * 2.50   # → +5.00, matching the printed form
 ```
 
-Both conventions are recorded in `common/formulas.json` under `matrix.table5_regional`
-and `matrix.table4_individual`, each with its evidence.
+> **History.** Form 5 was briefly split onto the opposite direction, on the argument that the grade
+> ordinal and the percentage sit side by side on a Form 5-1 row and so must agree in sign. The
+> reviewing authority has since confirmed that reading was mistaken, and the single direction is
+> restored. Note that the Jinshan reference Form 5 cannot settle the question either way — every one
+> of its adjustments is 0.00, because its comparable is graded identically to the benchmark on every
+> item. The only empirical calibration available is the Jinshan Form 4.
+
+The convention is recorded in `common/formulas.json` under `matrix`, with its evidence.
 
 ### Matching a fact to a level
 
@@ -209,7 +214,7 @@ Helper: `_build/threshold.py` → `match_level(value, levels, in_segment, is_non
 > unticked (`○`). The case simply does not supply facility distances, so those items cannot be
 > graded from the documents alone and must be returned to the surveying authority.
 >
-> `output/thirdVersion` infers them from open data instead — see [§7](#7-external--open-data)
+> `output/log/thirdVersion` infers them from open data instead — see [§7](#7-external--open-data)
 > for what that is and is not.
 
 ---
@@ -249,7 +254,7 @@ columns vary with the number of comparables, so the column count is not forced i
 
 ## 7. `external/` — open data
 
-Used only by `output/thirdVersion`, which fills the Shulin facility fields that the source
+Used only by `output/log/thirdVersion`, which fills the Shulin facility fields that the source
 documents leave blank.
 
 | Path | Content |

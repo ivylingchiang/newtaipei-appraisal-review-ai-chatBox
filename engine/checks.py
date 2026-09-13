@@ -4,7 +4,7 @@ from dataclasses import dataclass, field, asdict
 from typing import Optional, Any
 import math
 
-from grading import grade, adjust, adjust_regional, split_conditions, Ungradable, item_unit
+from grading import grade, adjust, split_conditions, Ungradable, item_unit
 
 TOL = 1e-6          # 百分比比對容差
 PRICE_TOL = 1       # 價格容差（元）：表上顯示值經進位，全精度連乘會差 ±1
@@ -43,7 +43,7 @@ def check_R2(ds, region, case):
         base = lv[0]["rank"]
         for i, comp in enumerate(lv[1:]):
             if i >= len(adjs): break
-            exp = adjust_regional(it, base, comp["rank"])
+            exp = adjust(it, base, comp["rank"])
             got = adjs[i]
             if abs(exp - got) > TOL:
                 out.append(Finding(

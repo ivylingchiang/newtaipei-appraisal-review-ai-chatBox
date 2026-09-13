@@ -643,12 +643,12 @@ function detailRegional(f){
 
   h += `<div class="sec"><h4>計算公式</h4>
     <div class="formula">① 判級　表3 勘查事實 → 比對級距門檻 → 等級序號 N（共 ${f.level_count} 級）
-② 修正　表5 修正百分比 ＝（比準地序號 − 比較標的序號）× ${stepTxt(f)}
-　　　　　≡ matrix[比較標的序號−1][比準地序號−1]
+② 修正　表5 修正百分比 ＝（比較標的序號 − 比準地序號）× ${stepTxt(f)}
+　　　　　≡ matrix[比準地序號−1][比較標的序號−1]
 ③ 小計　（${f.group}）${E(f.group_name)} 小計 ＝ Σ 該組各細項修正百分比　→ 表5 第${f.t5.subtotal_row}列
 ④ 總計　總修正數 ＝ (1)+(2)+…+(8) 八組小計　→ 表5 第${L.total_row}列
 ⑤ 傳遞　表5 總修正數 ＝ 表4 區域因素調整百分率（第8列）</div>
-    <div class="note">符號：比較標的序號較大（條件較劣）→ 修正百分比為負。級距 ＝ ±${f.max_adjustment}% ÷ (${f.level_count}−1)。</div></div>`;
+    <div class="note">符號：比較標的序號較大（條件較劣）→ 修正百分比為正（與表4／表6 同向）。級距 ＝ ±${f.max_adjustment}% ÷ (${f.level_count}−1)。</div></div>`;
 
   h += `<div class="sec"><h4>級距門檻</h4>${thresholdsHTML(f)}${matrixHTML(f)}</div>`;
 
@@ -705,7 +705,7 @@ function detailIndividual(f){
 ④ 試算　試算價格 ＝ 調整至基準日單價 ×（1 ＋ 區域因素調整% ＋ 個別因素合計%）`
     : `基準明細表列為敘述型：${E((f.notes||[]).join('；')||f.basis||'')}
 差異率無查表矩陣可得，須以土地開發分析法試算，並於備註欄敘明。`}</div>
-    <div class="note">符號：比較標的條件較差 → 差異率為正（與表5 方向相反，亦與表6 相反）。
+    <div class="note">符號：比較標的條件較差 → 差異率為正（表5、表6 同一方向）。
       免修正項目條件欄與差異率一律填「-」；應修正但無差異者填 0，兩者必須區分。</div></div>`;
 
   if (f.thresholds && f.thresholds.length)

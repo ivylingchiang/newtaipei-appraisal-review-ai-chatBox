@@ -14,6 +14,15 @@ if [ -x "$HOME/.local/bin/aws" ]; then
 fi
 command -v aws >/dev/null || { echo "找不到 aws CLI" >&2; exit 1; }
 
+# 憑證先檢查再建置：本專案的金鑰放在 ~/.zshrc（互動式 shell 才載入）且帶 session token，
+# 過期是常態。先問一次身分，免得映像建了好幾分鐘才在推送那一步失敗。
+if ! ACCOUNT_NOW=$(aws sts get-caller-identity --query Account --output text 2>&1); then
+  echo "AWS 憑證無法使用：$ACCOUNT_NOW" >&2
+  echo "  ~/.zshrc 的 AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_SESSION_TOKEN 可能已過期；" >&2
+  echo "  更新後請在互動式終端機執行本腳本（非互動 shell 不會載入 ~/.zshrc）。" >&2
+  exit 1
+fi
+
 ACCOUNT=242971039848
 REGION=us-west-2
 CLUSTER=ntpc-appraisal
@@ -22,6 +31,11 @@ REPO=ntpc-appraisal-output
 IMAGE="$ACCOUNT.dkr.ecr.$REGION.amazonaws.com/$REPO:latest"
 
 cd "$(dirname "$0")/.."
+
+if [ "$ACCOUNT_NOW" != "$ACCOUNT" ]; then
+  echo "目前登入的帳號是 $ACCOUNT_NOW，本腳本部署的是 $ACCOUNT" >&2
+  exit 1
+fi
 
 echo "==> 建置映像（Fargate 跑 ARM64，與 Apple Silicon 同架構）"
 docker build --platform linux/arm64 -f service/Dockerfile -t "$IMAGE" .

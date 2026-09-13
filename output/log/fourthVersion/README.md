@@ -145,6 +145,6 @@ PREVIEW_VERSION=fourthVersion python3 engine/preview_html.py
 | 6其他之調整須於備註欄敘明理由 | 手冊 六、(二)6 |
 | 各用地別應評價之細項是否皆已填載 → 否則退補 | 手冊 參、七、(一) 審查重點 iii |
 
-**級距與修正矩陣**：[`datasets/regions/shulin/criteria/individual.json`](../../datasets/regions/shulin/criteria/individual.json)
-**距離推算中間結果**：[`datasets/external/poi_inference.json`](../../datasets/external/poi_inference.json)
+**級距與修正矩陣**：[`datasets/regions/shulin/criteria/individual.json`](../../../datasets/regions/shulin/criteria/individual.json)
+**距離推算中間結果**：[`datasets/external/poi_inference.json`](../../../datasets/external/poi_inference.json)
 **缺漏欄位與補齊方向**：[thirdVersion/README.md §7](../thirdVersion/README.md)

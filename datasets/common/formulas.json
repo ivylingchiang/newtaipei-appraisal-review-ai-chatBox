@@ -60,19 +60,14 @@
   "matrix": {
     "structure": "反對稱方陣，對角線為 0，相鄰級距差固定",
     "step": "step = max_adjustment / (level_count - 1)",
-    "note": "表5（區域因素）與表4／表6（個別因素）查表方向相反，為本系統最易誤用之處；分別由 engine/grading.py 之 adjust_regional() 與 adjust() 實作，不可混用。",
-    "table5_regional": {
-      "lookup": "adjustment = (base_rank - comparable_rank) * step",
-      "equivalence": "與查表 matrix[comparable_rank-1][base_rank-1] 等價",
-      "sign_convention": "比較標的級距數字大於比準地（條件較劣）→ 修正百分比為負",
-      "rationale": "依承辦單位認定：表5-1 同列並置「優劣等級序號」與「修正百分比」，等級序號愈小代表條件愈優，修正百分比之正負須與「比準地級距 − 比較標的級距」的大小關係一致，以免同一列出現中文等級與數字正負相互矛盾。",
-      "example": "樹林 P001-00(容積率260%,普通,3) vs P002-00(200%,稍劣,4) → (3-4)×6.25 = -6.25"
-    },
-    "table4_individual": {
-      "lookup": "adjustment = (comparable_rank - base_rank) * step",
-      "equivalence": "與查表 matrix[base_rank-1][comparable_rank-1] 等價",
-      "sign_convention": "比較標的條件較差 → 差異率為正",
+    "lookup": "adjustment = (comparable_rank - base_rank) * step",
+    "equivalence": "與查表 matrix[base_rank-1][comparable_rank-1] 等價",
+    "sign_convention": "比較標的條件較差（級距數字較大）→ 修正率／差異率為正",
+    "applies_to": "表5（區域因素）與表4／表6（個別因素）同一方向，由 engine/grading.py 之 adjust() 共用實作。",
+    "history": "曾一度將表5 改為相反方向（比準地 − 比較標的），理由為「同列中文等級與數字正負須一致」；該判斷經承辦單位澄清為誤判，已回復單一方向。",
+    "calibration": {
       "rationale": "以金山官方已填範本（doc/rules/查估書表範本.pdf 表4）校準，五筆非零細項皆同向；改為相反方向則五筆全部對不上。",
+      "example": "樹林 P001-00(容積率260%,普通,3) vs P002-00(200%,稍劣,4) → (4-3)×6.25 = +6.25",
       "evidence": [
         "面前道路寬度：比準地 18m(稍優) / 比較標的 6m(稍劣) → 範本填 +5.00%",
         "道路種類：比準地 主要道路(優) / 比較標的 次要道路(稍優) → 範本填 +2.00%",

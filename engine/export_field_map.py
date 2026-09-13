@@ -287,9 +287,9 @@ def rate_cell(item, base_rank, comp_rank, direction):
     if step is None:
         return None
     if direction == "regional":
-        return {"expr": "修正百分比 ＝（比準地等級序號 − 比較標的等級序號）× 級距",
-                "equiv": "≡ matrix[比較標的等級−1][比準地等級−1]",
-                "sign": "比較標的級距數字較大（條件較劣）→ 修正百分比為負",
+        return {"expr": "修正百分比 ＝（比較標的等級序號 − 比準地等級序號）× 級距",
+                "equiv": "≡ matrix[比準地等級−1][比較標的等級−1]",
+                "sign": "比較標的級距數字較大（條件較劣）→ 修正百分比為正",
                 "step": step}
     return {"expr": "差異率 ＝（比較標的等級序號 − 比準地等級序號）× 級距",
             "equiv": "≡ matrix[比準地等級−1][比較標的等級−1]",

@@ -168,22 +168,37 @@ curl -s http://localhost:8000/output/ | grep href     # 看有哪些版本
 
 **憑證不進版控**：`.gitignore` 已排除 `.env*`、`.aws/`、`*.pem` 與含 `credentials` 的檔名。
 `deploy-aws.sh` 不帶任何金鑰，只寫死帳號、區域與資源名稱（這些不是機密），
-實際憑證由 aws CLI 自行解析。依帳號型態擇一設定：
+實際憑證由 aws CLI 自行解析。
+
+**本專案目前的作法**：金鑰以環境變數寫在開發機的 `~/.zshrc`
+（`AWS_ACCESS_KEY_ID`／`AWS_SECRET_ACCESS_KEY`／`AWS_SESSION_TOKEN`／`AWS_DEFAULT_REGION=us-west-2`）。
+兩個實務上一定會踩到的點：
+
+- **憑證是短效的。** session token 屬活動用角色
+  `arn:aws:sts::242971039848:assumed-role/WSParticipantRole/Participant`，過期後所有 `aws`
+  指令都會失敗，必須把新的值貼回 `~/.zshrc`。
+- **`~/.zshrc` 只有互動式 shell 會載入。** 從 CI、cron 或非互動的工具執行部署時完全讀不到，
+  第一個 `aws` 呼叫就會失敗。請在互動式終端機執行，或在該環境另外 export。
+
+`~/.zshrc` 存的是有效金鑰且不在本倉庫內 —— 不要複製進來，外洩時務必輪換。
+
+其他標準來源同樣可用：
 
 ```bash
-aws configure sso                  # IAM Identity Center（SSO，短效憑證，建議）
+aws configure sso                  # IAM Identity Center（SSO，長期帳號建議用這個）
 aws sso login --profile ntpc
 
 aws configure --profile ntpc       # IAM 使用者的 access key（長效，請定期輪換）
 
-export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_SESSION_TOKEN=...   # CI 用
-export AWS_REGION=us-west-2
+export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_SESSION_TOKEN=...   # 本專案採此法
+export AWS_DEFAULT_REGION=us-west-2
 
 aws sts get-caller-identity        # 應印出帳號 242971039848
 ```
 
 用 named profile 時，跑腳本前先 `export AWS_PROFILE=ntpc`。
-aws CLI 需在 `PATH` 上；腳本另外會找 `~/.local/bin`（macOS 安裝器的預設位置）。
+aws CLI 需在 `PATH` 上；腳本另外會找 `~/.local/bin`（macOS 安裝器的預設位置），
+並在開始建置前先驗一次身分 —— 憑證過期時一秒內就失敗，不必等映像建完才發現。
 
 **更新部署所需的最小 IAM 權限**：
 
