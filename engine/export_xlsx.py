@@ -13,9 +13,9 @@ import openpyxl
 from openpyxl.comments import Comment
 from openpyxl.styles import PatternFill, Font, Alignment
 
-from engine.loader import Dataset
-from engine.compute import derive_segment_levels, derive_table4_individual, OBS_TO_ITEM
-from engine.grading import adjust_regional
+from loader import Dataset
+from compute import derive_segment_levels, derive_table4_individual, OBS_TO_ITEM
+from grading import adjust_regional
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IN = os.path.join(ROOT, "input")

@@ -3,7 +3,7 @@
 import os, re, sys, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import yaml
-from datasets._build.case_rules import CASE_RULES, apply_cr1, check_cr2
+from case_rules import CASE_RULES, apply_cr1, check_cr2
 
 OUT = "datasets"
 

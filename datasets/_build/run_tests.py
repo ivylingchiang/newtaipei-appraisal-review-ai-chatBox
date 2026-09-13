@@ -2,7 +2,7 @@
 """資料集回歸測試：以「查估書表範本」(金山) 的已知答案驗證資料正確性"""
 import os, sys, json, sqlite3
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from datasets._build.threshold import match_level
+from threshold import match_level
 
 FAIL = []
 def check(name, got, exp):

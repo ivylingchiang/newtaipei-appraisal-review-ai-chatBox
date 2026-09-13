@@ -2,9 +2,9 @@
 """引擎測試：正向（官方範例應零錯誤）＋ 反向（注入錯誤必須被抓到）"""
 import sys, os, copy, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from engine.loader import Dataset
-from engine.review import review_case
-import engine.checks as C
+from loader import Dataset
+from review import review_case
+import checks as C
 
 FAIL = []
 
@@ -124,7 +124,7 @@ print("=" * 70)
 print("查表方向：表5 與表4 相反，兩者皆須與各自基準對齊")
 print("=" * 70)
 # 表4 個別因素方向以金山官方已填範本校準（查估書表範本 表4，五筆非零細項）
-from engine.grading import adjust as _adj, adjust_regional as _adjr
+from grading import adjust as _adj, adjust_regional as _adjr
 ji = ds.criteria("jinshan", "individual")
 for code, b_, c_, exp_, why in (
         ("front_road_width", 2, 4, 5.0, "比準地18m(稍優)／比較標的6m(稍劣)"),

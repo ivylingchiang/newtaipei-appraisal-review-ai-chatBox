@@ -25,12 +25,12 @@ import openpyxl
 from openpyxl.styles import PatternFill, Alignment
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import engine.export_xlsx as X
-import engine.export_v3 as V3
-import engine.poi_infer as PI
-from engine.loader import Dataset
-from engine.compute import derive_segment_levels, derive_table4_individual
-from engine.grading import grade, adjust, Ungradable
+import export_xlsx as X
+import export_v3 as V3
+import poi_infer as PI
+from loader import Dataset
+from compute import derive_segment_levels, derive_table4_individual
+from grading import grade, adjust, Ungradable
 
 ROOT = X.ROOT
 OUT = os.path.join(ROOT, "output", "fourthVersion")

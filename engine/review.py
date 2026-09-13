@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """審查主流程"""
-import engine.checks as C
-from engine.compute import derive_table5
+import checks as C
+from compute import derive_table5
 
 
 def review_case(ds, region, case_no=None):

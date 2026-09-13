@@ -3,9 +3,9 @@
 import os, sys, json, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import yaml
-from datasets._build.parse_criteria import parse
-from datasets._build.threshold import parse_threshold
-import datasets._build.catalog as C
+from parse_criteria import parse
+from threshold import parse_threshold
+import catalog as C
 
 LEVEL_NAMES = {
     2: ["優","劣"],

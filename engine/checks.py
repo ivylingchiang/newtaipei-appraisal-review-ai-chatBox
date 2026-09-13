@@ -4,7 +4,7 @@ from dataclasses import dataclass, field, asdict
 from typing import Optional, Any
 import math
 
-from engine.grading import grade, adjust, adjust_regional, split_conditions, Ungradable, item_unit
+from grading import grade, adjust, adjust_regional, split_conditions, Ungradable, item_unit
 
 TOL = 1e-6          # 百分比比對容差
 PRICE_TOL = 1       # 價格容差（元）：表上顯示值經進位，全精度連乘會差 ±1
@@ -274,7 +274,7 @@ def check_R12(ds, region, case, segments):
         s = segments.get(sn)
         if not s: continue
         # 觀測欄位代碼與基準表細項代碼不同名（如 main_road → main_road_width），需轉換
-        from engine.compute import OBS_TO_ITEM
+        from compute import OBS_TO_ITEM
         have = set(OBS_TO_ITEM.get(k, k) for k, o in (s.get("observations") or {}).items()
                    if o.get("raw"))
         have |= set(f["criteria_item_code"] for f in (s.get("facilities") or [])
