@@ -118,10 +118,13 @@ lookup need no interpretation at runtime.
 
 ### Looking up an adjustment rate
 
-**One direction, shared by every form.** Form 5 (regional factors) and Form 4 / Form 6 (individual
-factors) read the matrix the same way, through a single function `adjust()` in `engine/grading.py`:
+**One direction, shared by both forms the engine computes.** Form 5 (regional factors) and Form 4
+(individual factors) read the matrix the same way, through a single function `adjust()` in
+`engine/grading.py`. Form 6 is out of scope here — it adjusts the *parcel* rather than the
+comparable, so the roles swap and its sign convention reads the other way round (see
+`price_chain_table6` in `common/formulas.json`); this project does not implement it.
 
-| | Form 5 · Form 4 · Form 6 |
+| | Form 5 · Form 4 |
 |---|---|
 | Function | `adjust(item, base, comp)` |
 | Formula | `(comparable_rank - base_rank) * step` |

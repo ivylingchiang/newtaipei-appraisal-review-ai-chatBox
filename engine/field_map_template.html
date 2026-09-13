@@ -525,17 +525,15 @@ function viewRule(){
   const F = DATA.formulas, R = DATA.review_rules;
   const impl = new Set(DATA.checks_implemented);
   let h = `<div class="card"><h2>核心公式 <small>datasets/common/formulas.json</small></h2><div class="sec">
-    <h4>查表方向（最易誤用）</h4>
-    <div class="formula">表5 區域因素　adjustment = (比準地等級 − 比較標的等級) × 級距
-　　　　　　　　　 ≡ matrix[比較標的等級−1][比準地等級−1]
-　　　　　　　　　 ${E(F.matrix.table5_regional.sign_convention)}
+    <h4>查表方向（表5 與表4 共用同一方向）</h4>
+    <div class="formula">adjustment = (比較標的等級 − 比準地等級) × 級距
+　　　　　 ≡ matrix[比準地等級−1][比較標的等級−1]
+　　　　　 ${E(F.matrix.sign_convention)}
 
-表4 個別因素　adjustment = (比較標的等級 − 比準地等級) × 級距
-　　　　　　　　　 ≡ matrix[比準地等級−1][比較標的等級−1]
-　　　　　　　　　 ${E(F.matrix.table4_individual.sign_convention)}
-
-級距 step = 最大修正率 ÷ (級數 − 1)　　矩陣為反對稱方陣，對角線為 0</div>
-    <div class="note">${E(F.matrix.note)}</div></div>`;
+級距 step = 最大修正率 ÷ (級數 − 1)　　矩陣為反對稱方陣，對角線為 0
+範例　${E(F.matrix.calibration.example)}</div>
+    <div class="note">${E(F.matrix.applies_to)}<br>校準依據：${E(F.matrix.calibration.rationale)}<br>
+      沿革：${E(F.matrix.history)}</div></div>`;
   h += `<div class="sec"><h4>表4 價格調整鏈</h4>` +
     F.price_chain_table4.steps.map(s=>`<div class="formula">${E(s.name)}　＝　${E(s.formula)}${
       s.rounding?`\n（${E(s.rounding)}）`:''}</div>`).join('') +
@@ -598,7 +596,7 @@ function matrixHTML(f){
     h += `<tr><th>${i+1}${lb[i]?'<br>'+E(lb[i]):''}</th>` +
       row.map(v=>`<td class="${v>0?'p':v<0?'n':'z'}">${v>0?'+':''}${(+v).toFixed(2)}</td>`).join('') + `</tr>`;
   });
-  return h + `</table></div><div class="note">表5 讀 matrix[比較標的−1][比準地−1]；表4／表6 讀 matrix[比準地−1][比較標的−1]。</div></details>`;
+  return h + `</table></div><div class="note">表5 與表4 一律讀 matrix[比準地−1][比較標的−1]（比較標的較劣為正）。表6 調整對象為宗地，角色互換，符號敘述相反。</div></details>`;
 }
 function thresholdsHTML(f){
   if (!f.thresholds || !f.thresholds.length) return '';

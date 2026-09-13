@@ -53,7 +53,7 @@ matrix:
   lookup: adjustment = (comparable_rank - base_rank) * step
   equivalence: 與查表 matrix[base_rank-1][comparable_rank-1] 等價
   sign_convention: 比較標的條件較差（級距數字較大）→ 修正率／差異率為正
-  applies_to: 表5（區域因素）與表4／表6（個別因素）同一方向，由 engine/grading.py 之 adjust() 共用實作。
+  applies_to: 表5（區域因素）與表4（個別因素）同一方向，由 engine/grading.py 之 adjust() 共用實作；表6 調整對象為宗地而非比較標的，角色互換故符號敘述相反，見 price_chain_table6。
   history: 曾一度將表5 改為相反方向（比準地 − 比較標的），理由為「同列中文等級與數字正負須一致」；該判斷經承辦單位澄清為誤判，已回復單一方向。
   calibration:
     rationale: 以金山官方已填範本（doc/rules/查估書表範本.pdf 表4）校準，五筆非零細項皆同向；改為相反方向則五筆全部對不上。

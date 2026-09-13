@@ -527,9 +527,11 @@ Ordered by leverage, with the reason each one is worth doing next.
 - **`doc/` is read-only.** Everything downstream is regenerated, never hand-patched.
 - **Report missing data as `blocked`, not `error`.** Treating "not filled in" as "filled in wrong"
   is the fastest way to lose a reviewer's trust in the tool.
-- **One lookup direction for every form.** Form 5, Form 4 and Form 6 all read the anti-symmetric
-  matrix as `(comparable − base) × step` through a single `adjust()`. Calibrate any doubt about the
-  sign against the completed Jinshan Form 4, which is the only filled evidence that constrains it.
+- **One lookup direction for both forms the engine computes.** Form 5 and Form 4 read the
+  anti-symmetric matrix as `(comparable − base) × step` through a single `adjust()`. Calibrate any
+  doubt about the sign against the completed Jinshan Form 4, the only filled evidence that
+  constrains it. (Form 6 swaps the roles — it adjusts the parcel, not the comparable — and is not
+  implemented here.)
 - **Every derived number is traceable** to a Form 3 line and a criteria threshold, via the basis
   sheets and the field map.
 - Third-party open data (including OpenStreetMap) is used for cross-checking and for generating
