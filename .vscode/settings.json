@@ -1,0 +1,12 @@
+{
+  "workbench.editorAssociations": {
+    "*.xlsx": "cweijan.officeViewer",
+    "*.xls": "cweijan.officeViewer",
+    "*.xlsm": "cweijan.officeViewer",
+    "*.docx": "cweijan.officeViewer",
+    "*.pdf": "cweijan.officeViewer",
+    "*.csv": "default"
+  },
+  "files.encoding": "utf8bom",
+  "files.autoGuessEncoding": true
+}

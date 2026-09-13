@@ -23,9 +23,18 @@ from export_xlsx import (T3_LEVEL_CELL, T3_OBS_CELL, T3_NA_CELLS,      # noqa: E
                          T5_BASE_COLS, T5_COMP_COLS, T5_SUBTOTAL_COL,
                          T4_COMP)
 from export_v3 import FAC_CELLS                                   # noqa: E402
+from preview_html import render_sheet, LEGEND                    # noqa: E402
 
 REGION = "shulin"
 OUT = os.path.join(ROOT, "output", "fieldMapping")
+FORMS_SRC = os.path.join(ROOT, "output", "fourthVersion")
+# 「完整書表」的排列順序：表3 勘查 → 表4 比較法 → 表5 區域因素明細
+# （標題以書表編號為準，不帶 preview_html.FILES 的 5-1 分號與檔名）
+FORM_FILES = [
+    ("表3 地價區段勘查表", "表3_地價區段勘查表_已填.xlsx"),
+    ("表4 比較法調查估價表", "表4_比較法調查估價表_已填.xlsx"),
+    ("表5 影響地價區域因素分析明細表", "表5-1_影響地價區域因素分析明細表_已填.xlsx"),
+]
 ITEM2OBS = {v: k for k, v in OBS_TO_ITEM.items()}
 
 # ────────────────────────────────────────────────────────────── 開放資料來源目錄
@@ -509,22 +518,53 @@ def build():
     return payload
 
 
-def render(payload):
+def forms_html():
+    """「完整書表」分頁：表3 → 表5 → 表4 三份已填 xlsx 的完整版面。
+
+    與 output/fourthVersion/預覽.html 共用 preview_html.render_sheet，
+    底色、合併儲存格與填表依據（title 提示）皆與該頁一致。
+    """
+    import openpyxl
+
+    legend = "".join(f'<span class="lg"><i style="background:#{c}"></i>{n}</span>'
+                     for n, c in LEGEND)
+    parts = [f"<p>{legend}</p>"]
+    sheets = 0
+    for title, fn in FORM_FILES:
+        path = os.path.join(FORMS_SRC, fn)
+        if not os.path.exists(path):
+            parts.append(f"<h2>{html.escape(title)}</h2>"
+                         f'<div class="empty">找不到 {html.escape(fn)}，'
+                         "請先執行 engine/export_v4.py</div>")
+            continue
+        wb = openpyxl.load_workbook(path)
+        parts.append(f"<h2>{html.escape(title)}</h2>")
+        for ws in wb.worksheets:
+            if ws.title == "填表依據":
+                continue
+            parts.append(f"<h3>工作表：{html.escape(ws.title)}</h3>")
+            parts.append('<div class="scroll">' + render_sheet(ws) + "</div>")
+            sheets += 1
+    return "\n".join(parts), sheets
+
+
+def render(payload, forms):
     with open(os.path.join(HERE, "field_map_template.html"), encoding="utf-8") as f:
         tpl = f.read()
     blob = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
-    return tpl.replace("/*__DATA__*/null", blob)
+    return tpl.replace("/*__DATA__*/null", blob).replace("<!--__FORMS__-->", forms)
 
 
 def main():
     os.makedirs(OUT, exist_ok=True)
     payload = build()
+    forms, sheets = forms_html()
     p = os.path.join(OUT, "index.html")
     with open(p, "w", encoding="utf-8") as f:
-        f.write(render(payload))
+        f.write(render(payload, forms))
     print(f"  區域因素 {len(payload['regional'])} 細項｜個別因素 {len(payload['individual'])} 細項"
           f"｜表3 其他 {len(payload['t3_extra'])} 欄｜缺口 {len(payload['gaps'])} 項"
-          f"｜資料來源 {len(payload['sources'])} 個")
+          f"｜資料來源 {len(payload['sources'])} 個｜完整書表 {sheets} 張工作表")
     print(f"  -> {os.path.relpath(p, ROOT)}")
 
 

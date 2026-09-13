@@ -20,9 +20,16 @@ python3 engine/export_field_map.py       # 重新產生 index.html
 | 表3 這一欄的優劣等級，依據是哪一條級距？填在表5 哪一列？ | 表3 地價區段勘查表 |
 | 表4 這一格的條件欄應該抄自哪張表？差異率查表方向為何？ | 表4 比較法調查估價表 |
 | 表5 這一格的修正百分比怎麼算出來的？小計、總修正數怎麼加？ | 表5 影響地價區域因素分析明細表 |
+| 填完的表3／表5／表4 實際長什麼樣子？每一格的填表依據是什麼？ | 完整書表（Final Layout） |
 | 目前哪些資料缺、缺了會影響哪幾格、最大多少百分比？ | 缺少的資料與替代方式 |
 | 留白處目前用哪個 API／哪種計算方式頂替？可信度多少？ | 開放資料來源 |
 | 手冊的公式、尾數規則、R1–R14 交叉檢核、官方審查檢核表 | 公式與審查規則 |
+
+「完整書表（Final Layout）」頁籤是 `output/fourthVersion/` 三份已填 xlsx 的完整版面
+（表3 四個區段工作表 → 表4 → 表5，連在一起），樣式與底色圖例同
+[`../fourthVersion/預覽.html`](../fourthVersion/預覽.html)；有底色的儲存格把滑鼠移上去即顯示
+該格的填表依據（與 Excel 儲存格註解相同內容）。由 `engine/preview_html.py` 的 `render_sheet`
+直接讀 xlsx 產生，故與交付的 Excel 逐格一致。
 
 前三個頁籤中，**每一個欄位與每一個儲存格都可以點**。點下去右側顯示：
 
@@ -69,6 +76,7 @@ python3 engine/export_field_map.py       # 重新產生 index.html
 | 本案專屬規則 | `datasets/common/case_rules.json`（源自 `doc/rules/extra.md`） |
 | 開放資料來源目錄與信心等級 | `doc/extraInfo/poi-links.md` ＋ `engine/poi_fetch.py` |
 | 缺口清單 | `engine/export_field_map.py` 之 `GAPS`（彙整 v1~v4 各 README 之退補事項） |
+| 完整書表版面 | `output/fourthVersion/*.xlsx`（`engine/preview_html.py` 之 `render_sheet`） |
 
 表5 八組小計由頁面即時計算，與 `output/thirdVersion/README.md` §5.1 完全相符
 （−6.25／−21.00／0／0／+1.00／不成立／不成立／0）。

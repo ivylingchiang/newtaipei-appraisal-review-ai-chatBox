@@ -172,6 +172,19 @@ ul.ml li{margin:3px 0}
         color:var(--muted);border-top:1px solid var(--line);background:#fbfcfd}
 .legend span{display:flex;gap:5px;align-items:center}
 .legend i{width:9px;height:9px;border-radius:99px;display:inline-block}
+
+/* ── 完整書表（與 output/fourthVersion/預覽.html 同樣式） ── */
+#forms{padding-top:18px}
+#forms h2{font-size:16px;margin:32px 0 0;padding-bottom:4px;border-bottom:2px solid #333}
+#forms h2:first-of-type{margin-top:0}
+#forms h3{font-size:13px;font-weight:600;color:#666;margin:14px 0 6px}
+#forms .scroll{overflow-x:auto;background:#fff;border:1px solid #ddd}
+#forms table{border-collapse:collapse;font-size:11px;white-space:nowrap}
+#forms td{border:1px solid #c8c8c8;padding:2px 5px;vertical-align:middle;max-width:340px;
+          overflow:hidden;text-overflow:ellipsis}
+#forms td.has-note{cursor:help}
+#forms .lg{display:inline-flex;align-items:center;margin-right:14px;font-size:12px}
+#forms .lg i{width:14px;height:14px;border:1px solid #999;margin-right:5px;display:inline-block}
 </style>
 </head>
 <body>
@@ -190,6 +203,7 @@ ul.ml li{margin:3px 0}
     <main id="main"></main>
     <aside id="detail"></aside>
   </div>
+  <div id="forms" hidden><!--__FORMS__--></div>
 </div>
 
 <script>
@@ -214,7 +228,8 @@ $('#meta').innerHTML = [
 ].map(([k,v]) => `${E(k)}：<b>${E(v)}</b>`).join('');
 
 const TABS = [['t3','表3 地價區段勘查表'],['t4','表4 比較法調查估價表'],
-              ['t5','表5 影響地價區域因素分析明細表'],['gap','缺少的資料與替代方式'],
+              ['t5','表5 影響地價區域因素分析明細表'],['final','完整書表（Final Layout）'],
+              ['gap','缺少的資料與替代方式'],
               ['src','開放資料來源'],['rule','公式與審查規則']];
 $('#nav').innerHTML = TABS.map(([k,l]) =>
   `<button data-t="${k}" aria-selected="${k===tab}">${E(l)}</button>`).join('') +
@@ -796,6 +811,11 @@ function viewDetail(){
 function render(){
   document.querySelectorAll('#nav button').forEach(b =>
     b.setAttribute('aria-selected', b.dataset.t === tab));
+  const fin = tab === 'final';                 /* 完整書表：靜態版面，不受搜尋影響 */
+  $('#forms').hidden = !fin;
+  document.querySelector('.cols').style.display = fin ? 'none' : '';
+  document.querySelector('.srch').style.display = fin ? 'none' : '';
+  if (fin) return;
   $('#main').innerHTML = tab==='t3' ? viewT3() : tab==='t5' ? viewT5() :
     tab==='t4' ? viewT4() : tab==='gap' ? viewGap() :
     tab==='src' ? viewSrc() : viewRule();
