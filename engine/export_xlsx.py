@@ -357,7 +357,7 @@ def build_table5(ds, case, segs, seg_order, levels, crit):
             cell = put(ws, f"{cp}{r}", a, "AI判定", f"{it['item_name']}（{sn} 修正百分比）",
                        f"比準地 {base_no} {b['label']}({b['rank']}) ／ {sn} {c['label']}({c['rank']})",
                        f"查表：共{it['level_count']}級、最大±{it['max_adjustment']}%、"
-                       f"級距{it['step']}%；({b['rank']}−{c['rank']})×{it['step']} = {a:+.2f}",
+                       f"級距{it['step']}%；({c['rank']}−{b['rank']})×{it['step']} = {a:+.2f}",
                        f"{REGION}.regional.{code}", seg=sn)
             cell.number_format = "0.00"
 
