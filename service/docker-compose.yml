@@ -1,0 +1,13 @@
+# 從專案根目錄啟動：docker compose -f service/docker-compose.yml up -d
+services:
+  output:
+    build:
+      context: ..                 # build context 必須是專案根目錄，映像要帶 output/ 進去
+      dockerfile: service/Dockerfile
+    image: ntpc-appraisal-output
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    # 掛上本機 output/ 之後，重新產生報表不必重建映像
+    volumes:
+      - ../output:/app/output:ro

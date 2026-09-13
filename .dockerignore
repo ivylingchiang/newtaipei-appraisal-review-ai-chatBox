@@ -1,0 +1,17 @@
+.git
+.github
+.vscode
+.DS_Store
+**/.DS_Store
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 服務只需要 output/ 與 service/，原始文件與知識庫不進映像
+doc/
+datasets/
+dev/
+input/
+engine/

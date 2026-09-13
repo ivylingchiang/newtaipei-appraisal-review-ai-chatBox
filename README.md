@@ -21,7 +21,8 @@ flagging everything that cannot, rather than filling it with guesses.
 ├── datasets/     Structured knowledge base extracted from doc/  (JSON + YAML + SQLite)
 ├── engine/       Rule engine: review checks, table lookups, form export
 ├── input/        Blank official Excel templates to be filled
-└── output/       Generated deliverables (three successive versions)
+├── output/       Generated deliverables (three successive versions)
+└── service/      Read-only HTTP service that serves output/ to external programs
 ```
 
 Everything in `datasets/` is **derived** from `doc/` and is fully reproducible
@@ -236,7 +237,30 @@ money, so unknown fields stay blank and are listed for field survey.
 
 ---
 
-## 7. Conventions
+## 7. `service/` — serving the output to other programs
+
+The field map (`output/fieldMapping/index.html`) is a fully self-contained single HTML file, so
+any program that can make an HTTP request can render it. `service/server.py` is a stdlib-only
+read-only HTTP server that exposes it — no dependencies to install:
+
+```bash
+python3 service/server.py                                   # http://localhost:8000/
+docker compose -f service/docker-compose.yml up -d          # same, containerised
+```
+
+| Route | Serves |
+|---|---|
+| `/`, `/fieldMapping/index.html` | the field map (`地價查估書表審查對照總覽`) |
+| `/output/`, `/output/<path>` | directory index and every other generated file |
+
+Responses carry `Access-Control-Allow-Origin: *` and no `X-Frame-Options`, so external code can
+`fetch()` the page cross-origin or embed it in an `<iframe>`. gzip, `Last-Modified`/`304` and
+UTF-8 charset are handled; paths outside `output/` are refused. See `service/README.md` for the
+client snippets and deployment notes.
+
+---
+
+## 8. Conventions
 
 - **Never hard-code thresholds.** Load by `(region_code, land_use_code)`; the two districts differ
   on almost every item.
@@ -249,7 +273,7 @@ money, so unknown fields stay blank and are listed for field survey.
 
 ---
 
-## 8. Notes
+## 9. Notes
 
 - `datasets/external/cache/` holds ~17 MB of raw open-data API responses. They are kept in the
   repository so the third version can be reproduced offline; `engine/poi_fetch.py` refetches them
