@@ -486,6 +486,7 @@ deliverable itself as well as here.
 | **Distances are straight-line from the segment centroid.** The manual prefers route distance for facilities that must be reached on foot. | Systematically over-optimistic for positive facilities (schools, markets, parks); correct for nuisance facilities and for the interchange, where the criteria table specifies straight-line. | A routing service, or field measurement. |
 | **No parcel-level cadastral geometry.** Form 4's individual factors 7–11 (area, width, depth, shape, frontage) cannot be computed. | Those five rows stay blank, and with them Form 4's total, weights and trial price. | Form 7 (宗地個別因素清冊) or a cadastral WFS feed. |
 | **Form 4 items 13–21 are segment-level values applied to parcels.** | Parcels in the same segment get identical values; they are not parcel-specific. | Field survey or Form 7. |
+| **Form 6's sign convention is unsettled.** The authority's rule (benchmark better → positive) applies to every form; the official Form 6 template's own sample data runs the other way, consistently across 9 items and 5 parcels. | Nothing here depends on it — Form 6 is not implemented, since Form 7 was never supplied — but it must be settled before it is. | Confirmation from the reviewing authority. Recorded in `formulas.json` under `price_chain_table6.open_issue` with every sample row. |
 | **Inferred values are not survey records.** Form 3 is a statutory survey record whose authority comes from the surveying officer's on-site determination. | Open-data inference is valid as a pre-survey candidate list, a plausibility cross-check and a basis for requesting supplementation — never as a submitted survey result. | Unchanged by any amount of better data. |
 
 ---
@@ -527,11 +528,12 @@ Ordered by leverage, with the reason each one is worth doing next.
 - **`doc/` is read-only.** Everything downstream is regenerated, never hand-patched.
 - **Report missing data as `blocked`, not `error`.** Treating "not filled in" as "filled in wrong"
   is the fastest way to lose a reviewer's trust in the tool.
-- **One lookup direction for both forms the engine computes.** Form 5 and Form 4 read the
-  anti-symmetric matrix as `(comparable − base) × step` through a single `adjust()`. Calibrate any
-  doubt about the sign against the completed Jinshan Form 4, the only filled evidence that
-  constrains it. (Form 6 swaps the roles — it adjusts the parcel, not the comparable — and is not
-  implemented here.)
+- **One lookup direction for every form.** The authority's rule is that a benchmark better than its
+  counterpart yields a positive rate, so Forms 5, 4 and 6 all read the anti-symmetric matrix as
+  `(counterpart − base) × step` through a single `adjust()`. Calibrate any doubt about the sign
+  against the completed Jinshan Form 4, the only filled evidence that constrains it. Form 6 carries
+  an open question — the official template's sample data runs the other way; see
+  [§8](#8-known-limits).
 - **Every derived number is traceable** to a Form 3 line and a criteria threshold, via the basis
   sheets and the field map.
 - Third-party open data (including OpenStreetMap) is used for cross-checking and for generating

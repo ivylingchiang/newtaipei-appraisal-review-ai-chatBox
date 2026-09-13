@@ -525,7 +525,7 @@ function viewRule(){
   const F = DATA.formulas, R = DATA.review_rules;
   const impl = new Set(DATA.checks_implemented);
   let h = `<div class="card"><h2>核心公式 <small>datasets/common/formulas.json</small></h2><div class="sec">
-    <h4>查表方向（表5 與表4 共用同一方向）</h4>
+    <h4>查表方向（表5／表4／表6 共用同一方向）</h4>
     <div class="formula">adjustment = (比較標的等級 − 比準地等級) × 級距
 　　　　　 ≡ matrix[比準地等級−1][比較標的等級−1]
 　　　　　 ${E(F.matrix.sign_convention)}
@@ -596,7 +596,7 @@ function matrixHTML(f){
     h += `<tr><th>${i+1}${lb[i]?'<br>'+E(lb[i]):''}</th>` +
       row.map(v=>`<td class="${v>0?'p':v<0?'n':'z'}">${v>0?'+':''}${(+v).toFixed(2)}</td>`).join('') + `</tr>`;
   });
-  return h + `</table></div><div class="note">表5 與表4 一律讀 matrix[比準地−1][比較標的−1]（比較標的較劣為正）。表6 調整對象為宗地，角色互換，符號敘述相反。</div></details>`;
+  return h + `</table></div><div class="note">表5、表4、表6 一律讀 matrix[比準地−1][對造−1]：比準地優於對造（比較標的／宗地）→ 修正率為正。</div></details>`;
 }
 function thresholdsHTML(f){
   if (!f.thresholds || !f.thresholds.length) return '';

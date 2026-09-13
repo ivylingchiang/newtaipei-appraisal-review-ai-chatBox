@@ -118,19 +118,18 @@ lookup need no interpretation at runtime.
 
 ### Looking up an adjustment rate
 
-**One direction, shared by both forms the engine computes.** Form 5 (regional factors) and Form 4
-(individual factors) read the matrix the same way, through a single function `adjust()` in
-`engine/grading.py`. Form 6 is out of scope here — it adjusts the *parcel* rather than the
-comparable, so the roles swap and its sign convention reads the other way round (see
-`price_chain_table6` in `common/formulas.json`); this project does not implement it.
+**One direction, shared by every form.** The reviewing authority's rule: **when the benchmark is
+better than its counterpart, the rate is positive** — counterpart meaning the comparable in Forms 4
+and 5, the parcel in Form 6. So every form reads the matrix the same way, through a single `adjust()`
+in `engine/grading.py`.
 
-| | Form 5 · Form 4 |
+| | Form 5 · Form 4 · Form 6 |
 |---|---|
 | Function | `adjust(item, base, comp)` |
-| Formula | `(comparable_rank - base_rank) * step` |
-| Matrix | `matrix[base_rank - 1][comparable_rank - 1]` |
-| Sign | comparable graded **worse** (higher ordinal) → **positive** |
-| Calibrated against | The completed Jinshan Form 4: all five non-zero items match this direction, and all five break under the other |
+| Formula | `(counterpart_rank - base_rank) * step` |
+| Matrix | `matrix[base_rank - 1][counterpart_rank - 1]` |
+| Sign | benchmark **better** than the counterpart → **positive** |
+| Calibrated against | The authority's rule; Form 4 additionally back-calculates from the completed Jinshan case, where all five non-zero items match this direction and all five break under the other |
 
 ```python
 # Form 5 — Shulin P001-00 (FAR 260 %, 普通, 3) vs P002-00 (200 %, 稍劣, 4)
@@ -146,6 +145,14 @@ adj = (4 - 2) * 2.50   # → +5.00, matching the printed form
 > restored. Note that the Jinshan reference Form 5 cannot settle the question either way — every one
 > of its adjustments is 0.00, because its comparable is graded identically to the benchmark on every
 > item. The only empirical calibration available is the Jinshan Form 4.
+
+> **Open issue on Form 6.** The official workbook's sheet `102表6宗地市價估計表格式` ships with
+> sample values filled in, and they run the *other* way: a parcel better than the benchmark takes a
+> positive rate (33 m benchmark width against a 15 m parcel reads −0.01; 57 m reads +0.01), the same
+> way across 9 items and 5 parcels. Form 6 is not implemented here — Form 7, the parcel
+> individual-factor register, was never supplied — so nothing in this repository depends on the
+> answer, but it must be settled with the reviewing authority before it is. Recorded under
+> `price_chain_table6.open_issue` with every sample row.
 
 The convention is recorded in `common/formulas.json` under `matrix`, with its evidence.
 
