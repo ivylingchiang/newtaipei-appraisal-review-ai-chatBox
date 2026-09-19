@@ -12,7 +12,7 @@ flags everything that cannot, rather than filling it with a guess.
 1 September 2022 (民國 111 年 9 月 1 日), case no. `1110901-99-XXX`.
 Benchmark parcel `P001-00`; comparables `P002-00`, `P003-00`, `P004-00`.
 
-This project is developed as our team's proposal for the 2026 New Taipei City Government Hackathon. For the full system concept, workflow, problem definition, and proposed solution, please refer to our team's proposal presentation: [`Team UCLab.pdf`](output/Team UCLab.pdf).
+This project is developed as our team's proposal for the 2026 New Taipei City Government Hackathon. For the full system concept, workflow, problem definition, and proposed solution, please refer to our team's proposal presentation: [Team UCLab.pdf](/output/Team UCLab.pdf).
 
 | | |
 |---|---|
